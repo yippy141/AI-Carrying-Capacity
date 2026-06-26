@@ -1,0 +1,18 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Validate repo scaffold",
+      "type": "shell",
+      "command": "python3 scripts/validate_repo.py",
+      "problemMatcher": []
+    },
+    {
+      "label": "List Deep Research inbox",
+      "type": "shell",
+      "command": "find research/deep-research -maxdepth 1 -type f | sort",
+      "problemMatcher": []
+    }
+  ]
+}
+

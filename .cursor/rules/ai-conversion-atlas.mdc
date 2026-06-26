@@ -1,0 +1,10 @@
+---
+description: AI Conversion Atlas project rules
+globs: ["**/*"]
+alwaysApply: true
+---
+
+Follow `docs/AGENT_BRIEF.md` and `AGENTS.md`.
+
+Do not fabricate data, citations, scores, or indicator values. Keep frontier access, conversion capacity, adaptation capacity, distribution quality, and realized outcomes separate. Update `docs/DECISIONS.md` and `docs/TASKS.md` when making substantive changes.
+

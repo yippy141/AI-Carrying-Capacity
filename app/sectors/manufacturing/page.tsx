@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import { SectorHeatmap } from "@/components/visuals/SectorHeatmap";
+import { UncertaintyLegend } from "@/components/visuals/UncertaintyLegend";
 import { MethodologyCallout } from "@/components/ui/MethodologyCallout";
 import { SourceNote } from "@/components/ui/SourceNote";
 import { manufacturingData } from "@/lib/data";
@@ -7,13 +9,6 @@ import { manufacturingData } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Manufacturing Sector"
 };
-
-const candidateAreas = [
-  "Robotics and embodied AI deployment",
-  "Factory integration and process redesign",
-  "Supplier diffusion across SMEs and regions",
-  "Workforce adaptation and safety systems"
-];
 
 export default function ManufacturingPage() {
   return (
@@ -32,20 +27,9 @@ export default function ManufacturingPage() {
         </p>
       </div>
 
-      <section className="mt-14 grid gap-4 md:grid-cols-2">
-        {candidateAreas.map((area) => (
-          <article className="rounded-lg border border-rule p-5" key={area}>
-            <h2 className="font-display text-2xl font-semibold">{area}</h2>
-            <p className="mt-3 leading-7 text-muted">
-              Candidate research area only. No sourced indicator value has been
-              added to this module yet.
-            </p>
-            <p className="mt-5 text-sm font-semibold text-missing">
-              value status: missing
-            </p>
-          </article>
-        ))}
-      </section>
+      <div className="mt-12">
+        <SectorHeatmap />
+      </div>
 
       <div className="mt-12">
         <MethodologyCallout title="Module data status">
@@ -56,11 +40,16 @@ export default function ManufacturingPage() {
       </div>
 
       <div className="mt-12">
-        <SourceNote label="placeholder">
+        <UncertaintyLegend compact />
+      </div>
+
+      <div className="mt-12">
+        <SourceNote label="missing">
           <p>
             This page reads from `data/processed/v0_sector_manufacturing.json`.
-            It does not infer robot density, productivity, automation, or labor
-            outcomes from unsourced placeholders.
+            The heatmap reads from local visual JSON and still marks every
+            country-level manufacturing value missing until reviewed indicators
+            are promoted.
           </p>
         </SourceNote>
       </div>

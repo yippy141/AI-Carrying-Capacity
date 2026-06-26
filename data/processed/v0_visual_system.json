@@ -1,0 +1,2017 @@
+{
+  "metadata": {
+    "project": "AI Conversion Atlas",
+    "version": "v0-visual-system",
+    "status": "staged-visual",
+    "updated": "2026-06-26",
+    "note": "Visual scaffolding drawn from staged research synthesis and staged source/indicator registers. It contains qualitative watch states, missing-value markers, and source IDs, not national scores or reviewed indicator values."
+  },
+  "layers": [
+    {
+      "key": "frontier_access",
+      "label": "Frontier Access",
+      "short_label": "Access",
+      "description": "The level of AI capability actors can build, buy, import, deploy, or adapt.",
+      "interface_note": "Shown as access conditions and constraints, not as a national AI rank."
+    },
+    {
+      "key": "conversion_capacity",
+      "label": "Conversion Capacity",
+      "short_label": "Conversion",
+      "description": "Complementary assets that turn AI into repeated operational use in firms, public services, labs, infrastructure, and defense.",
+      "interface_note": "Includes compute, energy, industrial data, systems integrators, procurement, and organizational redesign."
+    },
+    {
+      "key": "adaptation_capacity",
+      "label": "Adaptation Capacity",
+      "short_label": "Adaptation",
+      "description": "Whether institutions, labor markets, governance, and infrastructure can absorb disruption.",
+      "interface_note": "Kept separate from adoption so exposure is not mistaken for social adjustment."
+    },
+    {
+      "key": "distribution_quality",
+      "label": "Distribution Quality",
+      "short_label": "Distribution",
+      "description": "Whether gains diffuse broadly or concentrate among elite firms, frontier labs, state actors, or favored regions.",
+      "interface_note": "Shown through gaps, pass-through questions, and missingness rather than a headline score."
+    },
+    {
+      "key": "realized_outcomes",
+      "label": "Realized Outcomes",
+      "short_label": "Outcomes",
+      "description": "Observed changes in productivity, industrial capability, science, public services, military capacity, welfare, and adjustment costs.",
+      "interface_note": "V0 treats this as the hardest layer; most values remain missing until source review."
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "src-v0-dr-001",
+      "title_english": "Stanford AI Index / Global AI Vibrancy Tool",
+      "authors_org": "Stanford HAI",
+      "year": "2025-2026",
+      "language": "English",
+      "source_type": "academic_index",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Version and methodology changes require careful year handling."
+    },
+    {
+      "source_id": "src-v0-dr-012",
+      "title_english": "Eurostat enterprise AI and ICT use tables",
+      "authors_org": "Eurostat",
+      "year": "2023-2026",
+      "language": "English",
+      "source_type": "official_dataset",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Definitions vary over time and are EU-focused."
+    },
+    {
+      "source_id": "src-v0-dr-013",
+      "title_english": "Business Trends and Outlook Survey",
+      "authors_org": "U.S. Census Bureau",
+      "year": "2025-2026",
+      "language": "English",
+      "source_type": "official_dataset",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Survey instrument revisions affect trend continuity."
+    },
+    {
+      "source_id": "src-v0-dr-014",
+      "title_english": "Use of AI in Enterprises",
+      "authors_org": "Destatis",
+      "year": "2025",
+      "language": "German",
+      "source_type": "official_dataset",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Germany-only and survey definitions need review."
+    },
+    {
+      "source_id": "src-v0-dr-015",
+      "title_english": "Singapore Digital Economy Report",
+      "authors_org": "IMDA Singapore",
+      "year": "2024-2025",
+      "language": "English",
+      "source_type": "official_report",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Small-country structure limits comparability."
+    },
+    {
+      "source_id": "src-v0-dr-016",
+      "title_english": "Korean enterprise informatization and AI adoption statistics",
+      "authors_org": "MSIT; KOSTAT; NIA",
+      "year": "2024-2026",
+      "language": "Korean",
+      "source_type": "official_dataset",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Definitions and public availability require review."
+    },
+    {
+      "source_id": "src-v0-dr-017",
+      "title_english": "DX Trends 2025",
+      "authors_org": "Information-technology Promotion Agency Japan",
+      "year": "2025",
+      "language": "Japanese",
+      "source_type": "official_report",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Japan-centered and survey-based."
+    },
+    {
+      "source_id": "src-v0-dr-018",
+      "title_english": "Absorptive Capacity: A New Perspective on Learning and Innovation",
+      "authors_org": "Wesley M. Cohen; Daniel A. Levinthal",
+      "year": "1990",
+      "language": "English",
+      "source_type": "academic_article",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "10.2307/2393553",
+      "limitations": "Foundational pre-AI firm-level theory."
+    },
+    {
+      "source_id": "src-v0-dr-021",
+      "title_english": "General Purpose Technologies Engines of Growth?",
+      "authors_org": "Timothy F. Bresnahan; Manuel Trajtenberg",
+      "year": "1995",
+      "language": "English",
+      "source_type": "academic_article",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "10.1016/0304-4076(94)01598-T",
+      "limitations": "Abstract theory not direct AI evidence."
+    },
+    {
+      "source_id": "src-v0-dr-022",
+      "title_english": "Artificial Intelligence and the Modern Productivity Paradox",
+      "authors_org": "Erik Brynjolfsson; Daniel Rock; Chad Syverson",
+      "year": "2017",
+      "language": "English",
+      "source_type": "working_paper",
+      "reliability_tier": "B",
+      "review_status": "staged",
+      "url_or_doi": "10.3386/w24001",
+      "limitations": "Pre-generative-AI and partly conceptual."
+    },
+    {
+      "source_id": "src-v0-dr-030",
+      "title_english": "Generative AI at Work",
+      "authors_org": "Erik Brynjolfsson; Danielle Li; Lindsey R. Raymond",
+      "year": "2025",
+      "language": "English",
+      "source_type": "academic_article",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Single setting and not economy-wide."
+    },
+    {
+      "source_id": "src-v0-dr-041",
+      "title_english": "Energy and AI",
+      "authors_org": "International Energy Agency",
+      "year": "2025-2026",
+      "language": "English",
+      "source_type": "intergovernmental_report",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Global aggregation can hide local constraints."
+    },
+    {
+      "source_id": "src-v0-dr-042",
+      "title_english": "2024 U.S. Data Center Energy Usage Report",
+      "authors_org": "DOE; Lawrence Berkeley National Laboratory",
+      "year": "2024",
+      "language": "English",
+      "source_type": "government_report",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Facility-level PPAs and carbon claims are not fully visible."
+    },
+    {
+      "source_id": "src-v0-dr-043",
+      "title_english": "Queued Up",
+      "authors_org": "Lawrence Berkeley National Laboratory",
+      "year": "2024-2026",
+      "language": "English",
+      "source_type": "government_dataset",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Generation queue is a proxy for broader grid throughput, not a data-center load queue itself."
+    },
+    {
+      "source_id": "src-v0-dr-044",
+      "title_english": "Long-Term Reliability Assessment",
+      "authors_org": "NERC",
+      "year": "2025",
+      "language": "English",
+      "source_type": "official_report",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Regional reliability assessment, not a country score."
+    },
+    {
+      "source_id": "src-v0-dr-045",
+      "title_english": "PJM Load Forecast and large-load materials",
+      "authors_org": "PJM",
+      "year": "2025-2026",
+      "language": "English",
+      "source_type": "grid_operator_materials",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Regional, not national."
+    },
+    {
+      "source_id": "src-v0-dr-046",
+      "title_english": "ERCOT Large Load Interconnection materials",
+      "authors_org": "ERCOT",
+      "year": "2025-2026",
+      "language": "English",
+      "source_type": "grid_operator_materials",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Pipeline credibility is uncertain."
+    },
+    {
+      "source_id": "src-v0-dr-047",
+      "title_english": "Opinions on Deepening East Data West Computing and Accelerating the National Integrated Computing Network",
+      "authors_org": "NDRC; National Data Administration; NEA and others",
+      "year": "2023",
+      "language": "Chinese",
+      "source_type": "government_policy",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Official targets and implementation claims need independent validation."
+    },
+    {
+      "source_id": "src-v0-dr-048",
+      "title_english": "Special Action Plan for Green and Low-Carbon Development of Data Centers",
+      "authors_org": "NDRC and other departments",
+      "year": "2024",
+      "language": "Chinese",
+      "source_type": "government_policy",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Official policy, not outcome evidence."
+    },
+    {
+      "source_id": "src-v0-dr-053",
+      "title_english": "Accelerator vendor and SEC filings",
+      "authors_org": "NVIDIA; Deloitte; SEC filings and industry reports",
+      "year": "2025-2026",
+      "language": "English",
+      "source_type": "industry_filings",
+      "reliability_tier": "C",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Industry reports and filings need triangulation."
+    },
+    {
+      "source_id": "src-v0-dr-054",
+      "title_english": "World Robotics",
+      "authors_org": "International Federation of Robotics",
+      "year": "2024-2026",
+      "language": "English",
+      "source_type": "industry_dataset",
+      "reliability_tier": "B",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Full detailed database may require purchase; press releases are partial."
+    },
+    {
+      "source_id": "src-v0-dr-055",
+      "title_english": "AI in manufacturing and IoT measurement publications",
+      "authors_org": "OECD",
+      "year": "2024-2026",
+      "language": "English",
+      "source_type": "intergovernmental_report",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Adoption definitions vary and outcomes are limited."
+    },
+    {
+      "source_id": "src-v0-dr-057",
+      "title_english": "Manufacturing AI and digital-twin standards materials",
+      "authors_org": "NIST",
+      "year": "2024-2025",
+      "language": "English",
+      "source_type": "government_report",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Workshop and standards material rather than outcome series."
+    },
+    {
+      "source_id": "src-v0-dr-058",
+      "title_english": "Guiding Opinions on the Innovative Development of Humanoid Robots",
+      "authors_org": "MIIT China",
+      "year": "2023",
+      "language": "Chinese",
+      "source_type": "government_policy",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Official policy, not deployment evidence."
+    },
+    {
+      "source_id": "src-v0-dr-059",
+      "title_english": "AI plus Manufacturing Action Plan and industrial internet integration policies",
+      "authors_org": "MIIT and Chinese authorities",
+      "year": "2025-2026",
+      "language": "Chinese",
+      "source_type": "government_policy",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Targets and official counts require independent validation."
+    },
+    {
+      "source_id": "src-v0-dr-060",
+      "title_english": "AI-based Smart Manufacturing Innovation 3.0",
+      "authors_org": "Ministry of SMEs and Startups Korea",
+      "year": "2025",
+      "language": "Korean",
+      "source_type": "government_policy",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Official program claims need outcome validation."
+    },
+    {
+      "source_id": "src-v0-dr-061",
+      "title_english": "Monodzukuri White Paper and Smart Manufacturing Guidelines",
+      "authors_org": "METI; NEDO Japan",
+      "year": "2025-2026",
+      "language": "Japanese",
+      "source_type": "government_report",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Japan-specific and official."
+    },
+    {
+      "source_id": "src-v0-dr-062",
+      "title_english": "Catena-X quality management and data-space documentation",
+      "authors_org": "Catena-X Automotive Network",
+      "year": "2025-2026",
+      "language": "English; German",
+      "source_type": "industry_platform_materials",
+      "reliability_tier": "C",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Industry platform claims require independent validation."
+    },
+    {
+      "source_id": "src-v0-dr-063",
+      "title_english": "Robots and Jobs: Evidence from US Labor Markets",
+      "authors_org": "Daron Acemoglu; Pascual Restrepo",
+      "year": "2020",
+      "language": "English",
+      "source_type": "academic_article",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "U.S. historical robot evidence, not generative AI."
+    },
+    {
+      "source_id": "src-v0-dr-064",
+      "title_english": "Future Jobs: Robots AI and Digital Platforms in East Asia and Pacific",
+      "authors_org": "World Bank",
+      "year": "2025",
+      "language": "English",
+      "source_type": "intergovernmental_report",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Regional synthesis, not causal for all countries."
+    },
+    {
+      "source_id": "src-v0-dr-066",
+      "title_english": "Guiding Opinions on Accelerating Scenario Innovation to Promote High-Quality Economic Development through High-Level AI Application",
+      "authors_org": "MOST and other Chinese departments",
+      "year": "2022",
+      "language": "Chinese",
+      "source_type": "government_policy",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Official policy, not outcome evidence."
+    },
+    {
+      "source_id": "src-v0-dr-070",
+      "title_english": "State Council Opinion on Deepening Implementation of AI Plus",
+      "authors_org": "State Council China",
+      "year": "2025",
+      "language": "Chinese",
+      "source_type": "government_policy",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Official policy, not realized outcome evidence."
+    },
+    {
+      "source_id": "src-v0-dr-071",
+      "title_english": "National Smart Education Platform and Integrated Government Service Platform materials",
+      "authors_org": "Chinese ministries and State Council channels",
+      "year": "2025",
+      "language": "Chinese",
+      "source_type": "official_dataset",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Official platform statistics require external validation."
+    },
+    {
+      "source_id": "src-v0-dr-074",
+      "title_english": "How the U.S. Public and AI Experts View Artificial Intelligence",
+      "authors_org": "Pew Research Center",
+      "year": "2025",
+      "language": "English",
+      "source_type": "survey",
+      "reliability_tier": "B",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "United States only."
+    },
+    {
+      "source_id": "src-v0-dr-077",
+      "title_english": "Generative AI and jobs: A refined global index of occupational exposure",
+      "authors_org": "International Labour Organization",
+      "year": "2025",
+      "language": "English",
+      "source_type": "intergovernmental_report",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Exposure is not displacement."
+    },
+    {
+      "source_id": "src-v0-dr-078",
+      "title_english": "OECD Employment Outlook 2025 and Geography of Generative AI",
+      "authors_org": "OECD",
+      "year": "2025",
+      "language": "English",
+      "source_type": "intergovernmental_report",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "OECD-centered."
+    },
+    {
+      "source_id": "src-v0-dr-080",
+      "title_english": "OMB AI Governance and AI Acquisition Memoranda",
+      "authors_org": "U.S. Office of Management and Budget",
+      "year": "2025",
+      "language": "English",
+      "source_type": "government_policy",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Official rules, not outcome evidence."
+    },
+    {
+      "source_id": "src-v0-dr-082",
+      "title_english": "America's AI Action Plan",
+      "authors_org": "White House",
+      "year": "2025",
+      "language": "English",
+      "source_type": "government_strategy",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Official policy, not independent validation."
+    },
+    {
+      "source_id": "src-v0-dr-083",
+      "title_english": "National Data Center Strategy",
+      "authors_org": "Federal Government of Germany",
+      "year": "2026",
+      "language": "German",
+      "source_type": "government_strategy",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Official targets, not realized buildout."
+    },
+    {
+      "source_id": "src-v0-dr-084",
+      "title_english": "Artificial Intelligence Basic Plan",
+      "authors_org": "Cabinet Office Japan",
+      "year": "2025",
+      "language": "Japanese",
+      "source_type": "government_strategy",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Official plan, not outcome evidence."
+    },
+    {
+      "source_id": "src-v0-dr-085",
+      "title_english": "AI Basic Act and National AI Strategy Committee materials",
+      "authors_org": "Republic of Korea",
+      "year": "2024-2026",
+      "language": "Korean",
+      "source_type": "law_and_strategy",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Official law/strategy source."
+    },
+    {
+      "source_id": "src-v0-dr-086",
+      "title_english": "National AI Strategy 2.0 and 2026 update",
+      "authors_org": "Government of Singapore",
+      "year": "2023-2026",
+      "language": "English",
+      "source_type": "government_strategy",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Small-country constraints and official claims."
+    },
+    {
+      "source_id": "src-v0-dr-087",
+      "title_english": "IndiaAI Mission",
+      "authors_org": "Government of India; MeitY",
+      "year": "2024-2026",
+      "language": "English; Hindi",
+      "source_type": "government_program",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Official targets and onboarded GPU counts need validation."
+    },
+    {
+      "source_id": "src-v0-dr-088",
+      "title_english": "Economic Survey 2025-26 AI and Digital Public Infrastructure material",
+      "authors_org": "Government of India",
+      "year": "2025-2026",
+      "language": "English",
+      "source_type": "government_report",
+      "reliability_tier": "A",
+      "review_status": "staged",
+      "url_or_doi": "missing",
+      "limitations": "Outcome attribution is limited."
+    }
+  ],
+  "countries": [
+    {
+      "iso": "USA",
+      "name": "United States",
+      "short_name": "US",
+      "group": "pilot",
+      "summary": "Frontier-heavy system with strong labs, capital, and suppliers; V0 conversion questions focus on grid absorption, permitting, public procurement, and long-tail enterprise diffusion.",
+      "layer_states": [
+        {
+          "layer": "frontier_access",
+          "status": "frontier-leading hypothesis",
+          "evidence_label": "qualitative-coded",
+          "source_ids": ["src-v0-dr-001", "src-v0-dr-053", "src-v0-dr-082"],
+          "note": "Staged research points to strong frontier inputs. No country score is assigned."
+        },
+        {
+          "layer": "conversion_capacity",
+          "status": "grid and diffusion bottleneck watch",
+          "evidence_label": "qualitative-coded",
+          "source_ids": ["src-v0-dr-041", "src-v0-dr-042", "src-v0-dr-043", "src-v0-dr-045", "src-v0-dr-046"],
+          "note": "Local power, interconnection, and large-load queues are treated as deployment constraints to test."
+        },
+        {
+          "layer": "adaptation_capacity",
+          "status": "labor and legitimacy evidence incomplete",
+          "evidence_label": "missing",
+          "source_ids": ["src-v0-dr-074", "src-v0-dr-078", "src-v0-dr-080"],
+          "note": "Relevant sources are staged, but no reviewed adaptation value is available."
+        },
+        {
+          "layer": "distribution_quality",
+          "status": "firm-size and regional gaps to measure",
+          "evidence_label": "missing",
+          "source_ids": ["src-v0-dr-013"],
+          "note": "Distribution must be measured directly; national adoption is not broad pass-through."
+        },
+        {
+          "layer": "realized_outcomes",
+          "status": "case evidence exists; national outcomes missing",
+          "evidence_label": "missing",
+          "source_ids": ["src-v0-dr-030", "src-v0-dr-063"],
+          "note": "Task- or case-level evidence cannot be promoted to national conversion outcomes."
+        }
+      ]
+    },
+    {
+      "iso": "CHN",
+      "name": "China",
+      "short_name": "China",
+      "group": "pilot",
+      "summary": "State-coordinated deployment and manufacturing depth are central hypotheses; V0 keeps chip constraints, official target validation, labor absorption, and outcome evidence separate.",
+      "layer_states": [
+        {
+          "layer": "frontier_access",
+          "status": "frontier access constraint watch",
+          "evidence_label": "qualitative-coded",
+          "source_ids": ["src-v0-dr-053", "src-v0-dr-070"],
+          "note": "Chip and accelerator access are tested as constraints, not treated as settled values."
+        },
+        {
+          "layer": "conversion_capacity",
+          "status": "AI+ deployment machinery hypothesis",
+          "evidence_label": "official-claim",
+          "source_ids": ["src-v0-dr-047", "src-v0-dr-058", "src-v0-dr-059", "src-v0-dr-066", "src-v0-dr-070"],
+          "note": "Official policy and target evidence must be separated from independent outcome validation."
+        },
+        {
+          "layer": "adaptation_capacity",
+          "status": "labor absorption and governance stress open",
+          "evidence_label": "missing",
+          "source_ids": ["src-v0-dr-064", "src-v0-dr-077"],
+          "note": "No reviewed country-level adaptation value is available in the canonical data layer."
+        },
+        {
+          "layer": "distribution_quality",
+          "status": "platform reach requires validation",
+          "evidence_label": "official-claim",
+          "source_ids": ["src-v0-dr-071"],
+          "note": "Official platform scale signals are not treated as broad welfare pass-through."
+        },
+        {
+          "layer": "realized_outcomes",
+          "status": "outcome attribution missing",
+          "evidence_label": "missing",
+          "source_ids": ["src-v0-dr-059", "src-v0-dr-070"],
+          "note": "AI+ and smart-factory targets are not realized outcomes without independent validation."
+        }
+      ]
+    },
+    {
+      "iso": "JPN",
+      "name": "Japan",
+      "short_name": "Japan",
+      "group": "comparator",
+      "summary": "Comparator for robotics depth, factory know-how, and workforce aging; most V0 values are missing until Japanese sources are reviewed.",
+      "layer_states": [
+        {
+          "layer": "frontier_access",
+          "status": "policy catch-up; value missing",
+          "evidence_label": "missing",
+          "source_ids": ["src-v0-dr-084"],
+          "note": "Official strategy is staged but not a frontier-access value."
+        },
+        {
+          "layer": "conversion_capacity",
+          "status": "robotics and shop-floor depth hypothesis",
+          "evidence_label": "qualitative-coded",
+          "source_ids": ["src-v0-dr-054", "src-v0-dr-061"],
+          "note": "The hypothesis is useful for the sector module, but no V0 country score is assigned."
+        },
+        {
+          "layer": "adaptation_capacity",
+          "status": "workforce aging watch",
+          "evidence_label": "qualitative-coded",
+          "source_ids": ["src-v0-dr-061", "src-v0-dr-077"],
+          "note": "Displayed as a watch state, not as an adaptation score."
+        },
+        {
+          "layer": "distribution_quality",
+          "status": "missing",
+          "evidence_label": "missing",
+          "source_ids": [],
+          "note": "No reviewed distribution-quality value is available."
+        },
+        {
+          "layer": "realized_outcomes",
+          "status": "missing",
+          "evidence_label": "missing",
+          "source_ids": [],
+          "note": "No reviewed AI outcome value is available."
+        }
+      ]
+    },
+    {
+      "iso": "KOR",
+      "name": "South Korea",
+      "short_name": "Korea",
+      "group": "comparator",
+      "summary": "Comparator for automation intensity and SME smart-manufacturing policy; outcome claims remain staged and official.",
+      "layer_states": [
+        {
+          "layer": "frontier_access",
+          "status": "national strategy staged",
+          "evidence_label": "official-claim",
+          "source_ids": ["src-v0-dr-085"],
+          "note": "Strategy architecture is not frontier capability itself."
+        },
+        {
+          "layer": "conversion_capacity",
+          "status": "automation and SME smart-factory hypothesis",
+          "evidence_label": "official-claim",
+          "source_ids": ["src-v0-dr-054", "src-v0-dr-060"],
+          "note": "Program claims require outcome validation and comparable maturity definitions."
+        },
+        {
+          "layer": "adaptation_capacity",
+          "status": "worker and SME absorption watch",
+          "evidence_label": "qualitative-coded",
+          "source_ids": ["src-v0-dr-060", "src-v0-dr-077"],
+          "note": "The watch state points to evidence needs, not a measured value."
+        },
+        {
+          "layer": "distribution_quality",
+          "status": "SME diffusion question",
+          "evidence_label": "missing",
+          "source_ids": ["src-v0-dr-016", "src-v0-dr-060"],
+          "note": "SME reach should be measured directly before claims are made."
+        },
+        {
+          "layer": "realized_outcomes",
+          "status": "official outcome claims need validation",
+          "evidence_label": "missing",
+          "source_ids": ["src-v0-dr-060"],
+          "note": "No reviewed cross-country outcome value is available."
+        }
+      ]
+    },
+    {
+      "iso": "DEU",
+      "name": "Germany",
+      "short_name": "Germany",
+      "group": "comparator",
+      "summary": "Comparator for industrial standards, automotive data spaces, and energy constraints; staged sources do not yet support a country score.",
+      "layer_states": [
+        {
+          "layer": "frontier_access",
+          "status": "missing",
+          "evidence_label": "missing",
+          "source_ids": [],
+          "note": "No reviewed frontier-access value is available."
+        },
+        {
+          "layer": "conversion_capacity",
+          "status": "standards depth and energy watch",
+          "evidence_label": "qualitative-coded",
+          "source_ids": ["src-v0-dr-014", "src-v0-dr-062", "src-v0-dr-083"],
+          "note": "Industrial interoperability and data-center strategy are staged as conversion factors."
+        },
+        {
+          "layer": "adaptation_capacity",
+          "status": "labor and industrial transition watch",
+          "evidence_label": "missing",
+          "source_ids": ["src-v0-dr-078"],
+          "note": "Adaptation claims need reviewed labor and training data."
+        },
+        {
+          "layer": "distribution_quality",
+          "status": "SME gap to test",
+          "evidence_label": "missing",
+          "source_ids": ["src-v0-dr-012", "src-v0-dr-014"],
+          "note": "Firm-size diffusion gaps must remain separate from national adoption."
+        },
+        {
+          "layer": "realized_outcomes",
+          "status": "missing",
+          "evidence_label": "missing",
+          "source_ids": [],
+          "note": "No reviewed AI-attributed outcome value is available."
+        }
+      ]
+    },
+    {
+      "iso": "SGP",
+      "name": "Singapore",
+      "short_name": "Singapore",
+      "group": "comparator",
+      "summary": "Comparator for small-state public-sector and enterprise diffusion; land, power, and scale limitations must travel with any claim.",
+      "layer_states": [
+        {
+          "layer": "frontier_access",
+          "status": "official strategy staged",
+          "evidence_label": "official-claim",
+          "source_ids": ["src-v0-dr-086"],
+          "note": "Official strategy is not a measured frontier-access value."
+        },
+        {
+          "layer": "conversion_capacity",
+          "status": "public-sector and enterprise diffusion hypothesis",
+          "evidence_label": "official-claim",
+          "source_ids": ["src-v0-dr-015", "src-v0-dr-086"],
+          "note": "Small-country structure limits comparability with large industrial systems."
+        },
+        {
+          "layer": "adaptation_capacity",
+          "status": "AI literacy and governance staged",
+          "evidence_label": "official-claim",
+          "source_ids": ["src-v0-dr-086"],
+          "note": "Displayed as official policy evidence, not outcome performance."
+        },
+        {
+          "layer": "distribution_quality",
+          "status": "scale and inclusion question",
+          "evidence_label": "missing",
+          "source_ids": ["src-v0-dr-015"],
+          "note": "No reviewed broad pass-through value is available."
+        },
+        {
+          "layer": "realized_outcomes",
+          "status": "missing",
+          "evidence_label": "missing",
+          "source_ids": [],
+          "note": "No reviewed AI-attributed outcome value is available."
+        }
+      ]
+    },
+    {
+      "iso": "IND",
+      "name": "India",
+      "short_name": "India",
+      "group": "comparator",
+      "summary": "Comparator for public compute, digital public infrastructure, and inclusion potential; firm-level conversion and outcome evidence remain sparse.",
+      "layer_states": [
+        {
+          "layer": "frontier_access",
+          "status": "public compute mission staged",
+          "evidence_label": "official-claim",
+          "source_ids": ["src-v0-dr-087"],
+          "note": "Official GPU and compute claims need validation before becoming access values."
+        },
+        {
+          "layer": "conversion_capacity",
+          "status": "DPI and compute pathway hypothesis",
+          "evidence_label": "official-claim",
+          "source_ids": ["src-v0-dr-087", "src-v0-dr-088"],
+          "note": "Public infrastructure reach is an enabling channel, not an AI outcome."
+        },
+        {
+          "layer": "adaptation_capacity",
+          "status": "labor-market absorption watch",
+          "evidence_label": "missing",
+          "source_ids": ["src-v0-dr-077", "src-v0-dr-088"],
+          "note": "Exposure, skills, and safety-net variables need direct values."
+        },
+        {
+          "layer": "distribution_quality",
+          "status": "inclusion pathway open",
+          "evidence_label": "missing",
+          "source_ids": ["src-v0-dr-088"],
+          "note": "Digital reach does not establish broad AI gains without pass-through evidence."
+        },
+        {
+          "layer": "realized_outcomes",
+          "status": "missing",
+          "evidence_label": "missing",
+          "source_ids": [],
+          "note": "No reviewed AI-attributed outcome value is available."
+        }
+      ]
+    }
+  ],
+  "bottlenecks": {
+    "axes": [
+      {
+        "key": "frontier_chip_access",
+        "label": "Chip and Frontier Access",
+        "layer": "frontier_access",
+        "description": "Advanced accelerators, packaging, frontier labs, and model access."
+      },
+      {
+        "key": "energized_power",
+        "label": "Energized Power",
+        "layer": "conversion_capacity",
+        "description": "Local data-center power, interconnection, firm supply, water, cooling, and latency fit."
+      },
+      {
+        "key": "enterprise_absorption",
+        "label": "Enterprise Absorption",
+        "layer": "conversion_capacity",
+        "description": "Workflow redesign, management depth, data maturity, and pilot-to-scale speed."
+      },
+      {
+        "key": "industrial_interop",
+        "label": "Industrial Interoperability",
+        "layer": "conversion_capacity",
+        "description": "Sensors, industrial data, standards, OT cybersecurity, integrators, and maintenance networks."
+      },
+      {
+        "key": "labor_legitimacy",
+        "label": "Labor and Legitimacy",
+        "layer": "adaptation_capacity",
+        "description": "Training, social license, regulation, remedies, and labor-market adjustment."
+      },
+      {
+        "key": "broad_pass_through",
+        "label": "Broad Pass-Through",
+        "layer": "distribution_quality",
+        "description": "SME, regional, worker, patient, citizen, and public-service diffusion."
+      }
+    ],
+    "countries": [
+      {
+        "iso": "USA",
+        "items": [
+          {
+            "axis": "frontier_chip_access",
+            "watch_level": "secondary-watch",
+            "evidence_label": "qualitative-coded",
+            "source_ids": ["src-v0-dr-001", "src-v0-dr-053"],
+            "note": "Strong access hypothesis, with supply-chain concentration still tracked."
+          },
+          {
+            "axis": "energized_power",
+            "watch_level": "primary-watch",
+            "evidence_label": "qualitative-coded",
+            "source_ids": ["src-v0-dr-041", "src-v0-dr-042", "src-v0-dr-043", "src-v0-dr-045", "src-v0-dr-046"],
+            "note": "Local power and interconnection are core deployment constraints to test."
+          },
+          {
+            "axis": "enterprise_absorption",
+            "watch_level": "secondary-watch",
+            "evidence_label": "missing",
+            "source_ids": ["src-v0-dr-013"],
+            "note": "Adoption survey sources exist, but workflow depth values are missing."
+          },
+          {
+            "axis": "industrial_interop",
+            "watch_level": "secondary-watch",
+            "evidence_label": "qualitative-coded",
+            "source_ids": ["src-v0-dr-057"],
+            "note": "Standards and digital-twin readiness need source-backed coding."
+          },
+          {
+            "axis": "labor_legitimacy",
+            "watch_level": "secondary-watch",
+            "evidence_label": "missing",
+            "source_ids": ["src-v0-dr-074", "src-v0-dr-078"],
+            "note": "Public trust and worker transition evidence should not be collapsed."
+          },
+          {
+            "axis": "broad_pass_through",
+            "watch_level": "primary-watch",
+            "evidence_label": "missing",
+            "source_ids": ["src-v0-dr-013"],
+            "note": "Firm-size and regional pass-through are not yet reviewed."
+          }
+        ]
+      },
+      {
+        "iso": "CHN",
+        "items": [
+          {
+            "axis": "frontier_chip_access",
+            "watch_level": "primary-watch",
+            "evidence_label": "qualitative-coded",
+            "source_ids": ["src-v0-dr-053"],
+            "note": "Accelerator access is a binding hypothesis to test."
+          },
+          {
+            "axis": "energized_power",
+            "watch_level": "secondary-watch",
+            "evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-047", "src-v0-dr-048"],
+            "note": "Compute-power coordination is official policy; workload fit and delivery need validation."
+          },
+          {
+            "axis": "enterprise_absorption",
+            "watch_level": "secondary-watch",
+            "evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-066", "src-v0-dr-070"],
+            "note": "Scenario innovation and AI+ policy should be tested against deployment evidence."
+          },
+          {
+            "axis": "industrial_interop",
+            "watch_level": "open-question",
+            "evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-058", "src-v0-dr-059"],
+            "note": "Policy priority is visible; interoperability outcomes are not yet reviewed."
+          },
+          {
+            "axis": "labor_legitimacy",
+            "watch_level": "primary-watch",
+            "evidence_label": "missing",
+            "source_ids": ["src-v0-dr-064", "src-v0-dr-077"],
+            "note": "Labor absorption and legitimacy remain open."
+          },
+          {
+            "axis": "broad_pass_through",
+            "watch_level": "primary-watch",
+            "evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-071"],
+            "note": "Official public-platform reach is not broad welfare evidence."
+          }
+        ]
+      },
+      {
+        "iso": "JPN",
+        "items": [
+          {
+            "axis": "frontier_chip_access",
+            "watch_level": "secondary-watch",
+            "evidence_label": "missing",
+            "source_ids": ["src-v0-dr-084"],
+            "note": "Strategy source exists, but frontier value is missing."
+          },
+          {
+            "axis": "energized_power",
+            "watch_level": "secondary-watch",
+            "evidence_label": "qualitative-coded",
+            "source_ids": ["src-v0-dr-041"],
+            "note": "Compute siting and power coordination need country-specific review."
+          },
+          {
+            "axis": "enterprise_absorption",
+            "watch_level": "primary-watch",
+            "evidence_label": "missing",
+            "source_ids": ["src-v0-dr-017", "src-v0-dr-061"],
+            "note": "DX and smart manufacturing sources need values and survey metadata."
+          },
+          {
+            "axis": "industrial_interop",
+            "watch_level": "secondary-watch",
+            "evidence_label": "qualitative-coded",
+            "source_ids": ["src-v0-dr-054", "src-v0-dr-061"],
+            "note": "Robotics depth is staged as a conversion factor."
+          },
+          {
+            "axis": "labor_legitimacy",
+            "watch_level": "primary-watch",
+            "evidence_label": "qualitative-coded",
+            "source_ids": ["src-v0-dr-061", "src-v0-dr-077"],
+            "note": "Workforce aging and transition capacity need direct indicators."
+          },
+          {
+            "axis": "broad_pass_through",
+            "watch_level": "missing",
+            "evidence_label": "missing",
+            "source_ids": [],
+            "note": "No reviewed pass-through evidence is available."
+          }
+        ]
+      },
+      {
+        "iso": "KOR",
+        "items": [
+          {
+            "axis": "frontier_chip_access",
+            "watch_level": "secondary-watch",
+            "evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-085"],
+            "note": "National strategy is staged; capability values are missing."
+          },
+          {
+            "axis": "energized_power",
+            "watch_level": "secondary-watch",
+            "evidence_label": "qualitative-coded",
+            "source_ids": ["src-v0-dr-041"],
+            "note": "Data-center dispersion and power constraints need reviewed values."
+          },
+          {
+            "axis": "enterprise_absorption",
+            "watch_level": "primary-watch",
+            "evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-016", "src-v0-dr-060"],
+            "note": "SME smart-manufacturing claims need outcome validation."
+          },
+          {
+            "axis": "industrial_interop",
+            "watch_level": "open-question",
+            "evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-060"],
+            "note": "AAS and manufacturing data claims need comparable coding."
+          },
+          {
+            "axis": "labor_legitimacy",
+            "watch_level": "secondary-watch",
+            "evidence_label": "qualitative-coded",
+            "source_ids": ["src-v0-dr-060", "src-v0-dr-077"],
+            "note": "Safety and worker adaptation should be measured separately."
+          },
+          {
+            "axis": "broad_pass_through",
+            "watch_level": "secondary-watch",
+            "evidence_label": "missing",
+            "source_ids": ["src-v0-dr-016", "src-v0-dr-060"],
+            "note": "SME reach and regional diffusion need reviewed values."
+          }
+        ]
+      },
+      {
+        "iso": "DEU",
+        "items": [
+          {
+            "axis": "frontier_chip_access",
+            "watch_level": "missing",
+            "evidence_label": "missing",
+            "source_ids": [],
+            "note": "No reviewed frontier-access evidence is available."
+          },
+          {
+            "axis": "energized_power",
+            "watch_level": "primary-watch",
+            "evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-083"],
+            "note": "Data-center strategy and energy constraints require outcome validation."
+          },
+          {
+            "axis": "enterprise_absorption",
+            "watch_level": "secondary-watch",
+            "evidence_label": "missing",
+            "source_ids": ["src-v0-dr-012", "src-v0-dr-014"],
+            "note": "Firm-size and sector survey values need review."
+          },
+          {
+            "axis": "industrial_interop",
+            "watch_level": "open-question",
+            "evidence_label": "qualitative-coded",
+            "source_ids": ["src-v0-dr-062"],
+            "note": "Data-space materials are staged but not independent outcome evidence."
+          },
+          {
+            "axis": "labor_legitimacy",
+            "watch_level": "secondary-watch",
+            "evidence_label": "missing",
+            "source_ids": ["src-v0-dr-078"],
+            "note": "Worker transition indicators remain missing."
+          },
+          {
+            "axis": "broad_pass_through",
+            "watch_level": "secondary-watch",
+            "evidence_label": "missing",
+            "source_ids": ["src-v0-dr-012", "src-v0-dr-014"],
+            "note": "SME gaps should be measured directly."
+          }
+        ]
+      },
+      {
+        "iso": "SGP",
+        "items": [
+          {
+            "axis": "frontier_chip_access",
+            "watch_level": "secondary-watch",
+            "evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-086"],
+            "note": "Official strategy source exists; capability value is missing."
+          },
+          {
+            "axis": "energized_power",
+            "watch_level": "primary-watch",
+            "evidence_label": "qualitative-coded",
+            "source_ids": ["src-v0-dr-041", "src-v0-dr-086"],
+            "note": "Land and power limits are a scale watch, not a scored deficit."
+          },
+          {
+            "axis": "enterprise_absorption",
+            "watch_level": "open-question",
+            "evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-015", "src-v0-dr-086"],
+            "note": "Official enterprise diffusion claims need independent validation."
+          },
+          {
+            "axis": "industrial_interop",
+            "watch_level": "missing",
+            "evidence_label": "missing",
+            "source_ids": [],
+            "note": "No reviewed manufacturing interoperability value is available."
+          },
+          {
+            "axis": "labor_legitimacy",
+            "watch_level": "open-question",
+            "evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-086"],
+            "note": "AI literacy and governance are staged official claims."
+          },
+          {
+            "axis": "broad_pass_through",
+            "watch_level": "secondary-watch",
+            "evidence_label": "missing",
+            "source_ids": ["src-v0-dr-015"],
+            "note": "Inclusion and SME pass-through need reviewed values."
+          }
+        ]
+      },
+      {
+        "iso": "IND",
+        "items": [
+          {
+            "axis": "frontier_chip_access",
+            "watch_level": "primary-watch",
+            "evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-087"],
+            "note": "Public compute program claims need delivered-capacity validation."
+          },
+          {
+            "axis": "energized_power",
+            "watch_level": "secondary-watch",
+            "evidence_label": "missing",
+            "source_ids": ["src-v0-dr-041"],
+            "note": "Local AI-ready power values are missing."
+          },
+          {
+            "axis": "enterprise_absorption",
+            "watch_level": "primary-watch",
+            "evidence_label": "missing",
+            "source_ids": ["src-v0-dr-087", "src-v0-dr-088"],
+            "note": "Public infrastructure does not substitute for firm workflow evidence."
+          },
+          {
+            "axis": "industrial_interop",
+            "watch_level": "missing",
+            "evidence_label": "missing",
+            "source_ids": [],
+            "note": "No reviewed manufacturing interoperability value is available."
+          },
+          {
+            "axis": "labor_legitimacy",
+            "watch_level": "primary-watch",
+            "evidence_label": "missing",
+            "source_ids": ["src-v0-dr-077", "src-v0-dr-088"],
+            "note": "Worker exposure, skilling, and safety-net evidence need direct measures."
+          },
+          {
+            "axis": "broad_pass_through",
+            "watch_level": "primary-watch",
+            "evidence_label": "missing",
+            "source_ids": ["src-v0-dr-088"],
+            "note": "DPI reach is not broad AI welfare evidence without pass-through indicators."
+          }
+        ]
+      }
+    ]
+  },
+  "manufacturing_heatmap": {
+    "factors": [
+      {
+        "key": "robot_density_stock",
+        "label": "Robot Density and Stock",
+        "layer": "conversion_capacity",
+        "indicator_ids": ["ind-v0-dr-014", "ind-v0-dr-016"],
+        "description": "Industrial robot density and operational stock. Candidate source exists, but V0 country values are missing."
+      },
+      {
+        "key": "annual_installations",
+        "label": "Annual Robot Installations",
+        "layer": "diffusion_speed",
+        "indicator_ids": ["ind-v0-dr-015"],
+        "description": "Automation investment flow. Values are not loaded into V0."
+      },
+      {
+        "key": "manufacturing_ai_adoption",
+        "label": "Manufacturing AI Adoption",
+        "layer": "diffusion_speed",
+        "indicator_ids": ["ind-v0-dr-017"],
+        "description": "Share of manufacturing enterprises using AI where survey definitions permit."
+      },
+      {
+        "key": "smart_factory_programs",
+        "label": "Smart-Factory Programs",
+        "layer": "diffusion_speed",
+        "indicator_ids": ["ind-v0-dr-024"],
+        "description": "Program counts, maturity labels, and official targets kept separate from outcomes."
+      },
+      {
+        "key": "industrial_data_standards",
+        "label": "Industrial Data and Standards",
+        "layer": "conversion_capacity",
+        "indicator_ids": ["ind-v0-dr-025"],
+        "description": "Interoperability, standards participation, and manufacturing data spaces."
+      },
+      {
+        "key": "integrators_ot_support",
+        "label": "Integrators and OT Support",
+        "layer": "conversion_capacity",
+        "indicator_ids": ["ind-v0-dr-027"],
+        "description": "Systems integrators, maintenance technicians, and OT cybersecurity support."
+      },
+      {
+        "key": "operational_improvements",
+        "label": "Operational Improvements",
+        "layer": "realized_outcomes",
+        "indicator_ids": ["ind-v0-dr-029"],
+        "description": "Defect, downtime, OEE, cycle-time, or safety improvements with baseline and method."
+      }
+    ],
+    "countries": [
+      {
+        "iso": "USA",
+        "cells": [
+          {
+            "factor": "robot_density_stock",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "observed",
+            "source_ids": ["src-v0-dr-054"],
+            "status_note": "IFR candidate source; no reviewed V0 value."
+          },
+          {
+            "factor": "annual_installations",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "observed",
+            "source_ids": ["src-v0-dr-054"],
+            "status_note": "Candidate source exists; local value missing."
+          },
+          {
+            "factor": "manufacturing_ai_adoption",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "observed",
+            "source_ids": ["src-v0-dr-013", "src-v0-dr-055"],
+            "status_note": "Survey source exists; manufacturing-specific value not loaded."
+          },
+          {
+            "factor": "smart_factory_programs",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "qualitative-coded",
+            "source_ids": ["src-v0-dr-057"],
+            "status_note": "Standards and case material only."
+          },
+          {
+            "factor": "industrial_data_standards",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "qualitative-coded",
+            "source_ids": ["src-v0-dr-057"],
+            "status_note": "Needs an explicit standards basket."
+          },
+          {
+            "factor": "integrators_ot_support",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "qualitative-coded",
+            "source_ids": ["src-v0-dr-057"],
+            "status_note": "Proxy basket not yet defined."
+          },
+          {
+            "factor": "operational_improvements",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "missing",
+            "source_ids": [],
+            "status_note": "No reviewed baseline/outcome value."
+          }
+        ]
+      },
+      {
+        "iso": "CHN",
+        "cells": [
+          {
+            "factor": "robot_density_stock",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "observed",
+            "source_ids": ["src-v0-dr-054"],
+            "status_note": "IFR candidate source; no reviewed V0 value."
+          },
+          {
+            "factor": "annual_installations",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "observed",
+            "source_ids": ["src-v0-dr-054"],
+            "status_note": "Candidate source exists; local value missing."
+          },
+          {
+            "factor": "manufacturing_ai_adoption",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "missing",
+            "source_ids": [],
+            "status_note": "Comparable manufacturing AI adoption value missing."
+          },
+          {
+            "factor": "smart_factory_programs",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-059"],
+            "status_note": "Official AI+ and smart-factory targets require validation."
+          },
+          {
+            "factor": "industrial_data_standards",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-058", "src-v0-dr-059"],
+            "status_note": "Official policy claims; outcome evidence missing."
+          },
+          {
+            "factor": "integrators_ot_support",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "missing",
+            "source_ids": [],
+            "status_note": "Integrator capacity proxy not yet defined."
+          },
+          {
+            "factor": "operational_improvements",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-059"],
+            "status_note": "Official claims cannot be treated as independently validated outcomes."
+          }
+        ]
+      },
+      {
+        "iso": "JPN",
+        "cells": [
+          {
+            "factor": "robot_density_stock",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "observed",
+            "source_ids": ["src-v0-dr-054"],
+            "status_note": "IFR candidate source; no reviewed V0 value."
+          },
+          {
+            "factor": "annual_installations",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "observed",
+            "source_ids": ["src-v0-dr-054"],
+            "status_note": "Candidate source exists; local value missing."
+          },
+          {
+            "factor": "manufacturing_ai_adoption",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "observed",
+            "source_ids": ["src-v0-dr-017", "src-v0-dr-061"],
+            "status_note": "DX survey/report source exists; comparable value missing."
+          },
+          {
+            "factor": "smart_factory_programs",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-061"],
+            "status_note": "Official smart-manufacturing material; value missing."
+          },
+          {
+            "factor": "industrial_data_standards",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "qualitative-coded",
+            "source_ids": ["src-v0-dr-061"],
+            "status_note": "Needs a source-backed coding rubric."
+          },
+          {
+            "factor": "integrators_ot_support",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "qualitative-coded",
+            "source_ids": ["src-v0-dr-061"],
+            "status_note": "Proxy basket not yet defined."
+          },
+          {
+            "factor": "operational_improvements",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "missing",
+            "source_ids": [],
+            "status_note": "No reviewed baseline/outcome value."
+          }
+        ]
+      },
+      {
+        "iso": "KOR",
+        "cells": [
+          {
+            "factor": "robot_density_stock",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "observed",
+            "source_ids": ["src-v0-dr-054"],
+            "status_note": "IFR candidate source; no reviewed V0 value."
+          },
+          {
+            "factor": "annual_installations",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "observed",
+            "source_ids": ["src-v0-dr-054"],
+            "status_note": "Candidate source exists; local value missing."
+          },
+          {
+            "factor": "manufacturing_ai_adoption",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "observed",
+            "source_ids": ["src-v0-dr-016"],
+            "status_note": "Official statistical source exists; comparable value missing."
+          },
+          {
+            "factor": "smart_factory_programs",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-060"],
+            "status_note": "Official SME smart-manufacturing program; outcome validation missing."
+          },
+          {
+            "factor": "industrial_data_standards",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-060"],
+            "status_note": "Official AAS and dataset claims require coding."
+          },
+          {
+            "factor": "integrators_ot_support",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "qualitative-coded",
+            "source_ids": ["src-v0-dr-060"],
+            "status_note": "Support-network value missing."
+          },
+          {
+            "factor": "operational_improvements",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-060"],
+            "status_note": "Official safety/outcome targets need validation."
+          }
+        ]
+      },
+      {
+        "iso": "DEU",
+        "cells": [
+          {
+            "factor": "robot_density_stock",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "observed",
+            "source_ids": ["src-v0-dr-054"],
+            "status_note": "IFR candidate source; no reviewed V0 value."
+          },
+          {
+            "factor": "annual_installations",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "observed",
+            "source_ids": ["src-v0-dr-054"],
+            "status_note": "Candidate source exists; local value missing."
+          },
+          {
+            "factor": "manufacturing_ai_adoption",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "observed",
+            "source_ids": ["src-v0-dr-012", "src-v0-dr-014"],
+            "status_note": "Eurostat/Destatis source candidates; reviewed value missing."
+          },
+          {
+            "factor": "smart_factory_programs",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "missing",
+            "source_ids": [],
+            "status_note": "Comparable program value missing."
+          },
+          {
+            "factor": "industrial_data_standards",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "qualitative-coded",
+            "source_ids": ["src-v0-dr-062"],
+            "status_note": "Catena-X material requires independent validation."
+          },
+          {
+            "factor": "integrators_ot_support",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "missing",
+            "source_ids": [],
+            "status_note": "Support-network value missing."
+          },
+          {
+            "factor": "operational_improvements",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "qualitative-coded",
+            "source_ids": ["src-v0-dr-062"],
+            "status_note": "Platform claims cannot stand in for national outcomes."
+          }
+        ]
+      },
+      {
+        "iso": "SGP",
+        "cells": [
+          {
+            "factor": "robot_density_stock",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "missing",
+            "source_ids": [],
+            "status_note": "No reviewed V0 manufacturing robotics value."
+          },
+          {
+            "factor": "annual_installations",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "missing",
+            "source_ids": [],
+            "status_note": "No reviewed V0 installation value."
+          },
+          {
+            "factor": "manufacturing_ai_adoption",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-015"],
+            "status_note": "Enterprise AI source exists; manufacturing breakout missing."
+          },
+          {
+            "factor": "smart_factory_programs",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-086"],
+            "status_note": "Official strategy claim; no sector value."
+          },
+          {
+            "factor": "industrial_data_standards",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "missing",
+            "source_ids": [],
+            "status_note": "No reviewed industrial standards value."
+          },
+          {
+            "factor": "integrators_ot_support",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "missing",
+            "source_ids": [],
+            "status_note": "Support-network value missing."
+          },
+          {
+            "factor": "operational_improvements",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "missing",
+            "source_ids": [],
+            "status_note": "No reviewed baseline/outcome value."
+          }
+        ]
+      },
+      {
+        "iso": "IND",
+        "cells": [
+          {
+            "factor": "robot_density_stock",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "missing",
+            "source_ids": [],
+            "status_note": "No reviewed V0 manufacturing robotics value."
+          },
+          {
+            "factor": "annual_installations",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "missing",
+            "source_ids": [],
+            "status_note": "No reviewed V0 installation value."
+          },
+          {
+            "factor": "manufacturing_ai_adoption",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "missing",
+            "source_ids": [],
+            "status_note": "Comparable manufacturing AI adoption value missing."
+          },
+          {
+            "factor": "smart_factory_programs",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "official-claim",
+            "source_ids": ["src-v0-dr-087"],
+            "status_note": "Official mission source; sector deployment value missing."
+          },
+          {
+            "factor": "industrial_data_standards",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "missing",
+            "source_ids": [],
+            "status_note": "No reviewed industrial standards value."
+          },
+          {
+            "factor": "integrators_ot_support",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "missing",
+            "source_ids": [],
+            "status_note": "Support-network value missing."
+          },
+          {
+            "factor": "operational_improvements",
+            "value": null,
+            "value_status": "missing",
+            "source_evidence_label": "missing",
+            "source_ids": [],
+            "status_note": "No reviewed baseline/outcome value."
+          }
+        ]
+      }
+    ]
+  },
+  "scenarios": {
+    "controls": [
+      {
+        "key": "frontier_path",
+        "label": "Frontier path",
+        "options": [
+          {
+            "key": "us_frontier_lead",
+            "label": "US frontier lead",
+            "description": "The United States reaches stronger frontier systems first."
+          },
+          {
+            "key": "narrow_gap",
+            "label": "Narrow capability gap",
+            "description": "Frontier model gaps compress quickly across leading systems."
+          },
+          {
+            "key": "open_model_compression",
+            "label": "Open-model compression",
+            "description": "Open or widely licensed models reduce the value of a closed frontier lead."
+          }
+        ]
+      },
+      {
+        "key": "conversion_constraint",
+        "label": "Binding conversion constraint",
+        "options": [
+          {
+            "key": "energy_grid",
+            "label": "Energy and grid",
+            "description": "Local power, interconnection, cooling, or permitting constrains deployment."
+          },
+          {
+            "key": "chips_compute",
+            "label": "Chips and compute",
+            "description": "Accelerator access and high-density compute availability bind."
+          },
+          {
+            "key": "workflow_depth",
+            "label": "Workflow depth",
+            "description": "Firms and agencies cannot redesign workflows fast enough."
+          }
+        ]
+      },
+      {
+        "key": "deployment_model",
+        "label": "Deployment model",
+        "options": [
+          {
+            "key": "market_led",
+            "label": "Market-led diffusion",
+            "description": "Frontier firms, cloud providers, and large customers diffuse first."
+          },
+          {
+            "key": "state_coordinated",
+            "label": "State-coordinated AI+",
+            "description": "Policy, public procurement, and sector programs steer deployment."
+          },
+          {
+            "key": "standards_led",
+            "label": "Standards-led industry",
+            "description": "Interoperability, compliance, and industrial standards govern diffusion."
+          }
+        ]
+      },
+      {
+        "key": "distribution_filter",
+        "label": "Distribution filter",
+        "options": [
+          {
+            "key": "broad_tested",
+            "label": "Broad pass-through tested",
+            "description": "Worker, SME, regional, public-service, and welfare evidence is required."
+          },
+          {
+            "key": "elite_concentration",
+            "label": "Elite concentration risk",
+            "description": "Gains accrue mainly to frontier firms, elite regions, or state actors."
+          },
+          {
+            "key": "missing_distribution",
+            "label": "Distribution missing",
+            "description": "Distribution effects are unknown and should remain visibly unresolved."
+          }
+        ]
+      }
+    ],
+    "cases": [
+      {
+        "id": "frontier_bottleneck",
+        "label": "Frontier Lead, Bottlenecked Deployment",
+        "description": "A stronger frontier model does not become durable advantage if local power, permitting, public procurement, or enterprise absorption slows deployment.",
+        "assumptions": {
+          "frontier_path": "us_frontier_lead",
+          "conversion_constraint": "energy_grid",
+          "deployment_model": "market_led",
+          "distribution_filter": "missing_distribution"
+        },
+        "signals": [
+          {
+            "country_iso": "USA",
+            "label": "Frontier access strong; conversion bottleneck watch",
+            "evidence_label": "qualitative-coded",
+            "note": "Test whether data-center and enterprise bottlenecks slow national conversion."
+          },
+          {
+            "country_iso": "CHN",
+            "label": "Frontier access constrained; deployment machinery hypothesis",
+            "evidence_label": "official-claim",
+            "note": "Test whether AI+ and grid coordination offset weaker frontier access in specific domains."
+          }
+        ],
+        "caveat": "This is a hypothesis pattern, not a forecast.",
+        "source_ids": ["src-v0-dr-041", "src-v0-dr-042", "src-v0-dr-047", "src-v0-dr-070", "src-v0-dr-082"]
+      },
+      {
+        "id": "good_enough_diffusion",
+        "label": "Good-Enough Systems, Faster Diffusion",
+        "description": "A narrower model gap makes workflow redesign, industrial data, and deployment coordination more important than frontier benchmarks.",
+        "assumptions": {
+          "frontier_path": "narrow_gap",
+          "conversion_constraint": "workflow_depth",
+          "deployment_model": "state_coordinated",
+          "distribution_filter": "elite_concentration"
+        },
+        "signals": [
+          {
+            "country_iso": "CHN",
+            "label": "Manufacturing and AI+ conversion hypothesis",
+            "evidence_label": "official-claim",
+            "note": "Use official claims as leads to verify, not as outcomes."
+          },
+          {
+            "country_iso": "USA",
+            "label": "Long-tail diffusion and SME absorption question",
+            "evidence_label": "missing",
+            "note": "Adoption surveys need intensity and distribution breakouts."
+          }
+        ],
+        "caveat": "Treat China-US advantage as domain-specific and contingent.",
+        "source_ids": ["src-v0-dr-013", "src-v0-dr-028", "src-v0-dr-059", "src-v0-dr-066", "src-v0-dr-070"]
+      },
+      {
+        "id": "standards_conversion",
+        "label": "Standards-Led Industrial Conversion",
+        "description": "Industrial interoperability, data spaces, safety standards, and shop-floor know-how become the binding layer for embodied AI.",
+        "assumptions": {
+          "frontier_path": "open_model_compression",
+          "conversion_constraint": "workflow_depth",
+          "deployment_model": "standards_led",
+          "distribution_filter": "broad_tested"
+        },
+        "signals": [
+          {
+            "country_iso": "DEU",
+            "label": "Interoperability pathway to test",
+            "evidence_label": "qualitative-coded",
+            "note": "Catena-X-style claims need independent and comparable outcome evidence."
+          },
+          {
+            "country_iso": "JPN",
+            "label": "Robotics and shop-floor knowledge pathway",
+            "evidence_label": "qualitative-coded",
+            "note": "Robotics depth does not automatically imply AI productivity gains."
+          }
+        ],
+        "caveat": "The simulator does not convert these pathways into rankings.",
+        "source_ids": ["src-v0-dr-054", "src-v0-dr-057", "src-v0-dr-061", "src-v0-dr-062"]
+      },
+      {
+        "id": "compute_sovereignty",
+        "label": "Compute Sovereignty and Public Rails",
+        "description": "Public compute, sovereign AI programs, and digital public infrastructure increase access, but conversion depends on delivered capacity and broad pass-through.",
+        "assumptions": {
+          "frontier_path": "narrow_gap",
+          "conversion_constraint": "chips_compute",
+          "deployment_model": "state_coordinated",
+          "distribution_filter": "broad_tested"
+        },
+        "signals": [
+          {
+            "country_iso": "IND",
+            "label": "Public compute and DPI pathway",
+            "evidence_label": "official-claim",
+            "note": "Official program claims need delivered-capacity and usage validation."
+          },
+          {
+            "country_iso": "SGP",
+            "label": "Small-state governance and enterprise pathway",
+            "evidence_label": "official-claim",
+            "note": "Small-country structure limits comparability."
+          }
+        ],
+        "caveat": "Public access rails are enabling infrastructure, not realized outcomes.",
+        "source_ids": ["src-v0-dr-015", "src-v0-dr-086", "src-v0-dr-087", "src-v0-dr-088"]
+      }
+    ]
+  },
+  "claim_cards": [
+    {
+      "claim_id": "claim-v0-001",
+      "title": "Frontier access is not the same as conversion.",
+      "claim": "The Atlas should keep frontier capability, complementary deployment assets, adaptation, distribution, and outcomes in separate layers.",
+      "claim_type": "methodology",
+      "evidence_label": "qualitative-coded",
+      "confidence": "medium",
+      "geography": "global",
+      "sector": "cross-cutting",
+      "source_ids": ["src-v0-dr-018", "src-v0-dr-021", "src-v0-dr-022"],
+      "caveat": "Theory supports the separation, but it does not provide country values.",
+      "review_status": "staged"
+    },
+    {
+      "claim_id": "claim-v0-002",
+      "title": "Local power is a conversion constraint, not just an infrastructure footnote.",
+      "claim": "AI deployment can fail at the local load pocket even when national electricity supply and capital availability look adequate.",
+      "claim_type": "constraint",
+      "evidence_label": "qualitative-coded",
+      "confidence": "medium",
+      "geography": "global; United States; China",
+      "sector": "compute-energy",
+      "source_ids": ["src-v0-dr-041", "src-v0-dr-042", "src-v0-dr-043", "src-v0-dr-045", "src-v0-dr-046", "src-v0-dr-047"],
+      "caveat": "National totals are too coarse; values must be region- and load-pocket-specific.",
+      "review_status": "staged"
+    },
+    {
+      "claim_id": "claim-v0-003",
+      "title": "Manufacturing conversion needs a middle layer.",
+      "claim": "Robot stock, industrial data, sensors, interoperability standards, systems integrators, maintenance, and worker training should be measured before claiming AI production outcomes.",
+      "claim_type": "sector-method",
+      "evidence_label": "qualitative-coded",
+      "confidence": "medium",
+      "geography": "global; selected countries",
+      "sector": "manufacturing-robotics",
+      "source_ids": ["src-v0-dr-054", "src-v0-dr-055", "src-v0-dr-057", "src-v0-dr-059", "src-v0-dr-060", "src-v0-dr-061", "src-v0-dr-062"],
+      "caveat": "Smart-factory labels and program counts are not comparable outcomes without validation.",
+      "review_status": "staged"
+    },
+    {
+      "claim_id": "claim-v0-004",
+      "title": "Distribution quality cannot be inferred from adoption.",
+      "claim": "AI adoption by firms or public agencies does not establish worker, SME, regional, citizen, or welfare pass-through.",
+      "claim_type": "distribution",
+      "evidence_label": "qualitative-coded",
+      "confidence": "medium",
+      "geography": "global",
+      "sector": "cross-cutting",
+      "source_ids": ["src-v0-dr-012", "src-v0-dr-013", "src-v0-dr-077", "src-v0-dr-078"],
+      "caveat": "Distribution claims need direct evidence on gaps, exposure, cushioning, and outcomes.",
+      "review_status": "staged"
+    }
+  ],
+  "uncertainty_legend": [
+    {
+      "label": "observed",
+      "definition": "A candidate source describes directly observed data, but the visual still shows missing when no reviewed local value has been loaded."
+    },
+    {
+      "label": "official-claim",
+      "definition": "A law, strategy, target, public program, or official statistic. Keep separate from independent validation."
+    },
+    {
+      "label": "qualitative-coded",
+      "definition": "A staged research judgment or rubric slot that must remain visibly non-numeric."
+    },
+    {
+      "label": "estimated",
+      "definition": "A modeled or inferred value. V0 uses this label only when a method is documented."
+    },
+    {
+      "label": "missing",
+      "definition": "No reviewed value. Missingness is rendered directly rather than filled for symmetry."
+    },
+    {
+      "label": "placeholder",
+      "definition": "Schema or example material that is not evidence."
+    }
+  ]
+}

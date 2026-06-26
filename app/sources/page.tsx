@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 
+import { SourceBackedClaimCard } from "@/components/visuals/SourceBackedClaimCard";
+import { UncertaintyLegend } from "@/components/visuals/UncertaintyLegend";
 import { ConfidenceBadge } from "@/components/ui/ConfidenceBadge";
 import { SourceNote } from "@/components/ui/SourceNote";
-import { getSourceRegisterSummary } from "@/lib/data";
+import { getSourceRegisterSummary, visualSystemData } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Sources"
@@ -74,6 +76,32 @@ export default function SourcesPage() {
           </li>
         </ul>
       </section>
+
+      <section className="mt-16">
+        <div className="max-w-4xl">
+          <h2 className="font-display text-4xl font-semibold">
+            Source-backed claim examples
+          </h2>
+          <p className="mt-5 max-w-3xl leading-8 text-muted">
+            These cards show how claims carry evidence labels, caveats, source
+            IDs, review status, and missing URL/DOI markers. They are staged
+            examples, not canonical conclusions.
+          </p>
+        </div>
+        <div className="mt-8 grid gap-5">
+          {visualSystemData.claim_cards.map((claim) => (
+            <SourceBackedClaimCard
+              claim={claim}
+              key={claim.claim_id}
+              sources={visualSystemData.sources}
+            />
+          ))}
+        </div>
+      </section>
+
+      <div className="mt-16">
+        <UncertaintyLegend />
+      </div>
 
       <div className="mt-12">
         <SourceNote label={badgeLabel}>

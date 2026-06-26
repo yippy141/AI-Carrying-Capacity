@@ -53,3 +53,33 @@ Reasoning: The user requested the initial web product now, and keeping the app a
 Decision: Initial country, sector, source, and scenario pages render placeholder and missing states instead of sample scores.
 
 Reasoning: V0 should make data absence legible without implying relative national performance or sector values before source review.
+
+## 2026-06-26: Stage Deep Research consolidation before canonical merge
+
+Decision: Consolidate the Deep Research reports into staged source-register and indicator-candidate CSVs under `research/source-register/`, plus a synthesis memo under `research/deep-research/`, before promoting any rows into canonical `data/` registries.
+
+Reasoning: The reports contain useful citations and claims, but many source URLs are represented only by ephemeral research citations or source names. Canonical data rows should wait until original URLs or DOIs are verified and official claims are separated from independent empirical findings.
+
+## 2026-06-26: Use a layered V0 dashboard methodology
+
+Decision: V0 methodology should remain a layered dashboard across frontier access, conversion capacity, adaptation capacity, distribution quality, and realized outcomes, with manufacturing/robotics and compute/energy as the first modules.
+
+Reasoning: The consolidated research supports domain-specific conversion analysis, not a single national score. Indicators should carry evidence labels such as observed, official-claim, qualitative-coded, estimated, or missing, and China-US claims should remain hypotheses tested by sector and constraint rather than headline conclusions.
+
+## 2026-06-26: Add staged local JSON for the V0 visual system
+
+Decision: Store the first interactive visual-system data in `data/processed/v0_visual_system.json` as staged visual metadata, qualitative watch states, missing-value markers, source IDs, and scenario assumptions.
+
+Reasoning: The user requested interactive components before canonical country or sector values are reviewed. A separate staged visual JSON lets the app render ConversionFunnel, CountryCompare, BottleneckFingerprint, SectorHeatmap, ScenarioSimulator, SourceBackedClaimCard, and UncertaintyLegend without inventing indicator values, calling external APIs, or creating a national score.
+
+## 2026-06-26: Encode scenario outputs as hypothesis patterns
+
+Decision: The V0 scenario simulator matches user-selected assumptions to staged hypothesis patterns rather than calculating probabilities, forecasts, or country rankings.
+
+Reasoning: Scenario work is useful for testing frontier-versus-conversion pathways, but numeric outputs would imply false precision before assumptions, source values, and sensitivity checks are documented.
+
+## 2026-06-26: Draft first content layer with source placeholders
+
+Decision: Write the first methodology, launch essay, country brief, and module brief content as source-placeholder drafts rather than publishable findings.
+
+Reasoning: The user requested the first content layer before canonical source promotion. Explicit TODO_SOURCE, TODO_DATA, and TODO_VERIFY markers preserve the project argument while preventing staged research, official targets, or unsourced hypotheses from becoming evidence claims.

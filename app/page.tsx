@@ -1,6 +1,9 @@
 import Link from "next/link";
 
-import { ConversionMap } from "@/components/visuals/ConversionMap";
+import { BottleneckFingerprint } from "@/components/visuals/BottleneckFingerprint";
+import { ConversionFunnel } from "@/components/visuals/ConversionFunnel";
+import { CountryCompare } from "@/components/visuals/CountryCompare";
+import { UncertaintyLegend } from "@/components/visuals/UncertaintyLegend";
 import { MethodologyCallout } from "@/components/ui/MethodologyCallout";
 import { NarrativeBlock } from "@/components/ui/NarrativeBlock";
 import { SourceNote } from "@/components/ui/SourceNote";
@@ -8,7 +11,7 @@ import {
   computeEnergyData,
   countryProfiles,
   manufacturingData,
-  pilotCountries
+  visualSystemData
 } from "@/lib/data";
 
 const moduleLinks = [
@@ -68,7 +71,7 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-7xl px-5 sm:px-8">
-        <ConversionMap />
+        <ConversionFunnel />
       </section>
 
       <section className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -82,13 +85,17 @@ export default function Home() {
             not disappear inside an average.
           </p>
           <p>
-            The first modules are placeholders for a US-China pilot and selected
-            comparators where reviewed data allows. The country profile file is
-            currently marked {countryProfiles.metadata.status}; the two sector
-            files are marked {manufacturingData.metadata.status} and{" "}
-            {computeEnergyData.metadata.status}.
+            The first visual system is marked{" "}
+            {visualSystemData.metadata.status}. Canonical country profiles
+            remain {countryProfiles.metadata.status}, while the manufacturing
+            and compute-energy data files remain {manufacturingData.metadata.status}{" "}
+            and {computeEnergyData.metadata.status}.
           </p>
         </NarrativeBlock>
+
+        <CountryCompare />
+
+        <BottleneckFingerprint />
 
         <div className="grid gap-4 md:grid-cols-2">
           {moduleLinks.map((item) => (
@@ -113,32 +120,16 @@ export default function Home() {
           claim advantage until evidence and sensitivity checks support it.
         </MethodologyCallout>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-2">
-          {pilotCountries.map((country) => (
-            <Link
-              className="focus-ring rounded-lg border border-rule p-5 transition-colors hover:border-primary"
-              href={`/countries/${country.iso}`}
-              key={country.iso}
-            >
-              <span className="text-sm font-semibold text-primary-strong">
-                Planned profile
-              </span>
-              <span className="mt-2 block font-display text-2xl font-semibold">
-                {country.name}
-              </span>
-              <span className="mt-3 block leading-7 text-muted">
-                {country.notes}
-              </span>
-            </Link>
-          ))}
+        <div className="mt-12">
+          <UncertaintyLegend compact />
         </div>
 
         <div className="mt-12">
-          <SourceNote label="placeholder">
+          <SourceNote label="qualitative-coded">
             <p>
-              The homepage uses only scaffold metadata and placeholder files.
-              It does not include external data, API-backed values, or inferred
-              scores.
+              The homepage uses local JSON only. The new visual data carries
+              staged source IDs and qualitative watch states, while reviewed
+              indicator values remain missing until canonical source review.
             </p>
           </SourceNote>
         </div>

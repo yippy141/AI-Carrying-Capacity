@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-toolsai.jupyter",
+    "davidanson.vscode-markdownlint",
+    "redhat.vscode-yaml",
+    "streetsidesoftware.code-spell-checker",
+    "mechatroner.rainbow-csv",
+    "github.vscode-github-actions",
+    "github.copilot",
+    "github.copilot-chat"
+  ]
+}
+

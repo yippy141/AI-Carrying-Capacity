@@ -4,6 +4,7 @@ import path from "node:path";
 import computeEnergyJson from "@/data/processed/v0_compute_energy.json";
 import countryProfilesJson from "@/data/processed/v0_country_profiles.json";
 import manufacturingJson from "@/data/processed/v0_sector_manufacturing.json";
+import visualSystemJson from "@/data/processed/v0_visual_system.json";
 import scenariosJson from "@/data/scenarios/v0_scenarios.json";
 import type {
   CountryProfile,
@@ -11,7 +12,8 @@ import type {
   Dimension,
   EvidenceLabel,
   ScenarioData,
-  SectorData
+  SectorData,
+  VisualSystemData
 } from "@/lib/types";
 
 type SourceRegisterStatus = Extract<EvidenceLabel, "missing" | "placeholder"> | "needs review";
@@ -80,6 +82,7 @@ export const countryProfiles = countryProfilesJson as CountryProfilesData;
 export const manufacturingData = manufacturingJson as SectorData;
 export const computeEnergyData = computeEnergyJson as SectorData;
 export const scenarioData = scenariosJson as ScenarioData;
+export const visualSystemData = visualSystemJson as VisualSystemData;
 
 export function getCountryProfile(isoParam: string): CountryProfile {
   const normalized = isoParam.trim().toUpperCase();

@@ -1,0 +1,10 @@
+[project]
+name = "ai-conversion-atlas"
+version = "0.0.0"
+description = "Research and product workspace for AI conversion capacity."
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.ruff]
+line-length = 100
+

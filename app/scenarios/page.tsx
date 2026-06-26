@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 
+import { ScenarioSimulator } from "@/components/visuals/ScenarioSimulator";
+import { UncertaintyLegend } from "@/components/visuals/UncertaintyLegend";
 import { MethodologyCallout } from "@/components/ui/MethodologyCallout";
 import { SourceNote } from "@/components/ui/SourceNote";
-import { scenarioData } from "@/lib/data";
+import { scenarioData, visualSystemData } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Scenarios"
@@ -24,36 +26,34 @@ export default function ScenariosPage() {
         </p>
       </div>
 
-      <section className="mt-14 grid gap-4 md:grid-cols-3">
-        {["Adoption velocity", "Adaptation stress", "Distribution quality"].map(
-          (label) => (
-            <article className="rounded-lg border border-rule p-5" key={label}>
-              <h2 className="font-display text-2xl font-semibold">{label}</h2>
-              <p className="mt-3 leading-7 text-muted">
-                Placeholder pathway. Scenario values are missing until reviewed
-                assumptions and sources are added.
-              </p>
-              <p className="mt-5 text-sm font-semibold text-missing">
-                value status: missing
-              </p>
-            </article>
-          )
-        )}
+      <section className="mt-14">
+        <ScenarioSimulator
+          cases={visualSystemData.scenarios.cases}
+          controls={visualSystemData.scenarios.controls}
+          countries={visualSystemData.countries}
+          sources={visualSystemData.sources}
+        />
       </section>
 
       <div className="mt-12">
         <MethodologyCallout title="Scenario count">
-          The current scenario file is marked {scenarioData.metadata.status} and
-          contains {scenarioData.scenarios.length} scenario records.
+          The canonical scenario file is still marked{" "}
+          {scenarioData.metadata.status} and contains{" "}
+          {scenarioData.scenarios.length} records. The simulator uses staged
+          local visual JSON for hypothesis patterns, not forecast values.
         </MethodologyCallout>
       </div>
 
       <div className="mt-12">
-        <SourceNote label="placeholder">
+        <UncertaintyLegend compact />
+      </div>
+
+      <div className="mt-12">
+        <SourceNote label="qualitative-coded">
           <p>
-            Scenario data is read from `data/scenarios/v0_scenarios.json`. Empty
-            arrays are shown as empty rather than filled with demonstration
-            estimates.
+            Scenario controls and patterns are loaded from local JSON. They
+            compare assumptions and source-backed hypotheses; they do not call
+            APIs, estimate probabilities, or rank countries.
           </p>
         </SourceNote>
       </div>
