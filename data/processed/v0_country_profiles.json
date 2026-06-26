@@ -1,0 +1,11 @@
+{
+  "metadata": {
+    "note": "No country profile values are generated until reviewed country-level indicator data exist.",
+    "project": "AI Conversion Atlas",
+    "source": "scripts/build_v0_dataset.py",
+    "status": "placeholder",
+    "updated": "2026-06-26",
+    "version": "v0"
+  },
+  "profiles": []
+}

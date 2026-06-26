@@ -1,0 +1,12 @@
+{
+  "metadata": {
+    "project": "AI Conversion Atlas",
+    "version": "v0-scaffold",
+    "status": "placeholder",
+    "updated": "2026-06-26",
+    "note": "No scored data yet. Populate only after source and methodology review."
+  },
+  "countries": [],
+  "sectors": [],
+  "scores": []
+}

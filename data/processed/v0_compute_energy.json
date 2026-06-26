@@ -1,0 +1,11 @@
+{
+  "metadata": {
+    "project": "AI Conversion Atlas",
+    "version": "v0-scaffold",
+    "status": "placeholder",
+    "updated": "2026-06-26",
+    "module": "compute_energy_grid_absorption",
+    "note": "No compute or energy data yet."
+  },
+  "observations": []
+}

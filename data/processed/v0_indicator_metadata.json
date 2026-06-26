@@ -1,0 +1,138 @@
+{
+  "indicators": [
+    {
+      "concept": "Frontier access",
+      "coverage": "missing",
+      "data_quality": "missing",
+      "directionality": "higher_is_more_access",
+      "evidence_label": "missing",
+      "indicator_id": "ind-placeholder-001",
+      "missingness_policy": "mark missing until reviewed source supports value",
+      "normalization": "missing",
+      "notes": "Placeholder indicator only. Not evidence and not scored",
+      "pillar": "frontier_access",
+      "placeholder": true,
+      "possible_metric": "Availability of current AI capability to firms and labs",
+      "qualitative_coding": "missing",
+      "score": "missing",
+      "source_ids": [
+        "src-placeholder-001"
+      ],
+      "unit": "mixed",
+      "update_frequency": "missing"
+    },
+    {
+      "concept": "Compute and electricity constraint",
+      "coverage": "missing",
+      "data_quality": "missing",
+      "directionality": "higher_is_more_capacity",
+      "evidence_label": "missing",
+      "indicator_id": "ind-placeholder-002",
+      "missingness_policy": "mark missing until reviewed source supports value",
+      "normalization": "missing",
+      "notes": "Placeholder indicator only. Not evidence and not scored",
+      "pillar": "conversion_capacity",
+      "placeholder": true,
+      "possible_metric": "Ability to host and power AI compute workloads",
+      "qualitative_coding": "missing",
+      "score": "missing",
+      "source_ids": [
+        "src-placeholder-002"
+      ],
+      "unit": "mixed",
+      "update_frequency": "missing"
+    },
+    {
+      "concept": "Manufacturing robotics diffusion",
+      "coverage": "missing",
+      "data_quality": "missing",
+      "directionality": "higher_is_more_diffusion",
+      "evidence_label": "missing",
+      "indicator_id": "ind-placeholder-003",
+      "missingness_policy": "mark missing until reviewed source supports value",
+      "normalization": "missing",
+      "notes": "Placeholder indicator only. Not evidence and not scored",
+      "pillar": "diffusion_speed",
+      "placeholder": true,
+      "possible_metric": "Adoption intensity of robotics and embodied AI in manufacturing",
+      "qualitative_coding": "missing",
+      "score": "missing",
+      "source_ids": [
+        "src-placeholder-003"
+      ],
+      "unit": "mixed",
+      "update_frequency": "missing"
+    },
+    {
+      "concept": "AI workforce complementarity",
+      "coverage": "missing",
+      "data_quality": "missing",
+      "directionality": "higher_is_more_capacity",
+      "evidence_label": "missing",
+      "indicator_id": "ind-placeholder-004",
+      "missingness_policy": "mark missing until reviewed source supports value",
+      "normalization": "missing",
+      "notes": "Placeholder indicator only. Not evidence and not scored",
+      "pillar": "conversion_capacity",
+      "placeholder": true,
+      "possible_metric": "Availability of workers and managers able to deploy AI systems",
+      "qualitative_coding": "missing",
+      "score": "missing",
+      "source_ids": [
+        "src-placeholder-004"
+      ],
+      "unit": "mixed",
+      "update_frequency": "missing"
+    },
+    {
+      "concept": "Public sector deployment maturity",
+      "coverage": "missing",
+      "data_quality": "missing",
+      "directionality": "higher_is_more_capacity",
+      "evidence_label": "missing",
+      "indicator_id": "ind-placeholder-005",
+      "missingness_policy": "mark missing until reviewed source supports value",
+      "normalization": "missing",
+      "notes": "Placeholder indicator only. Not evidence and not scored",
+      "pillar": "adaptation_capacity",
+      "placeholder": true,
+      "possible_metric": "Institutional ability to deploy AI in public services",
+      "qualitative_coding": "missing",
+      "score": "missing",
+      "source_ids": [
+        "src-placeholder-005"
+      ],
+      "unit": "mixed",
+      "update_frequency": "missing"
+    },
+    {
+      "concept": "Distribution quality of AI gains",
+      "coverage": "missing",
+      "data_quality": "missing",
+      "directionality": "higher_is_broader_distribution",
+      "evidence_label": "missing",
+      "indicator_id": "ind-placeholder-006",
+      "missingness_policy": "mark missing until reviewed source supports value",
+      "normalization": "missing",
+      "notes": "Placeholder indicator only. Not evidence and not scored",
+      "pillar": "distribution_quality",
+      "placeholder": true,
+      "possible_metric": "Breadth of AI benefits across workers firms regions and citizens",
+      "qualitative_coding": "missing",
+      "score": "missing",
+      "source_ids": [
+        "src-placeholder-006"
+      ],
+      "unit": "mixed",
+      "update_frequency": "missing"
+    }
+  ],
+  "metadata": {
+    "note": "Indicator metadata are not country scores.",
+    "project": "AI Conversion Atlas",
+    "source": "data/indicators/indicator_catalog.csv",
+    "status": "placeholder",
+    "updated": "2026-06-26",
+    "version": "v0"
+  }
+}
