@@ -53,6 +53,18 @@ Use these labels consistently:
 - Treat centralization as a tradeoff: it may increase deployment speed but can reduce error correction, transparency, and resilience.
 - Treat public tolerance as a two-part construct: adoption legitimacy and feedback capacity.
 
+## V0 Web Presentation
+
+The initial web app can present methodology, source status, scenario
+placeholders, sector modules, and country-profile shells. It must not present a
+definitive country ranking, a composite national score, or unsourced indicator
+values.
+
+For the web app, placeholder modules should visibly label records as
+`placeholder` or `missing`. If a page needs an example country or sector shell,
+it may show the shell only; every value remains missing until a reviewed source
+and documented method support it.
+
 ## Candidate Formula
 
 This is a conceptual guide, not an implemented model:

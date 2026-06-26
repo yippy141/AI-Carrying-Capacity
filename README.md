@@ -1,6 +1,7 @@
 # AI Conversion Atlas
 
-Scaffold status: v0 repo setup. No research findings, scored data, or public claims are included yet.
+Scaffold status: v0 repo setup with an initial Next.js web app. No research
+findings, scored data, or public claims are included yet.
 
 AI Conversion Atlas is a research and product workspace for studying how societies convert accessible AI capability into productivity, state capacity, scientific output, strategic power, and broadly distributed welfare.
 
@@ -15,7 +16,7 @@ This repo is prepared for:
 - Claim ledger tracking for evidence-backed synthesis.
 - Methodology and decision logging.
 - Future data pipeline work.
-- Future interactive product development.
+- Initial interactive product development.
 - VS Code, GitHub Copilot, Cursor, and Codex-assisted work.
 
 This repo intentionally does not yet contain:
@@ -23,7 +24,6 @@ This repo intentionally does not yet contain:
 - A finished literature review.
 - A national ranking.
 - A composite score.
-- A Next.js app or package dependencies.
 - Any generated claims about China, the United States, or other countries.
 
 ## Quick Start In VS Code
@@ -40,6 +40,13 @@ Run the scaffold validator:
 python3 scripts/validate_repo.py
 ```
 
+Install and build the web app:
+
+```sh
+npm install
+npm run build
+```
+
 Or through VS Code: Terminal -> Run Task -> Validate repo scaffold.
 
 ## Repo Map
@@ -50,9 +57,9 @@ research/              Deep Research outputs, notes, source-register staging.
 data/                  Raw inputs, source register, indicator catalog, processed outputs.
 content/               Essays, country briefs, sector briefs, methodology copy.
 scripts/               Validation, ingest, and future dataset-building scripts.
-app/                   Reserved for a future web app.
-components/            Reserved for future UI components.
-public/                Reserved for future public visuals and social images.
+app/                   Next.js app router pages.
+components/            Reusable UI, layout, and visual components.
+public/                Public visuals and social image assets.
 templates/             Reusable report, source, indicator, and brief templates.
 ```
 

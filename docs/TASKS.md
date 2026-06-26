@@ -11,6 +11,10 @@
 - [x] Seed source and indicator CSVs with non-evidentiary placeholder rows.
 - [x] Add V0 processed metadata build script.
 - [x] Document how to add a new indicator.
+- [x] Initialize the root Next.js TypeScript app with App Router and Tailwind.
+- [x] Build initial V0 pages for methodology, sources, scenarios, sectors, and country profiles.
+- [x] Add reusable layout and evidence-status UI components.
+- [x] Render placeholder data as visibly missing rather than scored.
 
 ## Next
 
@@ -22,11 +26,12 @@
 - [ ] Write first synthesis memo from the research reports.
 - [ ] Draft V0 methodology note with scope, evidence labels, and missingness policy.
 - [ ] Define a country-level indicator value schema before generating non-placeholder country profiles.
-- [ ] Decide whether the first product build belongs in this repo or in a separate web app repo.
+- [ ] Add reviewed source rows before publishing any country or sector values.
+- [ ] Add page-level tests once the V0 data schema stabilizes.
 
 ## Later
 
 - [ ] Create V0 country profile schema.
 - [ ] Create V0 sector module schema.
 - [ ] Add tests once data transformation scripts exist.
-- [ ] Initialize frontend stack only after product scope is locked.
+- [ ] Add source-driven charts only after reviewed indicators exist.

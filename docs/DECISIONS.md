@@ -41,3 +41,15 @@ Reasoning: Letter tiers leave room for `E` placeholder rows while avoiding confu
 Decision: Indicator rows may not carry a score unless they have valid `source_ids` or are explicitly marked and documented as qualitative-coded.
 
 Reasoning: V0 should allow transparent qualitative coding later, but it must never silently accept unsourced scores or treat placeholders as evidence.
+
+## 2026-06-26: Initialize root Next.js app for V0 product scaffold
+
+Decision: Use the repo root as the `ai-conversion-atlas` Next.js TypeScript app with App Router and Tailwind.
+
+Reasoning: The user requested the initial web product now, and keeping the app at the root preserves the existing canonical `app/`, `components/`, `data/`, and `docs/` paths. The app is static and does not require external API keys.
+
+## 2026-06-26: Use missing-first placeholder UI
+
+Decision: Initial country, sector, source, and scenario pages render placeholder and missing states instead of sample scores.
+
+Reasoning: V0 should make data absence legible without implying relative national performance or sector values before source review.

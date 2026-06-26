@@ -1,0 +1,55 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor-local state
+.vscode/*.log
+.vscode/.ropeproject/
+*.code-workspace~
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+secrets/
+*.pem
+*.key
+
+# Node / frontend
+node_modules/
+.next/
+*.tsbuildinfo
+out/
+dist/
+build/
+coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+env/
+
+# Data downloads and bulky generated artifacts
+data/raw/downloads/
+data/raw/**/*.zip
+data/raw/**/*.gz
+data/raw/**/*.parquet
+data/raw/**/*.sqlite
+data/raw/**/*.db
+data/processed/generated/
+
+# Logs and temp files
+logs/
+tmp/
+*.tmp
+*.bak
