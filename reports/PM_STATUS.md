@@ -12,7 +12,7 @@ The repo has a strong V0 scaffold, staged research, and interactive product shel
 
 | Branch | Objective | Status |
 | --- | --- | --- |
-| `agent/wave2-ui-guardrails-20260627` | Scenario assumption browser and staged visual guardrails | Ready for PR review |
+| `agent/wave2-ui-guardrails-20260627` | Scenario assumption browser and staged visual guardrails | Merged |
 
 ## Issue Board
 
@@ -69,12 +69,11 @@ The repo has a strong V0 scaffold, staged research, and interactive product shel
 
 ## Recommended Merge Order
 
-1. Merge Wave 2 UI guardrails.
-2. Run #6 source promotion.
-3. Run #7 claim ledger.
-4. Run #10 launch essay rewrite.
-5. Run #11 final red-team.
-6. Decide launch posture.
+1. Run #6 source promotion.
+2. Run #7 claim ledger.
+3. Run #10 launch essay rewrite.
+4. Run #11 final red-team.
+5. Decide launch posture.
 
 ## Human Decisions Needed
 
