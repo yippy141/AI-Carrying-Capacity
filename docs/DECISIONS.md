@@ -83,3 +83,9 @@ Reasoning: Scenario work is useful for testing frontier-versus-conversion pathwa
 Decision: Write the first methodology, launch essay, country brief, and module brief content as source-placeholder drafts rather than publishable findings.
 
 Reasoning: The user requested the first content layer before canonical source promotion. Explicit TODO_SOURCE, TODO_DATA, and TODO_VERIFY markers preserve the project argument while preventing staged research, official targets, or unsourced hypotheses from becoming evidence claims.
+
+## 2026-06-27: Use GitHub issues, path locks, and branches as the agent operating model
+
+Decision: Manage the next implementation phase through GitHub issues, one branch per agent task, and explicit path locks documented in `docs/AGENT_LOCKS.md`.
+
+Reasoning: The project now has a V0 app shell, staged research, and a red-team audit. The highest risk is not lack of activity; it is agents editing overlapping files, promoting staged research too early, or making visuals and copy look more evidence-backed than they are. A GitHub issue board, branch isolation, path locks, PM status file, and final red-team review create a workflow that lets agents automate work while preserving source discipline.
