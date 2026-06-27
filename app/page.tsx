@@ -3,6 +3,7 @@ import Link from "next/link";
 import { BottleneckFingerprint } from "@/components/visuals/BottleneckFingerprint";
 import { ConversionFunnel } from "@/components/visuals/ConversionFunnel";
 import { CountryCompare } from "@/components/visuals/CountryCompare";
+import { StagedEvidenceBanner } from "@/components/visuals/StagedEvidenceBanner";
 import { UncertaintyLegend } from "@/components/visuals/UncertaintyLegend";
 import { MethodologyCallout } from "@/components/ui/MethodologyCallout";
 import { NarrativeBlock } from "@/components/ui/NarrativeBlock";
@@ -71,6 +72,18 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-7xl px-5 sm:px-8">
+        <StagedEvidenceBanner title="Homepage visuals are not reviewed findings">
+          <p>
+            The visual-system data is marked {visualSystemData.metadata.status}.
+            Canonical country profiles remain {countryProfiles.metadata.status};
+            manufacturing and compute-energy files remain {" "}
+            {manufacturingData.metadata.status} and {" "}
+            {computeEnergyData.metadata.status}.
+          </p>
+        </StagedEvidenceBanner>
+      </section>
+
+      <section className="mx-auto mt-8 max-w-7xl px-5 sm:px-8">
         <ConversionFunnel />
       </section>
 
@@ -85,11 +98,9 @@ export default function Home() {
             not disappear inside an average.
           </p>
           <p>
-            The first visual system is marked{" "}
-            {visualSystemData.metadata.status}. Canonical country profiles
-            remain {countryProfiles.metadata.status}, while the manufacturing
-            and compute-energy data files remain {manufacturingData.metadata.status}{" "}
-            and {computeEnergyData.metadata.status}.
+            Official targets and program claims can indicate policy intent, but
+            they remain separate from independently observed evidence until the
+            source and claim ledgers are reviewed.
           </p>
         </NarrativeBlock>
 
