@@ -1,7 +1,9 @@
+import type { ReactNode } from "react";
+
 type StagedEvidenceBannerProps = {
   title?: string;
   sourceStatus?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 export function StagedEvidenceBanner({
