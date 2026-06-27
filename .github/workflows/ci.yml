@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Validate app and evidence guardrails
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Validate repo scaffold
+        run: python3 scripts/validate_repo.py
+
+      - name: Validate source register
+        run: python3 scripts/validate_source_register.py
+
+      - name: Validate indicator catalog
+        run: python3 scripts/validate_indicator_catalog.py
+
+      - name: Check private-preview readiness
+        run: python3 scripts/check_launch_readiness.py --mode private-preview

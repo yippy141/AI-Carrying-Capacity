@@ -89,3 +89,27 @@ Reasoning: The user requested the first content layer before canonical source pr
 Decision: Manage the next implementation phase through GitHub issues, one branch per agent task, and explicit path locks documented in `docs/AGENT_LOCKS.md`.
 
 Reasoning: The project now has a V0 app shell, staged research, and a red-team audit. The highest risk is not lack of activity; it is agents editing overlapping files, promoting staged research too early, or making visuals and copy look more evidence-backed than they are. A GitHub issue board, branch isolation, path locks, PM status file, and final red-team review create a workflow that lets agents automate work while preserving source discipline.
+
+## 2026-06-27: Add source claim-status and method-type fields before canonical promotion
+
+Decision: Expand the source register with publication, access, verification, archive, method-type, claim-owner, official-claim-status, independent-validation, original-language, and translation-review fields.
+
+Reasoning: Source reliability and claim validity are different. A government strategy may be authentic and high-reliability as a source while still supporting only an official target, policy intent, or program claim rather than an observed outcome.
+
+## 2026-06-27: Add missingness, attribution, and input/output role fields to indicators
+
+Decision: Add `missing_reason`, `attribution_strength`, and `input_output_role` to the indicator catalog, validators, templates, and TypeScript types.
+
+Reasoning: V0 needs to prevent unreviewed values, official claims, input metrics, and causal claims from being treated as comparable outcomes. Missingness must distinguish not reviewed, unavailable, not comparable, not applicable, confidential, not yet measured, source unverified, and placeholder.
+
+## 2026-06-27: Use private-preview and public-pilot readiness modes
+
+Decision: `scripts/check_launch_readiness.py` reports blockers without failing in `private-preview` mode and fails on blockers in `public-pilot` mode. CI uses private-preview mode.
+
+Reasoning: The repository should remain buildable while the evidence layer is incomplete, but there must be a hard public-pilot gate that fails when placeholder-only sources, public TODOs, unsupported empirical indicators, Wikipedia links, or staged visual source mismatches remain.
+
+## 2026-06-27: Treat capability horizon as upstream of conversion capacity
+
+Decision: Add `docs/CAPABILITY_HORIZON.md`, `docs/FORECASTING_METHOD.md`, and a framework-only domain horizon schema under `data/capabilities/`.
+
+Reasoning: METR/Epoch-style capability and scaling evidence can clarify where frontier progress matters, but it should not become a country score or realized-outcome claim. Capability horizon belongs upstream; conversion capacity measures whether societies turn capability into deployment and outcomes.
