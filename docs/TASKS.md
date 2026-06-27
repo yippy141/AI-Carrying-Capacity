@@ -39,7 +39,7 @@
 - [x] Use one GitHub issue and one branch per agent.
 - [x] Keep Wave 1 work separate from Wave 2 work until schema and validation guardrails are merged.
 - [x] Merge Wave 1 evidence-infrastructure branch before source promotion or public-copy rewrite.
-- [ ] Merge Wave 2 UI guardrails branch before public-preview review.
+- [x] Merge Wave 2 UI guardrails branch before public-preview review.
 
 ## Next
 
