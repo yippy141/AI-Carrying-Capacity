@@ -31,12 +31,15 @@
 - [x] Upgrade canonical source schema and source validation. See issue #3.
 - [x] Upgrade indicator schema, missingness taxonomy, and attribution rules. See issue #4.
 - [x] Add METR/Epoch capability-horizon module. See issue #5.
+- [x] Redesign scenario simulator as a scenario assumption browser. See issue #8.
+- [x] Add staged visual evidence banners and source-card claim-status guardrails. See issue #9.
 
 ## Active Protocol
 
 - [x] Use one GitHub issue and one branch per agent.
 - [x] Keep Wave 1 work separate from Wave 2 work until schema and validation guardrails are merged.
-- [ ] Merge Wave 1 evidence-infrastructure branch before source promotion or public-copy rewrite.
+- [x] Merge Wave 1 evidence-infrastructure branch before source promotion or public-copy rewrite.
+- [ ] Merge Wave 2 UI guardrails branch before public-preview review.
 
 ## Next
 
@@ -46,8 +49,6 @@
 - [ ] Populate V0 claim ledger before public launch copy. See issue #7.
 - [ ] Review staged visual JSON against canonical sources before treating visual states as publishable evidence. See issue #9.
 - [ ] Replace source placeholders in V0 content with reviewed source IDs after canonical source promotion. See issue #10.
-- [ ] Add stronger UI separation between official claims and independently observed evidence. See issue #9.
-- [ ] Redesign scenario simulator language and presentation so it cannot be mistaken for a forecast. See issue #8.
 - [ ] Define a country-level indicator value schema before generating non-placeholder country profiles.
 - [ ] Add reviewed source rows before publishing any country or sector values. See issue #6.
 - [ ] Add page-level tests once the V0 data schema stabilizes.

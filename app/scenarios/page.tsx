@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { ScenarioSimulator } from "@/components/visuals/ScenarioSimulator";
+import { ScenarioAssumptionBrowser } from "@/components/visuals/ScenarioSimulator";
+import { StagedEvidenceBanner } from "@/components/visuals/StagedEvidenceBanner";
 import { UncertaintyLegend } from "@/components/visuals/UncertaintyLegend";
 import { MethodologyCallout } from "@/components/ui/MethodologyCallout";
 import { SourceNote } from "@/components/ui/SourceNote";
@@ -22,12 +23,22 @@ export default function ScenariosPage() {
         </h1>
         <p className="mt-7 max-w-3xl text-xl leading-9 text-muted">
           V0 scenarios can describe plausible pathways, but they should not
-          smuggle in unsourced country advantages or fixed rankings.
+          smuggle in unsourced country advantages, probability estimates, or
+          fixed rankings.
         </p>
       </div>
 
+      <div className="mt-10">
+        <StagedEvidenceBanner title="Scenario pathways are staged assumptions">
+          <p>
+            This page uses the visual-system JSON, not a reviewed forecasting
+            model. It shows assumption pathways only.
+          </p>
+        </StagedEvidenceBanner>
+      </div>
+
       <section className="mt-14">
-        <ScenarioSimulator
+        <ScenarioAssumptionBrowser
           cases={visualSystemData.scenarios.cases}
           controls={visualSystemData.scenarios.controls}
           countries={visualSystemData.countries}
@@ -37,10 +48,10 @@ export default function ScenariosPage() {
 
       <div className="mt-12">
         <MethodologyCallout title="Scenario count">
-          The canonical scenario file is still marked{" "}
-          {scenarioData.metadata.status} and contains{" "}
-          {scenarioData.scenarios.length} records. The simulator uses staged
-          local visual JSON for hypothesis patterns, not forecast values.
+          The canonical scenario file is still marked {" "}
+          {scenarioData.metadata.status} and contains {" "}
+          {scenarioData.scenarios.length} records. The browser uses staged local
+          visual JSON for hypothesis patterns, not forecast values.
         </MethodologyCallout>
       </div>
 

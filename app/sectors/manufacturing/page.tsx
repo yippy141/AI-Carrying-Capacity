@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { SectorHeatmap } from "@/components/visuals/SectorHeatmap";
+import { StagedEvidenceBanner } from "@/components/visuals/StagedEvidenceBanner";
 import { UncertaintyLegend } from "@/components/visuals/UncertaintyLegend";
 import { MethodologyCallout } from "@/components/ui/MethodologyCallout";
 import { SourceNote } from "@/components/ui/SourceNote";
@@ -27,14 +28,23 @@ export default function ManufacturingPage() {
         </p>
       </div>
 
+      <div className="mt-10">
+        <StagedEvidenceBanner title="Manufacturing heatmap is staged">
+          <p>
+            The heatmap is a structure for future reviewed indicators. It does
+            not compare country performance or rank manufacturing conversion.
+          </p>
+        </StagedEvidenceBanner>
+      </div>
+
       <div className="mt-12">
         <SectorHeatmap />
       </div>
 
       <div className="mt-12">
         <MethodologyCallout title="Module data status">
-          The manufacturing data file is marked{" "}
-          {manufacturingData.metadata.status} and contains{" "}
+          The manufacturing data file is marked {" "}
+          {manufacturingData.metadata.status} and contains {" "}
           {manufacturingData.observations.length} observation records.
         </MethodologyCallout>
       </div>

@@ -9,6 +9,21 @@ type SourceBackedClaimCardProps = {
   sources?: VisualSource[];
 };
 
+function displayValue(value: string | undefined) {
+  if (!value || value === "missing") {
+    return "not coded";
+  }
+
+  return value;
+}
+
+function isOfficialClaimSource(source: VisualSource) {
+  const status = source.official_claim_status;
+  return Boolean(
+    status && status !== "not_official_claim" && status !== "placeholder"
+  );
+}
+
 export function SourceBackedClaimCard({
   claim,
   sources = visualSystemData.sources
@@ -78,11 +93,41 @@ export function SourceBackedClaimCard({
                     </p>
                   </div>
                   <span className="w-fit rounded-full border border-rule bg-background px-3 py-1 text-xs font-semibold text-muted">
-                    tier {source.reliability_tier}
+                    tier {source.reliability_tier} · {source.review_status}
                   </span>
                 </div>
+
+                {isOfficialClaimSource(source) ? (
+                  <div className="mt-3 rounded-lg border border-warning/35 bg-[oklch(0.97_0.035_72)] p-3 text-xs leading-5 text-muted">
+                    Official target or program claim; not independently validated
+                    unless the source metadata says otherwise.
+                  </div>
+                ) : null}
+
+                <dl className="mt-3 grid gap-2 text-xs leading-5 text-muted sm:grid-cols-2">
+                  <div>
+                    <dt className="font-semibold text-foreground">Source type</dt>
+                    <dd>{source.source_type}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-foreground">Method type</dt>
+                    <dd>{displayValue(source.method_type)}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-foreground">
+                      Official claim status
+                    </dt>
+                    <dd>{displayValue(source.official_claim_status)}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-foreground">
+                      Independent validation
+                    </dt>
+                    <dd>{displayValue(source.independent_validation_status)}</dd>
+                  </div>
+                </dl>
+
                 <p className="mt-3 text-xs leading-5 text-muted">
-                  {source.source_type}; review status: {source.review_status};
                   URL/DOI: {source.url_or_doi}
                 </p>
                 <p className="mt-2 text-xs leading-5 text-muted">

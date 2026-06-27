@@ -113,3 +113,15 @@ Reasoning: The repository should remain buildable while the evidence layer is in
 Decision: Add `docs/CAPABILITY_HORIZON.md`, `docs/FORECASTING_METHOD.md`, and a framework-only domain horizon schema under `data/capabilities/`.
 
 Reasoning: METR/Epoch-style capability and scaling evidence can clarify where frontier progress matters, but it should not become a country score or realized-outcome claim. Capability horizon belongs upstream; conversion capacity measures whether societies turn capability into deployment and outcomes.
+
+## 2026-06-27: Rename the scenario simulator as an assumption browser
+
+Decision: Present V0 scenario work as a “Scenario assumption browser,” show multiple compatible pathways, and remove visible match-count or nearest-winner language.
+
+Reasoning: Scenario work in V0 is a reasoning aid, not a forecast. Showing a single nearest staged pattern or match score can look probabilistic even when caveated. The browser should show assumptions, options, evidence state, and what would change the pathway.
+
+## 2026-06-27: Add staged-evidence banners to public visual pages
+
+Decision: Use a reusable `StagedEvidenceBanner` on visual pages that rely on `data/processed/v0_visual_system.json` or staged claim-card examples.
+
+Reasoning: The visual system is useful for product structure, but it must not look like reviewed evidence. Public pages should say that staged visuals are not canonical findings, do not contain a composite score, keep official claims separate from independently observed evidence, and preserve missing values.
