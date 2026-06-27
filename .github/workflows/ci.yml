@@ -41,5 +41,5 @@ jobs:
       - name: Validate indicator catalog
         run: python3 scripts/validate_indicator_catalog.py
 
-      - name: Check launch readiness
-        run: python3 scripts/check_launch_readiness.py
+      - name: Check private-preview readiness
+        run: python3 scripts/check_launch_readiness.py --mode private-preview
