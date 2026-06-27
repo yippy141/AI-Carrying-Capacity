@@ -25,22 +25,35 @@
 - [x] Create first content layer for launch essay, China and United States briefs, and manufacturing and compute-energy module briefs.
 - [x] Add AI Conversion Atlas to the Jinhua portfolio project data and localization.
 - [x] Create V0 red-team review with launch blockers, risks, and proposed fixes.
+- [x] Create GitHub issue board for Wave 0, Wave 1, Wave 2, and final red-team work.
+
+## Active Control Plane
+
+- [ ] Merge Wave 0 control-plane branch with `docs/AGENT_LOCKS.md`, `docs/AGENT_RUNBOOK.md`, and `reports/PM_STATUS.md`.
+- [ ] Use one GitHub issue and one branch per agent.
+- [ ] Keep Wave 1 work separate from Wave 2 work until schema and validation guardrails are merged.
 
 ## Next
 
-- [ ] Verify original URLs or DOIs for staged source-register additions before canonical merge.
-- [ ] Review sources and merge approved rows into `data/sources/source_register.csv`.
-- [ ] Review indicators and merge approved rows into `data/indicators/indicator_catalog.csv`.
-- [ ] Review staged visual JSON against canonical sources before treating visual states as publishable evidence.
-- [ ] Replace source placeholders in V0 content with reviewed source IDs after canonical source promotion.
-- [ ] Add stronger UI/schema separation between official claims and independently observed evidence.
-- [ ] Add missingness reason taxonomy beyond a single `missing` label.
-- [ ] Redesign scenario simulator language and presentation so it cannot be mistaken for a forecast.
-- [ ] Add validation rules preventing placeholder, staged, tier `D`, or expert-commentary sources from supporting empirical values.
-- [ ] Add multilingual source verification fields and review workflow before using non-English sources in public claims.
+- [ ] Add CI and launch-readiness checks. See issue #2.
+- [ ] Upgrade canonical source schema and source validation. See issue #3.
+- [ ] Upgrade indicator schema, missingness taxonomy, and attribution rules. See issue #4.
+- [ ] Add METR/Epoch capability-horizon module. See issue #5.
+- [ ] Verify original URLs or DOIs for staged source-register additions before canonical merge. See issue #6.
+- [ ] Review sources and merge approved rows into `data/sources/source_register.csv`. See issue #6.
+- [ ] Review indicators and merge approved rows into `data/indicators/indicator_catalog.csv`. See issue #4 and later data work.
+- [ ] Populate V0 claim ledger before public launch copy. See issue #7.
+- [ ] Review staged visual JSON against canonical sources before treating visual states as publishable evidence. See issue #9.
+- [ ] Replace source placeholders in V0 content with reviewed source IDs after canonical source promotion. See issue #10.
+- [ ] Add stronger UI/schema separation between official claims and independently observed evidence. See issues #3 and #9.
+- [ ] Add missingness reason taxonomy beyond a single `missing` label. See issue #4.
+- [ ] Redesign scenario simulator language and presentation so it cannot be mistaken for a forecast. See issue #8.
+- [ ] Add validation rules preventing placeholder, staged, tier `D`, or expert-commentary sources from supporting empirical values. See issues #2 and #4.
+- [ ] Add multilingual source verification fields and review workflow before using non-English sources in public claims. See issues #3 and #6.
 - [ ] Define a country-level indicator value schema before generating non-placeholder country profiles.
-- [ ] Add reviewed source rows before publishing any country or sector values.
+- [ ] Add reviewed source rows before publishing any country or sector values. See issue #6.
 - [ ] Add page-level tests once the V0 data schema stabilizes.
+- [ ] Run final adversarial launch review. See issue #11.
 
 ## Later
 
