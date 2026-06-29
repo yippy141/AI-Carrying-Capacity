@@ -79,6 +79,16 @@ a {
   color: white;
 }
 
+@keyframes frontier-flow {
+  to {
+    stroke-dashoffset: -96;
+  }
+}
+
+.frontier-flow {
+  animation: frontier-flow 3.2s linear infinite;
+}
+
 .focus-ring {
   outline: 2px solid transparent;
   outline-offset: 3px;
@@ -89,6 +99,10 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .frontier-flow {
+    animation: none !important;
+  }
+
   *,
   *::before,
   *::after {

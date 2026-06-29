@@ -3,6 +3,8 @@ import Link from "next/link";
 import { BottleneckFingerprint } from "@/components/visuals/BottleneckFingerprint";
 import { ConversionFunnel } from "@/components/visuals/ConversionFunnel";
 import { CountryCompare } from "@/components/visuals/CountryCompare";
+import { DomainConversionScatter } from "@/components/visuals/DomainConversionScatter";
+import { FrontierNotFateHero } from "@/components/visuals/FrontierNotFateHero";
 import { UncertaintyLegend } from "@/components/visuals/UncertaintyLegend";
 import { MethodologyCallout } from "@/components/ui/MethodologyCallout";
 import { NarrativeBlock } from "@/components/ui/NarrativeBlock";
@@ -40,41 +42,17 @@ const moduleLinks = [
 export default function Home() {
   return (
     <main>
-      <section className="mx-auto max-w-7xl px-5 pb-12 pt-16 sm:px-8 lg:pb-16 lg:pt-24">
-        <p className="mb-5 max-w-2xl text-sm font-semibold text-primary-strong">
-          V0 scaffold · no national rankings · missing values stay missing
-        </p>
-        <div className="max-w-5xl">
-          <h1 className="text-5xl text-foreground sm:text-6xl lg:text-7xl">
-            AI Conversion Atlas
-          </h1>
-          <p className="mt-7 max-w-3xl text-xl leading-9 text-muted">
-            A research interface for studying how countries convert accessible
-            AI capability into productivity, state capacity, scientific output,
-            strategic power, and broadly distributed welfare.
-          </p>
-        </div>
-        <div className="mt-10 flex flex-wrap gap-3">
-          <Link
-            className="focus-ring rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-strong"
-            href="/methodology"
-          >
-            Read the method
-          </Link>
-          <Link
-            className="focus-ring rounded-full border border-rule px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary-strong"
-            href="/sources"
-          >
-            Check source status
-          </Link>
-        </div>
-      </section>
+      <FrontierNotFateHero />
 
       <section className="mx-auto max-w-7xl px-5 sm:px-8">
         <ConversionFunnel />
       </section>
 
       <section className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mb-12">
+          <DomainConversionScatter />
+        </div>
+
         <NarrativeBlock
           eyebrow="Current scope"
           title="V0 separates access, conversion, adaptation, distribution, and outcomes."

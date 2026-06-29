@@ -83,3 +83,9 @@ Reasoning: Scenario work is useful for testing frontier-versus-conversion pathwa
 Decision: Write the first methodology, launch essay, country brief, and module brief content as source-placeholder drafts rather than publishable findings.
 
 Reasoning: The user requested the first content layer before canonical source promotion. Explicit TODO_SOURCE, TODO_DATA, and TODO_VERIFY markers preserve the project argument while preventing staged research, official targets, or unsourced hypotheses from becoming evidence claims.
+
+## 2026-06-29: Add schematic React figures without data promotion
+
+Decision: Convert the Claude Design landing hero, narrowing-ribbon concept figure, evidence convention legend, and domain conversion scatter into production React/SVG components while keeping their geometry illustrative and separate from the source register, indicators, claim ledger, and content files.
+
+Reasoning: The figures explain the atlas framework and domain hypotheses, but they are not scored data. The visible labels preserve that distinction so readers do not mistake schematic width, ordinal placement, or uncertainty halos for measured country values.

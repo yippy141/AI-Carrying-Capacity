@@ -25,6 +25,7 @@
 - [x] Create first content layer for launch essay, China and United States briefs, and manufacturing and compute-energy module briefs.
 - [x] Add AI Conversion Atlas to the Jinhua portfolio project data and localization.
 - [x] Create V0 red-team review with launch blockers, risks, and proposed fixes.
+- [x] Convert the Claude Design hero/ribbon and domain scatter mockups into responsive React/SVG components.
 
 ## Next
 
