@@ -3,6 +3,7 @@ import Link from "next/link";
 import { BottleneckFingerprint } from "@/components/visuals/BottleneckFingerprint";
 import { ConversionFunnel } from "@/components/visuals/ConversionFunnel";
 import { CountryCompare } from "@/components/visuals/CountryCompare";
+import { FrontierSensitivityScatter } from "@/components/visuals/FrontierSensitivityScatter";
 import { StagedEvidenceBanner } from "@/components/visuals/StagedEvidenceBanner";
 import { UncertaintyLegend } from "@/components/visuals/UncertaintyLegend";
 import { MethodologyCallout } from "@/components/ui/MethodologyCallout";
@@ -81,6 +82,23 @@ export default function Home() {
             {computeEnergyData.metadata.status}.
           </p>
         </StagedEvidenceBanner>
+      </section>
+
+      <section className="mx-auto mt-8 max-w-7xl px-5 sm:px-8">
+        <NarrativeBlock
+          eyebrow="Figure 1"
+          title="Frontier sensitivity against conversion drag."
+        >
+          <p>
+            The central diagnostic of the atlas: raw model capability pays off
+            fastest where work is digital and feedback-rich, and stalls where
+            output depends on hardware, regulation, procurement, and trust.
+            Placements are ordinal judgments (claim ledger clm-0029), anchored
+            partly in METR&apos;s staged domain time-horizon evidence
+            (clm-0024).
+          </p>
+        </NarrativeBlock>
+        <FrontierSensitivityScatter />
       </section>
 
       <section className="mx-auto mt-8 max-w-7xl px-5 sm:px-8">
