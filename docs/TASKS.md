@@ -40,11 +40,12 @@
 - [x] Keep Wave 1 work separate from Wave 2 work until schema and validation guardrails are merged.
 - [x] Merge Wave 1 evidence-infrastructure branch before source promotion or public-copy rewrite.
 - [x] Merge Wave 2 UI guardrails branch before public-preview review.
+- [ ] Review source-promotion PR before merging because canonical source rows become downstream evidence dependencies.
 
 ## Next
 
-- [ ] Verify original URLs or DOIs for staged source-register additions before canonical merge. See issue #6.
-- [ ] Review sources and merge approved rows into `data/sources/source_register.csv`. See issue #6.
+- [x] Verify and promote first reviewed URL/DOI-backed source rows into `data/sources/source_register.csv`. See issue #6.
+- [ ] Spot-check Issue #6 source-promotion PR rows before merge. See `reports/source-promotion-30.md`.
 - [ ] Review indicators and merge approved rows into `data/indicators/indicator_catalog.csv`. See issue #4 and later data work.
 - [ ] Populate V0 claim ledger before public launch copy. See issue #7.
 - [ ] Review staged visual JSON against canonical sources before treating visual states as publishable evidence. See issue #9.
