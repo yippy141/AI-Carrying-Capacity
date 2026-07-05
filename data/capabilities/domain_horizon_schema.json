@@ -1,0 +1,106 @@
+{
+  "metadata": {
+    "project": "AI Conversion Atlas",
+    "version": "v0",
+    "status": "framework-only",
+    "source": "docs/CAPABILITY_HORIZON.md",
+    "note": "Conceptual schema only. Domain placements are not country scores and require reviewed source rows before public evidence use."
+  },
+  "fields": {
+    "domain_id": "Stable domain identifier.",
+    "domain_name": "Human-readable domain name.",
+    "frontier_sensitivity": "How much the domain depends on frontier capability growth.",
+    "conversion_drag": "How much physical, institutional, legal, labor, data, or legitimacy friction slows deployment.",
+    "primary_conversion_bottlenecks": "Main bottlenecks to converting capability into outcomes.",
+    "evidence_status": "missing, framework-only, staged, or reviewed.",
+    "source_ids": "Canonical source IDs once reviewed. Empty in framework-only V0."
+  },
+  "allowed_values": {
+    "frontier_sensitivity": ["low", "medium", "high", "unknown"],
+    "conversion_drag": ["low", "medium", "high", "very_high", "unknown"],
+    "evidence_status": ["missing", "framework-only", "staged", "reviewed"]
+  },
+  "domains": [
+    {
+      "domain_id": "software_engineering",
+      "domain_name": "Software engineering",
+      "frontier_sensitivity": "high",
+      "conversion_drag": "medium",
+      "primary_conversion_bottlenecks": ["workflow redesign", "security review", "codebase context", "organizational trust"],
+      "evidence_status": "framework-only",
+      "source_ids": []
+    },
+    {
+      "domain_id": "ai_rd",
+      "domain_name": "AI R&D",
+      "frontier_sensitivity": "high",
+      "conversion_drag": "medium",
+      "primary_conversion_bottlenecks": ["compute", "experimentation infrastructure", "evaluation", "talent"],
+      "evidence_status": "framework-only",
+      "source_ids": []
+    },
+    {
+      "domain_id": "scientific_qa_math",
+      "domain_name": "Scientific QA and math",
+      "frontier_sensitivity": "high",
+      "conversion_drag": "high",
+      "primary_conversion_bottlenecks": ["validation", "domain data", "instrument access", "reproducibility"],
+      "evidence_status": "framework-only",
+      "source_ids": []
+    },
+    {
+      "domain_id": "agentic_computer_use",
+      "domain_name": "Agentic computer use",
+      "frontier_sensitivity": "medium",
+      "conversion_drag": "high",
+      "primary_conversion_bottlenecks": ["reliability", "permissions", "security", "interface brittleness"],
+      "evidence_status": "framework-only",
+      "source_ids": []
+    },
+    {
+      "domain_id": "cyber_intelligence",
+      "domain_name": "Cyber and intelligence",
+      "frontier_sensitivity": "high",
+      "conversion_drag": "medium",
+      "primary_conversion_bottlenecks": ["classified deployment", "operator trust", "security risk", "limited public evidence"],
+      "evidence_status": "framework-only",
+      "source_ids": []
+    },
+    {
+      "domain_id": "manufacturing_robotics",
+      "domain_name": "Manufacturing and robotics",
+      "frontier_sensitivity": "medium",
+      "conversion_drag": "very_high",
+      "primary_conversion_bottlenecks": ["machines", "sensors", "maintenance", "safety", "factory redesign", "supplier onboarding"],
+      "evidence_status": "framework-only",
+      "source_ids": []
+    },
+    {
+      "domain_id": "healthcare_administration",
+      "domain_name": "Healthcare administration",
+      "frontier_sensitivity": "medium",
+      "conversion_drag": "very_high",
+      "primary_conversion_bottlenecks": ["liability", "privacy", "workflow integration", "clinical governance", "payment systems"],
+      "evidence_status": "framework-only",
+      "source_ids": []
+    },
+    {
+      "domain_id": "public_services",
+      "domain_name": "Public services",
+      "frontier_sensitivity": "medium",
+      "conversion_drag": "high",
+      "primary_conversion_bottlenecks": ["procurement", "legacy IT", "contestability", "grievance handling", "staff capacity"],
+      "evidence_status": "framework-only",
+      "source_ids": []
+    },
+    {
+      "domain_id": "physical_autonomy",
+      "domain_name": "Autonomous driving and physical autonomy",
+      "frontier_sensitivity": "medium",
+      "conversion_drag": "very_high",
+      "primary_conversion_bottlenecks": ["safety", "hardware", "regulation", "edge cases", "insurance", "public trust"],
+      "evidence_status": "framework-only",
+      "source_ids": []
+    }
+  ]
+}

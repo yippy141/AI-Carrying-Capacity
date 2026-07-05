@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { SourceBackedClaimCard } from "@/components/visuals/SourceBackedClaimCard";
+import { StagedEvidenceBanner } from "@/components/visuals/StagedEvidenceBanner";
 import { UncertaintyLegend } from "@/components/visuals/UncertaintyLegend";
 import { ConfidenceBadge } from "@/components/ui/ConfidenceBadge";
 import { SourceNote } from "@/components/ui/SourceNote";
@@ -52,6 +53,16 @@ export default function SourcesPage() {
           </div>
         </article>
       </section>
+
+      <div className="mt-10">
+        <StagedEvidenceBanner title="Claim examples are staged">
+          <p>
+            Source cards below demonstrate the interface pattern. A source may be
+            reliable as a document while still supporting only an official claim,
+            target, or scenario assumption.
+          </p>
+        </StagedEvidenceBanner>
+      </div>
 
       <section className="mt-16 border-y border-rule py-8">
         <h2 className="font-display text-3xl font-semibold">
@@ -107,7 +118,7 @@ export default function SourcesPage() {
         <SourceNote label={badgeLabel}>
           <p>
             The source register currently has {summary.totalRows} total rows,
-            including {summary.placeholderRows} placeholder rows and{" "}
+            including {summary.placeholderRows} placeholder rows and {" "}
             {summary.reviewedRows} reviewed evidence rows. Until reviewed
             sources are added, indicator and country values stay missing.
           </p>

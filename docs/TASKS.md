@@ -25,23 +25,35 @@
 - [x] Create first content layer for launch essay, China and United States briefs, and manufacturing and compute-energy module briefs.
 - [x] Add AI Conversion Atlas to the Jinhua portfolio project data and localization.
 - [x] Create V0 red-team review with launch blockers, risks, and proposed fixes.
-- [x] Convert the Claude Design hero/ribbon and domain scatter mockups into responsive React/SVG components.
+- [x] Create GitHub issue board for Wave 0, Wave 1, Wave 2, and final red-team work.
+- [x] Merge Wave 0 control-plane branch with `docs/AGENT_LOCKS.md`, `docs/AGENT_RUNBOOK.md`, and `reports/PM_STATUS.md`.
+- [x] Add CI and launch-readiness checks. See issue #2.
+- [x] Upgrade canonical source schema and source validation. See issue #3.
+- [x] Upgrade indicator schema, missingness taxonomy, and attribution rules. See issue #4.
+- [x] Add METR/Epoch capability-horizon module. See issue #5.
+- [x] Redesign scenario simulator as a scenario assumption browser. See issue #8.
+- [x] Add staged visual evidence banners and source-card claim-status guardrails. See issue #9.
+
+## Active Protocol
+
+- [x] Use one GitHub issue and one branch per agent.
+- [x] Keep Wave 1 work separate from Wave 2 work until schema and validation guardrails are merged.
+- [x] Merge Wave 1 evidence-infrastructure branch before source promotion or public-copy rewrite.
+- [x] Merge Wave 2 UI guardrails branch before public-preview review.
+- [ ] Review source-promotion PR before merging because canonical source rows become downstream evidence dependencies.
 
 ## Next
 
-- [ ] Verify original URLs or DOIs for staged source-register additions before canonical merge.
-- [ ] Review sources and merge approved rows into `data/sources/source_register.csv`.
-- [ ] Review indicators and merge approved rows into `data/indicators/indicator_catalog.csv`.
-- [ ] Review staged visual JSON against canonical sources before treating visual states as publishable evidence.
-- [ ] Replace source placeholders in V0 content with reviewed source IDs after canonical source promotion.
-- [ ] Add stronger UI/schema separation between official claims and independently observed evidence.
-- [ ] Add missingness reason taxonomy beyond a single `missing` label.
-- [ ] Redesign scenario simulator language and presentation so it cannot be mistaken for a forecast.
-- [ ] Add validation rules preventing placeholder, staged, tier `D`, or expert-commentary sources from supporting empirical values.
-- [ ] Add multilingual source verification fields and review workflow before using non-English sources in public claims.
+- [x] Verify and promote first reviewed URL/DOI-backed source rows into `data/sources/source_register.csv`. See issue #6.
+- [ ] Spot-check Issue #6 source-promotion PR rows before merge. See `reports/source-promotion-30.md`.
+- [ ] Review indicators and merge approved rows into `data/indicators/indicator_catalog.csv`. See issue #4 and later data work.
+- [ ] Populate V0 claim ledger before public launch copy. See issue #7.
+- [ ] Review staged visual JSON against canonical sources before treating visual states as publishable evidence. See issue #9.
+- [ ] Replace source placeholders in V0 content with reviewed source IDs after canonical source promotion. See issue #10.
 - [ ] Define a country-level indicator value schema before generating non-placeholder country profiles.
-- [ ] Add reviewed source rows before publishing any country or sector values.
+- [ ] Add reviewed source rows before publishing any country or sector values. See issue #6.
 - [ ] Add page-level tests once the V0 data schema stabilizes.
+- [ ] Run final adversarial launch review. See issue #11.
 
 ## Later
 

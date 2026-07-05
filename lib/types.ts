@@ -6,6 +6,70 @@ export type EvidenceLabel =
   | "missing"
   | "placeholder";
 
+export type MissingReason =
+  | "not_reviewed"
+  | "not_available"
+  | "not_comparable"
+  | "not_applicable"
+  | "confidential"
+  | "not_yet_measured"
+  | "source_unverified"
+  | "placeholder";
+
+export type AttributionStrength =
+  | "descriptive"
+  | "before_after"
+  | "comparison_group"
+  | "quasi_causal"
+  | "causal"
+  | "model_based"
+  | "speculative"
+  | "not_applicable"
+  | "placeholder";
+
+export type InputOutputRole =
+  | "input"
+  | "process"
+  | "output"
+  | "outcome"
+  | "stress"
+  | "distribution"
+  | "context"
+  | "placeholder";
+
+export type SourceMethodType =
+  | "official_statistics"
+  | "law_or_regulation"
+  | "government_strategy"
+  | "administrative_data"
+  | "survey"
+  | "dataset"
+  | "peer_reviewed_paper"
+  | "working_paper"
+  | "think_tank_report"
+  | "corporate_filing"
+  | "corporate_report"
+  | "media_report"
+  | "expert_commentary"
+  | "model_estimate"
+  | "placeholder";
+
+export type OfficialClaimStatus =
+  | "not_official_claim"
+  | "official_target"
+  | "official_program_claim"
+  | "official_observed_statistic"
+  | "mixed"
+  | "placeholder";
+
+export type IndependentValidationStatus =
+  | "independently_validated"
+  | "partially_validated"
+  | "not_independently_validated"
+  | "not_applicable"
+  | "unknown"
+  | "placeholder";
+
 export type DimensionKey =
   | "frontier_access"
   | "conversion_capacity"
@@ -75,6 +139,9 @@ export type VisualSource = {
   year: string;
   language: string;
   source_type: string;
+  method_type?: SourceMethodType | string;
+  official_claim_status?: OfficialClaimStatus | string;
+  independent_validation_status?: IndependentValidationStatus | string;
   reliability_tier: string;
   review_status: string;
   url_or_doi: string;
@@ -124,6 +191,7 @@ export type BottleneckItem = {
   watch_level: WatchLevel;
   evidence_label: EvidenceLabel;
   source_ids: string[];
+  missing_reason?: MissingReason;
   note: string;
 };
 
@@ -146,6 +214,9 @@ export type ManufacturingHeatmapCell = {
   value_status: EvidenceLabel;
   source_evidence_label: EvidenceLabel;
   source_ids: string[];
+  missing_reason?: MissingReason;
+  input_output_role?: InputOutputRole;
+  attribution_strength?: AttributionStrength;
   status_note: string;
 };
 
