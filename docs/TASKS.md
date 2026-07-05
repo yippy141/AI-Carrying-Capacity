@@ -33,6 +33,11 @@
 - [x] Add METR/Epoch capability-horizon module. See issue #5.
 - [x] Redesign scenario simulator as a scenario assumption browser. See issue #8.
 - [x] Add staged visual evidence banners and source-card claim-status guardrails. See issue #9.
+- [x] Bank 2026-07-05 Deep Research reports (China AI+ diffusion outcomes; AI macro adoption/capex/capability) with staged source additions.
+- [x] Populate V0 claim ledger with 30 claims. See issue #7 and `reports/claim-ledger-v0.md`.
+- [x] Verify and correct the China robot-density figure against the live IFR source (166/10k revised; supersedes 470/567). See clm-0003.
+- [x] Land launch essay v1.1 with corrected robotics passage and claim-ledger cross-references. See issue #10 (publication still gated on staged-source promotion).
+- [x] Add Figure 1 `FrontierSensitivityScatter` (from Claude Design mockup) and wire it into the homepage.
 
 ## Active Protocol
 
@@ -40,14 +45,15 @@
 - [x] Keep Wave 1 work separate from Wave 2 work until schema and validation guardrails are merged.
 - [x] Merge Wave 1 evidence-infrastructure branch before source promotion or public-copy rewrite.
 - [x] Merge Wave 2 UI guardrails branch before public-preview review.
-- [ ] Review source-promotion PR before merging because canonical source rows become downstream evidence dependencies.
+- [x] Review source-promotion PR before merging because canonical source rows become downstream evidence dependencies. (PR #18 merged 2026-06-27.)
+- [ ] Review and promote the 22 staged rows in `research/source-register/2026-07-05-deep-research-source-additions.csv` before clearing essay VERIFY markers.
 
 ## Next
 
 - [x] Verify and promote first reviewed URL/DOI-backed source rows into `data/sources/source_register.csv`. See issue #6.
-- [ ] Spot-check Issue #6 source-promotion PR rows before merge. See `reports/source-promotion-30.md`.
+- [x] Spot-check Issue #6 source-promotion PR rows before merge. See `reports/source-promotion-30.md`.
 - [ ] Review indicators and merge approved rows into `data/indicators/indicator_catalog.csv`. See issue #4 and later data work.
-- [ ] Populate V0 claim ledger before public launch copy. See issue #7.
+- [x] Populate V0 claim ledger before public launch copy. See issue #7.
 - [ ] Review staged visual JSON against canonical sources before treating visual states as publishable evidence. See issue #9.
 - [ ] Replace source placeholders in V0 content with reviewed source IDs after canonical source promotion. See issue #10.
 - [ ] Define a country-level indicator value schema before generating non-placeholder country profiles.
