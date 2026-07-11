@@ -161,3 +161,21 @@ Reasoning: The reset increases narrative confidence, so the type system must pre
 Decision: Add `data/forecasts/forecast_register.csv` and `/forecasts`. Every question has resolution criteria, a named observed resolution source, a deadline, and an append-only update history. All initial probability ranges are marked draft_unreviewed author judgments. Questions never resolve against official targets or announcements.
 
 Reasoning: Signposts with deadlines make the framework falsifiable in public without turning the product into a prediction market. Labeling ranges as unreviewed author judgments keeps the scenario-vs-forecast boundary that the assumption browser already established.
+
+## 2026-07-11: Separate evidence semantics from product-use status
+
+Decision: Evidence chips derive deterministically from claim and evidence type. Product-use status is a separate gate and label; `approved_with_caveat` never maps to `observed` by itself. Staged and rejected claims are capped at staged and missing.
+
+Reasoning: Editorial clearance answers whether and how a claim may appear; it does not change an official target, model estimate, or hypothesis into an observation.
+
+## 2026-07-11: Keep empty empirical prototypes out of the numbered study
+
+Decision: Move `BuildoutVsPayoffFigure` to the research lab as an unnumbered planned prototype. It enters the public numbered narrative only after reviewed canonical series are rendered.
+
+Reasoning: A numbered empirical figure containing only empty states borrows authority from data that are not present.
+
+## 2026-07-11: Gate forecast ranges and audit METR evidence by vintage
+
+Decision: Hide numerical forecast ranges until author review clears them. Keep fc-0006's draft range unchanged while flagging an author decision because current TH1.1 measurements may already cross its threshold. Treat METR's early-2025 slowdown result as historical and out of date, paired with the February 2026 methodology update and its measurement-uncertainty conclusion.
+
+Reasoning: Draft probabilities should not look endorsed. Rapidly changing capability and productivity measurements require explicit baselines, uncertainty, benchmark ceilings, and source vintage.

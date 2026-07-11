@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { BuildoutVsPayoffFigure } from "@/components/visuals/BuildoutVsPayoffFigure";
 import { StagedEvidenceBanner } from "@/components/visuals/StagedEvidenceBanner";
 
 export const metadata: Metadata = {
@@ -78,6 +79,21 @@ export default function LabPage() {
           </Link>
         ))}
       </div>
+
+      <section className="mt-16 max-w-5xl border-t border-rule pt-8" id="planned-build-harvest">
+        <p className="text-sm font-semibold text-primary-strong">Planned figure prototype</p>
+        <h2 className="mt-2 text-3xl text-foreground">
+          Buildout and payoff move on different clocks
+        </h2>
+        <p className="mt-4 max-w-3xl leading-7 text-muted">
+          This remains unnumbered and outside the public study narrative. It
+          contains no plotted series and cannot become a live empirical figure
+          until every series is backed by reviewed canonical data.
+        </p>
+        <div className="mt-6">
+          <BuildoutVsPayoffFigure />
+        </div>
+      </section>
     </main>
   );
 }

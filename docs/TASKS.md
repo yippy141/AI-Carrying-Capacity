@@ -43,6 +43,10 @@
 - [x] Add forecast register (`data/forecasts/`) and `/forecasts` tracker with draft author ranges.
 - [x] Add figure register and type every public figure (empirical/modeled/conceptual/forecast). See `docs/FIGURE_REGISTER.md`.
 - [x] Move legacy dashboard views to `/lab`; redirect `/methodology` to `/methods`.
+- [x] Repair PR #21 evidence semantics: gate staged claims, type chips by claim semantics, and separate product status.
+- [x] Move the empty build-versus-harvest prototype out of the numbered public narrative.
+- [x] Migrate the 2026-07-11 staged source additions to the canonical schema and add the METR February 2026 update.
+- [x] Hide draft forecast ranges pending author review and flag fc-0006 for a resolve/rebase/retire decision.
 
 ## Active Protocol
 
@@ -52,9 +56,10 @@
 - [x] Merge Wave 2 UI guardrails branch before public-preview review.
 - [x] Review source-promotion PR before merging because canonical source rows become downstream evidence dependencies. (PR #18 merged 2026-06-27.)
 - [ ] Review and promote the 22 staged rows in `research/source-register/2026-07-05-deep-research-source-additions.csv` before clearing essay VERIFY markers.
-- [ ] Review and promote the 24 staged rows in `research/source-register/2026-07-11-deep-research-source-additions.csv` (reconcile duplicate families: IEA vs src-0009, ECB media relay vs src-v1-dr-005).
-- [ ] Wire first canonical series into `BuildoutVsPayoffFigure` (Figure 1) once build/harvest sources are promoted.
+- [ ] Review and promote the 25 staged rows in `research/source-register/2026-07-11-deep-research-source-additions.csv` (reconcile duplicate families: IEA vs src-0009, ECB media relay vs src-v1-dr-005).
+- [ ] Wire first canonical series into `BuildoutVsPayoffFigure` before assigning it a public figure number.
 - [ ] Review forecast-register ranges once against resolution sources; flip rows from draft_unreviewed to active.
+- [ ] Author decision for fc-0006: current TH1.1 public data may already satisfy the 8-hour threshold; resolve, rebase, or retire without silently revising the range.
 - [ ] Remap or retire staged `src-v0-dr-*` IDs in `v0_visual_system.json` so public-pilot readiness can pass.
 
 ## Next

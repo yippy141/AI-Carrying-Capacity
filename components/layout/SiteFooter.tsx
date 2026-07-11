@@ -17,7 +17,7 @@ export function SiteFooter() {
         </div>
         <div className="flex flex-wrap gap-x-5 gap-y-2 lg:justify-end">
           <Link className="focus-ring hover:text-foreground" href="/findings">
-            Findings
+            What we know
           </Link>
           <Link className="focus-ring hover:text-foreground" href="/evidence">
             Evidence

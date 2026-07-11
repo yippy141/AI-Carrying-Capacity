@@ -44,10 +44,10 @@ Placeholder country-profile shells are no longer linked from primary navigation 
 | Component | Disposition |
 | --- | --- |
 | `FrontierNotFateHero` | **Added** (adapted from superseded PR #19: ribbon figure and station structure retained; status jargon and evidence legend removed from hero; thesis, CTAs, and metadata line added) |
-| `FrontierSensitivityScatter` | **Retained**, now Figure 2 inside Finding 2 with caption-level evidence notes |
+| `FrontierSensitivityScatter` | **Retained**, now Figure 2 inside the domain proposition with caption-level evidence notes |
 | `FigureShell` | **Added**: shared figure wrapper with figure number, caption, evidence-stage marker, and expandable evidence notes |
-| `BuildoutVsPayoffFigure` | **Added**: data-ready two-panel figure for Finding 1 with explicit labeled empty state (no fake chart) |
-| `ConversionChainCompare` | **Added**: US–China conversion-chain comparison for Finding 3, four evidence states, no winner |
+| `BuildoutVsPayoffFigure` | **Moved to lab**: unnumbered planned empirical prototype until canonical series are rendered |
+| `ConversionChainCompare` | **Added**: US–China comparative hypothesis with direct record, interpretation, and missing evidence separated cell by cell |
 | `EvidenceChip` | **Added**: small inline evidence-status chip replacing banner-scale warnings in the study narrative |
 | `ConversionFunnel` | **Moved** off the homepage; available via `/lab` context (unchanged component) |
 | `CountryCompare` | **Moved** off the homepage → `/lab` |

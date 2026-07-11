@@ -28,10 +28,15 @@ Use these labels consistently:
 | Label | Use |
 | --- | --- |
 | observed | Directly measured in a credible dataset or report. |
+| official target | A stated target or deadline, not a measured result. |
 | official-claim | Claimed by a government or institution but not independently validated. |
-| qualitative-coded | Coded from a transparent qualitative judgment. |
-| estimated | Estimated using a documented method. |
+| hypothesis | A falsifiable proposition or derived interpretation. |
+| model estimate | Estimated using a documented model. |
+| staged | Awaiting source verification or promotion; not usable as an established finding. |
 | missing | Not available or not yet reviewed. |
+
+Product-use status is displayed separately from evidence type. In particular,
+approved_with_caveat is a use gate, not evidence that a claim is observed.
 
 Official claims can support policy-intent or program-activity claims. They must not be presented as independently observed outcomes unless independent validation exists.
 

@@ -16,7 +16,7 @@ Frontier capability → Accessible capability → Organisational uptake → Meas
 | H5 | Labour-market effects appear first in exposed, standardised, early-career, routinised cognitive work | Relative hiring softness appears there before aggregate job losses | Distribute | Early support, fragile |
 | H6 | Open-weight access and affordable inference partly substitute for domestic frontier ownership in civilian use | Countries without frontier labs still achieve substantial adoption where access and complements are strong | Access vs build | Plausible, not directly identified |
 | H7 | State-capacity gains lag private-use gains because procurement, liability, and trust frictions are stronger | Public-sector quality improvements appear later and in narrower functions than private adoption | State capacity | Conceptually strong, weakly evidenced |
-| H8 | China's conversion is clustered, not systemic: strong buildout and physical automation, thin median diffusion | Density-normalized and SME-level measures lag aggregate installation counts; utilization lags capacity | Build vs use (China) | Supported (IFR density revision, clm-0003/0004; data-center utilization leads staged) |
+| H8 | China's conversion may be clustered rather than systemic | Representative firm- or plant-level evidence shows persistent regional, size, or sector concentration after controlling for aggregate scale | Build vs use (China) | Unresolved: IFR stock, installations, and national density cannot establish the median-firm distribution; utilization leads remain staged |
 
 ## The central Atlas thesis (claim ledger clm-0029)
 

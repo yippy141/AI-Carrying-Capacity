@@ -22,9 +22,10 @@ export default function ForecastsPage() {
         </h1>
         <p className="mt-6 text-lg leading-8 text-muted">
           Each question tests one part of the conversion framework and names
-          the observed source that will resolve it. Probability ranges are{" "}
+          the observed source that will resolve it. Probability ranges remain
+          hidden while{" "}
           <strong className="text-foreground">
-            initial author judgments, currently unreviewed drafts
+            author review is pending
           </strong>{" "}
           — not market prices, model outputs, or institutional estimates.
           Updates are append-only; resolved questions stay visible. Rules in{" "}
@@ -60,9 +61,11 @@ export default function ForecastsPage() {
             </h2>
             <dl className="mt-4 grid gap-x-8 gap-y-3 text-sm leading-6 sm:grid-cols-2">
               <div>
-                <dt className="font-semibold text-foreground">Initial range</dt>
+                <dt className="font-semibold text-foreground">Probability range</dt>
                 <dd className="text-muted">
-                  {forecast.initial_probability_range} (author judgment, draft)
+                  {forecast.author_review_status === "reviewed"
+                    ? forecast.initial_probability_range
+                    : "Hidden pending author review"}
                 </dd>
               </div>
               <div>

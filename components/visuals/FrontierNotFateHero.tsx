@@ -45,8 +45,8 @@ export function FrontierNotFateHero() {
         <p className="mt-8 max-w-3xl text-xl leading-9 text-muted sm:text-2xl sm:leading-10">
           The AI race is not only about who builds the most capable model. It is
           about who can convert capability into industry, science, state
-          capacity, and broadly shared welfare — and the two races have
-          different winners.
+          capacity, and broadly shared welfare — and the two races need not
+          reward the same systems.
         </p>
       </div>
 

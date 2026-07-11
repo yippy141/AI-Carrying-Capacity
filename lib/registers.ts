@@ -119,6 +119,10 @@ export type ForecastRow = {
   framework_relevance: string;
   update_triggers: string;
   status: string;
+  author_review_status: string;
+  baseline_date: string;
+  lower_bound_rationale: string;
+  upper_bound_rationale: string;
   last_updated: string;
   update_history: string;
 };

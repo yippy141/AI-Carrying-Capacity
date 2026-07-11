@@ -114,7 +114,29 @@ EXPECTED_HEADERS = {
         "last_reviewed",
         "notes",
     ],
+    "data/forecasts/forecast_register.csv": [
+        "forecast_id",
+        "question",
+        "resolution_criteria",
+        "resolution_source",
+        "deadline",
+        "initial_probability_range",
+        "rationale",
+        "framework_relevance",
+        "update_triggers",
+        "status",
+        "author_review_status",
+        "baseline_date",
+        "lower_bound_rationale",
+        "upper_bound_rationale",
+        "last_updated",
+        "update_history",
+    ],
 }
+
+EXPECTED_HEADERS[
+    "research/source-register/2026-07-11-deep-research-source-additions.csv"
+] = EXPECTED_HEADERS["data/sources/source_register.csv"]
 
 JSON_FILES = [
     "data/processed/country_sector_scores.json",
@@ -127,6 +149,17 @@ JSON_FILES = [
 ]
 
 REPORT_NAME_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}-[a-z0-9][a-z0-9-]*\.md$")
+SUPERSEDED_IFR_VALUE = re.compile(r"\b(?:470|567)\b")
+SUPERSEDED_CONTEXT = (
+    "historical",
+    "pre-revision",
+    "earlier",
+    "prior",
+    "old denominator",
+    "supersed",
+    "no ifr basis",
+)
+PUBLIC_TEXT_ROOTS = ("app", "components", "content", "data/processed")
 
 
 def fail(message: str) -> None:
@@ -185,11 +218,37 @@ def validate_report_names() -> None:
         )
 
 
+def validate_ifr_density_vintage() -> None:
+    bad_references: list[str] = []
+    for root_name in PUBLIC_TEXT_ROOTS:
+        root = ROOT / root_name
+        for path in root.rglob("*"):
+            if path.suffix not in {".md", ".tsx", ".ts", ".json"}:
+                continue
+            for line_number, line in enumerate(
+                path.read_text(encoding="utf-8").splitlines(), start=1
+            ):
+                lowered = line.lower()
+                if not SUPERSEDED_IFR_VALUE.search(line):
+                    continue
+                if "robot" not in lowered and "density" not in lowered:
+                    continue
+                if not any(marker in lowered for marker in SUPERSEDED_CONTEXT):
+                    bad_references.append(f"{path.relative_to(ROOT)}:{line_number}")
+    if bad_references:
+        fail(
+            "Current China robot-density copy may not use 470 or 567 without "
+            "an explicit historical/superseded marker:\n"
+            + "\n".join(f"- {reference}" for reference in bad_references)
+        )
+
+
 def main() -> None:
     validate_required_paths()
     validate_csv_headers()
     validate_json_files()
     validate_report_names()
+    validate_ifr_density_vintage()
     print("AI Conversion Atlas scaffold validation passed.")
 
 

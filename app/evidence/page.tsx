@@ -2,17 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { EvidenceChip } from "@/components/ui/EvidenceChip";
+import { evidenceStatusForClaim } from "@/lib/evidenceStatus";
 import { loadClaimLedger, loadSourceRegister } from "@/lib/registers";
 
 export const metadata: Metadata = {
   title: "Evidence"
-};
-
-const STATUS_TO_CHIP: Record<string, string> = {
-  approved: "observed",
-  approved_with_caveat: "observed",
-  staged: "staged",
-  rejected: "missing"
 };
 
 export default function EvidencePage() {
@@ -81,14 +75,14 @@ export default function EvidencePage() {
             >
               <div className="flex flex-wrap items-center gap-2 text-xs text-missing">
                 <span className="font-mono">{claim.claim_id}</span>
-                <EvidenceChip
-                  status={STATUS_TO_CHIP[claim.product_use_status] ?? "staged"}
-                />
-                <span className="uppercase tracking-[0.08em]">
-                  {claim.product_use_status.replaceAll("_", " ")}
+                <EvidenceChip status={evidenceStatusForClaim(claim)} />
+                <span>
+                  Evidence type: {claim.claim_type.replaceAll("_", " ")}
+                </span>
+                <span className="uppercase tracking-[0.08em] text-foreground">
+                  Product status: {claim.product_use_status.replaceAll("_", " ")}
                 </span>
                 <span>· confidence {claim.confidence}</span>
-                <span>· {claim.claim_type.replaceAll("_", " ")}</span>
               </div>
               <p className="mt-2 leading-7 text-foreground">{claim.claim}</p>
               {claim.caveat ? (

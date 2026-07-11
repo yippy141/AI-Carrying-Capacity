@@ -35,10 +35,10 @@ const PANELS: PanelSpec[] = [
 ];
 
 /**
- * Finding 1 figure: build-stage effects versus harvest-stage effects.
+ * Planned lab prototype: build-stage effects versus harvest-stage effects.
  * Data-ready with explicit empty states. A panel renders a chart only
  * when a canonical series is wired in; until then it names exactly
- * what is missing and why. No fake charts. See docs/FIGURE_REGISTER.md (F1).
+ * what is missing and why. No fake charts and no public figure number.
  */
 export function BuildoutVsPayoffFigure() {
   return (

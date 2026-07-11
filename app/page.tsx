@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import { EvidenceChip } from "@/components/ui/EvidenceChip";
 import { FigureShell } from "@/components/ui/FigureShell";
-import { BuildoutVsPayoffFigure } from "@/components/visuals/BuildoutVsPayoffFigure";
 import { ConversionChainCompare } from "@/components/visuals/ConversionChainCompare";
 import { FrontierNotFateHero } from "@/components/visuals/FrontierNotFateHero";
 import { FrontierSensitivityScatter } from "@/components/visuals/FrontierSensitivityScatter";
@@ -66,71 +65,44 @@ export default function Home() {
           on different clocks: <strong className="text-foreground">build</strong>{" "}
           (investment and infrastructure, visible now),{" "}
           <strong className="text-foreground">use</strong> (adoption and
-          intensity, broadening but shallow),{" "}
+          intensity, with comparative estimates still under review),{" "}
           <strong className="text-foreground">harvest</strong> (productivity,
-          still mostly ahead), and{" "}
+          not yet attributable at national scale), and{" "}
           <strong className="text-foreground">distribute</strong> (who gets the
-          gains, just starting to show).
+          gains, still weakly measured).
         </p>
       </StudySection>
 
-      <StudySection eyebrow="Finding 1" title="Buildout is not payoff." id="finding-1">
+      <StudySection eyebrow="Observation" title="Buildout is visible before broad payoff." id="finding-1">
         <p>
-          The most visible economic effect of AI today is spending, not
-          productivity. Data centers, chips, and grid investment show up in
-          national accounts immediately; measured productivity gains do not.
-          Treating the two as one number — &ldquo;AI&apos;s effect on the
-          economy&rdquo; — is the most common analytical error in the AI-race
-          discourse. The buildout measures the size of the bet. The payoff
-          depends on adoption depth and organizational change that current data
-          say are still thin: most firms that use AI use it shallowly, and
-          intensive use remains rare.
+          Reviewed energy and grid sources make physical buildout and its
+          constraints visible. The same evidence does not establish a broad
+          national productivity payoff. Treating build and harvest as one
+          number would therefore overstate what the current record can show.
+          Cross-country adoption and intensive-use estimates remain staged and
+          are excluded from this observation until their sources are promoted.
         </p>
       </StudySection>
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <FigureShell
-          number="1"
-          title="The bet and the payoff move on different clocks"
-          type="empirical"
-          caption={
-            <>
-              Panel A tracks build-stage series (investment, electricity
-              demand); Panel B tracks harvest-stage series (measured
-              productivity effects). Both panels render only from reviewed
-              sources, and neither has canonical data wired in yet — the empty
-              states name exactly what is pending.
-            </>
-          }
-          evidenceNote={
-            <p>
-              Build-stage candidates: Epoch AI&apos;s estimate that computing
-              infrastructure reached roughly 1.5% of US GDP in early 2026
-              (staged, model estimate) and the LBNL data-center energy report
-              (canonical, extraction pending). Harvest-stage candidates:
-              IMF and OECD model estimates of AI productivity effects (staged;
-              model estimates, not observations). Status per{" "}
-              <Link className="focus-ring underline" href="/evidence">
-                the evidence register
-              </Link>
-              .
-            </p>
-          }
-        >
-          <BuildoutVsPayoffFigure />
-        </FigureShell>
+        <aside className="max-w-3xl border-y border-rule py-5 text-sm leading-6 text-muted">
+          <span className="font-semibold text-foreground">Planned figure:</span>{" "}
+          the build-versus-harvest chart remains an unnumbered lab prototype
+          until reviewed canonical series are wired in. No empty empirical
+          figure appears in the study narrative.{" "}
+          <Link className="focus-ring underline" href="/lab#planned-build-harvest">
+            Inspect the planned figure →
+          </Link>
+        </aside>
       </div>
 
-      <StudySection eyebrow="Finding 2" title="Frontier returns differ by domain." id="finding-2">
+      <StudySection eyebrow="Proposition" title="Frontier returns differ by domain." id="finding-2">
         <p>
-          Model capability is jagged: systems that handle hours of software
-          engineering manage minutes of agentic computer use, and less in the
-          physical world. Map that against how much complementary
-          infrastructure each domain needs, and the strategic geography of AI
-          comes into focus. Where work is digital and feedback-rich — the AI
-          research loop, coding, cyber — the next increment of capability
-          converts fast. Where output depends on hardware, regulation,
-          procurement, and trust — factories, hospitals, agencies — being at
-          the frontier buys much less.
+          The study proposes that model capability is jagged across domains and
+          that complementary requirements are jagged across sectors. It follows
+          that the next increment of capability may convert faster where work is
+          digital and feedback-rich than where output depends on hardware,
+          regulation, procurement, and trust. This is a falsifiable conceptual
+          claim, not an empirical finding.
         </p>
       </StudySection>
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -165,18 +137,14 @@ export default function Home() {
         </FigureShell>
       </div>
 
-      <StudySection eyebrow="Finding 3" title="National systems convert differently." id="finding-3">
+      <StudySection eyebrow="Comparative hypothesis" title="The United States and China encounter different conversion bottlenecks." id="finding-3">
         <p>
-          The United States and China are strong in different stages of the
-          same chain. America&apos;s bet is a frontier bet with a conversion
-          problem: unmatched capability assets, but adoption, procurement, and
-          grid constraints that its own government names as the bottleneck.
-          China&apos;s bet is a conversion bet with a measurement problem:
-          state-directed diffusion at enormous aggregate scale, thin at the
-          median, and hardest to verify exactly where the story gets
-          interesting. Neither column of the comparison below declares a
-          winner — the point is that the two systems flatten in different
-          places.
+          Reviewed US grid evidence and official US adoption policy point to
+          one set of constraints. China&apos;s official diffusion targets and
+          observed aggregate robot deployment point to another, while direct
+          evidence about firm distribution and use intensity remains incomplete.
+          The comparison below separates facts, interpretations, and missing
+          evidence. It tests a contrast; it does not declare a winner.
         </p>
       </StudySection>
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -186,10 +154,10 @@ export default function Home() {
           type="conceptual"
           caption={
             <>
-              Each cell gives the best current characterization of one chain
-              stage in one country, with its evidence status: observed,
-              official claim, hypothesis, or missing. Official claims record
-              intent, not verified outcomes.
+              Each cell separates the direct record, interpretation, and
+              missing evidence for one chain stage in one country. Chips label
+              observed data, official targets or claims, hypotheses, staged
+              material, and missing evidence without collapsing them.
             </>
           }
           evidenceNote={
@@ -212,11 +180,10 @@ export default function Home() {
 
       <StudySection eyebrow="Forecasts" title="What would change our minds, in writing." id="forecasts">
         <p>
-          A framework that cannot say what would falsify it is a vibe. The
+          A framework should say what would falsify it. The
           forecast register tracks measurable questions with deadlines,
-          resolution sources, and update histories. Ranges are initial author
-          judgments — drafts, marked as such — not market prices or model
-          outputs.
+          resolution sources, and update histories. Numerical ranges remain
+          hidden while author review is pending.
         </p>
       </StudySection>
       <div className="mx-auto max-w-7xl px-5 pt-8 sm:px-8">
@@ -233,11 +200,18 @@ export default function Home() {
                 {forecast.question}
               </p>
               <p className="mt-3 text-sm leading-6 text-muted">
-                Initial range{" "}
-                <span className="font-semibold text-foreground">
-                  {forecast.initial_probability_range}
-                </span>{" "}
-                · resolves via {forecast.resolution_source} by {forecast.deadline}
+                {forecast.author_review_status === "reviewed" ? (
+                  <>
+                    Reviewed range{" "}
+                    <span className="font-semibold text-foreground">
+                      {forecast.initial_probability_range}
+                    </span>{" "}
+                    ·{" "}
+                  </>
+                ) : (
+                  <>Probability hidden pending author review · </>
+                )}
+                resolves via {forecast.resolution_source} by {forecast.deadline}
               </p>
             </article>
           ))}
