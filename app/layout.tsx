@@ -6,11 +6,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "AI Conversion Atlas",
-    template: "%s | AI Conversion Atlas"
+    default: "Frontier Is Not Fate",
+    template: "%s | Frontier Is Not Fate"
   },
   description:
-    "An evidence-first atlas for studying how societies convert AI access into material outcomes."
+    "An interactive study of when advanced AI becomes national power — and when infrastructure, institutions, and organization flatten the return. Built on the AI Conversion Atlas evidence system."
 };
 
 export default function RootLayout({

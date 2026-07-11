@@ -6,26 +6,33 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-8 px-5 py-10 text-sm text-muted sm:px-8 lg:grid-cols-[1.4fr_1fr]">
         <div>
           <p className="font-display text-xl font-semibold text-foreground">
-            AI Conversion Atlas
+            Frontier Is Not Fate
           </p>
           <p className="mt-3 max-w-2xl leading-7">
-            V0 is a scaffold for evidence review, not a ranking product. Missing
-            values remain missing until reviewed sources and methodology support
-            a stronger claim.
+            An interactive study of when advanced AI becomes national power —
+            and when infrastructure, institutions, and organization flatten the
+            return. Built on the AI Conversion Atlas evidence system: no
+            composite scores, no rankings, missing values stay visible.
           </p>
         </div>
         <div className="flex flex-wrap gap-x-5 gap-y-2 lg:justify-end">
-          <Link className="focus-ring hover:text-foreground" href="/methodology">
-            Method
+          <Link className="focus-ring hover:text-foreground" href="/findings">
+            What we know
           </Link>
-          <Link className="focus-ring hover:text-foreground" href="/sources">
-            Source register
+          <Link className="focus-ring hover:text-foreground" href="/evidence">
+            Evidence
           </Link>
-          <Link className="focus-ring hover:text-foreground" href="/countries/USA">
-            USA profile
+          <Link className="focus-ring hover:text-foreground" href="/forecasts">
+            Forecasts
           </Link>
-          <Link className="focus-ring hover:text-foreground" href="/countries/CHN">
-            China profile
+          <Link className="focus-ring hover:text-foreground" href="/methods">
+            Methods
+          </Link>
+          <Link className="focus-ring hover:text-foreground" href="/about">
+            About
+          </Link>
+          <Link className="focus-ring hover:text-foreground" href="/lab">
+            Research lab
           </Link>
         </div>
       </div>

@@ -1,11 +1,12 @@
 import Link from "next/link";
 
 const navItems = [
-  { href: "/methodology", label: "Methodology" },
-  { href: "/sources", label: "Sources" },
-  { href: "/scenarios", label: "Scenarios" },
-  { href: "/sectors/manufacturing", label: "Manufacturing" },
-  { href: "/sectors/compute-energy", label: "Compute & energy" }
+  { href: "/", label: "Study" },
+  { href: "/findings", label: "What we know" },
+  { href: "/evidence", label: "Evidence" },
+  { href: "/forecasts", label: "Forecasts" },
+  { href: "/methods", label: "Methods" },
+  { href: "/about", label: "About" }
 ];
 
 export function SiteHeader() {
@@ -15,7 +16,10 @@ export function SiteHeader() {
         <Link className="focus-ring inline-flex w-fit items-baseline gap-3" href="/">
           <span className="h-3 w-3 rounded-full bg-primary" aria-hidden="true" />
           <span className="font-display text-2xl font-semibold">
-            AI Conversion Atlas
+            Frontier Is Not Fate
+          </span>
+          <span className="hidden text-sm text-muted sm:inline">
+            · AI Conversion Atlas
           </span>
         </Link>
         <nav aria-label="Primary navigation">

@@ -1,168 +1,254 @@
 import Link from "next/link";
 
-import { BottleneckFingerprint } from "@/components/visuals/BottleneckFingerprint";
-import { ConversionFunnel } from "@/components/visuals/ConversionFunnel";
-import { CountryCompare } from "@/components/visuals/CountryCompare";
+import { EvidenceChip } from "@/components/ui/EvidenceChip";
+import { FigureShell } from "@/components/ui/FigureShell";
+import { ConversionChainCompare } from "@/components/visuals/ConversionChainCompare";
+import { FrontierNotFateHero } from "@/components/visuals/FrontierNotFateHero";
 import { FrontierSensitivityScatter } from "@/components/visuals/FrontierSensitivityScatter";
-import { StagedEvidenceBanner } from "@/components/visuals/StagedEvidenceBanner";
-import { UncertaintyLegend } from "@/components/visuals/UncertaintyLegend";
-import { MethodologyCallout } from "@/components/ui/MethodologyCallout";
-import { NarrativeBlock } from "@/components/ui/NarrativeBlock";
-import { SourceNote } from "@/components/ui/SourceNote";
-import {
-  computeEnergyData,
-  countryProfiles,
-  manufacturingData,
-  visualSystemData
-} from "@/lib/data";
+import { loadForecastRegister } from "@/lib/registers";
 
-const moduleLinks = [
-  {
-    href: "/methodology",
-    label: "Methodology",
-    description: "Definitions, evidence labels, and V0 scoring guardrails."
-  },
-  {
-    href: "/sources",
-    label: "Sources",
-    description: "The source register, with placeholder rows called out."
-  },
-  {
-    href: "/sectors/manufacturing",
-    label: "Manufacturing",
-    description: "A placeholder module for robotics and embodied AI."
-  },
-  {
-    href: "/sectors/compute-energy",
-    label: "Compute & energy",
-    description: "A placeholder module for data centers and grid absorption."
-  }
-];
+function StudySection({
+  eyebrow,
+  title,
+  children,
+  id
+}: {
+  eyebrow: string;
+  title: string;
+  children: React.ReactNode;
+  id?: string;
+}) {
+  return (
+    <section className="mx-auto max-w-7xl scroll-mt-24 px-5 pt-20 sm:px-8" id={id}>
+      <div className="max-w-3xl">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-primary-strong">
+          {eyebrow}
+        </p>
+        <h2 className="text-3xl leading-tight text-foreground sm:text-4xl">
+          {title}
+        </h2>
+        <div className="mt-6 space-y-5 text-lg leading-8 text-muted">
+          {children}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function Home() {
+  const forecasts = loadForecastRegister().slice(0, 3);
+
   return (
     <main>
-      <section className="mx-auto max-w-7xl px-5 pb-12 pt-16 sm:px-8 lg:pb-16 lg:pt-24">
-        <p className="mb-5 max-w-2xl text-sm font-semibold text-primary-strong">
-          V0 scaffold · no national rankings · missing values stay missing
+      <FrontierNotFateHero />
+
+      <StudySection eyebrow="The research question" title="What does an additional increment of frontier capability actually buy a country?" id="question">
+        <p>
+          When a country gains access to a more capable AI system, something
+          should change: factories should get more productive, science should
+          move faster, public services should improve, or strategic capability
+          should grow. The marginal national return is that change — the
+          difference the next increment of capability makes, given everything
+          else a country brings to the table.
         </p>
-        <div className="max-w-5xl">
-          <h1 className="text-5xl text-foreground sm:text-6xl lg:text-7xl">
-            AI Conversion Atlas
-          </h1>
-          <p className="mt-7 max-w-3xl text-xl leading-9 text-muted">
-            A research interface for studying how countries convert accessible
-            AI capability into productivity, state capacity, scientific output,
-            strategic power, and broadly distributed welfare.
-          </p>
-        </div>
-        <div className="mt-10 flex flex-wrap gap-3">
-          <Link
-            className="focus-ring rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-strong"
-            href="/methodology"
-          >
-            Read the method
+        <p>
+          The core claim of this study is that the return is not set at the
+          frontier. It is set by <strong className="text-foreground">conversion
+          capacity</strong>: the power, factories, firms, institutions, and
+          skills that turn accessible capability into use, and use into
+          outcomes. The same model increment buys different things in different
+          places — and, within one country, different things in different
+          sectors.
+        </p>
+        <p>
+          The evidence for this runs through a chain with four stages that move
+          on different clocks: <strong className="text-foreground">build</strong>{" "}
+          (investment and infrastructure, visible now),{" "}
+          <strong className="text-foreground">use</strong> (adoption and
+          intensity, with comparative estimates still under review),{" "}
+          <strong className="text-foreground">harvest</strong> (productivity,
+          not yet attributable at national scale), and{" "}
+          <strong className="text-foreground">distribute</strong> (who gets the
+          gains, still weakly measured).
+        </p>
+      </StudySection>
+
+      <StudySection eyebrow="Observation" title="Buildout is visible before broad payoff." id="finding-1">
+        <p>
+          Reviewed energy and grid sources make physical buildout and its
+          constraints visible. The same evidence does not establish a broad
+          national productivity payoff. Treating build and harvest as one
+          number would therefore overstate what the current record can show.
+          Cross-country adoption and intensive-use estimates remain staged and
+          are excluded from this observation until their sources are promoted.
+        </p>
+      </StudySection>
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <aside className="max-w-3xl border-y border-rule py-5 text-sm leading-6 text-muted">
+          <span className="font-semibold text-foreground">Planned figure:</span>{" "}
+          the build-versus-harvest chart remains an unnumbered lab prototype
+          until reviewed canonical series are wired in. No empty empirical
+          figure appears in the study narrative.{" "}
+          <Link className="focus-ring underline" href="/lab#planned-build-harvest">
+            Inspect the planned figure →
           </Link>
-          <Link
-            className="focus-ring rounded-full border border-rule px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary-strong"
-            href="/sources"
-          >
-            Check source status
-          </Link>
-        </div>
-      </section>
+        </aside>
+      </div>
 
-      <section className="mx-auto max-w-7xl px-5 sm:px-8">
-        <StagedEvidenceBanner title="Homepage visuals are not reviewed findings">
-          <p>
-            The visual-system data is marked {visualSystemData.metadata.status}.
-            Canonical country profiles remain {countryProfiles.metadata.status};
-            manufacturing and compute-energy files remain {" "}
-            {manufacturingData.metadata.status} and {" "}
-            {computeEnergyData.metadata.status}.
-          </p>
-        </StagedEvidenceBanner>
-      </section>
-
-      <section className="mx-auto mt-8 max-w-7xl px-5 sm:px-8">
-        <NarrativeBlock
-          eyebrow="Figure 1"
-          title="Frontier sensitivity against conversion drag."
+      <StudySection eyebrow="Proposition" title="Frontier returns differ by domain." id="finding-2">
+        <p>
+          The study proposes that model capability is jagged across domains and
+          that complementary requirements are jagged across sectors. It follows
+          that the next increment of capability may convert faster where work is
+          digital and feedback-rich than where output depends on hardware,
+          regulation, procurement, and trust. This is a falsifiable conceptual
+          claim, not an empirical finding.
+        </p>
+      </StudySection>
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <FigureShell
+          number="2"
+          title="Where frontier capability converts, and where it stalls"
+          type="conceptual"
+          caption={
+            <>
+              Domains placed by how much raw model capability matters
+              (horizontal) against how hard capability is to convert into
+              output (vertical). This is a hypothesis figure: positions are
+              ordinal judgments, not measured quantities. Read the pattern, not
+              the coordinates.
+            </>
+          }
+          evidenceNote={
+            <p>
+              The placement logic is the study&apos;s central hypothesis
+              (approved with caveat in the claim ledger). The horizontal axis
+              is partly anchored by METR&apos;s domain time-horizon
+              measurements, which are staged pending source promotion. Dashed
+              halos mark the placements most open to challenge. Full status in{" "}
+              <Link className="focus-ring underline" href="/evidence">
+                the evidence register
+              </Link>
+              .
+            </p>
+          }
         >
-          <p>
-            The central diagnostic of the atlas: raw model capability pays off
-            fastest where work is digital and feedback-rich, and stalls where
-            output depends on hardware, regulation, procurement, and trust.
-            Placements are ordinal judgments (claim ledger clm-0029), anchored
-            partly in METR&apos;s staged domain time-horizon evidence
-            (clm-0024).
-          </p>
-        </NarrativeBlock>
-        <FrontierSensitivityScatter />
-      </section>
+          <FrontierSensitivityScatter embedded />
+        </FigureShell>
+      </div>
 
-      <section className="mx-auto mt-8 max-w-7xl px-5 sm:px-8">
-        <ConversionFunnel />
-      </section>
-
-      <section className="mx-auto max-w-7xl px-5 sm:px-8">
-        <NarrativeBlock
-          eyebrow="Current scope"
-          title="V0 separates access, conversion, adaptation, distribution, and outcomes."
+      <StudySection eyebrow="Comparative hypothesis" title="The United States and China encounter different conversion bottlenecks." id="finding-3">
+        <p>
+          Reviewed US grid evidence and official US adoption policy point to
+          one set of constraints. China&apos;s official diffusion targets and
+          observed aggregate robot deployment point to another, while direct
+          evidence about firm distribution and use intensity remains incomplete.
+          The comparison below separates facts, interpretations, and missing
+          evidence. It tests a contrast; it does not declare a winner.
+        </p>
+      </StudySection>
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <FigureShell
+          number="3"
+          title="Two systems, two conversion chains"
+          type="conceptual"
+          caption={
+            <>
+              Each cell separates the direct record, interpretation, and
+              missing evidence for one chain stage in one country. Chips label
+              observed data, official targets or claims, hypotheses, staged
+              material, and missing evidence without collapsing them.
+            </>
+          }
+          evidenceNote={
+            <p>
+              Cell references point to the canonical source register and claim
+              ledger (for example, the robot-density figures follow IFR&apos;s
+              2025 workforce-data revision — China 166 per 10k, US 307).
+              Staged items are labeled as such and support no cell on their
+              own. Explore rows in{" "}
+              <Link className="focus-ring underline" href="/evidence">
+                the evidence register
+              </Link>
+              .
+            </p>
+          }
         >
-          <p>
-            The atlas does not publish a composite national score. It keeps
-            enabling inputs separate from realized outcomes so bottlenecks do
-            not disappear inside an average.
-          </p>
-          <p>
-            Official targets and program claims can indicate policy intent, but
-            they remain separate from independently observed evidence until the
-            source and claim ledgers are reviewed.
-          </p>
-        </NarrativeBlock>
+          <ConversionChainCompare />
+        </FigureShell>
+      </div>
 
-        <CountryCompare />
-
-        <BottleneckFingerprint />
-
-        <div className="grid gap-4 md:grid-cols-2">
-          {moduleLinks.map((item) => (
-            <Link
-              className="focus-ring rounded-lg border border-rule bg-background p-5 transition-colors hover:border-primary"
-              href={item.href}
-              key={item.href}
-            >
-              <span className="font-display text-2xl font-semibold">
-                {item.label}
-              </span>
-              <span className="mt-3 block leading-7 text-muted">
-                {item.description}
-              </span>
-            </Link>
+      <StudySection eyebrow="Forecasts" title="What would change our minds, in writing." id="forecasts">
+        <p>
+          A framework should say what would falsify it. The
+          forecast register tracks measurable questions with deadlines,
+          resolution sources, and update histories. Numerical ranges remain
+          hidden while author review is pending.
+        </p>
+      </StudySection>
+      <div className="mx-auto max-w-7xl px-5 pt-8 sm:px-8">
+        <div className="grid gap-4 lg:grid-cols-3">
+          {forecasts.map((forecast) => (
+            <article className="border border-rule bg-white p-6" key={forecast.forecast_id}>
+              <div className="flex items-center gap-2">
+                <EvidenceChip status="forecast" />
+                <span className="text-xs font-semibold uppercase tracking-[0.1em] text-missing">
+                  {forecast.status === "draft_unreviewed" ? "draft" : forecast.status}
+                </span>
+              </div>
+              <p className="mt-3 font-display text-lg font-semibold leading-snug text-foreground">
+                {forecast.question}
+              </p>
+              <p className="mt-3 text-sm leading-6 text-muted">
+                {forecast.author_review_status === "reviewed" ? (
+                  <>
+                    Reviewed range{" "}
+                    <span className="font-semibold text-foreground">
+                      {forecast.initial_probability_range}
+                    </span>{" "}
+                    ·{" "}
+                  </>
+                ) : (
+                  <>Probability hidden pending author review · </>
+                )}
+                resolves via {forecast.resolution_source} by {forecast.deadline}
+              </p>
+            </article>
           ))}
         </div>
+        <p className="mt-5 text-sm text-muted">
+          <Link className="focus-ring font-semibold underline" href="/forecasts">
+            All ten forecast questions →
+          </Link>
+        </p>
+      </div>
 
-        <MethodologyCallout title="No definitive ranking in V0">
-          V0 is a diagnostic scaffold. Country and sector pages can show fields,
-          missingness, source status, and confidence labels, but they should not
-          claim advantage until evidence and sensitivity checks support it.
-        </MethodologyCallout>
+      <StudySection eyebrow="Methods and evidence" title="Every claim carries its receipts." id="methods">
+        <p>
+          The study runs on the AI Conversion Atlas: a source register where
+          every source carries a reliability tier and an official-claim status,
+          a claim ledger where every public claim carries its confidence and
+          required caveat, and a methods note that says what this project
+          refuses to do — no composite score, no country ranking, no silent
+          imputation of missing values.
+        </p>
+        <p className="flex flex-wrap gap-x-6 gap-y-2 text-base">
+          <Link className="focus-ring font-semibold text-foreground underline" href="/evidence">
+            Evidence register
+          </Link>
+          <Link className="focus-ring font-semibold text-foreground underline" href="/methods">
+            Methods
+          </Link>
+          <Link className="focus-ring font-semibold text-foreground underline" href="/about">
+            About the project
+          </Link>
+          <Link className="focus-ring font-semibold text-foreground underline" href="/lab">
+            Research lab
+          </Link>
+        </p>
+      </StudySection>
 
-        <div className="mt-12">
-          <UncertaintyLegend compact />
-        </div>
-
-        <div className="mt-12">
-          <SourceNote label="qualitative-coded">
-            <p>
-              The homepage uses local JSON only. The new visual data carries
-              staged source IDs and qualitative watch states, while reviewed
-              indicator values remain missing until canonical source review.
-            </p>
-          </SourceNote>
-        </div>
-      </section>
+      <div className="pb-24" />
     </main>
   );
 }
