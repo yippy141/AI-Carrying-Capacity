@@ -1,7 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  reactStrictMode: true
+  reactStrictMode: true,
+  redirects: async () => [
+    {
+      source: "/methodology",
+      destination: "/methods",
+      permanent: true
+    }
+  ]
 };
 
 export default nextConfig;

@@ -143,3 +143,21 @@ Reasoning: The launch essay makes empirical claims faster than the source regist
 Decision: Add `FrontierSensitivityScatter` (converted from the Claude Design mockup) as Figure 1 on the homepage. Its "positions are illustrative, not scored" caption, uncertainty halos, and "read the pattern, not the coordinates" language are part of the figure contract and must not be removed. Placements cross-reference clm-0029 and the staged METR domain evidence (clm-0024).
 
 Reasoning: The frontier-sensitivity × conversion-drag scatter is the project's central diagnostic and the most defensible visual form of the marginal-return question: it communicates the pattern without pretending to a fitted function or scored coordinates.
+
+## 2026-07-11: Restructure the public product around the argument (Frontier Is Not Fate)
+
+Decision: The public product is retitled "Frontier Is Not Fate" and rebuilt as an editorial study (hero, research question, three findings, forecasts, methods) with primary navigation Study / Findings / Evidence / Forecasts / Methods / About. "AI Conversion Atlas" remains the name of the evidence system. Legacy dashboard views move to a Research lab area; `/methodology` permanently redirects to `/methods`. Evidence status appears as figure-caption markers, inline chips, and expandable notes instead of page-width banners in the study narrative; banners remain on lab pages.
+
+Reasoning: The prior homepage led with scaffold status and warnings — the bookkeeping was the product. The argument is the product; the bookkeeping is its footnotes. Honesty markers are not removed, they are re-scaled to editorial convention (figure captions and sidenotes), which is both more credible and more readable. See docs/PRODUCT_RESET.md.
+
+## 2026-07-11: Figures are typed and registered
+
+Decision: Every public figure is classified empirical / modeled / conceptual / forecast in docs/FIGURE_REGISTER.md and carries that classification in its caption chip. Data-ready figures render labeled empty states until every plotted series has a canonical source; no fake charts.
+
+Reasoning: The reset increases narrative confidence, so the type system must prevent conceptual figures from borrowing empirical authority. The empty state is a feature: it shows the evidence gate working in public.
+
+## 2026-07-11: Forecast register with draft author ranges
+
+Decision: Add `data/forecasts/forecast_register.csv` and `/forecasts`. Every question has resolution criteria, a named observed resolution source, a deadline, and an append-only update history. All initial probability ranges are marked draft_unreviewed author judgments. Questions never resolve against official targets or announcements.
+
+Reasoning: Signposts with deadlines make the framework falsifiable in public without turning the product into a prediction market. Labeling ranges as unreviewed author judgments keeps the scenario-vs-forecast boundary that the assumption browser already established.

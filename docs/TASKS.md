@@ -38,6 +38,11 @@
 - [x] Verify and correct the China robot-density figure against the live IFR source (166/10k revised; supersedes 470/567). See clm-0003.
 - [x] Land launch essay v1.1 with corrected robotics passage and claim-ledger cross-references. See issue #10 (publication still gated on staged-source promotion).
 - [x] Add Figure 1 `FrontierSensitivityScatter` (from Claude Design mockup) and wire it into the homepage.
+- [x] Bank 2026-07-11 Deep Research (evidence review; China evidence map) with staged source additions.
+- [x] Product reset: rebuild public product as the Frontier Is Not Fate study with Study/Findings/Evidence/Forecasts/Methods/About IA. See `docs/PRODUCT_RESET.md`.
+- [x] Add forecast register (`data/forecasts/`) and `/forecasts` tracker with draft author ranges.
+- [x] Add figure register and type every public figure (empirical/modeled/conceptual/forecast). See `docs/FIGURE_REGISTER.md`.
+- [x] Move legacy dashboard views to `/lab`; redirect `/methodology` to `/methods`.
 
 ## Active Protocol
 
@@ -47,6 +52,10 @@
 - [x] Merge Wave 2 UI guardrails branch before public-preview review.
 - [x] Review source-promotion PR before merging because canonical source rows become downstream evidence dependencies. (PR #18 merged 2026-06-27.)
 - [ ] Review and promote the 22 staged rows in `research/source-register/2026-07-05-deep-research-source-additions.csv` before clearing essay VERIFY markers.
+- [ ] Review and promote the 24 staged rows in `research/source-register/2026-07-11-deep-research-source-additions.csv` (reconcile duplicate families: IEA vs src-0009, ECB media relay vs src-v1-dr-005).
+- [ ] Wire first canonical series into `BuildoutVsPayoffFigure` (Figure 1) once build/harvest sources are promoted.
+- [ ] Review forecast-register ranges once against resolution sources; flip rows from draft_unreviewed to active.
+- [ ] Remap or retire staged `src-v0-dr-*` IDs in `v0_visual_system.json` so public-pilot readiness can pass.
 
 ## Next
 

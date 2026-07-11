@@ -1,6 +1,6 @@
 # PM Status
 
-Last updated: 2026-07-05.
+Last updated: 2026-07-11.
 
 ## Current Launch Posture
 
@@ -10,7 +10,7 @@ Last updated: 2026-07-05.
 
 | Branch | Objective | Status |
 | --- | --- | --- |
-| `claude/focused-hofstadter-d07d55` | Bank new Deep Research, populate claim ledger (#7), land launch essay v1 (#10), add Figure 1 scatter | In review (this PR) |
+| `product-reset/frontier-is-not-fate` | Product reset: Frontier Is Not Fate study, forecast register, figure register, 2026-07-11 research bank | In review (this PR) |
 
 ## Issue Board
 

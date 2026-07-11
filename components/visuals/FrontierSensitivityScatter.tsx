@@ -56,34 +56,40 @@ const ACCENT_DEEP = "var(--primary-strong)";
 
 export function FrontierSensitivityScatter({
   showQuadrantShading = true,
-  showUncertaintyHalos = true
+  showUncertaintyHalos = true,
+  embedded = false
 }: {
   showQuadrantShading?: boolean;
   showUncertaintyHalos?: boolean;
+  /** true when rendered inside a FigureShell that provides number/title */
+  embedded?: boolean;
 }) {
   return (
-    <figure className="my-10 border border-rule bg-white p-5 sm:p-10">
-      <div className="flex flex-wrap items-start justify-between gap-6 border-b-2 pb-5" style={{ borderColor: INK }}>
-        <div className="max-w-[62ch]">
-          <p className="m-0 mb-2 text-xs font-semibold uppercase tracking-[0.13em]" style={{ color: ACCENT_DEEP }}>
-            AI Conversion Atlas · Figure 1
+    <figure className={embedded ? "m-0 bg-white" : "my-10 border border-rule bg-white p-5 sm:p-10"}>
+      {embedded ? null : (
+        <div className="flex flex-wrap items-start justify-between gap-6 border-b-2 pb-5" style={{ borderColor: INK }}>
+          <div className="max-w-[62ch]">
+            <p className="m-0 mb-2 text-xs font-semibold uppercase tracking-[0.13em]" style={{ color: ACCENT_DEEP }}>
+              AI Conversion Atlas
+            </p>
+            <h3
+              className="m-0 font-display text-2xl font-semibold leading-tight sm:text-[33px]"
+              style={{ color: INK, letterSpacing: "-0.012em" }}
+            >
+              Where frontier capability converts, and where it stalls
+            </h3>
+          </div>
+          <p className="m-0 max-w-[30ch] self-end text-[13.5px] leading-relaxed" style={{ color: MUTED }}>
+            Each domain placed by how much raw model capability matters, against how hard it is to turn that
+            capability into real-world output.
           </p>
-          <h3
-            className="m-0 font-display text-2xl font-semibold leading-tight sm:text-[33px]"
-            style={{ color: INK, letterSpacing: "-0.012em" }}
-          >
-            Where frontier capability converts, and where it stalls
-          </h3>
         </div>
-        <p className="m-0 max-w-[30ch] self-end text-[13.5px] leading-relaxed" style={{ color: MUTED }}>
-          Each domain placed by how much raw model capability matters, against how hard it is to turn that
-          capability into real-world output.
-        </p>
-      </div>
+      )}
 
+      <div className="overflow-x-auto pb-2" tabIndex={0}>
       <svg
         viewBox="0 0 1020 660"
-        className="mt-2 block w-full overflow-visible"
+        className="mt-2 block w-full min-w-[680px]"
         role="img"
         aria-label="Scatter plot of seven domains by frontier sensitivity and conversion drag. Positions are ordinal judgments, not measured values."
       >
@@ -165,6 +171,7 @@ export function FrontierSensitivityScatter({
           );
         })}
       </svg>
+      </div>
 
       <div className="mt-3 grid gap-8 border-t pt-4 sm:grid-cols-2" style={{ borderColor: RULE }}>
         <div className="flex flex-col gap-2.5">
