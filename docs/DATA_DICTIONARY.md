@@ -136,6 +136,33 @@ Allowed `input_output_role` values:
 - `context`
 - `placeholder`
 
+## `data/observations/adoption_depth.csv`
+
+Canonical, figure-ready observations for source-specific adoption and use-depth
+measures.
+
+| Field | Meaning |
+| --- | --- |
+| observation_id | Stable ID used by tests and production figures. |
+| geography | Geography covered by the value. |
+| period | Survey/reference period, including question window where relevant. |
+| panel | Source-specific comparison group. |
+| measure | Human-readable measured quantity. |
+| value | Numeric reported or estimated value. |
+| unit | Percentage denominator or other unit. |
+| denominator | Exact population over which the percentage is calculated. |
+| survey_universe | Target population and material scope exclusions. |
+| source_id | Reviewed canonical source-register ID. |
+| evidence_label | Observed, official-claim, qualitative-coded, or estimated. |
+| comparability_class | Directly-comparable, within-source-only, not-directly-comparable, or context-only. |
+| definition | Source-specific question/category definition. |
+| caveat | Required interpretation, precision, and comparability warning. |
+| last_verified | Date the row and source chain were checked. |
+
+Direct comparison requires the same source family, period, denominator,
+universe, and question frame. The validator rejects cross-family direct labels
+and BTOS series that bridge the November 2025 wording change.
+
 ## `data/claims/claim_ledger.csv`
 
 Canonical register for claims that may appear in public writing or product UI.
@@ -151,7 +178,7 @@ Canonical register for claims that may appear in public writing or product UI.
 | confidence | high, medium, low, or unknown. |
 | geography | Relevant country, region, or global scope. |
 | sector | Relevant sector or cross-cutting module. |
-| product_use_status | staged, approved, needs-caveat, rejected, or published. |
+| product_use_status | `staged`, `approved`, `approved_with_caveat`, or `rejected`. |
 | caveat | Required qualification if the claim is used. |
 | owner | Person or agent responsible for review. |
 | last_reviewed | Date of last review. |
@@ -176,3 +203,9 @@ Any future scored or coded dataset should include:
 - `realized_outcomes` indicators cannot use `input_output_role=input`.
 - Official claims cannot be rendered as observed outcomes.
 - Missing indicators need a structured `missing_reason`.
+- Canonical observations require reviewed non-placeholder source IDs, explicit
+  denominators, and explicit survey universes.
+- Directly comparable observation panels cannot cross source families,
+  denominators, universes, periods, or question frames.
+- BTOS values before and after the November 2025 wording change cannot be
+  treated as one continuous series.

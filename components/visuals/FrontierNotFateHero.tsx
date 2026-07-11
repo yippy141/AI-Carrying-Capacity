@@ -35,7 +35,7 @@ export function FrontierNotFateHero() {
     <section className="mx-auto max-w-7xl px-5 pb-10 pt-16 sm:px-8 lg:pt-24">
       <p className="mb-6 text-sm font-medium text-muted">
         Working paper, v1.1 draft · Last updated July 11, 2026 · Evidence cutoff
-        July 5, 2026
+        July 11, 2026
       </p>
 
       <div className="max-w-5xl">

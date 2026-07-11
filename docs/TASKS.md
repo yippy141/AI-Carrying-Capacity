@@ -47,6 +47,14 @@
 - [x] Move the empty build-versus-harvest prototype out of the numbered public narrative.
 - [x] Migrate the 2026-07-11 staged source additions to the canonical schema and add the METR February 2026 update.
 - [x] Hide draft forecast ranges pending author review and flag fc-0006 for a resolve/rebase/retire decision.
+- [x] Bank the 2026-07-11 adoption-depth source-verification report with an explicit transient-citation provenance header.
+- [x] Verify and promote 12 primary ECB, Eurostat, Census, and NBS sources for the first empirical figure; reject duplicate media and superseded rows.
+- [x] Add 12 canonical adoption-depth observations with exact denominators, survey universes, evidence labels, and comparability classes.
+- [x] Add adoption-depth schema validation, source-integrity checks, BTOS wording-break guards, and figure-data tests.
+- [x] Ship empirical Figure 1, “Adoption is not integration,” with responsive source-specific panels and SVG/PNG export.
+- [x] Update the study, What we know page, claim ledger, Figure 3 uptake anchors, README, PM status, methods, and figure register.
+- [x] Close GitHub issues #7 and #10 as completed without rewriting their history.
+- [x] Mark the research lab noindex/no-follow for the private preview.
 
 ## Active Protocol
 
@@ -55,12 +63,14 @@
 - [x] Merge Wave 1 evidence-infrastructure branch before source promotion or public-copy rewrite.
 - [x] Merge Wave 2 UI guardrails branch before public-preview review.
 - [x] Review source-promotion PR before merging because canonical source rows become downstream evidence dependencies. (PR #18 merged 2026-06-27.)
-- [ ] Review and promote the 22 staged rows in `research/source-register/2026-07-05-deep-research-source-additions.csv` before clearing essay VERIFY markers.
-- [ ] Review and promote the 25 staged rows in `research/source-register/2026-07-11-deep-research-source-additions.csv` (reconcile duplicate families: IEA vs src-0009, ECB media relay vs src-v1-dr-005).
+- [ ] Review the 19 rows still staged in `research/source-register/2026-07-05-deep-research-source-additions.csv` before clearing remaining essay dependencies.
+- [ ] Review the 22 rows still staged in `research/source-register/2026-07-11-deep-research-source-additions.csv`; IEA, LBNL-media, and ECB-media duplicate families are now rejected.
 - [ ] Wire first canonical series into `BuildoutVsPayoffFigure` before assigning it a public figure number.
 - [ ] Review forecast-register ranges once against resolution sources; flip rows from draft_unreviewed to active.
 - [ ] Author decision for fc-0006: current TH1.1 public data may already satisfy the 8-hour threshold; resolve, rebase, or retire without silently revising the range.
 - [ ] Remap or retire staged `src-v0-dr-*` IDs in `v0_visual_system.json` so public-pilot readiness can pass.
+- [ ] Move six superseded content drafts intact to `research/archive/` in a scoped cleanup; do not delete their useful research material or cosmetically clear TODOs.
+- [ ] Obtain native-language human review for the contextual NBS source src-0049 before a public pilot.
 
 ## Next
 

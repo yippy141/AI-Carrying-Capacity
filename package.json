@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint . --max-warnings=0",
     "typecheck": "tsc --noEmit",
-    "test:evidence": "node --test --experimental-strip-types lib/evidenceStatus.test.ts"
+    "test:evidence": "node --test --experimental-strip-types lib/*.test.ts"
   },
   "dependencies": {
     "next": "16.2.9",

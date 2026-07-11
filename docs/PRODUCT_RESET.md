@@ -28,7 +28,7 @@ The public product is restructured around its strongest research argument rather
 
 | Route | Role |
 | --- | --- |
-| `/` | The study: editorial narrative — hero, research question, three findings, forecasts preview, methods footer |
+| `/` | The study: editorial narrative — hero, research question, two observations, one proposition, one comparative hypothesis, forecasts preview, methods footer |
 | `/findings` | Concise finding summaries with figures and evidence stage labels |
 | `/evidence` | Source register and claim ledger explorer (reads the canonical CSVs) |
 | `/forecasts` | Forecast and signpost tracker from `data/forecasts/forecast_register.csv` |

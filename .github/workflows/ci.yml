@@ -29,8 +29,17 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Test evidence logic
+        run: npm run test:evidence
+
       - name: Build
         run: npm run build
+
+      - name: Test adoption-depth validator
+        run: python3 -m unittest scripts/validate_adoption_depth_test.py
+
+      - name: Validate adoption-depth observations
+        run: python3 scripts/validate_adoption_depth.py
 
       - name: Validate repo scaffold
         run: python3 scripts/validate_repo.py

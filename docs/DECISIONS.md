@@ -179,3 +179,61 @@ Reasoning: A numbered empirical figure containing only empty states borrows auth
 Decision: Hide numerical forecast ranges until author review clears them. Keep fc-0006's draft range unchanged while flagging an author decision because current TH1.1 measurements may already cross its threshold. Treat METR's early-2025 slowdown result as historical and out of date, paired with the February 2026 methodology update and its measurement-uncertainty conclusion.
 
 Reasoning: Draft probabilities should not look endorsed. Rapidly changing capability and productivity measurements require explicit baselines, uncertainty, benchmark ceilings, and source vintage.
+
+## 2026-07-11: Make adoption depth the first canonical empirical figure
+
+Decision: Figure 1 is “Adoption is not integration,” built from source-specific
+ECB SAFE intensity, U.S. Census BTOS organizational breadth, and Eurostat
+firm-size adoption panels. The panels are not pooled, ranked, or described as a
+harmonized deep-use measure.
+
+Reasoning: Each source identifies a real gap between a binary adoption headline
+and a more informative conversion measure, but the instruments use different
+questions, periods, universes, and denominators. A multi-panel figure preserves
+the empirical signal without false harmonization.
+
+## 2026-07-11: Add a canonical observation register
+
+Decision: Add `data/observations/adoption_depth.csv` as a figure-ready canonical
+table. Every row must carry a period, denominator, survey universe, canonical
+source ID, evidence label, comparability class, definition, caveat, and
+verification date. Figure components resolve plotted values by observation ID
+rather than embedding numbers.
+
+Reasoning: Source metadata alone cannot prevent denominator drift or component
+literals from diverging from reviewed data. The observation layer creates a
+testable source-to-value-to-figure chain without turning process measures into
+outcomes.
+
+## 2026-07-11: Preserve the ECB unreported residual
+
+Decision: Show the ECB’s four published shares — 27, 33, 31, and 7 — on a
+100-point scale with a two-point unallocated residual. Do not normalize the
+segments, call the residual rounding alone, or derive 73% any use.
+
+Reasoning: QA1 offers a “don’t know” response and the results page does not
+publish a raw allocation for the residual. It may reflect that response and
+rounding. The defensible statement is that the reported use categories sum to
+71% and the ECB staff blog says more than 70%, not an invented 73%.
+
+## 2026-07-11: Treat BTOS Q23 and Q24 as separate measurement frames
+
+Decision: The 18%/32% Q23 summaries and 57%/4% Q24 breadth measures must remain
+visually and methodologically separate. Q23 uses a prior-two-week all-business
+question; Q24 uses a prior-six-month list of 15 functions. The 4% comprehensive
+adopter value is labeled estimated because it comes from latent-class analysis.
+
+Reasoning: Presenting the values as one funnel would silently change the
+reference window and denominator. The working paper is descriptive and
+non-causal; its 32% summary also differs from Table C.7’s 31.2%, which must stay
+visible as an unresolved precision issue.
+
+## 2026-07-11: Mark the private-preview lab noindex rather than gating it
+
+Decision: Apply noindex/no-follow metadata to `/lab` while retaining ordinary
+review access. Do not add an access gate at this stage.
+
+Reasoning: The lab contains clearly labeled, non-confidential research
+instruments. Robots metadata reduces accidental discovery without obstructing
+review. A real gate becomes appropriate only if confidential, private, or
+licensed material enters the route.

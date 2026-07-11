@@ -104,6 +104,40 @@ Every indicator should identify its role:
 
 This protects the project from treating robot density, policy targets, public platform users, or compute announcements as realized outcomes.
 
+## Canonical Observation Layer
+
+Figure-ready values sit between sources and public claims in canonical
+observation tables. Each observation must preserve:
+
+- a stable observation ID;
+- geography and period;
+- panel and source-specific measure;
+- numeric value and unit;
+- exact denominator and survey universe;
+- canonical source ID;
+- evidence label and comparability class;
+- definition, caveat, and last-verified date.
+
+The first table is `data/observations/adoption_depth.csv`. Figure 1 resolves
+every plotted value by observation ID, and validation fails if a source is
+missing, staged, or a placeholder.
+
+Comparability classes are directly-comparable, within-source-only,
+not-directly-comparable, and context-only. Direct comparison requires one
+source family, period, universe, denominator, and question frame. Values from
+ECB SAFE, Eurostat, and BTOS may appear in separate panels but may not be
+treated as one harmonized depth scale.
+
+Questionnaire changes create explicit time-series breaks. In particular, BTOS
+values before the November 2025 change from “producing goods or services” to
+“any business function” cannot form one continuous series with later values.
+Within the current supplement, Q23 prior-two-week use and Q24 prior-six-month
+functional breadth also remain distinct.
+
+Estimates are labeled separately from direct responses. The BTOS 4%
+comprehensive-adopter value is a working-paper latent-class estimate and is
+therefore tagged estimated even though it uses official survey microdata.
+
 ## Guardrails
 
 - Do not average away bottlenecks with a single score in V0.
@@ -119,9 +153,15 @@ This protects the project from treating robot density, policy targets, public pl
 
 ## V0 Web Presentation
 
-The initial web app can present methodology, source status, scenario placeholders, sector modules, and country-profile shells. It must not present a definitive country ranking, a composite national score, or unsourced indicator values.
+The web app may present methodology, source status, canonical empirical
+figures, scenario placeholders, sector modules, and country-profile shells. It
+must not present a definitive country ranking, a composite national score, or
+unsourced indicator values.
 
-For the web app, placeholder modules should visibly label records as `placeholder` or `missing`. If a page needs an example country or sector shell, it may show the shell only; every value remains missing until a reviewed source and documented method support it.
+Canonical empirical figures require reviewed source rows, canonical
+observations, visible denominators, and source notes. Placeholder modules still
+label records as `placeholder` or `missing`; every other value remains missing
+until a reviewed source and documented method support it.
 
 ## Launch Readiness
 

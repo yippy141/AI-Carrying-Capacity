@@ -3,7 +3,11 @@ import Link from "next/link";
 
 import { EvidenceChip } from "@/components/ui/EvidenceChip";
 import { evidenceStatusForClaim } from "@/lib/evidenceStatus";
-import { loadClaimLedger, loadSourceRegister } from "@/lib/registers";
+import {
+  loadAdoptionDepth,
+  loadClaimLedger,
+  loadSourceRegister
+} from "@/lib/registers";
 
 export const metadata: Metadata = {
   title: "Evidence"
@@ -14,6 +18,7 @@ export default function EvidencePage() {
     (row) => row.placeholder !== "true"
   );
   const claims = loadClaimLedger();
+  const observations = loadAdoptionDepth();
   const approved = claims.filter((c) => c.product_use_status === "approved");
   const caveated = claims.filter(
     (c) => c.product_use_status === "approved_with_caveat"
@@ -27,11 +32,12 @@ export default function EvidencePage() {
           Evidence
         </p>
         <h1 className="text-4xl leading-tight text-foreground sm:text-5xl">
-          The source register and claim ledger behind the study.
+          The source, observation, and claim registers behind the study.
         </h1>
         <p className="mt-6 text-lg leading-8 text-muted">
           Every public claim routes through this ledger with its sources,
           confidence, and required caveat. {sources.length} reviewed sources;{" "}
+          {observations.length} canonical observations;{" "}
           {approved.length + caveated.length} claims cleared for the narrative
           ({caveated.length} of them caveat-bound); {staged.length} staged
           pending source promotion. Raw CSVs live in the repository:{" "}
@@ -42,8 +48,15 @@ export default function EvidencePage() {
             target="_blank"
           >
             source register
-          </a>{" "}
-          and{" "}
+          </a>,{" "}
+          <a
+            className="focus-ring underline"
+            href="https://github.com/yippy141/AI-Carrying-Capacity/blob/main/data/observations/adoption_depth.csv"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            adoption-depth observations
+          </a>, and{" "}
           <a
             className="focus-ring underline"
             href="https://github.com/yippy141/AI-Carrying-Capacity/blob/main/data/claims/claim_ledger.csv"
@@ -55,6 +68,86 @@ export default function EvidencePage() {
           .
         </p>
       </div>
+
+      <section className="mt-14">
+        <h2 className="text-3xl text-foreground">Canonical observations</h2>
+        <p className="mt-3 max-w-3xl leading-7 text-muted">
+          Figure-ready values keep their original period, denominator, survey
+          universe, evidence label, and comparability class. Separate source
+          families are not silently harmonized.
+        </p>
+        <div
+          aria-label="Scrollable canonical observation table"
+          className="focus-ring mt-6 overflow-x-auto"
+          tabIndex={0}
+        >
+          <table className="w-full min-w-[1100px] border-collapse text-left text-sm">
+            <caption className="sr-only">
+              Canonical adoption-depth observations used by Figure 1
+            </caption>
+            <thead>
+              <tr className="border-b-2 border-foreground text-xs uppercase tracking-[0.08em] text-muted">
+                <th className="py-2 pr-3 font-semibold" scope="col">Geography / panel</th>
+                <th className="py-2 pr-3 font-semibold" scope="col">Measure</th>
+                <th className="py-2 pr-3 font-semibold" scope="col">Value</th>
+                <th className="py-2 pr-3 font-semibold" scope="col">Period</th>
+                <th className="py-2 pr-3 font-semibold" scope="col">Denominator</th>
+                <th className="py-2 pr-3 font-semibold" scope="col">Evidence</th>
+                <th className="py-2 pr-3 font-semibold" scope="col">Comparability</th>
+                <th className="py-2 font-semibold" scope="col">Source</th>
+              </tr>
+            </thead>
+            <tbody>
+              {observations.map((observation) => (
+                <tr
+                  className="border-b border-rule align-top"
+                  id={observation.observation_id}
+                  key={observation.observation_id}
+                >
+                  <td className="py-3 pr-3 leading-6 text-muted">
+                    <span className="block font-semibold text-foreground">
+                      {observation.geography}
+                    </span>
+                    {observation.panel}
+                  </td>
+                  <td className="py-3 pr-3 leading-6 text-foreground">
+                    {observation.measure}
+                  </td>
+                  <td className="py-3 pr-3 font-semibold text-foreground">
+                    {observation.value} {observation.unit}
+                  </td>
+                  <td className="py-3 pr-3 leading-6 text-muted">
+                    {observation.period}
+                  </td>
+                  <td className="py-3 pr-3 leading-6 text-muted">
+                    {observation.denominator}
+                  </td>
+                  <td className="py-3 pr-3">
+                    <EvidenceChip
+                      status={
+                        observation.evidence_label === "estimated"
+                          ? "model estimate"
+                          : observation.evidence_label
+                      }
+                    />
+                  </td>
+                  <td className="py-3 pr-3 text-muted">
+                    {observation.comparability_class.replaceAll("-", " ")}
+                  </td>
+                  <td className="py-3 font-mono text-xs">
+                    <a
+                      className="focus-ring text-primary-strong underline"
+                      href={"#" + observation.source_id}
+                    >
+                      {observation.source_id}
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
 
       <section className="mt-14">
         <h2 className="text-3xl text-foreground">Claim ledger</h2>
@@ -76,8 +169,9 @@ export default function EvidencePage() {
               <div className="flex flex-wrap items-center gap-2 text-xs text-missing">
                 <span className="font-mono">{claim.claim_id}</span>
                 <EvidenceChip status={evidenceStatusForClaim(claim)} />
+                <span>Claim type: {claim.claim_type.replaceAll("_", " ")}</span>
                 <span>
-                  Evidence type: {claim.claim_type.replaceAll("_", " ")}
+                  Evidence type: {claim.evidence_type.replaceAll("_", " ")}
                 </span>
                 <span className="uppercase tracking-[0.08em] text-foreground">
                   Product status: {claim.product_use_status.replaceAll("_", " ")}
@@ -111,22 +205,33 @@ export default function EvidencePage() {
           official documents are tier-A sources for what a government intends,
           not for whether it worked.
         </p>
-        <div className="mt-6 overflow-x-auto" tabIndex={0}>
+        <div
+          aria-label="Scrollable source register table"
+          className="focus-ring mt-6 overflow-x-auto"
+          tabIndex={0}
+        >
           <table className="w-full min-w-[820px] border-collapse text-left text-sm">
+            <caption className="sr-only">
+              Reviewed canonical sources supporting the study
+            </caption>
             <thead>
               <tr className="border-b-2 border-foreground text-xs uppercase tracking-[0.08em] text-muted">
-                <th className="py-2 pr-3 font-semibold">ID</th>
-                <th className="py-2 pr-3 font-semibold">Source</th>
-                <th className="py-2 pr-3 font-semibold">Org</th>
-                <th className="py-2 pr-3 font-semibold">Year</th>
-                <th className="py-2 pr-3 font-semibold">Tier</th>
-                <th className="py-2 pr-3 font-semibold">Official-claim status</th>
-                <th className="py-2 font-semibold">Link</th>
+                <th className="py-2 pr-3 font-semibold" scope="col">ID</th>
+                <th className="py-2 pr-3 font-semibold" scope="col">Source</th>
+                <th className="py-2 pr-3 font-semibold" scope="col">Org</th>
+                <th className="py-2 pr-3 font-semibold" scope="col">Year</th>
+                <th className="py-2 pr-3 font-semibold" scope="col">Tier</th>
+                <th className="py-2 pr-3 font-semibold" scope="col">Official-claim status</th>
+                <th className="py-2 font-semibold" scope="col">Link</th>
               </tr>
             </thead>
             <tbody>
               {sources.map((source) => (
-                <tr className="border-b border-rule align-top" key={source.source_id}>
+                <tr
+                  className="border-b border-rule align-top scroll-mt-24"
+                  id={source.source_id}
+                  key={source.source_id}
+                >
                   <td className="py-2.5 pr-3 font-mono text-xs text-missing">
                     {source.source_id}
                   </td>
