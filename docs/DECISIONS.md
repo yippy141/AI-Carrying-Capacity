@@ -125,3 +125,21 @@ Reasoning: Scenario work in V0 is a reasoning aid, not a forecast. Showing a sin
 Decision: Use a reusable `StagedEvidenceBanner` on visual pages that rely on `data/processed/v0_visual_system.json` or staged claim-card examples.
 
 Reasoning: The visual system is useful for product structure, but it must not look like reviewed evidence. Public pages should say that staged visuals are not canonical findings, do not contain a composite score, keep official claims separate from independently observed evidence, and preserve missing values.
+
+## 2026-07-05: Correct the China robot-density figure and make density claims denominator-explicit
+
+Decision: Use IFR World Robotics 2025's revised China manufacturing robot density of 166 per 10,000 employees (22nd worldwide; US 307; Korea 1,220; global average 132), verified against the live IFR press page. Any density claim in product or essay copy must state which workforce denominator series it uses. The 470 figure (2023, pre-revision) and a 567 figure found in draft copy are superseded; the latter has no identifiable IFR basis.
+
+Reasoning: Robot density is the single most load-bearing comparative number in the manufacturing module, and IFR's NBS-workforce revision reverses the China-US density ordering. Treating the revision as the story (aggregate scale vs median diffusion) is more accurate and analytically sharper than either the old or the hallucinated figure.
+
+## 2026-07-05: Claim ledger is the gate between sources and public copy
+
+Decision: Populate `data/claims/claim_ledger.csv` with three product-use statuses: `approved` (canonical sources only), `approved_with_caveat` (canonical sources; caveat must ship with the claim), and `staged` (cites `src-v1-dr-*` rows pending verification). Public copy may only assert approved or approved_with_caveat claims without a draft marker.
+
+Reasoning: The launch essay makes empirical claims faster than the source register can police unless every claim routes through the ledger. Staged claims keep the essay draftable now while making the promotion dependency explicit.
+
+## 2026-07-05: Figure 1 is an ordinal judgment figure, not a measurement
+
+Decision: Add `FrontierSensitivityScatter` (converted from the Claude Design mockup) as Figure 1 on the homepage. Its "positions are illustrative, not scored" caption, uncertainty halos, and "read the pattern, not the coordinates" language are part of the figure contract and must not be removed. Placements cross-reference clm-0029 and the staged METR domain evidence (clm-0024).
+
+Reasoning: The frontier-sensitivity × conversion-drag scatter is the project's central diagnostic and the most defensible visual form of the marginal-return question: it communicates the pattern without pretending to a fitted function or scored coordinates.
