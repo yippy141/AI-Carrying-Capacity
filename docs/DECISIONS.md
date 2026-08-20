@@ -237,3 +237,15 @@ Reasoning: The lab contains clearly labeled, non-confidential research
 instruments. Robots metadata reduces accidental discovery without obstructing
 review. A real gate becomes appropriate only if confidential, private, or
 licensed material enters the route.
+
+## 2026-08-21: Keep non-comparable official context in the observation layer
+
+Decision: Retain China NBS's 2023 16.4% above-scale-enterprise AI-use statistic
+in `data/observations/adoption_depth.csv` as `official-claim` and
+`context-only`. It is not plotted in Figure 1 and cannot be compared with ECB,
+BTOS, or Eurostat rows.
+
+Reasoning: A canonical but non-plotted observation keeps the source-specific
+denominator, universe, translation note, and comparability warning testable.
+Leaving the value only in narrative copy or the claim ledger would allow those
+measurement safeguards to drift.

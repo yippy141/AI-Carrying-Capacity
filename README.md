@@ -1,150 +1,81 @@
 # Frontier Is Not Fate
 
-**Frontier Is Not Fate** is a public-facing interactive study of when advanced
-AI becomes material national capacity — and when infrastructure, institutions,
-organization, and distribution flatten the return.
+**Frontier Is Not Fate** is an editorial web study of how accessible AI
+capability becomes—or fails to become—national capacity. The **AI Conversion
+Atlas** is the evidence system underneath it.
 
-The **AI Conversion Atlas** is the evidence system underneath the study. It
-tracks sources, observations, claims, figures, and falsifiable forecasts so the
-public narrative cannot outrun what has actually been verified.
+The project keeps frontier access, conversion capacity, adaptation capacity,
+distribution quality, and realized outcomes separate. It does not publish a
+composite national score.
+
+## Current architecture
+
+- `app/` — the public study, findings, evidence, forecasts, methods, and lab
+  routes.
+- `components/` — editorial UI and empirical or conceptual figures.
+- `data/sources/` — reviewed canonical sources and non-evidentiary
+  placeholders.
+- `data/observations/` — source-specific numeric observations with periods,
+  denominators, universes, evidence labels, and comparability classes.
+- `data/claims/` — claims, supporting source IDs, confidence, required caveats,
+  and product-use status.
+- `data/forecasts/` — signpost questions, resolution criteria, deadlines, and
+  author-review state.
+- `docs/FIGURE_REGISTER.md` — figure type, evidence dependencies, caveats, and
+  export requirements.
+- `research/` — banked research and staged source candidates; report citations
+  are not canonical evidence.
+- `scripts/` — schema, evidence-integrity, and launch-readiness checks.
+
+The live Figure 1, “Adoption is not integration,” reads plotted values from
+`data/observations/adoption_depth.csv`. Its ECB, U.S. Census, and Eurostat
+panels preserve their original definitions and denominators rather than
+creating a harmonized use-depth metric. China’s NBS statistic is retained as
+context only and is not plotted or compared across source families.
 
 ## Status
 
-**Private preview only.** The accepted information architecture is live and the
-first canonical empirical figure is now implemented. The project is not a
-public-pilot release: legacy research drafts, staged visual references, and
-unreviewed forecast ranges remain visible to the internal readiness checker.
-
-The canonical source register currently contains 49 reviewed
-non-placeholder sources plus six non-evidentiary placeholders. Forty-one rows
-remain staged across the July 5 and July 11 source-intake files.
-
-## Research question
-
-> How does the marginal national return to accessible frontier AI capability
-> vary by country, sector, conversion capacity, and outcome type?
-
-The study separates four objects:
-
-1. **Frontier capability** — what leading systems can do.
-2. **Accessible capability** — what actors in a country can legally,
-   economically, and practically use.
-3. **Conversion capacity** — the power, firms, skills, finance, institutions,
-   data, and coordination that turn access into repeated use.
-4. **Outcomes by stage** — build, use, harvest, and distribute.
-
-These objects are not collapsed into a national score or ranking.
-
-## What the study can say
-
-The public narrative distinguishes evidence-backed observations from
-propositions and comparative hypotheses:
-
-| Class | Meaning | Current study item |
-| --- | --- | --- |
-| Observation | A descriptive claim tied to reviewed canonical evidence | **Adoption is not integration.** Source-specific surveys show gaps between binary adoption and deeper use. |
-| Observation | A separate macro record, not inferred from adoption | **Buildout is visible before broad payoff.** Reviewed infrastructure evidence does not establish national productivity attribution. |
-| Proposition | A falsifiable mechanism that organizes evidence but is not itself a measured result | **Frontier returns differ by domain.** |
-| Comparative hypothesis | A country comparison to test, not a verdict or winner claim | **The United States and China encounter different conversion bottlenecks.** |
-
-The first empirical figure preserves ECB, U.S. Census, and Eurostat definitions
-and denominators. It does not call their different concepts a harmonized
-“deep-use” metric.
-
-## Evidence system
-
-| Register | Canonical path | Purpose |
-| --- | --- | --- |
-| Sources | data/sources/source_register.csv | Original URLs or DOIs, publication metadata, method type, reliability, official-claim status, and review state |
-| Observations | data/observations/adoption_depth.csv | Figure-ready values with exact period, denominator, universe, evidence label, and comparability class |
-| Claims | data/claims/claim_ledger.csv | Public claims, source IDs, confidence, required caveats, counterevidence, and product-use status |
-| Figures | docs/FIGURE_REGISTER.md | Figure number, type, sources, status, caveats, and export requirements |
-| Forecasts | data/forecasts/forecast_register.csv | Resolution criteria, observed resolution sources, deadlines, and author-review state |
-
-Deep Research reports enter research/deep-research as banked research
-artifacts. Candidate rows remain in research/source-register until original
-primary URLs, metadata, denominator language, and source class have been
-reviewed. A report citation never creates canonical evidence by itself.
-
-## Repository map
-
-~~~text
-app/                 Next.js study, findings, evidence, forecasts, methods, and lab routes
-components/          Editorial UI and production visual components
-content/             Draft prose still under publication review
-data/                Canonical sources, observations, claims, forecasts, and staged products
-docs/                Method, decisions, tasks, figure register, and agent rules
-reports/             PM status, source-promotion audits, screenshots, and blockers
-research/            Banked reports, notes, staging files, and future archive material
-scripts/             Evidence, schema, and private-preview readiness validators
-templates/           Reusable research and register templates
-~~~
+Private preview. The post-PR-#21 information architecture and the first
+canonical empirical figure are implemented. Public-pilot readiness remains
+blocked by staged sources, legacy visual references, research TODOs, and
+unreviewed forecast ranges; the readiness checker reports these explicitly.
 
 ## Develop locally
 
-Requirements:
+Requires Node.js 22, npm, and Python 3.
 
-- Node.js 22
-- npm
-- Python 3
-
-Install and run:
-
-~~~sh
+```sh
 npm ci
 npm run dev
-~~~
+```
 
-Run the full evidence and application checks:
+Run the application and evidence checks:
 
-~~~sh
+```sh
 npm run typecheck
 npm run lint
 npm run build
 npm run test:evidence
+python3 -m unittest scripts/validate_adoption_depth_test.py
+python3 scripts/validate_adoption_depth.py
 python3 scripts/validate_repo.py
 python3 scripts/validate_source_register.py
-python3 scripts/validate_adoption_depth.py
 python3 scripts/validate_indicator_catalog.py
 python3 scripts/check_launch_readiness.py --mode private-preview
-~~~
+```
 
-Private-preview readiness reports known publication blockers without failing
-the development build. Public-pilot mode is intentionally stricter.
+## Research rules
 
-## Contribution workflow
+- Do not fabricate data, citations, metadata, or indicator values.
+- Mark missing values as missing and estimates or qualitative coding
+  explicitly.
+- Promote only verified original URLs or DOIs to the canonical source register.
+- Give every plotted value a canonical observation and source ID.
+- Keep source families, denominators, survey windows, and non-comparable
+  contexts separate.
+- Treat China–United States comparisons as hypotheses to test, not verdicts.
+- Record methodology or architecture decisions in `docs/DECISIONS.md` and
+  completed or discovered work in `docs/TASKS.md`.
 
-1. Read docs/AGENT_BRIEF.md, docs/METHOD.md, docs/TASKS.md, and the relevant
-   register documentation before changing data or public claims.
-2. Work from the latest main branch on a scoped branch or worktree. Preserve
-   unrelated local changes.
-3. Bank new commissioned research before extracting candidates.
-4. Promote only original primary URLs or DOIs into the canonical source
-   register. Distinguish official statistics, questionnaires, methodology,
-   staff analysis, working papers, and media relays.
-5. Put every plotted value in a canonical observation file with its denominator
-   and survey universe. Mark estimates and qualitative coding explicitly.
-6. Route narrative claims through the claim ledger and update the figure
-   register whenever a public figure changes.
-7. Record methodology, naming, scoring, or architecture choices in
-   docs/DECISIONS.md and update docs/TASKS.md for completed or discovered work.
-8. Run the full checks above before committing. Open a draft pull request; do
-   not auto-merge or auto-publish.
-
-Useful review targets include source provenance, denominator accuracy,
-non-English wording, survey comparability, causal overreach, missingness, and
-whether China–U.S. contrasts remain hypotheses rather than conclusions.
-
-## Non-negotiable rules
-
-- Do not fabricate data, citations, source metadata, or indicator values.
-- Mark missing values as missing.
-- Mark estimates and qualitative coding explicitly.
-- Keep frontier access, conversion capacity, adaptation capacity, distribution
-  quality, and realized outcomes separate.
-- Keep inputs, process measures, and outcomes separate.
-- Do not use Wikipedia as evidence.
-- Do not create a composite national score unless a documented methodology and
-  sensitivity analysis eventually support it.
-- Do not add secrets, tokens, API keys, or private credentials.
-- Do not declare the project public-pilot ready while known blockers remain.
+Read `docs/AGENT_BRIEF.md`, `docs/METHOD.md`, and the relevant data dictionary
+before changing evidence or public copy.

@@ -53,6 +53,7 @@ export type AdoptionDepthFigureModel = {
     sizeGradient: FigureObservation[];
   };
   plottedObservationIds: string[];
+  verificationDate: string;
 };
 
 function numericObservation(row: AdoptionDepthObservation): FigureObservation {
@@ -99,6 +100,12 @@ export function buildAdoptionDepthFigureModel(
     requireObservation(rowsById, id)
   );
   const reportedTotal = ecbRows.reduce((sum, row) => sum + row.value, 0);
+  const plottedRows = [
+    ...ecbRows,
+    allFirms,
+    ...adopterOnly,
+    ...sizeGradient
+  ];
 
   return {
     ecb: {
@@ -108,12 +115,10 @@ export function buildAdoptionDepthFigureModel(
     },
     btos: { allFirms, adopterOnly },
     eurostat: { sizeGradient },
-    plottedObservationIds: [
-      ...ecbRows,
-      allFirms,
-      ...adopterOnly,
-      ...sizeGradient
-    ].map((row) => row.observation_id)
+    plottedObservationIds: plottedRows.map((row) => row.observation_id),
+    verificationDate: plottedRows
+      .map((row) => row.last_verified)
+      .sort()[0] ?? "missing"
   };
 }
 
@@ -206,6 +211,6 @@ export function buildAdoptionDepthExportSvg(
   <text x="100" y="1384" class="source">Source: Eurostat 2025 ICT enterprise survey · ${xml(small.source_id)}</text>
   <text x="100" y="1410" class="source">Universe: ${xml(small.survey_universe)}</text>
   <line x1="100" y1="1440" x2="1500" y2="1440" stroke="#2f2a27" stroke-width="2"/>
-  <text x="100" y="1478" class="note">Figure 1 · empirical · AI Conversion Atlas · verified 2026-07-11</text>
+  <text x="100" y="1478" class="note">Figure 1 · empirical · AI Conversion Atlas · verified ${xml(model.verificationDate)}</text>
 </svg>`;
 }

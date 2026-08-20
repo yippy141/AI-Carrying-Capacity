@@ -25,7 +25,7 @@ const PANELS: PanelSpec[] = [
   {
     title: "Panel B · The payoff, not yet visible",
     framing:
-      "Measured productivity effects. This panel will show the harvest stage: model-estimated and observed productivity gains, which lag the buildout by design of the underlying economics.",
+      "No canonical series currently supports a harvest-stage finding. This panel remains empty until reviewed outcome evidence, attribution limits, and source vintages are wired in.",
     pendingSources: [
       "IMF Europe TFP model estimate (staged, src-v1-dr-011)",
       "OECD G7 labor-productivity model estimate (staged, src-v1-dr-012)",

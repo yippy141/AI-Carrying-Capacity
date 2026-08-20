@@ -49,12 +49,13 @@
 - [x] Hide draft forecast ranges pending author review and flag fc-0006 for a resolve/rebase/retire decision.
 - [x] Bank the 2026-07-11 adoption-depth source-verification report with an explicit transient-citation provenance header.
 - [x] Verify and promote 12 primary ECB, Eurostat, Census, and NBS sources for the first empirical figure; reject duplicate media and superseded rows.
-- [x] Add 12 canonical adoption-depth observations with exact denominators, survey universes, evidence labels, and comparability classes.
+- [x] Add 13 canonical adoption-depth observations with exact denominators, survey universes, evidence labels, and comparability classes; retain the China NBS value as context-only and unplotted.
 - [x] Add adoption-depth schema validation, source-integrity checks, BTOS wording-break guards, and figure-data tests.
 - [x] Ship empirical Figure 1, “Adoption is not integration,” with responsive source-specific panels and SVG/PNG export.
 - [x] Update the study, What we know page, claim ledger, Figure 3 uptake anchors, README, PM status, methods, and figure register.
 - [x] Close GitHub issues #7 and #10 as completed without rewriting their history.
 - [x] Mark the research lab noindex/no-follow for the private preview.
+- [x] Reverify PR #22 against post-PR-#21 main; refresh 12 promoted source rows, living-source metadata, denominator safeguards, and the concise README architecture summary.
 
 ## Active Protocol
 

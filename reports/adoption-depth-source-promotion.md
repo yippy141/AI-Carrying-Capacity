@@ -1,6 +1,7 @@
 # Adoption-depth source promotion
 
 Date: 2026-07-11
+Reverified: 2026-08-21
 Branch: evidence/adoption-depth-figure
 Status: review required before merge
 
@@ -25,7 +26,7 @@ uses an original institutional URL or DOI.
 | --- | --- | --- |
 | src-0038 | ECB SAFE Q4 2025 results | Four published AI-use intensity shares; Figure 1 Panel A |
 | src-0039 | ECB SAFE Q4 2025 questionnaire | Exact QA1 wording, AI definition, and “don’t know” response |
-| src-0040 | ECB SAFE methodology, April 2026 | Sample, exclusions, fieldwork, calibration, and economic weights |
+| src-0040 | ECB SAFE methodology, July 2026 | Sample, exclusions, fieldwork, calibration, and economic weights |
 | src-0041 | ECB June 24 staff analysis | Defines “intensive” as significant use; context only |
 | src-0042 | Eurostat Statistics Explained article | 2025 overall and firm-size adoption values; Figure 1 Panel C |
 | src-0043 | Eurostat ISOC_EB_AI dataset DOI | Canonical dataset and API-backed value check |
@@ -86,7 +87,9 @@ Figure 1 and is not workflow integration.
 The NBS article verifies 16.4% AI use among above-scale enterprises in 2023,
 with the article’s sector-specific above-scale definition and original Chinese
 wording. The source is promoted only as contextual evidence. No China value is
-plotted or treated as comparable with SAFE, Eurostat, or BTOS.
+plotted or treated as comparable with SAFE, Eurostat, or BTOS. The value is
+retained in the canonical observation table as an `official-claim`,
+`context-only` row so its denominator and non-comparability caveat cannot drift.
 
 ## Deferred
 
@@ -130,9 +133,10 @@ plotted or treated as comparable with SAFE, Eurostat, or BTOS.
    preserves 32% as a disclosed, unplotted summary value.
 3. Raw SAFE QA1 tabulations would be needed to divide the two-point residual
    between “don’t know,” rounding, or another unpublished category.
-4. The ECB methodology prints April 2026 without a day, and the current Census
-   questionnaire prints a revision date rather than a publication date. Those
-   canonical date fields remain explicitly partial or missing.
+4. The live ECB methodology now prints July 2026 without a day. The Census
+   methodology at the canonical URL was updated on 2026-08-13, while the
+   Census questionnaire prints a revision date rather than a publication date.
+   Canonical date fields remain exact, partial, or missing accordingly.
 
 ## Not approved by report appearance
 

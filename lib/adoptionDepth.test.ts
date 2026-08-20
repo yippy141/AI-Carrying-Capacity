@@ -29,6 +29,7 @@ test("Figure 1 reads its expected values from the canonical observation file", (
     model.eurostat.sizeGradient.map((row) => row.value),
     [17, 30.36, 55.03]
   );
+  assert.equal(model.verificationDate, "2026-08-21");
 });
 
 test("all plotted observations resolve to reviewed canonical sources", () => {
@@ -70,6 +71,21 @@ test("the figure keeps source-specific denominators and reference windows separa
   );
 });
 
+test("China NBS adoption context remains explicit and non-comparable", () => {
+  const nbs = loadAdoptionDepth().find(
+    (row) => row.observation_id === "obs-adoption-depth-013"
+  );
+
+  assert.ok(nbs, "missing China NBS context observation");
+  assert.equal(nbs.value, "16.4");
+  assert.equal(nbs.source_id, "src-0049");
+  assert.equal(nbs.evidence_label, "official-claim");
+  assert.equal(nbs.comparability_class, "context-only");
+  assert.match(nbs.denominator, /above-scale enterprises/i);
+  assert.match(nbs.caveat, /not directly comparable/i);
+  assert.match(nbs.caveat, /does not publish an AI-item numerator/i);
+});
+
 test("SVG and PNG export source is generated from the plotted model", () => {
   const model = buildAdoptionDepthFigureModel(loadAdoptionDepth());
   const svg = buildAdoptionDepthExportSvg(model);
@@ -89,6 +105,7 @@ test("SVG and PNG export source is generated from the plotted model", () => {
   assert.match(svg, />60%<\/text>/);
   assert.match(svg, /Source: Eurostat 2025 ICT enterprise survey/);
   assert.match(svg, /Universe: Enterprises with 10 or more employees/);
+  assert.match(svg, /verified 2026-08-21/);
   for (const observationId of expectedIds) {
     assert.match(svg, new RegExp(observationId));
   }
