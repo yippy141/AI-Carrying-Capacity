@@ -2,10 +2,11 @@ import Link from "next/link";
 
 import { EvidenceChip } from "@/components/ui/EvidenceChip";
 import { FigureShell } from "@/components/ui/FigureShell";
+import { AdoptionDepthFigure } from "@/components/visuals/AdoptionDepthFigure";
 import { ConversionChainCompare } from "@/components/visuals/ConversionChainCompare";
 import { FrontierNotFateHero } from "@/components/visuals/FrontierNotFateHero";
 import { FrontierSensitivityScatter } from "@/components/visuals/FrontierSensitivityScatter";
-import { loadForecastRegister } from "@/lib/registers";
+import { loadAdoptionDepth, loadForecastRegister } from "@/lib/registers";
 
 function StudySection({
   eyebrow,
@@ -37,6 +38,7 @@ function StudySection({
 
 export default function Home() {
   const forecasts = loadForecastRegister().slice(0, 3);
+  const adoptionDepth = loadAdoptionDepth();
 
   return (
     <main>
@@ -65,7 +67,8 @@ export default function Home() {
           on different clocks: <strong className="text-foreground">build</strong>{" "}
           (investment and infrastructure, visible now),{" "}
           <strong className="text-foreground">use</strong> (adoption and
-          intensity, with comparative estimates still under review),{" "}
+          intensity, now anchored by a first canonical but non-harmonized
+          evidence slice),{" "}
           <strong className="text-foreground">harvest</strong> (productivity,
           not yet attributable at national scale), and{" "}
           <strong className="text-foreground">distribute</strong> (who gets the
@@ -73,14 +76,73 @@ export default function Home() {
         </p>
       </StudySection>
 
-      <StudySection eyebrow="Observation" title="Buildout is visible before broad payoff." id="finding-1">
+      <StudySection
+        eyebrow="Observation"
+        title="Adoption is not integration."
+        id="finding-1"
+      >
+        <p>
+          A binary adoption rate can hide the difference between a pilot and a
+          redesigned organization. In the ECB&apos;s Q4 2025 SAFE, reported
+          “any use” includes very infrequent and experimental use. In the U.S.
+          Census supplement, the all-firm adoption denominator is separate from
+          the breadth measures reported only among adopters.
+        </p>
+        <p>
+          The sources do not define depth the same way. The comparison therefore
+          stays within each survey: intensity in SAFE, business-function breadth
+          in BTOS, and a firm-size adoption gradient in Eurostat. Together they
+          support measuring conversion depth instead of treating a yes/no
+          adoption response as integration. Eurostat supplies diffusion context
+          across firm sizes; it is not evidence of use depth.
+        </p>
+      </StudySection>
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <FigureShell
+          number="1"
+          title="Adoption is not integration"
+          type="empirical"
+          caption={
+            <>
+              Headline adoption can coexist with experimental, moderate, or
+              narrowly distributed use. The panels preserve their original
+              survey definitions and denominators; values are not pooled into a
+              cross-country ranking or a harmonized “deep use” metric.
+            </>
+          }
+          evidenceNote={
+            <p>
+              Every plotted number is loaded from the canonical{" "}
+              <span className="font-mono">adoption_depth.csv</span> observation
+              file and resolves to a reviewed source ID. SAFE&apos;s four
+              published shares total 98%; the figure leaves the unreported
+              two-point residual unallocated because it may reflect
+              “don&apos;t know” responses and rounding. The Census working
+              paper is descriptive and non-causal. Full rows and source status
+              are available in{" "}
+              <Link className="focus-ring underline" href="/evidence">
+                the evidence register
+              </Link>
+              .
+            </p>
+          }
+        >
+          <AdoptionDepthFigure observations={adoptionDepth} />
+        </FigureShell>
+      </div>
+
+      <StudySection
+        eyebrow="Observation"
+        title="Buildout is visible before broad payoff."
+        id="finding-buildout"
+      >
         <p>
           Reviewed energy and grid sources make physical buildout and its
           constraints visible. The same evidence does not establish a broad
           national productivity payoff. Treating build and harvest as one
           number would therefore overstate what the current record can show.
-          Cross-country adoption and intensive-use estimates remain staged and
-          are excluded from this observation until their sources are promoted.
+          Adoption depth is now measured in Figure 1, but adoption remains a
+          process measure rather than proof of a broad productivity outcome.
         </p>
       </StudySection>
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -140,9 +202,10 @@ export default function Home() {
       <StudySection eyebrow="Comparative hypothesis" title="The United States and China encounter different conversion bottlenecks." id="finding-3">
         <p>
           Reviewed US grid evidence and official US adoption policy point to
-          one set of constraints. China&apos;s official diffusion targets and
-          observed aggregate robot deployment point to another, while direct
-          evidence about firm distribution and use intensity remains incomplete.
+          one set of constraints. China&apos;s official diffusion targets,
+          one-time above-scale enterprise-use evidence, and observed aggregate
+          robot deployment point to another, while comparable firm distribution
+          and use intensity remain incomplete.
           The comparison below separates facts, interpretations, and missing
           evidence. It tests a contrast; it does not declare a winner.
         </p>

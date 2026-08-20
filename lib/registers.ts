@@ -1,6 +1,8 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
+import type { AdoptionDepthObservation } from "./adoptionDepth.ts";
+
 /**
  * Build-time readers for the canonical CSV registers.
  * Server components only. Parsing handles quoted fields with commas,
@@ -129,4 +131,10 @@ export type ForecastRow = {
 
 export function loadForecastRegister(): ForecastRow[] {
   return readRegister("data/forecasts/forecast_register.csv") as ForecastRow[];
+}
+
+export function loadAdoptionDepth(): AdoptionDepthObservation[] {
+  return readRegister(
+    "data/observations/adoption_depth.csv"
+  ) as AdoptionDepthObservation[];
 }

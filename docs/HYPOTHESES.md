@@ -1,7 +1,7 @@
 # Hypotheses
 
 Date: 2026-07-11
-Source: synthesized from the 2026-07-11 evidence review (staged) and the existing claim ledger. Status labels reflect the staged report's assessment as of July 2026 and are not canonical until supporting sources are promoted.
+Source: synthesized from the 2026-07-11 evidence review and the claim ledger. Source status varies by row. The adoption-depth anchors for H1/H3 are now canonical, but the hypotheses themselves remain propositions to test rather than causal findings.
 
 Every hypothesis is falsifiable and mapped to the stage of the conversion chain it tests:
 
@@ -9,9 +9,9 @@ Frontier capability → Accessible capability → Organisational uptake → Meas
 
 | ID | Hypothesis | Testable implication | Stage | Status (staged assessment) |
 | --- | --- | --- | --- | --- |
-| H1 | Countries with higher conversion capacity realise higher adoption and intensive-use rates at a given level of accessible capability | Conditional on exposure and access, adoption and especially intense use are higher where training, digitalisation, firm capabilities, finance, and energy are stronger | Use | Early support |
+| H1 | Countries with higher conversion capacity realise higher adoption and intensive-use rates at a given level of accessible capability | Conditional on exposure and access, adoption and especially intense use are higher where training, digitalisation, firm capabilities, finance, and energy are stronger | Use | Canonical descriptive heterogeneity; conditional mechanism remains untested |
 | H2 | Buildout responds more directly to frontier capability and expected rents than harvest does | Capex, data-centre loads, and AI-related investment move sooner and more visibly than productivity or wages | Build vs harvest | Strong support |
-| H3 | Output gains rise nonlinearly with adoption intensity, not merely with binary use | "Any AI use" overstates realised returns relative to sustained or customised use | Use vs harvest | Strong support (ECB any-use ~70% vs intense ~7%) |
+| H3 | Output gains rise nonlinearly with adoption intensity, not merely with binary use | "Any AI use" overstates realised returns relative to sustained or customised use | Use vs harvest | Canonical support for the adoption-depth gap (ECB/BTOS); output-gain nonlinearity remains untested |
 | H4 | Countries with access but weak complements show "frontier without harvest" | Frontier tools accessible, but low uptake, weak organisational redesign, little productivity movement | Use vs harvest | Supported by Canada/Italy/Japan heterogeneity |
 | H5 | Labour-market effects appear first in exposed, standardised, early-career, routinised cognitive work | Relative hiring softness appears there before aggregate job losses | Distribute | Early support, fragile |
 | H6 | Open-weight access and affordable inference partly substitute for domestic frontier ownership in civilian use | Countries without frontier labs still achieve substantial adoption where access and complements are strong | Access vs build | Plausible, not directly identified |

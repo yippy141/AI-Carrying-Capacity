@@ -1,114 +1,81 @@
-# AI Conversion Atlas
+# Frontier Is Not Fate
 
-Scaffold status: v0 repo setup with an initial Next.js web app. No research
-findings, scored data, or public claims are included yet.
+**Frontier Is Not Fate** is an editorial web study of how accessible AI
+capability becomes—or fails to become—national capacity. The **AI Conversion
+Atlas** is the evidence system underneath it.
 
-AI Conversion Atlas is a research and product workspace for studying how societies convert accessible AI capability into productivity, state capacity, scientific output, strategic power, and broadly distributed welfare.
+The project keeps frontier access, conversion capacity, adaptation capacity,
+distribution quality, and realized outcomes separate. It does not publish a
+composite national score.
 
-The public hook can remain "AI carrying capacity," but the working analytic construct is "AI conversion capacity" or "national AI absorptive capacity."
+## Current architecture
 
-## Current Scope
+- `app/` — the public study, findings, evidence, forecasts, methods, and lab
+  routes.
+- `components/` — editorial UI and empirical or conceptual figures.
+- `data/sources/` — reviewed canonical sources and non-evidentiary
+  placeholders.
+- `data/observations/` — source-specific numeric observations with periods,
+  denominators, universes, evidence labels, and comparability classes.
+- `data/claims/` — claims, supporting source IDs, confidence, required caveats,
+  and product-use status.
+- `data/forecasts/` — signpost questions, resolution criteria, deadlines, and
+  author-review state.
+- `docs/FIGURE_REGISTER.md` — figure type, evidence dependencies, caveats, and
+  export requirements.
+- `research/` — banked research and staged source candidates; report citations
+  are not canonical evidence.
+- `scripts/` — schema, evidence-integrity, and launch-readiness checks.
 
-This repo is prepared for:
+The live Figure 1, “Adoption is not integration,” reads plotted values from
+`data/observations/adoption_depth.csv`. Its ECB, U.S. Census, and Eurostat
+panels preserve their original definitions and denominators rather than
+creating a harmonized use-depth metric. China’s NBS statistic is retained as
+context only and is not plotted or compared across source families.
 
-- Deep Research report intake.
-- Source register and indicator catalog management.
-- Claim ledger tracking for evidence-backed synthesis.
-- Methodology and decision logging.
-- Future data pipeline work.
-- Initial interactive product development.
-- VS Code, GitHub Copilot, Cursor, and Codex-assisted work.
+## Status
 
-This repo intentionally does not yet contain:
+Private preview. The post-PR-#21 information architecture and the first
+canonical empirical figure are implemented. Public-pilot readiness remains
+blocked by staged sources, legacy visual references, research TODOs, and
+unreviewed forecast ranges; the readiness checker reports these explicitly.
 
-- A finished literature review.
-- A national ranking.
-- A composite score.
-- Any generated claims about China, the United States, or other countries.
+## Develop locally
 
-## Quick Start In VS Code
-
-Open the workspace:
+Requires Node.js 22, npm, and Python 3.
 
 ```sh
-code "AI Conversion Atlas.code-workspace"
+npm ci
+npm run dev
 ```
 
-Run the scaffold validator:
+Run the application and evidence checks:
 
 ```sh
-python3 scripts/validate_repo.py
-```
-
-Install and build the web app:
-
-```sh
-npm install
+npm run typecheck
+npm run lint
 npm run build
+npm run test:evidence
+python3 -m unittest scripts/validate_adoption_depth_test.py
+python3 scripts/validate_adoption_depth.py
+python3 scripts/validate_repo.py
+python3 scripts/validate_source_register.py
+python3 scripts/validate_indicator_catalog.py
+python3 scripts/check_launch_readiness.py --mode private-preview
 ```
 
-Or through VS Code: Terminal -> Run Task -> Validate repo scaffold.
+## Research rules
 
-## Repo Map
+- Do not fabricate data, citations, metadata, or indicator values.
+- Mark missing values as missing and estimates or qualitative coding
+  explicitly.
+- Promote only verified original URLs or DOIs to the canonical source register.
+- Give every plotted value a canonical observation and source ID.
+- Keep source families, denominators, survey windows, and non-comparable
+  contexts separate.
+- Treat China–United States comparisons as hypotheses to test, not verdicts.
+- Record methodology or architecture decisions in `docs/DECISIONS.md` and
+  completed or discovered work in `docs/TASKS.md`.
 
-```text
-docs/                  Project brief, method, decisions, tasks, roadmap.
-research/              Deep Research outputs, notes, source-register staging.
-data/                  Raw inputs, source register, indicator catalog, processed outputs.
-content/               Essays, country briefs, sector briefs, methodology copy.
-scripts/               Validation, ingest, and future dataset-building scripts.
-app/                   Next.js app router pages.
-components/            Reusable UI, layout, and visual components.
-public/                Public visuals and social image assets.
-templates/             Reusable report, source, indicator, and brief templates.
-```
-
-## Deep Research Intake
-
-Save commissioned reports as Markdown:
-
-```text
-research/deep-research/YYYY-MM-DD-topic.md
-```
-
-Save report-specific extraction tables beside the report or in staging:
-
-```text
-research/source-register/YYYY-MM-DD-topic-source-register-additions.csv
-research/source-register/YYYY-MM-DD-topic-indicator-candidates.csv
-```
-
-Do not merge sources into `data/sources/source_register.csv` until they have been reviewed for provenance, claim type, and reliability tier.
-
-For synthesis claims that may appear in an essay, methodology page, or UI, use:
-
-```text
-data/claims/claim_ledger.csv
-```
-
-## Data Discipline
-
-Every source and indicator should preserve:
-
-- Provenance.
-- Language.
-- Source type.
-- Reliability tier.
-- Claim confidence and counterevidence.
-- Claim type.
-- Data quality.
-- Missingness.
-- Whether the value is observed, official-claim, qualitative-coded, estimated, or missing.
-
-No silent imputation. No Wikipedia sourcing. No fake precision.
-
-## Initial V0 Research Object
-
-The first credible pilot should stay narrow:
-
-- Countries: United States and China, with selected comparators where data are available.
-- Sector: manufacturing, robotics, and embodied AI.
-- Cross-cutting constraint: compute, data centers, electricity, and grid absorption.
-- Output: transparent methodology, source register, indicator catalog, launch essay, and eventually a visual product.
-
-See `docs/AGENT_BRIEF.md`, `docs/METHOD.md`, and `docs/RESEARCH_INTAKE.md` before adding research or code.
+Read `docs/AGENT_BRIEF.md`, `docs/METHOD.md`, and the relevant data dictionary
+before changing evidence or public copy.

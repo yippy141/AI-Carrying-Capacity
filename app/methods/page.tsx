@@ -81,6 +81,12 @@ export default function MethodsPage() {
           Fields without reviewed sources render as missing. An empty field is
           not a low score.
         </p>
+        <p>
+          Figure-ready values also pass through a canonical observation layer
+          that preserves each value&apos;s period, denominator, survey universe,
+          evidence label, and comparability class. Source families stay
+          separate unless their definitions genuinely support comparison.
+        </p>
       </NarrativeBlock>
 
       <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -138,9 +144,9 @@ export default function MethodsPage() {
             comparator and it is denominator-sensitive.
           </li>
           <li>
-            Survey sensitivity: adoption rates move by 10+ points with
-            question phrasing and weighting; the register records which
-            definition each value uses.
+            Survey sensitivity: adoption rates can move materially with
+            question phrasing and weighting. The register records which
+            definition, reference window, and denominator each value uses.
           </li>
           <li>
             Staged evidence: research outputs enter as staged rows and support

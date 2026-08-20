@@ -66,22 +66,22 @@ const STAGES: ChainStage[] = [
   {
     stage: "Organisational uptake",
     us: {
-      fact: "The US AI Action Plan names slow organizational adoption as a bottleneck, and OMB memoranda establish a federal procurement channel.",
+      fact: "The BTOS AI supplement reports 18% prior-two-week use among in-scope employer businesses. In the separate prior-six-month Q24 frame, 57% of functional users used AI in one to three functions and a latent-class estimate classified 4% as comprehensive.",
       interpretation:
-        "These documents establish policy intent, not adoption depth or realized gains.",
+        "The source documents uneven breadth, but Q23 and Q24 use different windows and denominators and neither establishes realized gains.",
       missingEvidence:
-        "Reviewed comparable firm-level intensity and procurement-outcome measures.",
-      status: "official claim",
-      ref: "AI Action Plan (src-0018, clm-0013); OMB memos (src-0019/0020, clm-0016)"
+        "A recurring use-depth series linked to representative productivity and distribution outcomes.",
+      status: "observed",
+      ref: "BTOS instrument/method/paper (src-0046/0047/0048, clm-0033/0034); the paper is descriptive and non-causal"
     },
     china: {
-      fact: "The State Council sets AI+ penetration targets; they are targets, not adoption statistics.",
+      fact: "The Fifth National Economic Census reports that 16.4% of above-scale enterprises applied AI in 2023.",
       interpretation:
-        "This review did not identify a recurring, nationally representative all-firm survey comparable to BTOS or Eurostat. The Fifth National Economic Census provides a one-time above-scale-enterprise measure.",
+        "This is a one-time binary item for above-scale enterprises, not an all-firm survey or an intensity measure comparable with BTOS, SAFE, or Eurostat.",
       missingEvidence:
         "A recurring all-firm use-and-intensity series and independent outcome validation.",
-      status: "staged",
-      ref: "State Council AI+ opinion (src-0023, clm-0006); survey-comparability assessment remains staged"
+      status: "observed",
+      ref: "NBS Fifth National Economic Census analysis (src-0049, clm-0037); contextual only and not plotted in Figure 1"
     }
   },
   {

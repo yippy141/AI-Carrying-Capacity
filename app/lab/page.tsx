@@ -5,7 +5,11 @@ import { BuildoutVsPayoffFigure } from "@/components/visuals/BuildoutVsPayoffFig
 import { StagedEvidenceBanner } from "@/components/visuals/StagedEvidenceBanner";
 
 export const metadata: Metadata = {
-  title: "Research lab"
+  title: "Research lab",
+  robots: {
+    index: false,
+    follow: false
+  }
 };
 
 const labItems = [

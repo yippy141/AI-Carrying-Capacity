@@ -46,7 +46,7 @@ export function FigureShell({
           <summary className="focus-ring cursor-pointer font-semibold text-foreground">
             Evidence and caveats
           </summary>
-          <div className="mt-2 border-l-2 border-rule pl-4">{evidenceNote}</div>
+          <div className="mt-3 border-t border-rule pt-3">{evidenceNote}</div>
         </details>
       ) : null}
     </figure>

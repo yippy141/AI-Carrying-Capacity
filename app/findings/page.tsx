@@ -12,9 +12,21 @@ const findings = [
     id: "finding-1",
     label: "Observation",
     stage: "observed",
+    title: "Adoption is not integration.",
+    summary:
+      "Reviewed ECB and U.S. Census evidence shows why binary adoption is an incomplete conversion measure. SAFE's “any use” includes very infrequent and experimental use; BTOS breadth measures show how narrowly many adopting firms distribute AI across business functions. These are source-specific depth signals, not a harmonized global metric.",
+    figure: "Figure 1 (empirical, source-specific panels)",
+    figureHref: "/#figure-1",
+    wouldChange:
+      "Repeated surveys showing experimental use collapsing into significant use; broad function-level integration becoming the modal adopter pattern; or better harmonized evidence overturning the source-specific gaps."
+  },
+  {
+    id: "finding-buildout",
+    label: "Observation",
+    stage: "observed",
     title: "Buildout is visible before broad payoff.",
     summary:
-      "Reviewed sources document data-center electricity demand and grid constraints, while the repository does not yet support a broad national productivity attribution. Build measures and harvest measures therefore remain separate. The cross-country adoption and intensive-use numbers are still staged and are not part of this observation.",
+      "Reviewed sources document data-center electricity demand and grid constraints, while the repository does not yet support a broad national productivity attribution. Build measures and harvest measures therefore remain separate. Figure 1 adds a canonical use-stage observation, but adoption remains a process measure rather than a realized outcome.",
     figure: "Planned build-versus-harvest figure (research lab)",
     figureHref: "/lab#planned-build-harvest",
     wouldChange:
@@ -38,7 +50,7 @@ const findings = [
     stage: "hypothesis",
     title: "The United States and China encounter different conversion bottlenecks.",
     summary:
-      "Observed US grid constraints and official US adoption policy point to one set of bottlenecks. China's official diffusion targets and its observed aggregate robotics stock point to another, while comparable firm-distribution and use-intensity evidence remains incomplete. The contrast is a hypothesis to test, not an empirical verdict or a winner claim.",
+      "Observed US grid constraints, canonical BTOS breadth evidence, and official US adoption policy point to one set of bottlenecks. China's official diffusion targets, one-time above-scale enterprise-use evidence, and observed aggregate robotics stock point to another, while comparable firm-distribution and intensity evidence remains incomplete. The contrast is a hypothesis to test, not an empirical verdict or a winner claim.",
     figure: "Figure 3 (conversion-chain comparison)",
     figureHref: "/#finding-3",
     wouldChange:
