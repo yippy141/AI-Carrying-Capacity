@@ -104,4 +104,4 @@
 - [x] Remove gradients, shadows, emoji, and ambient entrance animation from app code.
 - [x] Record chart grammar and integrity checks in `docs/DESIGN_QA.md`.
 - [x] Capture and inspect 1440px and 390px screenshots of Figure 1.
-- [ ] Open the draft PR after screenshot acceptance is complete.
+- [x] Open draft PR #23 after screenshot acceptance is complete.
