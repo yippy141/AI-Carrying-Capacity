@@ -1,9 +1,6 @@
-"use client";
-
-import { useMemo, useState } from "react";
-
+import { AnnotationLayer } from "@/components/ui/AnnotationLayer";
+import { EvidenceChip } from "@/components/ui/EvidenceChip";
 import {
-  buildAdoptionDepthExportSvg,
   buildAdoptionDepthFigureModel,
   type AdoptionDepthObservation,
   type FigureObservation
@@ -17,137 +14,57 @@ const ECB_LABELS = [
 ];
 
 const ECB_COLORS = [
-  "var(--surface-strong)",
-  "oklch(0.78 0.008 42)",
-  "oklch(0.38 0.018 42)",
-  "var(--primary)"
+  "var(--surface)",
+  "var(--hairline)",
+  "var(--comparator)",
+  "var(--ink)"
 ];
 
 function formatPercent(value: number): string {
   return (Number.isInteger(value) ? value.toFixed(0) : String(value)) + "%";
 }
 
-function triggerDownload(blob: Blob, filename: string) {
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  URL.revokeObjectURL(url);
-}
-
-function ExportControls({
-  svg,
-  onError
-}: {
-  svg: string;
-  onError: (message: string) => void;
-}) {
-  function exportSvg() {
-    onError("");
-    triggerDownload(
-      new Blob([svg], { type: "image/svg+xml;charset=utf-8" }),
-      "adoption-is-not-integration.svg"
-    );
-  }
-
-  function exportPng() {
-    onError("");
-    const source = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
-    const sourceUrl = URL.createObjectURL(source);
-    const image = new Image();
-    image.onload = () => {
-      const canvas = document.createElement("canvas");
-      canvas.width = 1600;
-      canvas.height = 1500;
-      const context = canvas.getContext("2d");
-      if (!context) {
-        URL.revokeObjectURL(sourceUrl);
-        onError("PNG export is unavailable in this browser.");
-        return;
-      }
-      context.fillStyle = "#ffffff";
-      context.fillRect(0, 0, canvas.width, canvas.height);
-      context.drawImage(image, 0, 0, canvas.width, canvas.height);
-      URL.revokeObjectURL(sourceUrl);
-      canvas.toBlob((blob) => {
-        if (!blob) {
-          onError("The browser could not create the PNG file.");
-          return;
-        }
-        triggerDownload(blob, "adoption-is-not-integration.png");
-      }, "image/png");
-    };
-    image.onerror = () => {
-      URL.revokeObjectURL(sourceUrl);
-      onError("The browser could not render the export image.");
-    };
-    image.src = sourceUrl;
-  }
-
+function Axis({ max, midpoint }: { max: number; midpoint: number }) {
   return (
-    <div className="flex flex-wrap items-center gap-2" aria-label="Figure export options">
-      <button
-        className="focus-ring min-h-11 border border-foreground bg-white px-4 py-2 text-xs font-semibold text-foreground transition-colors hover:bg-surface"
-        onClick={exportSvg}
-        type="button"
-      >
-        Export SVG
-      </button>
-      <button
-        className="focus-ring min-h-11 border border-foreground bg-white px-4 py-2 text-xs font-semibold text-foreground transition-colors hover:bg-surface"
-        onClick={exportPng}
-        type="button"
-      >
-        Export PNG
-      </button>
+    <div className="mt-2 flex justify-between border-t border-hairline pt-1 font-mono text-[11px] text-ink-soft">
+      <span>0%</span>
+      <span>{midpoint}%</span>
+      <span>{max}%</span>
     </div>
   );
 }
 
-function SourceLine({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="mt-5 border-t border-rule pt-4 text-xs leading-5 text-missing">
-      {children}
-    </p>
-  );
-}
-
 function ScaleBar({
-  row,
-  color = "var(--foreground)",
-  max = 100
+  color,
+  max = 100,
+  modelEstimate = false,
+  row
 }: {
-  row: FigureObservation;
-  color?: string;
+  color: string;
   max?: number;
+  modelEstimate?: boolean;
+  row: FigureObservation;
 }) {
   return (
     <div>
-      <div className="flex items-end justify-between gap-4 text-sm leading-5">
-        <span className="font-medium text-foreground">{row.definition}</span>
-        <span className="shrink-0 font-semibold text-foreground">
-          {formatPercent(row.value)}
-        </span>
+      <div className="flex items-end justify-between gap-4 font-mono text-[13px] leading-5">
+        <span className="font-sans text-[15px] text-ink">{row.definition}</span>
+        <span className="shrink-0 font-medium text-ink">{formatPercent(row.value)}</span>
       </div>
       <div
-        aria-label={
-          row.definition +
-          ": " +
-          formatPercent(row.value) +
-          ". Denominator: " +
-          row.denominator
-        }
-        className="mt-2 h-3 bg-surface-strong"
+        aria-label={`${row.definition}: ${formatPercent(row.value)}. Denominator: ${row.denominator}`}
+        className="mt-2 h-3 bg-surface"
         role="img"
       >
         <div
           className="h-full"
           style={{
-            backgroundColor: color,
-            width: String(Math.min(100, (row.value / max) * 100)) + "%"
+            backgroundColor: modelEstimate ? "var(--surface)" : color,
+            backgroundImage: modelEstimate
+              ? 'url("/patterns/model-estimate.svg")'
+              : undefined,
+            border: modelEstimate ? `1px solid ${color}` : undefined,
+            width: `${Math.min(100, (row.value / max) * 100)}%`
           }}
         />
       </div>
@@ -155,220 +72,226 @@ function ScaleBar({
   );
 }
 
-/**
- * Figure 1. Values are resolved by canonical observation ID in
- * buildAdoptionDepthFigureModel; this component contains no plotted values.
- */
+function PanelHeader({
+  contextOnly = false,
+  country,
+  id,
+  number,
+  source,
+  title
+}: {
+  contextOnly?: boolean;
+  country?: "us" | "cn";
+  id: string;
+  number: string;
+  source: string;
+  title: string;
+}) {
+  return (
+    <div>
+      <p
+        className={`font-mono text-[11px] uppercase tracking-[0.08em] ${
+          country === "us" ? "text-us" : country === "cn" ? "text-cn" : "text-ink-soft"
+        }`}
+      >
+        Panel {number} · {source}{contextOnly ? " · Context only" : ""}
+      </p>
+      <h4 className="mt-2 font-display text-[21px] font-semibold leading-tight text-ink" id={id}>
+        {title}
+      </h4>
+    </div>
+  );
+}
+
+function PanelSource({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="mt-6 border-t border-hairline pt-3 font-mono text-[11px] leading-5 text-ink-soft">
+      {children}
+    </p>
+  );
+}
+
+/** Figure 1. Every plotted value resolves from a canonical observation ID. */
 export function AdoptionDepthFigure({
   observations
 }: {
   observations: AdoptionDepthObservation[];
 }) {
-  const model = useMemo(
-    () => buildAdoptionDepthFigureModel(observations),
-    [observations]
-  );
-  const exportSvg = useMemo(
-    () => buildAdoptionDepthExportSvg(model),
-    [model]
-  );
-  const [exportError, setExportError] = useState("");
+  const model = buildAdoptionDepthFigureModel(observations);
   const [notUsing] = model.ecb.rows;
   const [narrow, comprehensive] = model.btos.adopterOnly;
   const [small, medium, large] = model.eurostat.sizeGradient;
+  const china = model.china.context;
 
   return (
-    <div className="bg-white" data-observation-ids={model.plottedObservationIds.join(" ")}>
-      <div className="flex flex-wrap items-center justify-between gap-3 border-y border-foreground py-3">
-        <p className="max-w-2xl text-sm leading-6 text-muted">
-          <span className="font-semibold text-foreground">
-            Within-source comparisons only.
-          </span>{" "}
-          The ECB measures intensity, Census measures organizational breadth,
-          and Eurostat measures adoption by firm size. “Deep use” is not a
-          harmonized global metric.
-        </p>
-        <ExportControls onError={setExportError} svg={exportSvg} />
-      </div>
-      {exportError ? (
-        <p className="mt-2 text-sm text-primary-strong" role="status">
-          {exportError}
-        </p>
-      ) : null}
+    <div
+      data-observation-ids={model.plottedObservationIds.join(" ")}
+      aria-label={`Figure 1. ECB reported categories: ${model.ecb.rows.map((row) => formatPercent(row.value)).join(", ")}. U.S. Census: ${formatPercent(model.btos.allFirms.value)} of all employer businesses, ${formatPercent(narrow.value)} narrow functional users, ${formatPercent(comprehensive.value)} comprehensive model estimate. Eurostat small, medium, and large firms: ${formatPercent(small.value)}, ${formatPercent(medium.value)}, ${formatPercent(large.value)}. China context only: ${formatPercent(china.value)} of above-scale enterprises.`}
+      role="group"
+    >
+      <p className="max-w-[66ch] text-[15px] leading-6 text-ink-soft">
+        Each panel retains its own axis, denominator, and survey universe. Values
+        are source-specific and must not be pooled or ranked.
+      </p>
 
-      <section className="py-8 sm:py-10" aria-labelledby="ecb-panel-title">
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-end">
-          <div>
-            <p className="font-display text-sm font-semibold text-primary-strong">
-              Panel A · ECB intensity ladder
-            </p>
-            <h4
-              className="mt-2 font-display text-2xl font-semibold text-foreground sm:text-3xl"
-              id="ecb-panel-title"
-            >
-              Most reported use is experimental or moderate.
-            </h4>
-          </div>
-          <p className="text-sm leading-6 text-muted">
-            Any use includes very infrequent use and pilot projects. Published
-            weighted shares are shown as reported.
-          </p>
-        </div>
-
-        <div
-          aria-label={
-            "ECB SAFE Q4 2025 AI use intensity. " +
-            ECB_LABELS.map(
-              (label, index) =>
-                label + " " + formatPercent(model.ecb.rows[index].value)
-            ).join(", ") +
-            ". Reported rounded shares total " +
-            model.ecb.reportedTotal +
-            "%."
-          }
-          className="mt-7 flex h-12 overflow-hidden border border-foreground"
-          role="img"
-        >
-          {model.ecb.rows.map((row, index) => (
-            <div
-              aria-hidden="true"
-              className="h-full border-r border-white/70 last:border-r-0"
-              key={row.observation_id}
-              style={{
-                backgroundColor: ECB_COLORS[index],
-                width: String(row.value) + "%"
-              }}
-            />
-          ))}
-          <div
-            aria-hidden="true"
-            className="h-full border-l border-dashed border-missing bg-white"
-            style={{ width: String(model.ecb.unreportedResidual) + "%" }}
+      <div className="mt-6 grid border-y border-hairline lg:grid-cols-2">
+        <section className="py-8 lg:border-r lg:border-hairline lg:pr-8" aria-labelledby="ecb-panel-title">
+          <PanelHeader
+            id="ecb-panel-title"
+            number="A"
+            source="ECB SAFE · euro area"
+            title="Most reported use is experimental or moderate."
           />
-        </div>
-
-        <ul className="mt-5 grid gap-x-7 gap-y-4 sm:grid-cols-2 lg:grid-cols-4">
-          {model.ecb.rows.map((row, index) => (
-            <li className="flex items-start gap-3" key={row.observation_id}>
-              <span
-                aria-hidden="true"
-                className="mt-1 block h-3 w-3 shrink-0 border border-rule"
-                style={{ backgroundColor: ECB_COLORS[index] }}
-              />
-              <span className="text-sm leading-5 text-muted">
-                <strong className="block text-base text-foreground">
-                  {formatPercent(row.value)}
-                </strong>
-                {ECB_LABELS[index]}
-              </span>
-            </li>
-          ))}
-        </ul>
-        <p className="mt-4 text-sm leading-6 text-muted">
-          The four rounded categories total {model.ecb.reportedTotal}%, leaving
-          a visible {model.ecb.unreportedResidual}-point unreported residual.
-          SAFE also offers a “don&apos;t know” response, so the residual may
-          reflect that response and rounding. The chart does not renormalize.
-        </p>
-        <SourceLine>
-          Source: ECB SAFE Q4 2025 results ({notUsing.source_id}); questionnaire
-          and wording: src-0039. Period: {notUsing.period}. Denominator:{" "}
-          {notUsing.denominator}. Universe: {notUsing.survey_universe}.
-        </SourceLine>
-      </section>
-
-      <section
-        className="border-t border-rule py-8 sm:py-10"
-        aria-labelledby="btos-panel-title"
-      >
-        <p className="font-display text-sm font-semibold text-primary-strong">
-          Panel B · U.S. organizational breadth
-        </p>
-        <h4
-          className="mt-2 font-display text-2xl font-semibold text-foreground sm:text-3xl"
-          id="btos-panel-title"
-        >
-          Firm reach and functional breadth answer different questions.
-        </h4>
-
-        <div className="mt-7 grid gap-8 lg:grid-cols-2 lg:gap-12">
-          <div>
-            <p className="border-b border-foreground pb-2 text-sm font-semibold text-foreground">
-              Denominator: all U.S. employer businesses
-            </p>
-            <div className="mt-5">
-              <ScaleBar row={model.btos.allFirms} />
-            </div>
-            <p className="mt-4 text-sm leading-6 text-muted">
-              {model.btos.allFirms.caveat} The separate employment-weighted
-              summary is retained in the observation file but is not plotted.
-            </p>
-          </div>
-
-          <div>
-            <p className="border-b border-foreground pb-2 text-sm font-semibold text-foreground">
-              Denominator: Q24 functional AI users only
-            </p>
-            <div className="mt-5 space-y-6">
-              <ScaleBar row={narrow} />
-              <ScaleBar color="var(--primary)" row={comprehensive} />
-            </div>
-            <p className="mt-4 text-sm leading-6 text-muted">
-              These are separate descriptors of breadth, not categories that
-              partition or sum to 100. “Comprehensive” is the paper&apos;s
-              latent-class classification. Q24 asks about 15 functions over the
-              prior six months, so this is not a same-question funnel from Q23.
-            </p>
-          </div>
-        </div>
-        <SourceLine>
-          Source: Census CES Working Paper 26-25 ({model.btos.allFirms.source_id});
-          instrument: src-0046; methodology: src-0047. Q23 collection/reference
-          period: {model.btos.allFirms.period}. All-firm universe:{" "}
-          {model.btos.allFirms.survey_universe}. Q24 reference window: prior six
-          months. Functional-adopter denominator: {narrow.denominator}.
-        </SourceLine>
-      </section>
-
-      <section
-        className="border-t border-rule py-8 sm:py-10"
-        aria-labelledby="eurostat-panel-title"
-      >
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-end">
-          <div>
-            <p className="font-display text-sm font-semibold text-primary-strong">
-              Panel C · Eurostat firm-size gradient
-            </p>
-            <h4
-              className="mt-2 font-display text-2xl font-semibold text-foreground sm:text-3xl"
-              id="eurostat-panel-title"
-            >
-              Adoption is uneven across firm size.
-            </h4>
-          </div>
-          <p className="text-sm leading-6 text-muted">
-            Context for diffusion, not a depth measure. “Any AI” means at least
-            one listed AI technology.
+          <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.05em] text-ink-soft">
+            Axis 0–100% · weighted SAFE respondents
           </p>
-        </div>
-
-        <div className="mt-7 grid gap-5">
-          <ScaleBar max={60} row={small} />
-          <ScaleBar max={60} row={medium} />
-          <ScaleBar color="var(--primary)" max={60} row={large} />
-          <div className="flex justify-between border-t border-rule pt-2 text-[11px] text-missing">
-            <span>0%</span>
-            <span>30%</span>
-            <span>60%</span>
+          <div className="relative mt-4 min-h-52 pt-16">
+            <AnnotationLayer
+              annotations={[
+                {
+                  id: "ecb-residual",
+                  label: "Published categories leave an unallocated residual.",
+                  labelX: 96,
+                  labelY: 18,
+                  anchorX: 99,
+                  anchorY: 48,
+                  align: "end"
+                }
+              ]}
+            />
+            <div
+              aria-label={`ECB SAFE use intensity: ${ECB_LABELS.map((label, index) => `${label} ${formatPercent(model.ecb.rows[index].value)}`).join(", ")}. Reported shares total ${model.ecb.reportedTotal}%.`}
+              className="flex h-10 overflow-hidden"
+              role="img"
+            >
+              {model.ecb.rows.map((row, index) => (
+                <div
+                  aria-hidden="true"
+                  className="h-full border-r border-paper last:border-r-0"
+                  key={row.observation_id}
+                  style={{ backgroundColor: ECB_COLORS[index], width: `${row.value}%` }}
+                />
+              ))}
+              <div
+                aria-hidden="true"
+                className="h-full border border-dashed border-comparator bg-paper"
+                style={{ width: `${model.ecb.unreportedResidual}%` }}
+              />
+            </div>
+            <Axis max={100} midpoint={50} />
+            <ul className="mt-5 grid gap-x-5 gap-y-2 sm:grid-cols-2">
+              {model.ecb.rows.map((row, index) => (
+                <li className="flex items-baseline justify-between gap-3 text-[13px] text-ink-soft" key={row.observation_id}>
+                  <span>{ECB_LABELS[index]}</span>
+                  <span className="font-mono text-ink">{formatPercent(row.value)}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
-        <SourceLine>
-          Source: Eurostat 2025 enterprise AI-use data ({small.source_id});
-          dataset DOI: src-0043; metadata: src-0044. Period: {small.period}.
-          Universe: {small.survey_universe}. Values are subgroup adoption rates,
-          not a harmonized use-depth scale.
-        </SourceLine>
-      </section>
+          <PanelSource>
+            ECB SAFE Q4 2025 · {notUsing.source_id} · denominator: {notUsing.denominator}
+          </PanelSource>
+        </section>
+
+        <section className="border-t border-hairline py-8 lg:border-t-0 lg:pl-8" aria-labelledby="btos-panel-title">
+          <PanelHeader
+            country="us"
+            id="btos-panel-title"
+            number="B"
+            source="Census BTOS · United States"
+            title="Reach and functional breadth answer different questions."
+          />
+          <div className="mt-5">
+            <p className="font-mono text-[11px] uppercase tracking-[0.05em] text-ink-soft">
+              All employer businesses · axis 0–100%
+            </p>
+            <div className="mt-4">
+              <ScaleBar color="var(--us)" row={model.btos.allFirms} />
+              <Axis max={100} midpoint={50} />
+            </div>
+          </div>
+          <div className="relative mt-7 border-t border-hairline pt-7">
+            <p className="font-mono text-[11px] uppercase tracking-[0.05em] text-ink-soft">
+              Q24 functional users only · axis 0–100%
+            </p>
+            <div className="mt-4 space-y-6">
+              <ScaleBar color="var(--us)" row={narrow} />
+              <div>
+                <div className="mb-2">
+                  <EvidenceChip basis="model estimate" reviewStatus="canonical" />
+                </div>
+                <ScaleBar color="var(--us)" modelEstimate row={comprehensive} />
+              </div>
+              <Axis max={100} midpoint={50} />
+            </div>
+          </div>
+          <PanelSource>
+            Census CES Working Paper 26-25 · {model.btos.allFirms.source_id} · Q23 denominator: {model.btos.allFirms.denominator} · Q24 denominator: {narrow.denominator}
+          </PanelSource>
+        </section>
+
+        <section className="border-t border-hairline py-8 lg:border-r lg:border-hairline lg:pr-8" aria-labelledby="eurostat-panel-title">
+          <PanelHeader
+            id="eurostat-panel-title"
+            number="C"
+            source="Eurostat · European Union"
+            title="Adoption is uneven across firm size."
+          />
+          <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.05em] text-ink-soft">
+            Within each size universe · axis 0–60%
+          </p>
+          <div className="mt-5 space-y-5">
+            <ScaleBar color="var(--comparator)" max={60} row={small} />
+            <ScaleBar color="var(--comparator)" max={60} row={medium} />
+            <ScaleBar color="var(--comparator)" max={60} row={large} />
+            <Axis max={60} midpoint={30} />
+          </div>
+          <p className="mt-5 text-[13px] leading-5 text-ink-soft">
+            Diffusion context only. This panel does not measure depth of use.
+          </p>
+          <PanelSource>
+            Eurostat 2025 enterprise AI-use data · {small.source_id} · universe: {small.survey_universe}
+          </PanelSource>
+        </section>
+
+        <section className="relative border-t border-hairline py-8 lg:pl-8" aria-labelledby="china-panel-title">
+          <PanelHeader
+            contextOnly
+            country="cn"
+            id="china-panel-title"
+            number="D"
+            source="NBS · China"
+            title="A different firm universe gives context only."
+          />
+          <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.05em] text-ink-soft">
+            Above-scale enterprises · axis 0–20%
+          </p>
+          <div className="relative mt-5 min-h-56 pt-16">
+            <AnnotationLayer
+              annotations={[
+                {
+                  id: "china-universe",
+                  label: "Not an all-firm survey.",
+                  labelX: 82,
+                  labelY: 18,
+                  anchorX: 82,
+                  anchorY: 48,
+                  align: "center"
+                }
+              ]}
+            />
+            <ScaleBar color="var(--cn)" max={20} row={china} />
+            <Axis max={20} midpoint={10} />
+            <p className="mt-5 text-[13px] leading-5 text-ink-soft">
+              Official-source statistic. It is not directly comparable with
+              ECB, Census, or Eurostat and supports no country ranking.
+            </p>
+          </div>
+          <PanelSource>
+            NBS Fifth National Economic Census · {china.source_id} · denominator: {china.denominator}
+          </PanelSource>
+        </section>
+      </div>
     </div>
   );
 }

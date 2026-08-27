@@ -1,41 +1,84 @@
 # Design
 
-## Style
+## Direction
 
-AI Conversion Atlas uses a clean editorial system with restrained navigation, large serif headings, readable sans-serif body copy, and ruled research notes. The palette is pure white and dark ink, anchored by burnt orange with a teal evidence accent.
+Frontier Is Not Fate uses an editorial, evidence-first visual system. The
+figure is the primary publication unit. Restraint, visible provenance, and
+unambiguous evidence encoding carry the brand.
 
-## Color Tokens
+The public surface is a reading experience, not a dashboard. It uses one thin
+navigation bar, a warm paper field, ruled figure frames, and generous vertical
+separation. It does not use gradients, shadows, decorative imagery, emoji,
+entrance animation, KPI cards, or dashboard chrome.
 
-- `--background`: `oklch(1 0 0)`
-- `--foreground`: `oklch(0.17 0.018 42)`
-- `--surface`: `oklch(0.965 0 0)`
-- `--surface-strong`: `oklch(0.925 0 0)`
-- `--rule`: `oklch(0.82 0.004 42)`
-- `--muted`: `oklch(0.39 0.018 42)`
-- `--primary`: `oklch(0.6 0.19 38.6)`
-- `--primary-strong`: `oklch(0.46 0.16 38.6)`
-- `--accent`: `oklch(0.34 0.12 190)`
-- `--accent-soft`: `oklch(0.91 0.045 190)`
-- `--missing`: `oklch(0.48 0.015 42)`
-- `--warning`: `oklch(0.58 0.17 72)`
+## Tokens
+
+- `--paper`: `#FBFAF7`
+- `--ink`: `#1C1B1A`
+- `--ink-soft`: `#57534B`
+- `--hairline`: `#E7E2D9`
+- `--surface`: `#F4F1EA`
+- `--us`: `#3E63DD`
+- `--cn`: `#C4442A`
+- `--comparator`: `#9C958B`
+- `--accent`: `#1F6F5C`
+
+United States and China hues are reserved for country encoding. Comparator
+gray carries other geographies. Interactive states and links use the green
+accent; it never encodes data. Figures without a country dimension use ink and
+gray only.
 
 ## Typography
 
-- Display: system serif stack, led by `Iowan Old Style`.
-- Body: system sans stack, led by `Aptos` and `Segoe UI`.
-- Letter spacing stays at `0`.
-- Large page headings use responsive breakpoints rather than viewport-scaled font sizes.
+- Display: Newsreader, weights 500 and 600.
+- Body and UI: Inter, weights 400, 500, and 600.
+- Data, axes, metadata, and labels: IBM Plex Mono, weights 400 and 500.
+- Numeric text uses tabular figures.
+- Body text is 17px with 1.55 line height and a maximum prose measure of 66ch.
+- The scale is 13, 15, 17, 21, 26, 34, 46, and 60px.
 
-## Components
+## Evidence Basis
 
-- `SiteHeader`: product identity and primary navigation.
-- `SiteFooter`: scaffold status and key links.
-- `SectionEyebrow`: a sparingly used section cue, not repeated as page scaffolding.
-- `NarrativeBlock`: editorial two-column explanation block.
-- `SourceNote`: ruled provenance and source-status note.
-- `ConfidenceBadge`: evidence-state label.
-- `MethodologyCallout`: high-emphasis method note.
+Evidence basis and review status are orthogonal. The eight public bases are:
 
-## Interaction
+1. Observed
+2. Model estimate
+3. Scenario
+4. Official target
+5. Company target
+6. Expert-coded
+7. Historical analogy
+8. Hypothesis
 
-The first version is static and does not require external API keys. Links and controls use visible focus states. Motion is intentionally minimal and respects reduced-motion settings.
+Review status is canonical, reviewed, staged, superseded, or rejected.
+Canonical and reviewed material may render publicly. Staged, superseded, and
+rejected material does not render publicly.
+
+Evidence chips use IBM Plex Mono at 11px with letterspaced uppercase text.
+Observed is solid ink; model estimate is hairline gray; scenario is gray with a
+dashed border; official and company targets are solid- and dashed-outline
+respectively; expert-coded is dotted; historical analogy is double-rule; and
+hypothesis is a hairline ghost.
+
+## Figure Frame
+
+Every public figure uses `FigureShell` in this order:
+
+1. Claim-title with an epistemic prefix.
+2. Subtitle naming unit, denominator, and universe.
+3. Chart with a text alternative and direct annotations where useful.
+4. Hairline footer with source line, evidence-basis chip, definition warning,
+   permalink, and PNG/SVG export.
+
+`AnnotationLayer` places one to three Inter 13px notes directly on a chart with
+hairline leaders. Incompatible denominators receive separate panels and axes.
+Bars start at zero. Charts use horizontal hairlines only, direct labels where
+series count permits, and no rounded bar caps, dual axes, 3D, icons, pie/donut,
+radar, or decorative effects.
+
+## Motion and Accessibility
+
+Only data-state changes may animate, at 160–240ms ease-out. There are no
+entrance or ambient animations. `prefers-reduced-motion` reduces all motion.
+Keyboard focus is visible, interactions are reachable, contrast targets WCAG
+AA, and every figure has a text alternative that states its claim and values.

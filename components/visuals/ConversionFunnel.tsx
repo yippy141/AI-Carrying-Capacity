@@ -79,14 +79,14 @@ export function ConversionFunnel({
 
               return (
                 <article
-                  className={`min-h-72 rounded-lg border p-4 ${layerTint(index)}`}
+                  className={`min-h-72 border p-4 ${layerTint(index)}`}
                   key={layer.key}
                 >
                   <div className="flex items-start justify-between gap-3">
                     <span className="font-display text-4xl font-semibold text-foreground">
                       {index + 1}
                     </span>
-                    <span className="rounded-full border border-rule bg-background px-3 py-1 text-xs font-semibold text-muted">
+                    <span className="border border-rule bg-background px-2 py-1 font-mono text-[11px] uppercase tracking-[0.05em] text-muted">
                       no score
                     </span>
                   </div>
@@ -99,7 +99,7 @@ export function ConversionFunnel({
                   <div className="mt-5 space-y-2">
                     {counts.map((entry) => (
                       <div
-                        className={`flex items-center justify-between gap-3 rounded-md border px-3 py-2 text-xs font-semibold ${evidenceSoftClasses[entry.label]}`}
+                        className={`flex items-center justify-between gap-3 border px-3 py-2 text-xs font-semibold ${evidenceSoftClasses[entry.label]}`}
                         key={entry.label}
                       >
                         <span>{entry.label}</span>

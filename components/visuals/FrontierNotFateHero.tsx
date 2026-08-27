@@ -52,13 +52,13 @@ export function FrontierNotFateHero() {
 
       <div className="mt-10 flex flex-wrap gap-3">
         <Link
-          className="focus-ring rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-strong"
+          className="focus-ring border-b border-ink pb-1 font-mono text-[13px] font-medium uppercase tracking-[0.05em]"
           href="/findings"
         >
           Explore the findings
         </Link>
         <a
-          className="focus-ring rounded-full border border-rule px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary-strong"
+          className="focus-ring ml-4 border-b border-ink pb-1 font-mono text-[13px] font-medium uppercase tracking-[0.05em]"
           href={WORKING_PAPER_URL}
           rel="noopener noreferrer"
           target="_blank"
@@ -125,7 +125,7 @@ export function FrontierNotFateHero() {
             {/* ribbon body: full width at left, stepped narrowing rightward */}
             <path
               d="M40,40 L1140,40 L1140,110 L900,110 C850,110 810,150 760,150 L430,150 C380,150 350,190 300,190 L40,190 Z"
-              fill="oklch(0.955 0.012 42)"
+              fill="var(--surface)"
             />
             <path
               d="M40,190 L300,190 C350,190 380,150 430,150 L760,150 C810,150 850,110 900,110 L1140,110"
@@ -167,9 +167,8 @@ export function FrontierNotFateHero() {
               WHAT REACHES OUTCOMES
             </text>
 
-            {/* animated flow line through the ribbon */}
+            {/* Static flow line. The design system prohibits entrance and ambient animation. */}
             <path
-              className="frontier-flow"
               d="M45,115 L300,115 C350,115 380,95 430,95 L760,95 C810,95 850,75 900,75 L1135,75"
               fill="none"
               opacity="0.55"

@@ -47,10 +47,10 @@ const Y1 = 60;
 const px = (s: number) => X0 + (s / 100) * (X1 - X0);
 const py = (d: number) => Y0 - (d / 100) * (Y0 - Y1);
 
-const INK = "oklch(0.17 0.018 42)";
-const MUTED = "oklch(0.39 0.018 42)";
-const FAINT = "oklch(0.48 0.015 42)";
-const RULE = "oklch(0.82 0.004 42)";
+const INK = "var(--ink)";
+const MUTED = "var(--ink-soft)";
+const FAINT = "var(--comparator)";
+const RULE = "var(--hairline)";
 const ACCENT = "var(--primary)";
 const ACCENT_DEEP = "var(--primary-strong)";
 
@@ -120,10 +120,10 @@ export function FrontierSensitivityScatter({
 
         {/* axis titles */}
         <text x={(X0 + X1) / 2} y={640} textAnchor="middle" fontSize={14} fontWeight={600} fill={INK}>
-          Frontier sensitivity → how much raw model capability matters
+          Frontier sensitivity: how much raw model capability matters
         </text>
         <text x={40} y={330} transform="rotate(-90 40 330)" textAnchor="middle" fontSize={14} fontWeight={600} fill={INK}>
-          Conversion drag → difficulty of turning capability into output
+          Conversion drag: difficulty of turning capability into output
         </text>
 
         {/* ticks */}

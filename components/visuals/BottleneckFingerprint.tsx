@@ -38,7 +38,7 @@ function FingerprintCell({
   if (!item) {
     return (
       <div
-        className="flex min-h-24 flex-col justify-between rounded-md border border-rule bg-surface p-3 text-xs text-missing"
+        className="flex min-h-24 flex-col justify-between border border-rule bg-surface p-3 text-xs text-missing"
         aria-label={`${country}, ${axis.label}: missing`}
       >
         <span className="font-semibold">missing</span>
@@ -49,7 +49,7 @@ function FingerprintCell({
 
   return (
     <div
-      className={`min-h-24 rounded-md border p-3 ${watchSoftClasses[item.watch_level]}`}
+      className={`min-h-24 border p-3 ${watchSoftClasses[item.watch_level]}`}
       aria-label={`${country}, ${axis.label}: ${watchLabels[item.watch_level]}, ${item.evidence_label}`}
     >
       <div className="flex items-start justify-between gap-2">
@@ -107,7 +107,7 @@ export function BottleneckFingerprint({
               <div />
               {data.bottlenecks.axes.map((axis) => (
                 <div
-                  className="rounded-md border border-rule bg-background p-3"
+                  className="border border-rule bg-background p-3"
                   key={axis.key}
                 >
                   <p className="text-sm font-semibold text-foreground">

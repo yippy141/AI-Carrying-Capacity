@@ -29,6 +29,7 @@ test("Figure 1 reads its expected values from the canonical observation file", (
     model.eurostat.sizeGradient.map((row) => row.value),
     [17, 30.36, 55.03]
   );
+  assert.equal(model.china.context.value, 16.4);
   assert.equal(model.verificationDate, "2026-08-21");
 });
 
@@ -69,6 +70,7 @@ test("the figure keeps source-specific denominators and reference windows separa
       (row) => row.comparability_class === "context-only"
     )
   );
+  assert.equal(model.china.context.comparability_class, "context-only");
 });
 
 test("China NBS adoption context remains explicit and non-comparable", () => {
@@ -93,13 +95,15 @@ test("SVG and PNG export source is generated from the plotted model", () => {
     ...ADOPTION_DEPTH_FIGURE_IDS.ecb,
     ADOPTION_DEPTH_FIGURE_IDS.btosAllFirms,
     ...ADOPTION_DEPTH_FIGURE_IDS.btosAdopters,
-    ...ADOPTION_DEPTH_FIGURE_IDS.eurostatSize
+    ...ADOPTION_DEPTH_FIGURE_IDS.eurostatSize,
+    ADOPTION_DEPTH_FIGURE_IDS.chinaContext
   ];
 
   assert.match(svg, /^<svg /);
-  assert.match(svg, /whole-number shares total 98/);
-  assert.match(svg, /prior-two-week window/);
-  assert.match(svg, /not a measure of use depth/);
+  assert.match(svg, /Reported use categories total 98%/);
+  assert.match(svg, /prior-two-week window/i);
+  assert.match(svg, /not a measure of use depth/i);
+  assert.match(svg, /CHINA · CONTEXT ONLY/);
   assert.match(svg, />0%<\/text>/);
   assert.match(svg, />30%<\/text>/);
   assert.match(svg, />60%<\/text>/);

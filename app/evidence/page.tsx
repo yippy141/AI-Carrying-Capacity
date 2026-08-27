@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { EvidenceChip } from "@/components/ui/EvidenceChip";
-import { evidenceStatusForClaim } from "@/lib/evidenceStatus";
+import {
+  evidenceBasisForObservationLabel,
+  evidenceClassificationForClaim,
+  isPublicReviewStatus
+} from "@/lib/evidenceStatus";
 import {
   loadAdoptionDepth,
   loadClaimLedger,
@@ -19,6 +23,12 @@ export default function EvidencePage() {
   );
   const claims = loadClaimLedger();
   const observations = loadAdoptionDepth();
+  const publicClaims = claims
+    .map((claim) => ({
+      ...claim,
+      evidence: evidenceClassificationForClaim(claim)
+    }))
+    .filter((claim) => isPublicReviewStatus(claim.evidence.reviewStatus));
   const approved = claims.filter((c) => c.product_use_status === "approved");
   const caveated = claims.filter(
     (c) => c.product_use_status === "approved_with_caveat"
@@ -124,12 +134,14 @@ export default function EvidencePage() {
                   </td>
                   <td className="py-3 pr-3">
                     <EvidenceChip
-                      status={
-                        observation.evidence_label === "estimated"
-                          ? "model estimate"
-                          : observation.evidence_label
-                      }
+                      basis={evidenceBasisForObservationLabel(observation.evidence_label)}
+                      reviewStatus="canonical"
                     />
+                    {observation.evidence_label === "official-claim" ? (
+                      <span className="mt-1 block font-mono text-[11px] uppercase tracking-[0.05em] text-ink-soft">
+                        Official source
+                      </span>
+                    ) : null}
                   </td>
                   <td className="py-3 pr-3 text-muted">
                     {observation.comparability_class.replaceAll("-", " ")}
@@ -159,16 +171,19 @@ export default function EvidencePage() {
           <strong className="text-foreground">staged</strong> awaits source
           verification and supports nothing in the narrative on its own.
         </p>
-        <div className="mt-6 space-y-4">
-          {claims.map((claim) => (
+        <div className="mt-6 divide-y divide-hairline border-y border-hairline">
+          {publicClaims.map((claim) => (
             <article
-              className="border border-rule bg-white p-5"
+              className="py-5"
               id={claim.claim_id}
               key={claim.claim_id}
             >
               <div className="flex flex-wrap items-center gap-2 text-xs text-missing">
                 <span className="font-mono">{claim.claim_id}</span>
-                <EvidenceChip status={evidenceStatusForClaim(claim)} />
+                <EvidenceChip
+                  basis={claim.evidence.basis}
+                  reviewStatus={claim.evidence.reviewStatus}
+                />
                 <span>Claim type: {claim.claim_type.replaceAll("_", " ")}</span>
                 <span>
                   Evidence type: {claim.evidence_type.replaceAll("_", " ")}
@@ -196,7 +211,7 @@ export default function EvidencePage() {
         </div>
       </section>
 
-      <section className="mt-16">
+      <section className="mt-16" id="source-register">
         <h2 className="text-3xl text-foreground">Source register</h2>
         <p className="mt-3 max-w-3xl leading-7 text-muted">
           Reliability tiers run A (official data, peer review, major

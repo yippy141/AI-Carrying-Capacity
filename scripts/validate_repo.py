@@ -14,6 +14,7 @@ from validate_adoption_depth import (
     REQUIRED_COLUMNS as ADOPTION_DEPTH_COLUMNS,
     validate as validate_adoption_depth,
 )
+from validate_design_placeholders import validate as validate_design_placeholders
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -43,6 +44,8 @@ REQUIRED_PATHS = [
     "scripts/validate_indicator_catalog.py",
     "scripts/validate_adoption_depth.py",
     "scripts/validate_adoption_depth_test.py",
+    "scripts/validate_design_placeholders.py",
+    "scripts/validate_design_placeholders_test.py",
     "scripts/check_launch_readiness.py",
     "scripts/build_v0_dataset.py",
     "research/deep-research/README.md",
@@ -213,6 +216,15 @@ def validate_adoption_depth_data() -> None:
         )
 
 
+def validate_design_reference_values() -> None:
+    errors = validate_design_placeholders()
+    if errors:
+        fail(
+            "Design-reference placeholder validation failed:\n"
+            + "\n".join(f"- {error}" for error in errors)
+        )
+
+
 def validate_json_files() -> None:
     for relative_path in JSON_FILES:
         with (ROOT / relative_path).open(encoding="utf-8") as handle:
@@ -267,6 +279,7 @@ def main() -> None:
     validate_required_paths()
     validate_csv_headers()
     validate_adoption_depth_data()
+    validate_design_reference_values()
     validate_json_files()
     validate_report_names()
     validate_ifr_density_vintage()

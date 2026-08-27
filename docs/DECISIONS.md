@@ -249,3 +249,66 @@ Reasoning: A canonical but non-plotted observation keeps the source-specific
 denominator, universe, translation note, and comparability warning testable.
 Leaving the value only in narrative copy or the claim ledger would allow those
 measurement safeguards to drift.
+
+## 2026-08-27: Adopt design system v2 as the public figure grammar
+
+Decision: Replace the public visual tokens and type stack with the v2 paper,
+ink, hairline, country, comparator, and accent system plus Newsreader, Inter,
+and IBM Plex Mono. Public figures use a common claim-title, subtitle, chart,
+and provenance-footer frame. Decorative gradients, shadows, ambient animation,
+emoji, and dashboard chrome are outside the public grammar.
+
+Reasoning: The product needs to look like an auditable research publication,
+not a live-precision dashboard. A restrained frame makes evidence basis,
+denominator differences, caveats, and provenance visible before visual polish.
+
+## 2026-08-27: Separate evidence basis from review status in UI contracts
+
+Decision: Evidence basis is one of observed, model estimate, scenario, official
+target, company target, expert-coded, historical analogy, or hypothesis. Review
+status is canonical, reviewed, staged, superseded, or rejected. Only canonical
+and reviewed material may render publicly. A government program claim that is
+cleared for use is displayed as an observed record of what its primary document
+says; its official source and original claim type remain visible, and it does
+not establish that the program achieved an outcome.
+
+Reasoning: The former chip API mixed empirical type, conceptual type, forecast
+state, missingness, and editorial clearance. Orthogonal fields prevent a review
+decision from changing what kind of knowledge a claim represents, while the
+official-source metadata preserves the distinction required by the research
+method.
+
+## 2026-08-27: Render NBS adoption only as a separate context panel
+
+Decision: Figure 1 now renders the existing canonical NBS adoption observation
+in a China panel with its own zero-based axis, above-scale-enterprise
+denominator, official-source note, and `CONTEXT ONLY` label. The panel is never
+pooled with ECB, Census, or Eurostat. The Census latent-class value retains its
+model-estimate chip and hatch.
+
+Reasoning: WP1 requires a China context panel while the source register already
+contains a reviewed, non-comparable observation. Paneling exposes the context
+without converting it into a harmonized measure or country comparison, and the
+hatch prevents the Census estimate from masquerading as measured.
+
+## 2026-08-27: Reject design-reference placeholder values in CI
+
+Decision: Add an app-code validator for reference-only claims, complete
+placeholder assignment sequences, and percentages used near compressibility or
+frontier-gap claims. Run it in lint, repository validation, and CI.
+
+Reasoning: The design reference is authoritative for grammar only. A mechanical
+gate is safer than relying on reviewers to distinguish its illustrative chart
+content from canonical project evidence.
+
+## 2026-08-27: Make generic figure exports self-contained in the browser
+
+Decision: Keep Figure 1's explicit publication SVG and use `html-to-image` for
+generic FigureShell SVG and PNG exports. Export rendering omits the action row,
+embeds page resources, preserves the paper background, and doubles PNG pixel
+density.
+
+Reasoning: Serializing arbitrary figure HTML into a raw SVG `foreignObject`
+produced tainted-canvas failures for PNG and could omit computed chart styles.
+The self-contained renderer keeps the shared export contract functional for
+figures that do not yet have a hand-authored SVG builder.

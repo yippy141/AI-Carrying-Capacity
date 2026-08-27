@@ -11,7 +11,7 @@ const findings = [
   {
     id: "finding-1",
     label: "Observation",
-    stage: "observed",
+    basis: "observed" as const,
     title: "Adoption is not integration.",
     summary:
       "Reviewed ECB and U.S. Census evidence shows why binary adoption is an incomplete conversion measure. SAFE's “any use” includes very infrequent and experimental use; BTOS breadth measures show how narrowly many adopting firms distribute AI across business functions. These are source-specific depth signals, not a harmonized global metric.",
@@ -23,7 +23,7 @@ const findings = [
   {
     id: "finding-buildout",
     label: "Observation",
-    stage: "observed",
+    basis: "observed" as const,
     title: "Buildout is visible before broad payoff.",
     summary:
       "Reviewed sources document data-center electricity demand and grid constraints, while the repository does not yet support a broad national productivity attribution. Build measures and harvest measures therefore remain separate. Figure 1 adds a canonical use-stage observation, but adoption remains a process measure rather than a realized outcome.",
@@ -35,7 +35,7 @@ const findings = [
   {
     id: "finding-2",
     label: "Proposition",
-    stage: "conceptual",
+    basis: "hypothesis" as const,
     title: "Frontier returns differ by domain.",
     summary:
       "Capability is jagged across task types, and complements are jagged across sectors. The next increment of model capability converts fastest where work is digital and feedback-rich (AI R&D, coding, cyber) and slowest where output depends on hardware, regulation, procurement, and trust (manufacturing, healthcare, public services). This is the study's central hypothesis, held as an ordinal judgment.",
@@ -47,7 +47,7 @@ const findings = [
   {
     id: "finding-3",
     label: "Comparative hypothesis",
-    stage: "hypothesis",
+    basis: "hypothesis" as const,
     title: "The United States and China encounter different conversion bottlenecks.",
     summary:
       "Observed US grid constraints, canonical BTOS breadth evidence, and official US adoption policy point to one set of bottlenecks. China's official diffusion targets, one-time above-scale enterprise-use evidence, and observed aggregate robotics stock point to another, while comparable firm-distribution and intensity evidence remains incomplete. The contrast is a hypothesis to test, not an empirical verdict or a winner claim.",
@@ -90,7 +90,7 @@ export default function FindingsPage() {
               <span className="font-display text-sm font-semibold text-primary-strong">
                 {finding.label}
               </span>
-              <EvidenceChip status={finding.stage} />
+              <EvidenceChip basis={finding.basis} reviewStatus="reviewed" />
             </div>
             <h2 className="mt-3 text-3xl text-foreground">{finding.title}</h2>
             <p className="mt-4 text-lg leading-8 text-muted">{finding.summary}</p>

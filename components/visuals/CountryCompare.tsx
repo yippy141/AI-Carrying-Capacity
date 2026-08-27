@@ -92,10 +92,10 @@ export function CountryCompare({
           </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="divide-y divide-hairline border-y border-hairline">
           {countries.map((country) => (
             <article
-              className="rounded-lg border border-rule bg-background p-5"
+              className="py-5"
               key={country.iso}
             >
               <div className="flex items-start justify-between gap-4">
@@ -107,7 +107,7 @@ export function CountryCompare({
                     {country.name}
                   </h3>
                 </div>
-                <span className="rounded-full border border-rule bg-surface px-3 py-1 text-xs font-semibold text-muted">
+                <span className="border border-rule bg-surface px-2 py-1 font-mono text-[11px] uppercase tracking-[0.05em] text-muted">
                   {country.iso}
                 </span>
               </div>
@@ -128,7 +128,7 @@ export function CountryCompare({
         </div>
       </div>
 
-      <div className="mt-6 rounded-lg border border-rule bg-surface p-4 text-sm leading-6 text-muted">
+      <div className="mt-6 border-y border-rule bg-surface py-4 text-sm leading-6 text-muted">
         {sourceSummary(
           countries.flatMap((country) =>
             country.layer_states.flatMap((state) => state.source_ids)

@@ -17,7 +17,7 @@ const toneClasses: Record<ConfidenceBadgeProps["label"], string> = {
 export function ConfidenceBadge({ label }: ConfidenceBadgeProps) {
   return (
     <span
-      className={`inline-flex w-fit items-center rounded-full border px-3 py-1 text-xs font-semibold ${toneClasses[label]}`}
+      className={`inline-flex w-fit items-center border px-2 py-1 font-mono text-[11px] font-medium uppercase tracking-[0.05em] ${toneClasses[label]}`}
     >
       {label}
     </span>

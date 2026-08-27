@@ -1,39 +1,53 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-hairline: var(--hairline);
+  --color-us: var(--us);
+  --color-cn: var(--cn);
+  --color-comparator: var(--comparator);
+  --color-white: var(--paper);
+  --color-background: var(--paper);
+  --color-foreground: var(--ink);
   --color-surface: var(--surface);
-  --color-surface-strong: var(--surface-strong);
-  --color-rule: var(--rule);
-  --color-muted: var(--muted);
+  --color-surface-strong: var(--hairline);
+  --color-rule: var(--hairline);
+  --color-muted: var(--ink-soft);
   --color-primary: var(--primary);
   --color-primary-strong: var(--primary-strong);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-missing: var(--missing);
   --color-warning: var(--warning);
-  --font-sans: var(--font-sans);
-  --font-display: var(--font-display);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-newsreader);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.17 0.018 42);
-  --surface: oklch(0.965 0 0);
-  --surface-strong: oklch(0.925 0 0);
-  --rule: oklch(0.82 0.004 42);
-  --muted: oklch(0.39 0.018 42);
-  --primary: oklch(0.6 0.19 38.6);
-  --primary-strong: oklch(0.46 0.16 38.6);
-  --accent: oklch(0.34 0.12 190);
-  --accent-soft: oklch(0.91 0.045 190);
-  --missing: oklch(0.48 0.015 42);
-  --warning: oklch(0.58 0.17 72);
-  --font-sans: Aptos, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
-    sans-serif;
-  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
-    serif;
+  --paper: #fbfaf7;
+  --ink: #1c1b1a;
+  --ink-soft: #57534b;
+  --hairline: #e7e2d9;
+  --surface: #f4f1ea;
+  --us: #3e63dd;
+  --cn: #c4442a;
+  --comparator: #9c958b;
+  --accent: #1f6f5c;
+
+  /* Compatibility aliases for the pre-v2 component layer. */
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --surface-strong: var(--hairline);
+  --rule: var(--hairline);
+  --muted: var(--ink-soft);
+  --primary: var(--ink);
+  --primary-strong: var(--ink);
+  --accent-soft: var(--surface);
+  --missing: var(--comparator);
+  --warning: var(--ink-soft);
 }
 
 * {
@@ -41,28 +55,34 @@
 }
 
 html {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--paper);
+  color: var(--ink);
 }
 
 body {
   min-height: 100vh;
   margin: 0;
-  background:
-    linear-gradient(180deg, oklch(1 0 0) 0%, oklch(0.985 0 0) 64%),
-    var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-inter), Inter, system-ui, sans-serif;
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.55;
   text-rendering: optimizeLegibility;
 }
 
 h1,
 h2,
 h3 {
-  font-family: var(--font-display);
+  font-family: var(--font-newsreader), Newsreader, Georgia, serif;
   font-weight: 600;
-  letter-spacing: 0;
+  letter-spacing: -0.01em;
+  line-height: 1.12;
   text-wrap: balance;
+}
+
+h1 {
+  font-weight: 500;
 }
 
 p,
@@ -72,21 +92,19 @@ li {
 
 a {
   color: inherit;
+  text-decoration-color: var(--hairline);
+  text-underline-offset: 0.18em;
+  transition: color 200ms ease-out, text-decoration-color 200ms ease-out;
+}
+
+a:hover {
+  color: var(--accent);
+  text-decoration-color: currentColor;
 }
 
 ::selection {
-  background: var(--primary);
-  color: white;
-}
-
-@keyframes frontier-flow {
-  to {
-    stroke-dashoffset: -96;
-  }
-}
-
-.frontier-flow {
-  animation: frontier-flow 3.2s linear infinite;
+  background: var(--ink);
+  color: var(--paper);
 }
 
 .focus-ring {
@@ -95,14 +113,60 @@ a {
 }
 
 .focus-ring:focus-visible {
-  outline-color: var(--primary);
+  outline-color: var(--accent);
+}
+
+.evidence-chip {
+  display: inline-block;
+  border-radius: 2px;
+  padding: 3px 9px;
+  color: var(--ink);
+  font-family: var(--font-ibm-plex-mono), "IBM Plex Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.evidence-chip[data-basis="observed"] {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.evidence-chip[data-basis="model estimate"] {
+  background: var(--hairline);
+}
+
+.evidence-chip[data-basis="scenario"] {
+  border: 1.5px dashed var(--ink-soft);
+  background: var(--hairline);
+}
+
+.evidence-chip[data-basis="official target"] {
+  border: 1.5px solid var(--ink);
+}
+
+.evidence-chip[data-basis="company target"] {
+  border: 1.5px dashed var(--ink-soft);
+  color: var(--ink-soft);
+}
+
+.evidence-chip[data-basis="expert-coded"] {
+  border: 1.5px dotted var(--ink);
+}
+
+.evidence-chip[data-basis="historical analogy"] {
+  border: 3px double var(--ink-soft);
+}
+
+.evidence-chip[data-basis="hypothesis"] {
+  color: var(--ink-soft);
+  outline: 1px solid var(--hairline);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .frontier-flow {
-    animation: none !important;
-  }
-
   *,
   *::before,
   *::after {

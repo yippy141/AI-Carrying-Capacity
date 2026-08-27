@@ -2,40 +2,40 @@ import Link from "next/link";
 
 const navItems = [
   { href: "/", label: "Study" },
-  { href: "/findings", label: "What we know" },
+  { href: "/findings", label: "Findings" },
   { href: "/evidence", label: "Evidence" },
   { href: "/forecasts", label: "Forecasts" },
-  { href: "/methods", label: "Methods" },
-  { href: "/about", label: "About" }
+  { href: "/methods", label: "Methods" }
 ];
 
 export function SiteHeader() {
   return (
-    <header className="border-b border-rule bg-background/95">
-      <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-5 sm:px-8 lg:flex-row lg:items-center lg:justify-between">
-        <Link className="focus-ring inline-flex w-fit items-baseline gap-3" href="/">
-          <span className="h-3 w-3 rounded-full bg-primary" aria-hidden="true" />
-          <span className="font-display text-2xl font-semibold">
+    <header className="border-b border-hairline bg-paper">
+      <div className="mx-auto flex max-w-[1440px] flex-wrap items-baseline justify-between gap-x-8 gap-y-3 px-6 py-[18px] sm:px-8">
+        <Link className="focus-ring inline-flex w-fit items-baseline" href="/">
+          <span className="font-display text-[19px] font-semibold leading-none">
             Frontier Is Not Fate
           </span>
-          <span className="hidden text-sm text-muted sm:inline">
-            · AI Conversion Atlas
-          </span>
         </Link>
-        <nav aria-label="Primary navigation">
-          <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium text-muted">
+        <div className="flex flex-wrap items-baseline justify-end gap-x-6 gap-y-3">
+          <nav aria-label="Primary navigation">
+            <ul className="flex flex-wrap gap-x-[22px] gap-y-2 text-sm text-ink-soft">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
-                  className="focus-ring transition-colors hover:text-foreground"
+                  className="focus-ring"
                   href={item.href}
                 >
                   {item.label}
                 </Link>
               </li>
             ))}
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+          <span className="font-mono text-[11px] uppercase tracking-[0.06em] text-ink-soft">
+            v1.1
+          </span>
+        </div>
       </div>
     </header>
   );

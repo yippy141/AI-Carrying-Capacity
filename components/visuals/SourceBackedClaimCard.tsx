@@ -31,7 +31,7 @@ export function SourceBackedClaimCard({
   const attachedSources = sourceSummary(claim.source_ids, sources);
 
   return (
-    <article className="rounded-lg border border-rule bg-background p-5">
+    <article className="border-y border-hairline py-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <p className="text-sm font-semibold text-primary-strong">
@@ -92,13 +92,13 @@ export function SourceBackedClaimCard({
                       {source.authors_org} · {source.year} · {source.language}
                     </p>
                   </div>
-                  <span className="w-fit rounded-full border border-rule bg-background px-3 py-1 text-xs font-semibold text-muted">
+                  <span className="w-fit border border-rule bg-background px-2 py-1 font-mono text-[11px] uppercase tracking-[0.05em] text-muted">
                     tier {source.reliability_tier} · {source.review_status}
                   </span>
                 </div>
 
                 {isOfficialClaimSource(source) ? (
-                  <div className="mt-3 rounded-lg border border-warning/35 bg-[oklch(0.97_0.035_72)] p-3 text-xs leading-5 text-muted">
+                  <div className="mt-3 border-y border-hairline bg-surface py-3 text-xs leading-5 text-ink-soft">
                     Official target or program claim; not independently validated
                     unless the source metadata says otherwise.
                   </div>

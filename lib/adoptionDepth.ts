@@ -36,7 +36,8 @@ export const ADOPTION_DEPTH_FIGURE_IDS = {
     "obs-adoption-depth-010",
     "obs-adoption-depth-011",
     "obs-adoption-depth-012"
-  ]
+  ],
+  chinaContext: "obs-adoption-depth-013"
 } as const;
 
 export type AdoptionDepthFigureModel = {
@@ -51,6 +52,9 @@ export type AdoptionDepthFigureModel = {
   };
   eurostat: {
     sizeGradient: FigureObservation[];
+  };
+  china: {
+    context: FigureObservation;
   };
   plottedObservationIds: string[];
   verificationDate: string;
@@ -99,12 +103,17 @@ export function buildAdoptionDepthFigureModel(
   const sizeGradient = ADOPTION_DEPTH_FIGURE_IDS.eurostatSize.map((id) =>
     requireObservation(rowsById, id)
   );
+  const chinaContext = requireObservation(
+    rowsById,
+    ADOPTION_DEPTH_FIGURE_IDS.chinaContext
+  );
   const reportedTotal = ecbRows.reduce((sum, row) => sum + row.value, 0);
   const plottedRows = [
     ...ecbRows,
     allFirms,
     ...adopterOnly,
-    ...sizeGradient
+    ...sizeGradient,
+    chinaContext
   ];
 
   return {
@@ -115,6 +124,7 @@ export function buildAdoptionDepthFigureModel(
     },
     btos: { allFirms, adopterOnly },
     eurostat: { sizeGradient },
+    china: { context: chinaContext },
     plottedObservationIds: plottedRows.map((row) => row.observation_id),
     verificationDate: plottedRows
       .map((row) => row.last_verified)
@@ -145,72 +155,91 @@ export function buildAdoptionDepthExportSvg(
   const [notUsing, experimental, moderate, significant] = model.ecb.rows;
   const [narrow, comprehensive] = model.btos.adopterOnly;
   const [small, medium, large] = model.eurostat.sizeGradient;
-  const barX = 100;
-  const barWidth = 1400;
-  const ecbColors = ["#e9e8e6", "#c9c6c1", "#5c5752", "#c6572c"];
+  const china = model.china.context;
+  const barX = 92;
+  const barWidth = 640;
+  const ecbColors = ["#F4F1EA", "#E7E2D9", "#9C958B", "#1C1B1A"];
   let x = barX;
   const ecbRects = model.ecb.rows
     .map((row, index) => {
       const width = (barWidth * row.value) / 100;
-      const rect = `<rect x="${x}" y="260" width="${width}" height="72" fill="${ecbColors[index]}"/>`;
+      const rect = `<rect x="${x}" y="338" width="${width}" height="38" fill="${ecbColors[index]}"/>`;
       x += width;
       return rect;
     })
     .join("");
   const sizeRows = [small, medium, large]
     .map((row, index) => {
-      const y = 1110 + index * 82;
-      const width = (row.value / 60) * 1020;
+      const y = 1132 + index * 78;
+      const width = (row.value / 60) * 520;
       const labels = ["Small · 10–49", "Medium · 50–249", "Large · 250+"];
-      return `<text x="100" y="${y}" class="label">${labels[index]}</text><rect x="350" y="${y - 25}" width="1020" height="32" fill="#ecebea"/><rect x="350" y="${y - 25}" width="${width}" height="32" fill="#2f2a27"/><text x="1400" y="${y}" class="value">${percentLabel(row.value)}</text>`;
+      return `<text x="92" y="${y}" class="label">${labels[index]}</text><rect x="290" y="${y - 23}" width="520" height="24" fill="#F4F1EA"/><rect x="290" y="${y - 23}" width="${width}" height="24" fill="#9C958B"/><text x="836" y="${y}" class="value">${percentLabel(row.value)}</text>`;
     })
     .join("");
   const metadata = xml(model.plottedObservationIds.join(","));
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1500" viewBox="0 0 1600 1500" role="img" aria-labelledby="title desc">
-  <title id="title">Adoption is not integration</title>
-  <desc id="desc">Three source-specific panels showing ECB AI-use intensity, United States BTOS organizational breadth, and Eurostat adoption by firm size. The panels are not harmonized.</desc>
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1760" viewBox="0 0 1600 1760" role="img" aria-labelledby="title desc">
+  <title id="title">Observed: adoption is not integration</title>
+  <desc id="desc">Four source-specific panels show ECB AI-use intensity, United States Census organizational breadth, Eurostat adoption by firm size, and China NBS context. Every panel has its own denominator and scale.</desc>
   <metadata>Canonical observations: ${metadata}</metadata>
+  <defs><pattern id="model-hatch" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#F4F1EA"/><line x1="0" y1="0" x2="0" y2="8" stroke="#1C1B1A" stroke-width="1"/></pattern></defs>
   <style>
-    text{font-family:Aptos,Segoe UI,Arial,sans-serif;fill:#2f2a27}.title{font-family:Georgia,serif;font-size:58px;font-weight:700}.panel{font-family:Georgia,serif;font-size:34px;font-weight:700}.kicker{font-size:17px;font-weight:700;letter-spacing:1.6px}.body{font-size:22px}.label{font-size:21px;font-weight:600}.value{font-size:23px;font-weight:700}.note{font-size:17px;fill:#5d5650}.source{font-size:16px;fill:#5d5650}.accent{fill:#a24123}
+    text{font-family:Inter,Arial,sans-serif;fill:#1C1B1A}.title{font-family:Newsreader,Georgia,serif;font-size:52px;font-weight:600}.panel{font-family:Newsreader,Georgia,serif;font-size:27px;font-weight:600}.meta,.label,.value,.source,.chip{font-family:"IBM Plex Mono",monospace}.meta{font-size:13px;letter-spacing:1px;fill:#57534B}.body{font-size:17px}.label{font-size:14px}.value{font-size:16px;font-weight:500}.note{font-size:14px;fill:#57534B}.source{font-size:12px;fill:#57534B}.accent{fill:#1F6F5C}.us{fill:#3E63DD}.cn{fill:#C4442A}.chip{font-size:11px;letter-spacing:1px}
   </style>
-  <rect width="1600" height="1500" fill="#ffffff"/>
-  <text x="100" y="92" class="title">Adoption is not integration</text>
-  <text x="100" y="140" class="body">Within-source evidence only. “Deep use” differs by survey; panels must not be read as a harmonized ranking.</text>
-  <line x1="100" y1="178" x2="1500" y2="178" stroke="#2f2a27" stroke-width="2"/>
-  <text x="100" y="225" class="kicker accent">PANEL A · ECB SAFE INTENSITY</text>
+  <rect width="1600" height="1760" fill="#FBFAF7"/>
+  <text x="92" y="92" class="title"><tspan class="accent">Observed:</tspan> adoption is not integration.</text>
+  <text x="92" y="136" class="body" fill="#57534B">Unit: percent of firms · denominators and universes remain source-specific · values are never pooled.</text>
+  <line x1="92" y1="182" x2="1508" y2="182" stroke="#E7E2D9"/>
+  <line x1="800" y1="218" x2="800" y2="950" stroke="#E7E2D9"/>
+  <text x="92" y="236" class="meta">PANEL A · ECB SAFE · EURO AREA</text>
+  <text x="92" y="279" class="panel">Most reported use is experimental or moderate.</text>
+  <text x="92" y="307" class="note">Axis: 0–100% of weighted SAFE respondents</text>
   ${ecbRects}
-  <rect x="${x}" y="260" width="${(barWidth * model.ecb.unreportedResidual) / 100}" height="72" fill="#ffffff" stroke="#a7a19b" stroke-dasharray="4 4"/>
-  <text x="100" y="380" class="label">Not in use ${percentLabel(notUsing.value)}</text>
-  <text x="430" y="380" class="label">Very infrequent / experimental ${percentLabel(experimental.value)}</text>
-  <text x="970" y="380" class="label">Moderate ${percentLabel(moderate.value)}</text>
-  <text x="1260" y="380" class="label accent">Significant ${percentLabel(significant.value)}</text>
-  <text x="100" y="420" class="note">The four published whole-number shares total ${model.ecb.reportedTotal}; the ${model.ecb.unreportedResidual}-point residual may reflect “don’t know” responses and rounding.</text>
-  <text x="100" y="450" class="source">Source: ECB SAFE Q4 2025 · ${xml(notUsing.source_id)} · denominator: ${xml(notUsing.denominator)}</text>
-  <line x1="100" y1="500" x2="1500" y2="500" stroke="#d3cfca"/>
-  <text x="100" y="552" class="kicker accent">PANEL B · U.S. ORGANIZATIONAL BREADTH</text>
-  <text x="100" y="610" class="panel">All employer firms</text>
-  <text x="100" y="652" class="body">Reported AI use in at least one business function</text>
-  <rect x="100" y="684" width="600" height="42" fill="#ecebea"/><rect x="100" y="684" width="${model.btos.allFirms.value * 6}" height="42" fill="#2f2a27"/>
-  <text x="720" y="716" class="value">${percentLabel(model.btos.allFirms.value)}</text>
-  <text x="840" y="610" class="panel">AI-adopting firms only</text>
-  <text x="840" y="652" class="body">Use AI in three or fewer functions</text>
-  <rect x="840" y="684" width="600" height="34" fill="#ecebea"/><rect x="840" y="684" width="${narrow.value * 6}" height="34" fill="#2f2a27"/><text x="1460" y="712" class="value">${percentLabel(narrow.value)}</text>
-  <text x="840" y="765" class="body">Comprehensive adopters</text>
-  <rect x="840" y="797" width="600" height="34" fill="#ecebea"/><rect x="840" y="797" width="${comprehensive.value * 6}" height="34" fill="#c6572c"/><text x="1460" y="825" class="value">${percentLabel(comprehensive.value)}</text>
-  <text x="100" y="885" class="note">Q23 ${percentLabel(model.btos.allFirms.value)} uses all employer businesses and a prior-two-week window; Q24 ${percentLabel(narrow.value)} / ${percentLabel(comprehensive.value)} uses functional adopters and a prior-six-month window.</text>
-  <text x="100" y="918" class="source">Source: Census CES Working Paper 26-25 · ${xml(model.btos.allFirms.source_id)} · Nov 2025–Jan 2026</text>
-  <line x1="100" y1="968" x2="1500" y2="968" stroke="#d3cfca"/>
-  <text x="100" y="1020" class="kicker accent">PANEL C · EUROSTAT FIRM-SIZE GRADIENT</text>
-  <text x="100" y="1062" class="body">Adoption by firm size — context for uneven diffusion, not a measure of use depth</text>
+  <rect x="${x}" y="338" width="${(barWidth * model.ecb.unreportedResidual) / 100}" height="38" fill="#FBFAF7" stroke="#9C958B" stroke-dasharray="4 4"/>
+  <text x="92" y="416" class="label">Not in use ${percentLabel(notUsing.value)}</text>
+  <text x="92" y="448" class="label">Experimental ${percentLabel(experimental.value)}</text>
+  <text x="92" y="480" class="label">Moderate ${percentLabel(moderate.value)}</text>
+  <text x="92" y="512" class="label">Significant ${percentLabel(significant.value)}</text>
+  <text x="92" y="552" class="note">Reported use categories total ${model.ecb.reportedTotal}%; ${model.ecb.unreportedResidual} points remain unallocated.</text>
+  <text x="92" y="586" class="source">ECB SAFE Q4 2025 · ${xml(notUsing.source_id)}</text>
+
+  <text x="848" y="236" class="meta us">PANEL B · CENSUS BTOS · UNITED STATES</text>
+  <text x="848" y="279" class="panel">Reach and breadth use different denominators.</text>
+  <text x="848" y="323" class="meta">ALL EMPLOYER BUSINESSES · AXIS 0–100%</text>
+  <rect x="848" y="350" width="600" height="26" fill="#F4F1EA"/><rect x="848" y="350" width="${model.btos.allFirms.value * 6}" height="26" fill="#3E63DD"/><text x="1472" y="371" class="value">${percentLabel(model.btos.allFirms.value)}</text>
+  <text x="848" y="412" class="label">AI use in at least one business function</text>
+  <line x1="848" y1="455" x2="1508" y2="455" stroke="#E7E2D9"/>
+  <text x="848" y="492" class="meta">Q24 FUNCTIONAL USERS ONLY · AXIS 0–100%</text>
+  <text x="848" y="538" class="label">One to three functions</text>
+  <rect x="848" y="552" width="600" height="24" fill="#F4F1EA"/><rect x="848" y="552" width="${narrow.value * 6}" height="24" fill="#3E63DD"/><text x="1472" y="572" class="value">${percentLabel(narrow.value)}</text>
+  <text x="848" y="626" class="label">Comprehensive adopters · model estimate</text>
+  <rect x="848" y="640" width="600" height="24" fill="#F4F1EA"/><rect x="848" y="640" width="${comprehensive.value * 6}" height="24" fill="url(#model-hatch)" stroke="#3E63DD"/><text x="1472" y="660" class="value">${percentLabel(comprehensive.value)}</text>
+  <text x="848" y="716" class="note">Q23 uses a prior-two-week window. Q24 uses a prior-six-month window.</text>
+  <text x="848" y="750" class="source">Census CES Working Paper 26-25 · ${xml(model.btos.allFirms.source_id)}</text>
+
+  <line x1="92" y1="950" x2="1508" y2="950" stroke="#E7E2D9"/>
+  <line x1="900" y1="990" x2="900" y2="1480" stroke="#E7E2D9"/>
+  <text x="92" y="1010" class="meta">PANEL C · EUROSTAT · EUROPEAN UNION</text>
+  <text x="92" y="1053" class="panel">Adoption is uneven across firm size.</text>
+  <text x="92" y="1085" class="note">Axis: 0–60% within each enterprise-size universe · not a measure of use depth</text>
   ${sizeRows}
-  <line x1="350" y1="1322" x2="1370" y2="1322" stroke="#a7a19b"/>
-  <text x="350" y="1350" class="note" text-anchor="start">0%</text>
-  <text x="860" y="1350" class="note" text-anchor="middle">30%</text>
-  <text x="1370" y="1350" class="note" text-anchor="end">60%</text>
-  <text x="100" y="1384" class="source">Source: Eurostat 2025 ICT enterprise survey · ${xml(small.source_id)}</text>
-  <text x="100" y="1410" class="source">Universe: ${xml(small.survey_universe)}</text>
-  <line x1="100" y1="1440" x2="1500" y2="1440" stroke="#2f2a27" stroke-width="2"/>
-  <text x="100" y="1478" class="note">Figure 1 · empirical · AI Conversion Atlas · verified ${xml(model.verificationDate)}</text>
+  <line x1="290" y1="1358" x2="810" y2="1358" stroke="#E7E2D9"/>
+  <text x="290" y="1385" class="source">0%</text><text x="550" y="1385" class="source" text-anchor="middle">30%</text><text x="810" y="1385" class="source" text-anchor="end">60%</text>
+  <text x="92" y="1435" class="source">Source: Eurostat 2025 ICT enterprise survey · ${xml(small.source_id)}</text>
+  <text x="92" y="1462" class="source">Universe: ${xml(small.survey_universe)}</text>
+
+  <text x="948" y="1010" class="meta cn">PANEL D · NBS · CHINA · CONTEXT ONLY</text>
+  <text x="948" y="1053" class="panel">A different firm universe gives context only.</text>
+  <text x="948" y="1085" class="note">Axis: 0–20% of above-scale enterprises</text>
+  <rect x="948" y="1132" width="500" height="28" fill="#F4F1EA"/><rect x="948" y="1132" width="${(china.value / 20) * 500}" height="28" fill="#C4442A"/><text x="1472" y="1154" class="value">${percentLabel(china.value)}</text>
+  <text x="948" y="1204" class="label">Applied AI in production and business activities</text>
+  <text x="948" y="1254" class="note">Official-source statistic. Not an all-firm survey and not directly comparable.</text>
+  <text x="948" y="1306" class="source">NBS Fifth National Economic Census · ${xml(china.source_id)}</text>
+
+  <line x1="92" y1="1528" x2="1508" y2="1528" stroke="#E7E2D9"/>
+  <text x="92" y="1570" class="source">Sources: ECB SAFE; U.S. Census CES WP 26-25; Eurostat ICT enterprise survey; NBS Fifth National Economic Census.</text>
+  <rect x="92" y="1600" width="92" height="25" fill="#1C1B1A"/><text x="104" y="1617" class="chip" fill="#FBFAF7">OBSERVED</text>
+  <text x="204" y="1617" class="chip">DEFINITIONS DIFFER</text>
+  <text x="92" y="1682" class="source">Figure 1 · canonical observations · verified ${xml(model.verificationDate)} · ${metadata}</text>
 </svg>`;
 }

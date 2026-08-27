@@ -92,3 +92,16 @@
 - [ ] Create V0 sector module schema.
 - [ ] Add tests once data transformation scripts exist.
 - [ ] Add source-driven charts only after reviewed indicators exist.
+
+## WP1 — Design grammar refit
+
+- [x] Create `design/system-v2` from merged Figure 1 main.
+- [x] Replace public color and typography tokens with design system v2.
+- [x] Refit `EvidenceChip` to eight evidence bases with an orthogonal review gate.
+- [x] Refit `FigureShell` and add `AnnotationLayer` plus PNG/SVG export actions.
+- [x] Restyle Figure 1 as four source-specific panels with a context-only China panel.
+- [x] Add and integrate the design-reference placeholder-value validator.
+- [x] Remove gradients, shadows, emoji, and ambient entrance animation from app code.
+- [x] Record chart grammar and integrity checks in `docs/DESIGN_QA.md`.
+- [x] Capture and inspect 1440px and 390px screenshots of Figure 1.
+- [ ] Open the draft PR after screenshot acceptance is complete.

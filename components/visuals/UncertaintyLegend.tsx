@@ -27,7 +27,7 @@ export function UncertaintyLegend({
           className={
             compact
               ? "flex max-w-3xl flex-wrap gap-2"
-              : "grid w-full max-w-4xl gap-3 sm:grid-cols-2"
+              : "w-full max-w-4xl divide-y divide-hairline border-y border-hairline"
           }
         >
           {items.map((item) => (
@@ -35,7 +35,7 @@ export function UncertaintyLegend({
               className={
                 compact
                   ? "flex items-center"
-                  : "rounded-lg border border-rule bg-background p-4"
+                  : "py-4"
               }
               key={item.label}
             >
