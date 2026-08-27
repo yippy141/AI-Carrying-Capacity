@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: oklch(0.97 0.004 80); }
+  ::selection { background: oklch(0.6 0.19 38.6); color: #fff; }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:oklch(0.97 0.004 80);display:flex;justify-content:center;padding:48px 24px;box-sizing:border-box;font-family:Aptos,'Segoe UI','Source Sans 3',system-ui,sans-serif;color:oklch(0.17 0.018 42);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;">
+
+  <figure style="width:1120px;max-width:100%;margin:0;background:oklch(1 0 0);border:1px solid oklch(0.82 0.004 42);box-shadow:0 1px 3px rgba(0,0,0,0.04);box-sizing:border-box;padding:46px 52px 40px;">
+
+    <!-- header -->
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap;border-bottom:2px solid oklch(0.17 0.018 42);padding-bottom:20px;">
+      <div style="max-width:62ch;">
+        <p style="margin:0 0 11px;font-size:12px;font-weight:600;letter-spacing:0.13em;text-transform:uppercase;color:oklch(0.46 0.16 38.6);">AI Conversion Atlas · Figure 1</p>
+        <h1 style="margin:0;font-family:'Source Serif 4','Iowan Old Style',Palatino,Georgia,serif;font-size:33px;font-weight:600;letter-spacing:-0.012em;line-height:1.1;text-wrap:balance;">Where frontier capability converts, and where it stalls</h1>
+      </div>
+      <p style="margin:0;font-size:13.5px;line-height:1.55;color:oklch(0.39 0.018 42);max-width:30ch;align-self:flex-end;">
+        Each domain placed by how much raw model capability matters, against how hard it is to turn that capability into real-world output.
+      </p>
+    </div>
+
+    <!-- plot -->
+    <svg viewBox="0 0 1020 660" width="100%" style="display:block;margin-top:8px;overflow:visible;" role="img" aria-label="Scatter plot of seven domains by frontier sensitivity and conversion drag.">
+
+      <!-- sweet-spot shading: high sensitivity, low drag (bottom-right) -->
+      <sc-if value="{{ showShade }}" hint-placeholder-val="{{ true }}">
+        <rect x="580" y="360" width="460" height="240" fill="oklch(0.6 0.19 38.6)" opacity="0.05"></rect>
+        <!-- high-drag band (top) -->
+        <rect x="80" y="60" width="960" height="150" fill="oklch(0.48 0.015 42)" opacity="0.045"></rect>
+      </sc-if>
+
+      <!-- median crosshair -->
+      <line x1="560" y1="60" x2="560" y2="600" stroke="oklch(0.82 0.004 42)" stroke-width="1" stroke-dasharray="2 5"></line>
+      <line x1="80" y1="360" x2="1040" y2="360" stroke="oklch(0.82 0.004 42)" stroke-width="1" stroke-dasharray="2 5"></line>
+
+      <!-- axis frame -->
+      <line x1="80" y1="60" x2="80" y2="600" stroke="oklch(0.17 0.018 42)" stroke-width="1.5"></line>
+      <line x1="80" y1="600" x2="1040" y2="600" stroke="oklch(0.17 0.018 42)" stroke-width="1.5"></line>
+
+      <!-- zone labels -->
+      <text x="1030" y="588" text-anchor="end" font-family="Aptos,'Segoe UI','Source Sans 3',sans-serif" font-size="11.5" font-weight="700" letter-spacing="0.12em" fill="oklch(0.46 0.16 38.6)">WHERE CAPABILITY PAYS OFF</text>
+      <text x="92" y="80" font-family="Aptos,'Segoe UI','Source Sans 3',sans-serif" font-size="11.5" font-weight="700" letter-spacing="0.12em" fill="oklch(0.48 0.015 42)">HIGH DRAG — BEING AT THE FRONTIER BUYS LESS</text>
+
+      <!-- axis titles -->
+      <text x="560" y="640" text-anchor="middle" font-family="Aptos,'Segoe UI','Source Sans 3',sans-serif" font-size="14" font-weight="600" fill="oklch(0.17 0.018 42)">Frontier sensitivity  →  how much raw model capability matters</text>
+      <text x="40" y="330" transform="rotate(-90 40 330)" text-anchor="middle" font-family="Aptos,'Segoe UI','Source Sans 3',sans-serif" font-size="14" font-weight="600" fill="oklch(0.17 0.018 42)">Conversion drag  →  difficulty of turning capability into output</text>
+
+      <!-- low/high ticks -->
+      <text x="84" y="618" font-family="Aptos,sans-serif" font-size="11" fill="oklch(0.48 0.015 42)">low</text>
+      <text x="1040" y="618" text-anchor="end" font-family="Aptos,sans-serif" font-size="11" fill="oklch(0.48 0.015 42)">high</text>
+      <text x="74" y="598" text-anchor="end" font-family="Aptos,sans-serif" font-size="11" fill="oklch(0.48 0.015 42)">low</text>
+      <text x="74" y="72" text-anchor="end" font-family="Aptos,sans-serif" font-size="11" fill="oklch(0.48 0.015 42)">high</text>
+
+      <!-- ===== POINTS ===== -->
+      <!-- uncertainty halos (speculative placements) -->
+      <sc-if value="{{ showHalos }}" hint-placeholder-val="{{ true }}">
+        <ellipse cx="612" cy="125" rx="58" ry="34" fill="none" stroke="oklch(0.48 0.015 42)" stroke-width="1" stroke-dasharray="3 4" opacity="0.55"></ellipse>
+        <ellipse cx="402" cy="158" rx="50" ry="30" fill="none" stroke="oklch(0.48 0.015 42)" stroke-width="1" stroke-dasharray="3 4" opacity="0.55"></ellipse>
+        <ellipse cx="797" cy="328" rx="48" ry="30" fill="none" stroke="oklch(0.48 0.015 42)" stroke-width="1" stroke-dasharray="3 4" opacity="0.55"></ellipse>
+      </sc-if>
+
+      <!-- AI R&D and coding -->
+      <circle cx="936" cy="525" r="6.5" fill="oklch(0.6 0.19 38.6)"></circle>
+      <text x="924" y="529" text-anchor="end" font-family="Aptos,'Segoe UI','Source Sans 3',sans-serif" font-size="15.5" font-weight="600" fill="oklch(0.17 0.018 42)">AI R&amp;D and coding</text>
+
+      <!-- Cyber and intelligence -->
+      <circle cx="850" cy="438" r="6.5" fill="oklch(0.6 0.19 38.6)"></circle>
+      <text x="838" y="442" text-anchor="end" font-family="Aptos,'Segoe UI','Source Sans 3',sans-serif" font-size="15.5" font-weight="600" fill="oklch(0.17 0.018 42)">Cyber and intelligence</text>
+
+      <!-- Agentic computer use -->
+      <circle cx="797" cy="328" r="6.5" fill="oklch(0.17 0.018 42)"></circle>
+      <text x="809" y="324" font-family="Aptos,'Segoe UI','Source Sans 3',sans-serif" font-size="15.5" font-weight="600" fill="oklch(0.17 0.018 42)">Agentic computer use</text>
+
+      <!-- Scientific discovery -->
+      <circle cx="758" cy="285" r="6.5" fill="oklch(0.17 0.018 42)"></circle>
+      <text x="746" y="281" text-anchor="end" font-family="Aptos,'Segoe UI','Source Sans 3',sans-serif" font-size="15.5" font-weight="600" fill="oklch(0.17 0.018 42)">Scientific discovery</text>
+
+      <!-- Healthcare administration -->
+      <circle cx="534" cy="205" r="6.5" fill="oklch(0.17 0.018 42)"></circle>
+      <text x="546" y="201" font-family="Aptos,'Segoe UI','Source Sans 3',sans-serif" font-size="15.5" font-weight="600" fill="oklch(0.17 0.018 42)">Healthcare administration</text>
+
+      <!-- Manufacturing and robotics -->
+      <circle cx="612" cy="125" r="6.5" fill="oklch(0.17 0.018 42)"></circle>
+      <text x="624" y="121" font-family="Aptos,'Segoe UI','Source Sans 3',sans-serif" font-size="15.5" font-weight="600" fill="oklch(0.17 0.018 42)">Manufacturing and robotics</text>
+
+      <!-- Public services -->
+      <circle cx="402" cy="158" r="6.5" fill="oklch(0.17 0.018 42)"></circle>
+      <text x="414" y="154" font-family="Aptos,'Segoe UI','Source Sans 3',sans-serif" font-size="15.5" font-weight="600" fill="oklch(0.17 0.018 42)">Public services</text>
+
+    </svg>
+
+    <!-- legend + caption -->
+    <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:40px;border-top:1px solid oklch(0.82 0.004 42);margin-top:14px;padding-top:18px;">
+      <div style="display:flex;flex-direction:column;gap:11px;">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.48 0.015 42);">Reading the markers</span>
+        <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;color:oklch(0.39 0.018 42);">
+          <svg width="22" height="16"><circle cx="11" cy="8" r="5.5" fill="oklch(0.6 0.19 38.6)"></circle></svg>
+          <span>Sits in the high-sensitivity, low-drag zone where frontier capability converts fastest</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;color:oklch(0.39 0.018 42);">
+          <svg width="22" height="16"><circle cx="11" cy="8" r="5.5" fill="oklch(0.17 0.018 42)"></circle></svg>
+          <span>Frontier matters, but conversion drag holds back real-world output</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;color:oklch(0.39 0.018 42);">
+          <svg width="22" height="16"><ellipse cx="11" cy="8" rx="9" ry="5.5" fill="none" stroke="oklch(0.48 0.015 42)" stroke-width="1" stroke-dasharray="3 3"></ellipse></svg>
+          <span>Dashed halo = placement we are least confident about</span>
+        </div>
+      </div>
+      <figcaption style="font-size:13.5px;line-height:1.62;color:oklch(0.39 0.018 42);">
+        <span style="font-weight:600;color:oklch(0.17 0.018 42);">How to read.</span> Capability matters most toward the lower right, where sensitivity is high and drag is low — AI R&amp;D, coding, and cyber. Physical and institutional domains — manufacturing, public services, healthcare administration — sit high in the drag band, where being at the frontier buys less because output depends on hardware, regulation, procurement, and trust.
+        <span style="display:block;margin-top:10px;font-style:italic;color:oklch(0.48 0.015 42);">Positions are illustrative, not scored. Axes are ordinal judgements, not measured quantities; the dashed halos mark domains whose placement is most contestable. Read the pattern, not the coordinates.</span>
+      </figcaption>
+    </div>
+
+  </figure>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;quadrantShading&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Diagram&quot; },
+  &quot;uncertaintyHalos&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Diagram&quot; }
+}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      showShade: this.props.quadrantShading !== false,
+      showHalos: this.props.uncertaintyHalos !== false
+    };
+  }
+}
+</script>
+</body>
+</html>

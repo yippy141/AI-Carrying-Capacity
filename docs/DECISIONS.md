@@ -312,3 +312,135 @@ Reasoning: Serializing arbitrary figure HTML into a raw SVG `foreignObject`
 produced tainted-canvas failures for PNG and could omit computed chart styles.
 The self-contained renderer keeps the shared export contract functional for
 figures that do not yet have a hand-authored SVG builder.
+
+## 2026-08-27: Use sector-stage structural profiles and draft public bands
+
+Decision: Make `sector.stage` the unit of analysis. Public breadth uses five
+draft decision-tree bands, unordered within each band; a two-dimensional S1 ×
+S2 view is permitted only in methods. Whole-sector numeric coordinates and
+silent stage averages are prohibited.
+
+Reasoning: Within-sector heterogeneity is analytically material. Bands preserve
+the product's breadth without imposing cardinal distances or compensability.
+The pilot must revise bands transparently if stage-level scrutiny contradicts
+the tree.
+
+## 2026-08-27: Keep all intrinsic dimensions direction-consistent and ordinal
+
+Decision: Use S1 information share, S2 feedback speed, S3 experiment
+affordability and throughput, S4 physical flexibility, and S5 intrinsic error
+tolerance on integer 0–4 rubrics where higher always means structurally easier.
+Never sum, average, weight, or percentage-transform them.
+
+Reasoning: Direction consistency prevents the v1 latency inversion. The expected
+S2/S3/S4 correlation is harmless when dimensions are not aggregated and would
+be double counting under an average. Legacy `conversion drag` is a distinct,
+opposite-direction construct.
+
+## 2026-08-27: Amend two draft sector bands at the M1.5 gate
+
+Decision: Move cybersecurity from Band 1 to Band 2 because its verification is
+not low-consequence. Move materials science from Band 5 to Band 4 because
+decade-scale qualification is stage-specific rather than universal. Retain
+basic scientific research in Band 3 only with an explicit heterogeneity flag.
+
+Reasoning: These changes apply the published decision tree rather than treating
+the seed labels as conclusions. Row disagreements are changelog entries, not
+gate blockers.
+
+## 2026-08-27: Freeze amended stage lists before the WP2 coding pilot
+
+Decision: Use the software, discrete-manufacturing, and magnetic-confinement
+fusion stage lists in `docs/METHOD_PROFILES.md`. Manufacturing explicitly
+includes commissioning, production control, quality, and maintenance. Fusion
+explicitly includes major plant subsystems, reliability, licensing, and grid
+integration.
+
+Reasoning: Omitting the physical-operation and qualification stages would bias
+profiles toward information-rich work. Later splits or merges require a
+versioned crosswalk and decision entry.
+
+## 2026-08-27: Separate coding workflow from public review status
+
+Decision: Keep the eight design-system evidence bases and five global review
+statuses. Add a separate coding status of proposed, reviewed, approved, or
+disputed for expert codings. Preserve Fable as the seed proposer and model.
+Canonical approval requires owner review and an identified independent review.
+
+Reasoning: `proposed/approved/disputed` describes coder workflow;
+`canonical/reviewed/staged/superseded/rejected` controls public use. Mixing the
+two would let editorial clearance alter the kind of evidence a row represents.
+
+## 2026-08-27: Keep the three method signposts inactive pending author ownership
+
+Decision: Retain all three signposts with amended clocks and resolution rules.
+Record Codex review probabilities of 60%, 60%, and 75% as recommendations only.
+Do not activate them until Jinhua records his author probability, baseline,
+clock start, deadline, and invalidation conditions.
+
+Reasoning: A model review can stress-test a signpost but cannot fabricate the
+owner's personal forecast judgment. Conditional questions also require frozen
+measurement vintages before they can resolve.
+
+## 2026-08-27: Use an anchor-only governance overlay with functional assurance coding
+
+Decision: Limit v1 governance overlay rows to the three anchor sectors. Keep
+the overlay separate from S and C fields and add `assurance_functions` plus
+evidence, provenance, period, and review fields.
+
+Reasoning: Assurance can produce error detection and trust as well as delay or
+an experimentation barrier. Treating it as a one-sign friction would erase the
+benefit-hazard asymmetry the overlay is meant to test.
+
+## 2026-08-27: Retain eight coupling edges but separate magnitude from confidence
+
+Decision: Keep eight equal-width seed edges. `effect_magnitude` is categorical
+small, medium, large, or unknown; `magnitude_confidence` is established,
+contested, or unknown; evidence strength remains separate. Refine the final two
+source nodes to `manufacturing_scale_and_learning` and
+`advanced_manufacturing_capability`.
+
+Reasoning: The draft's established/contested/unknown field described confidence,
+not magnitude. Separating them prevents epistemic certainty from masquerading
+as effect size. Paths stop at second order and never produce a flywheel score.
+
+## 2026-08-27: Audit four scenario premises without grading scenarios
+
+Decision: The v1 assumption ledger covers AI 2027, AI 2040 Plan A, AI as Normal
+Technology, and the Frontier Is Not Fate baseline, capped at six assumptions.
+It records categorical sensitivity, sources, provenance, and review status.
+
+Reasoning: The useful comparison is which conclusions depend on automation,
+robotics, grids, or coordination premises. Recreating each scenario's internal
+tracker would conflate premise comparison with within-ontology scoring.
+
+## 2026-08-27: Preserve the flywheel metaphor with structural caveats
+
+Decision: Keep the editorial name “Two flywheels” only with its mandatory
+subtitle, country counterevidence panel, hypothesis encoding, and named
+cross-coupling signposts.
+
+Reasoning: The metaphor can aid recall without essentializing either country if
+the caveats survive inside the figure. Revisit if screenshots circulate without
+the subtitle or counterevidence.
+
+## 2026-08-27: Make the method gate lightweight and the fusion result open
+
+Decision: Close M1.5 after this one-session review. Scope the first fusion DAG
+to magnetic confinement and leave its conclusion fully open: on-path,
+off-path, pathway-specific, or insufficient evidence.
+
+Reasoning: A standing committee would add process without improving the current
+pilot. Pathway scope avoids a false universal DAG, and a pre-authorized fusion
+conclusion would bias the evidence pack.
+
+## 2026-08-27: Verify intellectual lineage and licenses before use
+
+Decision: Use the conservative contribution statement in
+`docs/INTELLECTUAL_LINEAGE.md`. Only fetched publisher, DOI, or originating
+project records enter the canonical related-work CSV. Unresolved leads remain
+staged. Third-party datasets require a license row before first render.
+
+Reasoning: Attribution disciplines novelty claims, while source verification
+and licensing are separate gates. A stable citation does not itself authorize
+dataset redistribution.

@@ -2,6 +2,10 @@
 
 Status: V0 evidence-infrastructure schema. Schemas may still change after reviewed source promotion.
 
+The approved Structural Conversion Profiles schemas are specified in
+`docs/METHOD_PROFILES.md`. Their CSVs are created and populated in WP2, not in
+the M1.5 documentation gate.
+
 ## `data/sources/source_register.csv`
 
 Canonical register for reviewed sources. Placeholder rows are non-evidentiary.
@@ -74,6 +78,20 @@ Allowed `independent_validation_status` values:
 - `not_applicable`
 - `unknown`
 - `placeholder`
+
+## `data/literature/related_work.csv`
+
+Verified intellectual-lineage records. Each row identifies the work's unit of
+analysis, what it establishes, its overlap with the project, the gap it leaves,
+and a publisher, DOI, or originating-project URL fetched on `verified_date`.
+Unverified or underspecified leads remain in
+`data/literature/related_work_staging.csv` and are not canonical citations.
+
+## `data/licenses/data_licenses.csv`
+
+Third-party licensing register. `cleared` permits only the use described in
+the row. `citation_only` and `needs_review` prohibit dataset redistribution.
+See `THIRD_PARTY_DATA.md`.
 
 ## `data/indicators/indicator_catalog.csv`
 

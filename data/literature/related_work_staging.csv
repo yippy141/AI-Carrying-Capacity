@@ -1,0 +1,7 @@
+lead_id,work,reason_not_canonical,candidate_url,status,last_checked
+rw-stage-001,Beyond Exposure: Predicting AI Adoption Based on Comparative Advantage,"NBER 35271 identity was discoverable but the originating NBER page did not return a verifiable primary record in this pass",https://www.nber.org/papers/w35271,verification_pending,2026-08-27
+rw-stage-002,O-Ring Automation,"The NBER DOI and metadata were corroborated by an index but the originating NBER record did not return in this pass",https://doi.org/10.3386/w34639,verification_pending,2026-08-27
+rw-stage-003,Data-Driven Automation,"An author/arXiv version was found but the proposed NBER 35320 record was not verified from the originating series",https://doi.org/10.3386/w35320,verification_pending,2026-08-27
+rw-stage-004,Independent AI 2027 trackers,"The gate named a category rather than a specific maintained tracker with a stable methodology",missing,underspecified,2026-08-27
+rw-stage-005,Horowitz adoption-capacity theory,"The gate named a body of work rather than a specific citation",missing,underspecified,2026-08-27
+rw-stage-006,RAND Tellis resources-conversion-outcomes,"The proposed lineage did not identify the exact edition or stable source",missing,underspecified,2026-08-27
