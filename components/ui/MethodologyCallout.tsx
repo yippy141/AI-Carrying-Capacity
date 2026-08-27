@@ -10,7 +10,7 @@ export function MethodologyCallout({
   title
 }: MethodologyCalloutProps) {
   return (
-    <div className="rounded-lg border border-accent/30 bg-accent-soft p-5">
+    <div className="border-y border-accent/30 bg-accent-soft px-0 py-5">
       <p className="font-display text-2xl font-semibold text-foreground">
         {title}
       </p>

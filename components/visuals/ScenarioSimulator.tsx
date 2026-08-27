@@ -92,7 +92,7 @@ function ScenarioCard({
   );
 
   return (
-    <article className="rounded-lg border border-rule bg-background p-5">
+    <article className="border-y border-hairline py-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <p className="text-sm font-semibold text-primary-strong">
@@ -102,12 +102,12 @@ function ScenarioCard({
             {item.scenario.label}
           </h3>
         </div>
-        <span className="w-fit rounded-full border border-warning/35 bg-[oklch(0.97_0.035_72)] px-3 py-1 text-xs font-semibold text-muted">
+        <span className="w-fit border border-hairline bg-surface px-2 py-1 font-mono text-[11px] uppercase tracking-[0.05em] text-ink-soft">
           no probability
         </span>
       </div>
 
-      <div className="mt-5 rounded-lg border border-rule bg-surface p-4 text-sm leading-6 text-muted">
+      <div className="mt-5 border-y border-rule bg-surface py-4 text-sm leading-6 text-muted">
         This is not a forecast. No probabilities are estimated. The tool shows
         which assumptions activate which strategic pathways.
       </div>
@@ -127,7 +127,7 @@ function ScenarioCard({
           <ul className="mt-3 grid gap-2 sm:grid-cols-2">
             {assumptionPairs.map((pair) => (
               <li
-                className="rounded-lg border border-rule bg-surface p-3 text-sm"
+                className="border-l-2 border-hairline py-2 pl-3 text-sm"
                 key={`${pair.control}-${pair.option}`}
               >
                 <span className="block font-semibold text-foreground">
@@ -189,7 +189,7 @@ function ScenarioCard({
               ) : (
                 attachedSources.map((source) => (
                   <span
-                    className="rounded-full border border-rule bg-surface px-3 py-1 text-xs font-semibold text-muted"
+                    className="border border-rule bg-surface px-2 py-1 font-mono text-[11px] uppercase tracking-[0.05em] text-muted"
                     key={source.source_id}
                     title={`${source.title_english}; ${source.review_status}`}
                   >
@@ -242,7 +242,7 @@ export function ScenarioAssumptionBrowser({
 
   if (controls.length === 0 || cases.length === 0) {
     return (
-      <section className="rounded-lg border border-rule bg-surface p-6">
+      <section className="border-y border-rule bg-surface py-6">
         <h2 className="font-display text-3xl font-semibold">
           Scenario assumption browser
         </h2>
@@ -264,7 +264,7 @@ export function ScenarioAssumptionBrowser({
           does not estimate probabilities, forecast winners, or rank countries.
         </p>
 
-        <div className="mt-6 rounded-lg border border-warning/35 bg-[oklch(0.97_0.035_72)] p-4 text-sm leading-6 text-muted">
+        <div className="mt-6 border-y border-hairline bg-surface py-4 text-sm leading-6 text-ink-soft">
           This is not a forecast. No probabilities are estimated. The tool shows
           which assumptions activate which strategic pathways.
         </div>
@@ -284,8 +284,8 @@ export function ScenarioAssumptionBrowser({
                       aria-pressed={isSelected}
                       className={
                         isSelected
-                          ? "focus-ring rounded-lg border border-primary bg-primary p-3 text-left text-white"
-                          : "focus-ring rounded-lg border border-rule bg-background p-3 text-left text-foreground transition-colors hover:border-primary"
+                          ? "focus-ring border-l-2 border-primary bg-primary px-3 py-3 text-left text-white"
+                          : "focus-ring border-l-2 border-hairline bg-background px-3 py-3 text-left text-foreground transition-colors hover:border-primary"
                       }
                       key={option.key}
                       onClick={() =>

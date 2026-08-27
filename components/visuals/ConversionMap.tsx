@@ -32,7 +32,7 @@ export function ConversionMap() {
         </svg>
         {dimensions.map((dimension) => (
           <div
-            className="relative flex min-h-36 flex-col justify-between rounded-lg border border-rule bg-background/90 p-4"
+            className="relative flex min-h-36 flex-col justify-between border border-rule bg-background/90 p-4"
             key={dimension.key}
           >
             <div>

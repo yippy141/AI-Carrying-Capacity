@@ -1,11 +1,14 @@
 import Link from "next/link";
 
-import { EvidenceChip } from "@/components/ui/EvidenceChip";
 import { FigureShell } from "@/components/ui/FigureShell";
 import { AdoptionDepthFigure } from "@/components/visuals/AdoptionDepthFigure";
 import { ConversionChainCompare } from "@/components/visuals/ConversionChainCompare";
 import { FrontierNotFateHero } from "@/components/visuals/FrontierNotFateHero";
 import { FrontierSensitivityScatter } from "@/components/visuals/FrontierSensitivityScatter";
+import {
+  buildAdoptionDepthExportSvg,
+  buildAdoptionDepthFigureModel
+} from "@/lib/adoptionDepth";
 import { loadAdoptionDepth, loadForecastRegister } from "@/lib/registers";
 
 function StudySection({
@@ -37,8 +40,11 @@ function StudySection({
 }
 
 export default function Home() {
-  const forecasts = loadForecastRegister().slice(0, 3);
+  const forecasts = loadForecastRegister()
+    .filter((forecast) => forecast.author_review_status === "reviewed")
+    .slice(0, 3);
   const adoptionDepth = loadAdoptionDepth();
+  const adoptionDepthModel = buildAdoptionDepthFigureModel(adoptionDepth);
 
   return (
     <main>
@@ -97,35 +103,32 @@ export default function Home() {
           across firm sizes; it is not evidence of use depth.
         </p>
       </StudySection>
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <div className="mx-auto max-w-[1024px] px-5 sm:px-8">
         <FigureShell
-          number="1"
-          title="Adoption is not integration"
-          type="empirical"
-          caption={
-            <>
-              Headline adoption can coexist with experimental, moderate, or
-              narrowly distributed use. The panels preserve their original
-              survey definitions and denominators; values are not pooled into a
-              cross-country ranking or a harmonized “deep use” metric.
-            </>
-          }
+          basis="observed"
+          definitionsDiffer
           evidenceNote={
             <p>
-              Every plotted number is loaded from the canonical{" "}
+              Every plotted number resolves from the canonical{" "}
               <span className="font-mono">adoption_depth.csv</span> observation
-              file and resolves to a reviewed source ID. SAFE&apos;s four
-              published shares total 98%; the figure leaves the unreported
-              two-point residual unallocated because it may reflect
-              “don&apos;t know” responses and rounding. The Census working
-              paper is descriptive and non-causal. Full rows and source status
-              are available in{" "}
+              file and a reviewed source ID. SAFE&apos;s four published shares
+              leave an unallocated residual. The Census paper is descriptive
+              and non-causal. The comprehensive-adopter value is a model
+              estimate and is hatched. The NBS row is official-source context,
+              not a comparable all-firm measure. Full rows are in{" "}
               <Link className="focus-ring underline" href="/evidence">
                 the evidence register
               </Link>
               .
             </p>
           }
+          exportBaseName="adoption-is-not-integration"
+          exportSvg={buildAdoptionDepthExportSvg(adoptionDepthModel)}
+          number="1"
+          reviewStatus="canonical"
+          source="Sources: ECB SAFE Q4 2025 (src-0038); U.S. Census CES WP 26-25 (src-0048); Eurostat 2025 ICT enterprise survey (src-0042); NBS Fifth National Economic Census (src-0049, context only)."
+          subtitle="Unit: percent of firms. Denominators: source-specific respondent universes. Universe: ECB SAFE respondents, U.S. employer businesses, EU enterprises with 10 or more workers, and Chinese above-scale enterprises."
+          title="adoption is not integration."
         >
           <AdoptionDepthFigure observations={adoptionDepth} />
         </FigureShell>
@@ -145,14 +148,14 @@ export default function Home() {
           process measure rather than proof of a broad productivity outcome.
         </p>
       </StudySection>
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <div className="mx-auto max-w-[1024px] px-5 sm:px-8">
         <aside className="max-w-3xl border-y border-rule py-5 text-sm leading-6 text-muted">
           <span className="font-semibold text-foreground">Planned figure:</span>{" "}
           the build-versus-harvest chart remains an unnumbered lab prototype
           until reviewed canonical series are wired in. No empty empirical
           figure appears in the study narrative.{" "}
           <Link className="focus-ring underline" href="/lab#planned-build-harvest">
-            Inspect the planned figure →
+            Inspect the planned figure
           </Link>
         </aside>
       </div>
@@ -167,20 +170,9 @@ export default function Home() {
           claim, not an empirical finding.
         </p>
       </StudySection>
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <div className="mx-auto max-w-[1024px] px-5 sm:px-8">
         <FigureShell
-          number="2"
-          title="Where frontier capability converts, and where it stalls"
-          type="conceptual"
-          caption={
-            <>
-              Domains placed by how much raw model capability matters
-              (horizontal) against how hard capability is to convert into
-              output (vertical). This is a hypothesis figure: positions are
-              ordinal judgments, not measured quantities. Read the pattern, not
-              the coordinates.
-            </>
-          }
+          basis="hypothesis"
           evidenceNote={
             <p>
               The placement logic is the study&apos;s central hypothesis
@@ -194,6 +186,11 @@ export default function Home() {
               .
             </p>
           }
+          number="2"
+          reviewStatus="reviewed"
+          source="Sources: clm-0029; METR domain evidence remains staged and does not determine a measured coordinate."
+          subtitle="Unit: ordinal placement. Denominator: not applicable. Universe: selected digital, institutional, and physical domains."
+          title="frontier capability converts unevenly across domains."
         >
           <FrontierSensitivityScatter embedded />
         </FigureShell>
@@ -210,32 +207,26 @@ export default function Home() {
           evidence. It tests a contrast; it does not declare a winner.
         </p>
       </StudySection>
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <div className="mx-auto max-w-[1024px] px-5 sm:px-8">
         <FigureShell
-          number="3"
-          title="Two systems, two conversion chains"
-          type="conceptual"
-          caption={
-            <>
-              Each cell separates the direct record, interpretation, and
-              missing evidence for one chain stage in one country. Chips label
-              observed data, official targets or claims, hypotheses, staged
-              material, and missing evidence without collapsing them.
-            </>
-          }
+          basis="hypothesis"
+          definitionsDiffer
           evidenceNote={
             <p>
               Cell references point to the canonical source register and claim
-              ledger (for example, the robot-density figures follow IFR&apos;s
-              2025 workforce-data revision — China 166 per 10k, US 307).
-              Staged items are labeled as such and support no cell on their
-              own. Explore rows in{" "}
+              ledger. Staged leads support no visible direct-record claim.
+              Explore reviewed rows in{" "}
               <Link className="focus-ring underline" href="/evidence">
                 the evidence register
               </Link>
               .
             </p>
           }
+          number="3"
+          reviewStatus="reviewed"
+          source="Sources: canonical grid, policy, BTOS, NBS, AI Index, and IFR rows listed in the figure cells and evidence register."
+          subtitle="Unit: qualitative chain-stage evidence. Denominator: varies by source and is never pooled. Universe: United States and China conversion-chain evidence."
+          title="the United States and China encounter different conversion bottlenecks."
         >
           <ConversionChainCompare />
         </FigureShell>
@@ -250,38 +241,28 @@ export default function Home() {
         </p>
       </StudySection>
       <div className="mx-auto max-w-7xl px-5 pt-8 sm:px-8">
-        <div className="grid gap-4 lg:grid-cols-3">
-          {forecasts.map((forecast) => (
-            <article className="border border-rule bg-white p-6" key={forecast.forecast_id}>
-              <div className="flex items-center gap-2">
-                <EvidenceChip status="forecast" />
-                <span className="text-xs font-semibold uppercase tracking-[0.1em] text-missing">
-                  {forecast.status === "draft_unreviewed" ? "draft" : forecast.status}
-                </span>
-              </div>
-              <p className="mt-3 font-display text-lg font-semibold leading-snug text-foreground">
-                {forecast.question}
-              </p>
-              <p className="mt-3 text-sm leading-6 text-muted">
-                {forecast.author_review_status === "reviewed" ? (
-                  <>
-                    Reviewed range{" "}
-                    <span className="font-semibold text-foreground">
-                      {forecast.initial_probability_range}
-                    </span>{" "}
-                    ·{" "}
-                  </>
-                ) : (
-                  <>Probability hidden pending author review · </>
-                )}
-                resolves via {forecast.resolution_source} by {forecast.deadline}
-              </p>
-            </article>
-          ))}
-        </div>
+        {forecasts.length ? (
+          <div className="divide-y divide-hairline border-y border-hairline">
+            {forecasts.map((forecast) => (
+              <article className="py-5" key={forecast.forecast_id}>
+                <p className="font-display text-[21px] font-semibold leading-snug text-ink">
+                  {forecast.question}
+                </p>
+                <p className="mt-2 text-[15px] leading-6 text-ink-soft">
+                  Resolves via {forecast.resolution_source} by {forecast.deadline}.
+                </p>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <p className="max-w-3xl border-y border-hairline py-5 text-[15px] text-ink-soft">
+            No forecast is public yet. Draft questions and ranges remain hidden
+            until author review is complete.
+          </p>
+        )}
         <p className="mt-5 text-sm text-muted">
           <Link className="focus-ring font-semibold underline" href="/forecasts">
-            All ten forecast questions →
+            Forecast review policy
           </Link>
         </p>
       </div>

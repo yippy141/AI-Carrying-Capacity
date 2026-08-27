@@ -36,7 +36,7 @@ function HeatCell({
   if (!cell) {
     return (
       <div
-        className="min-h-28 rounded-md border border-rule bg-surface p-3 text-xs text-missing"
+        className="min-h-28 border border-rule bg-surface p-3 text-xs text-missing"
         aria-label={`${country}, ${factor.label}: missing`}
       >
         missing
@@ -46,7 +46,7 @@ function HeatCell({
 
   return (
     <div
-      className={`min-h-28 rounded-md border p-3 ${evidenceSoftClasses[cell.source_evidence_label]}`}
+      className={`min-h-28 border p-3 ${evidenceSoftClasses[cell.source_evidence_label]}`}
       aria-label={`${country}, ${factor.label}: value ${cell.value_status}, source ${cell.source_evidence_label}`}
     >
       <div className="flex items-start justify-between gap-2">
@@ -93,7 +93,7 @@ export function SectorHeatmap({ data = visualSystemData }: SectorHeatmapProps) {
               <div />
               {countries.map((country) => (
                 <div
-                  className="rounded-md border border-rule bg-background p-3 text-center"
+                  className="border border-rule bg-background p-3 text-center"
                   key={country.iso}
                 >
                   <p className="font-display text-xl font-semibold">

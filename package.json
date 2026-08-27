@@ -6,11 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --max-warnings=0",
+    "lint": "python3 scripts/validate_design_placeholders.py && eslint . --max-warnings=0",
+    "test:design": "python3 -m unittest scripts/validate_design_placeholders_test.py",
     "typecheck": "tsc --noEmit",
     "test:evidence": "node --test --experimental-strip-types lib/*.test.ts"
   },
   "dependencies": {
+    "html-to-image": "^1.11.13",
     "next": "16.2.9",
     "react": "19.2.7",
     "react-dom": "19.2.7"

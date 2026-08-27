@@ -1,69 +1,74 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { evidenceStatusForClaim } from "./evidenceStatus.ts";
+import {
+  evidenceClassificationForClaim,
+  isPublicReviewStatus
+} from "./evidenceStatus.ts";
 
-test("product-use gates override evidence classification", () => {
-  assert.equal(
-    evidenceStatusForClaim({
+test("review status gates public rendering without changing evidence basis", () => {
+  assert.deepEqual(
+    evidenceClassificationForClaim({
       claim_type: "observed_statistic",
       evidence_type: "dataset",
       product_use_status: "staged"
     }),
-    "staged"
+    { basis: "observed", reviewStatus: "staged" }
   );
-  assert.equal(
-    evidenceStatusForClaim({
+  assert.deepEqual(
+    evidenceClassificationForClaim({
       claim_type: "observed_statistic",
       evidence_type: "dataset",
       product_use_status: "rejected"
     }),
-    "missing"
+    { basis: "observed", reviewStatus: "rejected" }
   );
+  assert.equal(isPublicReviewStatus("staged"), false);
+  assert.equal(isPublicReviewStatus("reviewed"), true);
 });
 
 test("claim semantics do not collapse caveated claims into observed", () => {
-  assert.equal(
-    evidenceStatusForClaim({
+  assert.deepEqual(
+    evidenceClassificationForClaim({
       claim_type: "official_target",
       evidence_type: "official_document",
       product_use_status: "approved_with_caveat"
     }),
-    "official target"
+    { basis: "official target", reviewStatus: "reviewed" }
   );
-  assert.equal(
-    evidenceStatusForClaim({
+  assert.deepEqual(
+    evidenceClassificationForClaim({
       claim_type: "hypothesis",
       evidence_type: "derived",
       product_use_status: "approved_with_caveat"
     }),
-    "hypothesis"
+    { basis: "hypothesis", reviewStatus: "reviewed" }
   );
 });
 
-test("observations, official claims, and estimates remain distinct", () => {
-  assert.equal(
-    evidenceStatusForClaim({
+test("observations, scenarios, targets, and estimates remain distinct", () => {
+  assert.deepEqual(
+    evidenceClassificationForClaim({
       claim_type: "observed_statistic",
       evidence_type: "official_document",
       product_use_status: "approved"
     }),
-    "observed"
+    { basis: "observed", reviewStatus: "canonical" }
   );
-  assert.equal(
-    evidenceStatusForClaim({
-      claim_type: "official_program_claim",
+  assert.deepEqual(
+    evidenceClassificationForClaim({
+      claim_type: "scenario_assumption",
       evidence_type: "official_document",
       product_use_status: "approved_with_caveat"
     }),
-    "official claim"
+    { basis: "scenario", reviewStatus: "reviewed" }
   );
-  assert.equal(
-    evidenceStatusForClaim({
+  assert.deepEqual(
+    evidenceClassificationForClaim({
       claim_type: "model_estimate",
       evidence_type: "working_paper",
       product_use_status: "approved_with_caveat"
     }),
-    "model estimate"
+    { basis: "model estimate", reviewStatus: "reviewed" }
   );
 });

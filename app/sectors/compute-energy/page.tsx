@@ -31,15 +31,15 @@ export default function ComputeEnergyPage() {
         </p>
       </div>
 
-      <section className="mt-14 grid gap-4 md:grid-cols-2">
+      <section className="mt-14 divide-y divide-hairline border-y border-hairline">
         {candidateAreas.map((area) => (
-          <article className="rounded-lg border border-rule p-5" key={area}>
+          <article className="grid gap-3 py-6 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.4fr)_auto] md:items-start md:gap-8" key={area}>
             <h2 className="font-display text-2xl font-semibold">{area}</h2>
-            <p className="mt-3 leading-7 text-muted">
+            <p className="leading-7 text-muted">
               Candidate research area only. No sourced indicator value has been
               added to this module yet.
             </p>
-            <p className="mt-5 text-sm font-semibold text-missing">
+            <p className="font-mono text-[11px] uppercase tracking-[0.05em] text-missing">
               value status: missing
             </p>
           </article>

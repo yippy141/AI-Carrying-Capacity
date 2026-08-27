@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { EvidenceChip } from "@/components/ui/EvidenceChip";
 import { loadForecastRegister } from "@/lib/registers";
 
 export const metadata: Metadata = {
@@ -9,7 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function ForecastsPage() {
-  const forecasts = loadForecastRegister();
+  const forecasts = loadForecastRegister().filter(
+    (forecast) => forecast.author_review_status === "reviewed"
+  );
 
   return (
     <main className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
@@ -41,19 +42,16 @@ export default function ForecastsPage() {
         </p>
       </div>
 
-      <div className="mt-12 space-y-6">
-        {forecasts.map((forecast) => (
+      {forecasts.length ? (
+        <div className="mt-12 divide-y divide-hairline border-y border-hairline">
+          {forecasts.map((forecast) => (
           <article
-            className="border border-rule bg-white p-6"
+            className="py-6"
             id={forecast.forecast_id}
             key={forecast.forecast_id}
           >
             <div className="flex flex-wrap items-center gap-2 text-xs text-missing">
               <span className="font-mono">{forecast.forecast_id}</span>
-              <EvidenceChip status="forecast" />
-              <span className="uppercase tracking-[0.08em]">
-                {forecast.status.replaceAll("_", " ")}
-              </span>
               <span>· deadline {forecast.deadline}</span>
             </div>
             <h2 className="mt-3 font-display text-2xl font-semibold leading-snug text-foreground">
@@ -93,8 +91,14 @@ export default function ForecastsPage() {
               {forecast.update_history ? forecast.update_history : "none yet"}
             </p>
           </article>
-        ))}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <p className="mt-12 max-w-3xl border-y border-hairline py-6 text-ink-soft">
+          No forecast is public yet. Draft questions and numerical ranges remain
+          hidden until author review is complete.
+        </p>
+      )}
 
       <p className="mt-10 max-w-3xl text-sm leading-6 text-muted">
         Forecast questions never resolve against official targets or

@@ -12,7 +12,7 @@ export function StagedEvidenceBanner({
   children
 }: StagedEvidenceBannerProps) {
   return (
-    <aside className="rounded-lg border border-warning/35 bg-[oklch(0.97_0.035_72)] p-5 text-[oklch(0.32_0.09_72)]">
+    <aside className="border-y border-hairline bg-surface px-0 py-5 text-ink-soft">
       <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.22em]">
@@ -22,7 +22,7 @@ export function StagedEvidenceBanner({
             {title}
           </h2>
         </div>
-        <span className="w-fit rounded-full border border-warning/40 bg-background px-3 py-1 text-xs font-semibold text-muted">
+        <span className="w-fit border border-warning/40 bg-background px-2 py-1 font-mono text-[11px] uppercase tracking-[0.05em] text-muted">
           no composite score
         </span>
       </div>

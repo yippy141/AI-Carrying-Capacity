@@ -30,25 +30,25 @@ export default function SourcesPage() {
         </p>
       </div>
 
-      <section className="mt-14 grid gap-4 md:grid-cols-3">
-        <article className="rounded-lg border border-rule p-5">
-          <p className="text-sm font-semibold text-muted">Register path</p>
-          <p className="mt-3 break-words font-semibold text-foreground">
+      <section className="mt-14 max-w-3xl divide-y divide-hairline border-y border-hairline">
+        <article className="grid gap-2 py-4 sm:grid-cols-[12rem_minmax(0,1fr)] sm:items-baseline">
+          <p className="font-mono text-[11px] uppercase tracking-[0.05em] text-muted">Register path</p>
+          <p className="break-words text-foreground">
             {summary.path}
           </p>
         </article>
-        <article className="rounded-lg border border-rule p-5">
-          <p className="text-sm font-semibold text-muted">Register rows</p>
-          <p className="mt-3 font-display text-4xl font-semibold">
+        <article className="grid gap-2 py-4 sm:grid-cols-[12rem_minmax(0,1fr)] sm:items-baseline">
+          <p className="font-mono text-[11px] uppercase tracking-[0.05em] text-muted">Register rows</p>
+          <p className="font-mono text-sm text-foreground">
             {summary.totalRows}
           </p>
         </article>
-        <article className="rounded-lg border border-rule p-5">
-          <p className="text-sm font-semibold text-muted">Evidence rows</p>
-          <p className="mt-3 font-display text-4xl font-semibold">
+        <article className="grid gap-2 py-4 sm:grid-cols-[12rem_minmax(0,1fr)] sm:items-baseline">
+          <p className="font-mono text-[11px] uppercase tracking-[0.05em] text-muted">Evidence rows</p>
+          <p className="font-mono text-sm text-foreground">
             {summary.reviewedRows}
           </p>
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="sm:col-start-2">
             <ConfidenceBadge label={badgeLabel} />
           </div>
         </article>

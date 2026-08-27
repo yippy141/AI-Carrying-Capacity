@@ -1,16 +1,11 @@
 import { EvidenceChip } from "@/components/ui/EvidenceChip";
+import type { EvidenceBasis } from "@/lib/evidenceStatus";
 
 type ChainCell = {
   fact: string;
   interpretation: string;
   missingEvidence: string;
-  status:
-    | "observed"
-    | "official claim"
-    | "official target"
-    | "hypothesis"
-    | "staged"
-    | "missing";
+  status: EvidenceBasis | "missing";
   ref: string;
 };
 
@@ -59,7 +54,7 @@ const STAGES: ChainStage[] = [
         "Program scale does not establish utilization or productive output.",
       missingEvidence:
         "Reviewed utilization and task-adjusted output data; staged utilization leads support no visible claim.",
-      status: "official claim",
+      status: "observed",
       ref: "NDRC hub plan (src-0024); src-v2-dr-020 remains a staged lead and is excluded"
     }
   },
@@ -180,7 +175,13 @@ export function ConversionChainCompare() {
               {[row.us, row.china].map((cell, index) => (
                 <td className="py-4 pr-4 text-sm leading-6 text-muted" key={index}>
                   <div className="mb-2">
-                    <EvidenceChip status={cell.status} />
+                    {cell.status === "missing" ? (
+                      <span className="font-mono text-[11px] uppercase tracking-[0.05em] text-ink-soft">
+                        No reviewed evidence
+                      </span>
+                    ) : (
+                      <EvidenceChip basis={cell.status} reviewStatus="reviewed" />
+                    )}
                   </div>
                   <p>
                     <span className="font-semibold text-foreground">Direct record:</span>{" "}

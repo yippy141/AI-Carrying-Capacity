@@ -44,17 +44,17 @@ export default async function CountryPage({ params }: CountryPageProps) {
         </div>
       </div>
 
-      <section className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <section className="mt-14 divide-y divide-hairline border-y border-hairline">
         {dimensions.map((dimension) => (
           <article
-            className="rounded-lg border border-rule p-5"
+            className="grid gap-3 py-6 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.4fr)_auto] md:items-start md:gap-8"
             key={dimension.key}
           >
             <h2 className="font-display text-2xl font-semibold">
               {dimension.label}
             </h2>
-            <p className="mt-3 leading-7 text-muted">{dimension.description}</p>
-            <p className="mt-5 text-sm font-semibold text-missing">
+            <p className="leading-7 text-muted">{dimension.description}</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.05em] text-missing">
               value status: missing
             </p>
           </article>
