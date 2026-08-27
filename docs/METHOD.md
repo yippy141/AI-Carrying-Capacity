@@ -2,6 +2,11 @@
 
 Status: V0 diagnostic method. This is not yet a validated scoring methodology.
 
+The canonical specification for the post-V0 sector-stage pilot is
+`docs/METHOD_PROFILES.md`. Its M1.5 gate passed with amendments on 2026-08-27.
+The pilot remains expert-coded and review-gated; it does not convert this V0
+method into a national scoring system.
+
 ## Method Position
 
 V0 should be a diagnostic framework and sectoral pilot, not a definitive global ranking.

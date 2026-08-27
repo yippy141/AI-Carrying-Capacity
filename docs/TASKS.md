@@ -105,3 +105,25 @@
 - [x] Record chart grammar and integrity checks in `docs/DESIGN_QA.md`.
 - [x] Capture and inspect 1440px and 390px screenshots of Figure 1.
 - [x] Open draft PR #23 after screenshot acceptance is complete.
+
+## WP1.5 — Structural Profiles method gate
+
+- [x] Review S1-S5 directionality and isolate the opposite-direction legacy `conversion drag` field.
+- [x] Accept the non-aggregation rule for correlated S2/S3/S4 dimensions.
+- [x] Review all sixteen draft sector bands; amend cybersecurity to Band 2 and materials science to Band 4.
+- [x] Freeze amended software, manufacturing, and magnetic-confinement fusion stage lists before coding.
+- [x] Accept and tighten model-provenance, independent-review, and disagreement rules.
+- [x] Review and amend the three signposts; record reviewer probabilities without activating them as owner forecasts.
+- [x] Confirm the anchor-only governance overlay and add functional-assurance provenance fields.
+- [x] Confirm eight coupling edges, equal widths, and separate categorical magnitude from magnitude confidence.
+- [x] Confirm the four-scenario premise-audit ledger with a six-assumption cap.
+- [x] Harmonize evidence basis, public review status, and separate coding status.
+- [x] Bank the canonical method, gate review, intellectual lineage, third-party data policy, license register, and verified related-work register.
+- [ ] Obtain Jinhua's explicit probability judgment before activating any of the three method signposts.
+- [ ] Verify the six staged or underspecified lineage leads before moving any into the canonical related-work register.
+
+## WP2 — Three-anchor Structural Profiles pilot
+
+- [ ] Create the three profile CSV schemas from `docs/METHOD_PROFILES.md` after the method-gate branch is reviewed and merged.
+- [ ] Obtain at least one independent coding or named expert review before any pilot row becomes approved/canonical.
+- [ ] Implement and wire the Structural Profiles validators described in the canonical method.

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; }
+  body { background: oklch(1 0 0); }
+  @keyframes acaFlow { to { stroke-dashoffset: -96; } }
+  .aca-flow { animation: acaFlow 3.2s linear infinite; }
+  @media (prefers-reduced-motion: reduce) { .aca-flow { animation: none; } }
+  ::selection { background: oklch(0.6 0.19 38.6); color: #fff; }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:oklch(1 0 0);color:oklch(0.17 0.018 42);font-family:Aptos,'Segoe UI','Source Sans 3',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;">
+
+  <header style="border-bottom:1px solid oklch(0.82 0.004 42);background:oklch(1 0 0);">
+    <div style="max-width:1180px;margin:0 auto;padding:20px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+      <a href="#" style="display:inline-flex;align-items:baseline;gap:12px;text-decoration:none;color:inherit;">
+        <span style="width:11px;height:11px;border-radius:999px;background:oklch(0.6 0.19 38.6);display:inline-block;transform:translateY(-1px);"></span>
+        <span style="font-family:'Source Serif 4','Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-size:21px;font-weight:600;letter-spacing:-0.01em;">AI Conversion Atlas</span>
+      </a>
+      <nav style="display:flex;align-items:center;gap:22px;">
+        <ul style="display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:14px;font-weight:500;color:oklch(0.39 0.018 42);flex-wrap:wrap;">
+          <li><a href="#" style="text-decoration:none;color:inherit;" style-hover="color:oklch(0.17 0.018 42)">Methodology</a></li>
+          <li><a href="#" style="text-decoration:none;color:inherit;" style-hover="color:oklch(0.17 0.018 42)">Sources</a></li>
+          <li><a href="#" style="text-decoration:none;color:inherit;" style-hover="color:oklch(0.17 0.018 42)">Scenarios</a></li>
+          <li><a href="#" style="text-decoration:none;color:inherit;" style-hover="color:oklch(0.17 0.018 42)">Sectors</a></li>
+        </ul>
+        <span style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:oklch(0.46 0.16 38.6);border:1px solid oklch(0.82 0.004 42);border-radius:999px;padding:5px 11px;white-space:nowrap;">V0 scaffold</span>
+      </nav>
+    </div>
+  </header>
+
+  <main style="max-width:1180px;margin:0 auto;padding:0 32px;">
+
+    <!-- HERO -->
+    <section style="padding:72px 0 16px;">
+      <p style="margin:0 0 26px;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:oklch(0.46 0.16 38.6);">
+        An editorial research atlas · Frontier access → conversion → outcomes
+      </p>
+      <div style="display:grid;grid-template-columns:1.35fr 1fr;gap:48px;align-items:end;">
+        <h1 style="margin:0;font-family:'Source Serif 4','Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-weight:600;letter-spacing:-0.015em;line-height:1.02;font-size:84px;text-wrap:balance;">
+          Frontier is<br>not fate.
+        </h1>
+        <p style="margin:0 0 8px;font-size:20px;line-height:1.55;color:oklch(0.39 0.018 42);max-width:34ch;text-wrap:pretty;">
+          The AI race is not only about who builds the most capable model, but who can convert AI capability into <span style="color:oklch(0.17 0.018 42);font-weight:600;">industry, science, state capacity,</span> and broadly shared welfare.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONCEPT FIGURE -->
+    <figure style="margin:40px 0 0;padding:0;">
+      <!-- station headers -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;border-top:1px solid oklch(0.82 0.004 42);padding-top:22px;">
+        <sc-for list="{{ stations }}" as="st" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:baseline;gap:10px;">
+              <sc-if value="{{ showNums }}" hint-placeholder-val="{{ true }}">
+                <span style="font-family:'Source Serif 4',Georgia,serif;font-size:14px;font-weight:600;color:{{ st.tone }};letter-spacing:0.04em;">{{ st.n }}</span>
+              </sc-if>
+              <span style="font-family:'Source Serif 4','Iowan Old Style',Palatino,Georgia,serif;font-size:23px;font-weight:600;letter-spacing:-0.01em;color:oklch(0.17 0.018 42);">{{ st.k }}</span>
+            </div>
+            <p style="margin:0;font-size:14.5px;line-height:1.5;color:oklch(0.39 0.018 42);max-width:30ch;">{{ st.d }}</p>
+          </div>
+        </sc-for>
+      </div>
+
+      <!-- ribbon graphic -->
+      <svg viewBox="0 0 1180 300" width="100%" style="display:block;margin-top:26px;overflow:visible;" role="img" aria-label="Schematic: capability enters at full width and narrows through bottlenecks before reaching real outcomes.">
+        <defs>
+          <marker id="acaArrow" markerWidth="7" markerHeight="7" refX="3.2" refY="5.6" orient="auto">
+            <path d="M0.6,0.6 L3.2,5.4 L5.8,0.6" fill="none" stroke="oklch(0.48 0.015 42)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
+          </marker>
+        </defs>
+
+        <!-- ribbon body -->
+        <path d="M40,40 L1140,40 L1140,110 L900,110 C850,110 810,150 760,150 L430,150 C380,150 350,190 300,190 L40,190 Z"
+              fill="oklch(0.955 0.012 42)" stroke="none"></path>
+        <!-- bottom edge -->
+        <path d="M40,190 L300,190 C350,190 380,150 430,150 L760,150 C810,150 850,110 900,110 L1140,110"
+              fill="none" stroke="oklch(0.82 0.004 42)" stroke-width="1.5"></path>
+        <!-- frontier (top) line -->
+        <line x1="40" y1="40" x2="1140" y2="40" stroke="oklch(0.17 0.018 42)" stroke-width="2"></line>
+        <text x="48" y="32" font-family="Aptos,'Segoe UI','Source Sans 3',sans-serif" font-size="11.5" font-weight="600" letter-spacing="0.12em" fill="oklch(0.39 0.018 42)">CAPABILITY FRONTIER</text>
+
+        <!-- capability input bar (accent) -->
+        <rect x="40" y="40" width="5" height="150" fill="oklch(0.6 0.19 38.6)"></rect>
+        <!-- outcomes endpoint bar (accent) -->
+        <rect x="1135" y="40" width="5" height="70" fill="oklch(0.6 0.19 38.6)"></rect>
+        <polygon points="1135,40 1162,75 1135,110" fill="oklch(0.6 0.19 38.6)"></polygon>
+        <text x="1128" y="128" text-anchor="end" font-family="Aptos,'Segoe UI','Source Sans 3',sans-serif" font-size="11.5" font-weight="600" letter-spacing="0.1em" fill="oklch(0.46 0.16 38.6)">WHAT ACTUALLY MATTERS</text>
+
+        <!-- centerline flow -->
+        <path class="{{ flowClass }}" d="M45,115 L300,115 C350,115 380,95 430,95 L760,95 C810,95 850,75 900,75 L1135,75"
+              fill="none" stroke="oklch(0.6 0.19 38.6)" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 14" opacity="0.55"></path>
+
+        <!-- bottleneck 1 drains -->
+        <g>
+          <line x1="330" y1="186" x2="330" y2="232" stroke="oklch(0.48 0.015 42)" stroke-width="1.3" marker-end="url(#acaArrow)"></line>
+          <line x1="365" y1="178" x2="365" y2="232" stroke="oklch(0.48 0.015 42)" stroke-width="1.3" marker-end="url(#acaArrow)"></line>
+          <line x1="400" y1="170" x2="400" y2="232" stroke="oklch(0.48 0.015 42)" stroke-width="1.3" marker-end="url(#acaArrow)"></line>
+          <text x="365" y="256" text-anchor="middle" font-family="Aptos,'Segoe UI','Source Sans 3',sans-serif" font-size="10.5" font-weight="700" letter-spacing="0.13em" fill="oklch(0.46 0.16 38.6)">BOTTLENECK</text>
+          <text x="365" y="274" text-anchor="middle" font-family="Aptos,'Segoe UI','Source Sans 3',sans-serif" font-size="13" fill="oklch(0.39 0.018 42)">Compute · power · grid · talent · management</text>
+        </g>
+        <!-- bottleneck 2 drains -->
+        <g>
+          <line x1="795" y1="146" x2="795" y2="232" stroke="oklch(0.48 0.015 42)" stroke-width="1.3" marker-end="url(#acaArrow)"></line>
+          <line x1="830" y1="138" x2="830" y2="232" stroke="oklch(0.48 0.015 42)" stroke-width="1.3" marker-end="url(#acaArrow)"></line>
+          <line x1="865" y1="130" x2="865" y2="232" stroke="oklch(0.48 0.015 42)" stroke-width="1.3" marker-end="url(#acaArrow)"></line>
+          <text x="830" y="256" text-anchor="middle" font-family="Aptos,'Segoe UI','Source Sans 3',sans-serif" font-size="10.5" font-weight="700" letter-spacing="0.13em" fill="oklch(0.46 0.16 38.6)">BOTTLENECK</text>
+          <text x="830" y="274" text-anchor="middle" font-family="Aptos,'Segoe UI','Source Sans 3',sans-serif" font-size="13" fill="oklch(0.39 0.018 42)">Institutions · diffusion · distribution quality</text>
+        </g>
+      </svg>
+
+      <figcaption style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;border-top:1px solid oklch(0.82 0.004 42);margin-top:18px;padding-top:16px;flex-wrap:wrap;">
+        <p style="margin:0;font-size:15px;line-height:1.55;color:oklch(0.39 0.018 42);max-width:62ch;">
+          Read left to right. Capability enters as the frontier; conversion capacity decides how much becomes real; bottlenecks drain what never converts. The width that survives to the right edge — not the height at the left — is the thing worth measuring.
+        </p>
+        <span style="font-size:12.5px;line-height:1.5;color:oklch(0.48 0.015 42);font-style:italic;white-space:nowrap;">Illustrative schematic — not scored data.</span>
+      </figcaption>
+    </figure>
+
+    <!-- HOW TO READ THIS -->
+    <section style="margin:64px 0 0;border-top:2px solid oklch(0.17 0.018 42);padding-top:30px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:26px;">
+        <div style="max-width:40ch;">
+          <h2 style="margin:0 0 8px;font-family:'Source Serif 4','Iowan Old Style',Palatino,Georgia,serif;font-size:30px;font-weight:600;letter-spacing:-0.01em;color:oklch(0.17 0.018 42);">How to read this atlas</h2>
+          <p style="margin:0;font-size:15.5px;line-height:1.55;color:oklch(0.39 0.018 42);">
+            Every value carries an evidence label. The colour describes how much we trust the number — <span style="font-weight:600;color:oklch(0.17 0.018 42);">not</span> how a country performs. Missing values stay visible and are never quietly imputed.
+          </p>
+        </div>
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.48 0.015 42);">Evidence convention</span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid oklch(0.82 0.004 42);">
+        <sc-for list="{{ evidence }}" as="ev" hint-placeholder-count="4">
+          <div style="padding:20px;border-right:1px solid oklch(0.82 0.004 42);display:flex;flex-direction:column;gap:13px;min-height:148px;">
+            <span style="display:inline-flex;align-items:center;gap:9px;">
+              <span style="width:15px;height:15px;border-radius:3px;background:{{ ev.swatch }};border:{{ ev.swatchBorder }};flex-shrink:0;"></span>
+              <span style="font-size:13.5px;font-weight:600;letter-spacing:0.01em;color:oklch(0.17 0.018 42);">{{ ev.label }}</span>
+            </span>
+            <sc-if value="{{ showDefs }}" hint-placeholder-val="{{ true }}">
+              <p style="margin:0;font-size:13.5px;line-height:1.5;color:oklch(0.39 0.018 42);">{{ ev.def }}</p>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:16px 0 0;font-size:13px;line-height:1.5;color:oklch(0.48 0.015 42);">
+        Two further states — <span style="font-style:italic;">qualitative-coded</span> and <span style="font-style:italic;">placeholder</span> — appear inside modules where a number cannot yet stand on its own.
+      </p>
+    </section>
+
+  </main>
+
+  <footer style="margin-top:80px;border-top:1px solid oklch(0.82 0.004 42);">
+    <div style="max-width:1180px;margin:0 auto;padding:28px 32px 40px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+      <p style="margin:0;font-size:13px;line-height:1.6;color:oklch(0.48 0.015 42);max-width:54ch;">
+        AI Conversion Atlas · V0 scaffold. No national rankings, no composite score. Sources, missingness, and confidence labels are shown in the interface, not hidden behind an average.
+      </p>
+      <div style="display:flex;gap:22px;font-size:13px;font-weight:500;color:oklch(0.39 0.018 42);">
+        <a href="#" style="text-decoration:none;color:inherit;" style-hover="color:oklch(0.17 0.018 42)">Methodology</a>
+        <a href="#" style="text-decoration:none;color:inherit;" style-hover="color:oklch(0.17 0.018 42)">Sources</a>
+        <a href="#" style="text-decoration:none;color:inherit;" style-hover="color:oklch(0.17 0.018 42)">Source register</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;flowMotion&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Motion&quot; },
+  &quot;showStationNumbers&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Hero&quot; },
+  &quot;legendDetail&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;Definitions&quot;, &quot;Compact&quot;], &quot;default&quot;: &quot;Definitions&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;How to read&quot; }
+}">
+class Component extends DCLogic {
+  renderVals() {
+    const showDefs = (this.props.legendDetail ?? "Definitions") !== "Compact";
+    const flowOn = this.props.flowMotion !== false;
+    return {
+      showNums: this.props.showStationNumbers !== false,
+      showDefs,
+      flowClass: flowOn ? "aca-flow" : "",
+      stations: [
+        { n: "01", k: "AI capability", tone: "oklch(0.46 0.16 38.6)",
+          d: "Frontier models and raw capability — the part of the race everyone watches." },
+        { n: "02", k: "Conversion capacity", tone: "oklch(0.39 0.018 42)",
+          d: "Industry, science, state capacity, talent and institutions that turn capability into use." },
+        { n: "03", k: "Real outcomes", tone: "oklch(0.46 0.16 38.6)",
+          d: "Productivity, strategic power, and broadly shared welfare." }
+      ],
+      evidence: [
+        { label: "observed", swatch: "oklch(0.34 0.12 190)", swatchBorder: "none",
+          def: "Independently measured or reported by a credible third party." },
+        { label: "official-claim", swatch: "oklch(0.58 0.17 72)", swatchBorder: "none",
+          def: "Stated by a government or programme. Records intent, not a verified outcome." },
+        { label: "estimated", swatch: "oklch(0.46 0.16 38.6)", swatchBorder: "none",
+          def: "Modelled or inferred where direct measurement is unavailable." },
+        { label: "missing", swatch: "oklch(0.965 0 0)", swatchBorder: "1.5px dashed oklch(0.48 0.015 42)",
+          def: "No reliable value yet. Shown, never quietly imputed." }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
