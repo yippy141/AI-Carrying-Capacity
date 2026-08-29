@@ -133,9 +133,11 @@
 ## WP2 — Three-anchor Structural Profiles pilot
 
 - [ ] Update the WP2 prompt for stable profile IDs, parent stages, pathway/application/lifecycle scope, explicit pathway variants, and ex ante C8 commercialization conditions.
-- [ ] Create the blank pilot taxonomy and coding-review worksheet that the original WP2 prompt incorrectly assumes already exists; do not mix Fable and blind values in the builder task.
-- [ ] Add `coding_as_of`, `last_reviewed`, and `revisit_triggers` to the WP2 worksheet, schemas, and validators.
-- [ ] Create blank country-modifier and governance templates; defer C1-C8 population to a limited evidence-backed WP2 mini-pilot.
+- [x] Create the blank pilot taxonomy and coding-review worksheet that the original WP2 prompt incorrectly assumes already exists; do not mix Fable and blind values in the builder task. See issue #26.
+- [x] Add `coding_as_of`, `last_reviewed`, and `revisit_triggers` to the blank worksheet schemas and focused validator; do not fabricate values. See issue #26.
+- [x] Create blank country-modifier and governance templates; defer C1-C8 population to a limited evidence-backed WP2 mini-pilot. See issue #26.
+- [x] Create separate blank Fable and blind submission shells plus a dimension-specific exception-report specification without executing either coding pass. See issue #26.
+- [x] Add focused validation and tests for the blank worksheet package; the broader canonical WP2 validator remains outstanding. See issue #26.
 - [ ] Obtain separate Fable and blind model submissions, then generate an exception report before owner review.
 - [ ] Define the human/domain-review plan for software, manufacturing, and fusion before any row becomes canonical.
 - [ ] Create the profile CSV schemas from `docs/METHOD_PROFILES.md` after the method-gate branch is reviewed and merged.

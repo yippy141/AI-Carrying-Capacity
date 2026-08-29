@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "python3 scripts/validate_design_placeholders.py && eslint . --max-warnings=0",
     "test:design": "python3 -m unittest scripts/validate_design_placeholders_test.py",
+    "test:profiles": "python3 scripts/validate_profile_worksheet.py && python3 -m unittest scripts/validate_profile_worksheet_test.py",
     "typecheck": "tsc --noEmit",
     "test:evidence": "node --test --experimental-strip-types lib/*.test.ts"
   },

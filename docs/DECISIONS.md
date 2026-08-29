@@ -571,3 +571,21 @@ MHS currently changes interfaces and organizational conversion conditions more
 directly than intrinsic physical time floors. A severity-based convergence
 rule preserves evidence integrity while preventing review from becoming the
 project's main output.
+
+## 2026-08-29: Use a blank research worksheet mini-gate before canonical profiles
+
+Decision: Implement issue #26 under `research/profile-coding/` as a blank
+methodology instrument, not as canonical WP2 data. Use the frozen 39-row stage
+taxonomy and 31 leaf-profile shells, assign stable scope-free identifiers in
+the form `prf-000001`, keep Fable and blind submission files separate, and
+reserve dimension-specific fields for a later exception report. Populate only
+frozen identity/scope fields, `critical_path_role=not_assessed`, and the three
+required staging defaults. Leave row-level workflow and lifecycle assignments,
+all codings, sources, dates, review identities, and approvals blank.
+
+Reasoning: The method gate requires an auditable handoff before substantive
+coding begins. Opaque identifiers and separate submission lanes preserve
+referential integrity without encoding scope into identity or exposing the
+blind reviewer to Fable's values. Blank unresolved fields prevent worksheet
+construction from silently becoming method revision, evidence invention,
+review, or WP2 population.
