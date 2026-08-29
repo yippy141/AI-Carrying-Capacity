@@ -3,8 +3,7 @@ name = "ai-conversion-atlas"
 version = "0.0.0"
 description = "Research and product workspace for AI conversion capacity."
 requires-python = ">=3.10"
-dependencies = []
+dependencies = ["openpyxl==3.1.5"]
 
 [tool.ruff]
 line-length = 100
-

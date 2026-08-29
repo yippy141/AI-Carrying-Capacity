@@ -571,3 +571,14 @@ MHS currently changes interfaces and organizational conversion conditions more
 directly than intrinsic physical time floors. A severity-based convergence
 rule preserves evidence integrity while preventing review from becoming the
 project's main output.
+
+## 2026-08-30: Enforce country-modifier pathway referential integrity
+
+Decision: Require every populated `country_stage_modifiers.pathway_id` to
+exactly match the `pathway_id` of its referenced `profile_id` in
+`stage_profiles.csv`, and fail WP2 validation on any mismatch.
+
+Reasoning: Retaining both fields is useful for explicit exports, but allowing
+them to diverge would attach a country condition to the wrong technical route.
+This is a referential-integrity clarification, not a change to the frozen
+profile method.

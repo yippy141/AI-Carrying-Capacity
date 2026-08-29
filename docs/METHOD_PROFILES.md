@@ -166,6 +166,10 @@ to the documented disposition.
 country,subnational_scope,actor_scope,profile_id,pathway_id,stage_applicability,binding_status,C1_accessible_capability,C2_data_access_interoperability,C3_organizational_integration,C4_capital_and_asset_turnover,C5_workforce_integration_skill,C6_governance_procurement_fit,C7_physical_build_test_capacity,C8_ex_ante_commercialization_conditions,source_ids,evidence_basis,confidence,period,coding_as_of,last_reviewed,revisit_triggers,proposed_by,proposed_model,reviewed_by,independent_review_by,approved_by,coding_status,review_status,version,changelog_note
 ```
 
+`country_stage_modifiers.pathway_id` must exactly equal the `pathway_id` of
+the referenced `profile_id` in `stage_profiles.csv`. A mismatch must fail WP2
+validation.
+
 Higher C-codings mean a more enabling country-stage condition. C-fields remain
 ordinal and may not be summed or averaged. C8 captures ex ante demand
 visibility, business-model incentives, financing availability, and routes to
@@ -488,6 +492,8 @@ Validators must reject:
   `revisit_triggers`;
 - country modifiers without explicit `actor_scope` and `subnational_scope`, or
   rows that force `national_aggregate` from narrower evidence;
+- country modifiers whose `pathway_id` does not exactly match the `pathway_id`
+  of the referenced `profile_id` in `stage_profiles.csv`;
 - governance rows without `governance_id` and `profile_id`;
 - canonical governance, coupling, or scenario rows without their required
   period/update date and revisit triggers;

@@ -23,6 +23,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install Python workbook dependency
+        run: python3 -m pip install openpyxl==3.1.5
+
       - name: Typecheck
         run: npm run typecheck
 
@@ -40,6 +43,12 @@ jobs:
 
       - name: Test design-reference placeholder validator
         run: npm run test:design
+
+      - name: Test Structural Profiles worksheet validator
+        run: python3 -m unittest scripts/validate_structural_profiles_worksheet_test.py
+
+      - name: Validate Structural Profiles worksheet package
+        run: python3 scripts/validate_structural_profiles_worksheet.py
 
       - name: Validate adoption-depth observations
         run: python3 scripts/validate_adoption_depth.py

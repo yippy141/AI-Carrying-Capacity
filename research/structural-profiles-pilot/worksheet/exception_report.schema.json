@@ -1,0 +1,281 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aiconversionatlas.example/schemas/structural-profiles-exception-report.schema.json",
+  "title": "Structural Profiles pilot exception report",
+  "description": "A dimension-specific comparison of independent coding submissions. It preserves each submission and never averages, midpoint-selects, or forces consensus.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "metadata",
+    "exceptions",
+    "routine_domain_reviews"
+  ],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "generated_at",
+        "fable_submission_id",
+        "blind_submission_id",
+        "comparison_key",
+        "comparison_rule",
+        "aggregation_rule",
+        "fusion_review_rule"
+      ],
+      "properties": {
+        "generated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "fable_submission_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blind_submission_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "comparison_key": {
+          "const": [
+            "profile_id",
+            "s_dimension"
+          ]
+        },
+        "comparison_rule": {
+          "const": "compare_fable_and_blind_by_profile_id_and_s_dimension"
+        },
+        "aggregation_rule": {
+          "const": "preserve_submissions_no_averaging_midpoint_or_forced_consensus"
+        },
+        "fusion_review_rule": {
+          "const": "queue_every_fusion_profile_for_routine_domain_review"
+        }
+      }
+    },
+    "exceptions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/exception"
+      }
+    },
+    "routine_domain_reviews": {
+      "type": "array",
+      "description": "Exactly one routine domain-review row for each of the 18 frozen fusion profiles. A profile also appears in exceptions when an owner-level flag applies.",
+      "minItems": 18,
+      "maxItems": 18,
+      "items": {
+        "$ref": "#/$defs/routineDomainReview"
+      }
+    }
+  },
+  "$defs": {
+    "submissionView": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "rationale",
+        "source_ids",
+        "confidence"
+      ],
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rationale": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "confidence": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            null
+          ]
+        }
+      }
+    },
+    "exception": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "exception_id",
+        "profile_id",
+        "stage_id",
+        "pathway_id",
+        "s_dimension",
+        "flags",
+        "fable",
+        "blind",
+        "review_route",
+        "owner_disposition",
+        "owner_rationale",
+        "status"
+      ],
+      "properties": {
+        "exception_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profile_id": {
+          "type": "string",
+          "pattern": "^sp-[0-9]{4}$"
+        },
+        "stage_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pathway_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "s_dimension": {
+          "description": "S1-S5 for dimension comparisons; null only for profile-level scope, rationale, evidence, or critical-path exceptions.",
+          "enum": [
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            null
+          ]
+        },
+        "flags": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "absolute_difference_ge_2",
+              "extreme_0_vs_4",
+              "potential_band_or_critical_path_change",
+              "contradictory_rationales",
+              "missing_or_incompatible_source_support",
+              "low_confidence_load_bearing_stage",
+              "scope_pathway_application_or_lifecycle_ambiguity"
+            ]
+          }
+        },
+        "fable": {
+          "$ref": "#/$defs/submissionView"
+        },
+        "blind": {
+          "$ref": "#/$defs/submissionView"
+        },
+        "review_route": {
+          "enum": [
+            "owner_review",
+            "domain_review",
+            "owner_and_domain_review"
+          ]
+        },
+        "owner_disposition": {
+          "enum": [
+            "prefer_fable",
+            "prefer_blind",
+            "preserve_disagreement",
+            "needs_domain_review",
+            "defer_missing_evidence",
+            null
+          ]
+        },
+        "owner_rationale": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "pending_owner",
+            "pending_domain",
+            "resolved",
+            "deferred"
+          ]
+        }
+      }
+    },
+    "routineDomainReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_id",
+        "stage_id",
+        "pathway_id",
+        "reason",
+        "owner_decision_required",
+        "status",
+        "domain_reviewer",
+        "notes"
+      ],
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "pattern": "^sp-[0-9]{4}$"
+        },
+        "stage_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pathway_id": {
+          "const": "tokamak_research_to_pilot_plant_demonstration"
+        },
+        "reason": {
+          "const": "fusion_requires_domain_informed_review"
+        },
+        "owner_decision_required": {
+          "const": false
+        },
+        "status": {
+          "enum": [
+            "pending",
+            "submitted",
+            "complete"
+          ]
+        },
+        "domain_reviewer": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "x-generation-rules": {
+    "join": "Match the two submissions on profile_id, then compare S1 through S5 independently.",
+    "no_aggregation": "Do not average, sum, weight, percentage-transform, midpoint-select, or force consensus between coders.",
+    "absolute_difference": "Flag any populated S-dimension whose absolute coder difference is 2 or more.",
+    "extreme_disagreement": "Flag every 0-versus-4 comparison even if another rule also fires.",
+    "interpretation_change": "Flag a disagreement that could alter a stage band or critical-path interpretation.",
+    "semantic_review": "Flag contradictory rationales, missing or incompatible support, low-confidence load-bearing stages, and scope/pathway/application/lifecycle ambiguity.",
+    "fusion_routing": "Place every frozen fusion profile in routine_domain_reviews. Add a separate exception only when an owner-level flag also applies."
+  }
+}
