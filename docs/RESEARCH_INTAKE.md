@@ -2,6 +2,18 @@
 
 Use this workflow when commissioned Deep Research reports arrive.
 
+## 0. Classify The Intake
+
+Before extraction, classify the item under `docs/FRESHNESS_PROTOCOL.md` as a
+scheduled empirical source, event-triggered technical source, event-triggered
+policy or market source, structural literature, or speculative lead.
+
+Record the source's publication date, access date, originating claim owner,
+independent-validation status, affected project objects, and the smallest
+justified action. A new release does not automatically require recoding or a
+method change. Anonymous or unattributed social-media material remains a lead
+and cannot enter the evidence chain.
+
 ## 1. Save The Report
 
 Use this filename pattern:
@@ -56,6 +68,11 @@ Claims that could appear in public writing, charts, captions, or UI should be ad
 data/claims/claim_ledger.csv
 ```
 
+For volatile claims, also define a concrete revisit trigger. Examples include
+the publisher issuing a new vintage, a benchmark changing methodology, a law
+taking effect, an independent replication appearing, or a forecast threshold
+being crossed. “Check regularly” is not a sufficient trigger.
+
 ## 5. Merge Reviewed Rows
 
 Only after review:
@@ -73,3 +90,8 @@ Run:
 ```sh
 python3 scripts/validate_repo.py
 ```
+
+Before public use, confirm that load-bearing source rows have a current
+`last_verified`, claim rows have a current `last_reviewed`, and no superseding
+publisher release or correction is known. Preserve prior vintages rather than
+silently rewriting history.

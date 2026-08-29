@@ -29,6 +29,9 @@ Do not collapse these concepts:
 
 ## Rules
 
+- For Structural Conversion Profiles and the WP1.5-to-WP2 handoff, follow the
+  authority order in `docs/AUTHORITATIVE_DOCS.md`. Earlier attached proposals
+  are historical wherever they conflict with that manifest.
 - Do not fabricate data.
 - If a value is not sourced, mark it missing.
 - If a value is estimated or qualitative-coded, mark it explicitly.
@@ -38,10 +41,29 @@ Do not collapse these concepts:
 - Keep inputs and outcomes separate to avoid circular scoring.
 - Avoid a single composite score in V0 unless a documented methodology and sensitivity analysis support it.
 - Use transparent data quality labels and uncertainty notes.
+- Follow `docs/FRESHNESS_PROTOCOL.md`: date material claims and codings, record
+  revisit triggers, and triage new releases before changing canonical work.
+- Treat anonymous or unattributed social-media claims as leads only. They may
+  not support codings, probability updates, public claims, or method changes.
 - Do not auto-publish anything.
 - Do not add secrets, API keys, or private credentials.
 - Update `docs/DECISIONS.md` after methodology, naming, scoring, or architecture decisions.
 - Update `docs/TASKS.md` after finishing or discovering work.
+
+## Review convergence
+
+Each work package receives one primary substantive review and one correction
+pass. A second check verifies only whether P0/P1 blockers were fixed. Merge
+when no P0/P1 blocker remains; log P2/P3 limitations, polish, and speculative
+enhancements for the next cycle rather than reopening the package.
+
+- P0: fabricated evidence, false provenance/status, security or integrity
+  failure, wrong denominator, or a broken build that invalidates the package.
+- P1: material method, schema, public-claim, accessibility, or interpretation
+  error that must be corrected before merge.
+- P2: real but non-blocking limitation or secondary weakness for the next
+  cycle.
+- P3: polish, preference, speculative enhancement, or future robustness.
 
 ## Suggested Agent Roles
 

@@ -1,6 +1,6 @@
 # Intellectual Lineage
 
-Status: M1.5 lineage register, 2026-08-27.
+Status: M1.5 lineage register, updated 2026-08-28.
 
 ## Contribution boundary
 
@@ -27,7 +27,7 @@ before describing the extension.
 | Firm conversion | BIS/EIB adoption-productivity work | Adds sector-stage mechanisms, evidence grading, and country modifiers; does not generalize one firm estimate globally |
 | Diffusion and power | Ding; Ding and Dafoe | Tests diffusion and industrial-base mechanisms without presuming a US or China winner |
 | Macro scenarios | OECD AI Meets Trade; World Bank MANAGE-AI; IMF AIPI | Treats modeled macro results as scenarios or preparedness inputs, not observations |
-| Competing AI futures | AI 2027; AI 2040 Plan A; AI Futures Model; AI as Normal Technology | Audits cross-scenario premises instead of grading each scenario inside its own ontology |
+| Competing AI futures | AI 2027; AI 2040 Plan A; AI Futures Model; AI as Normal Technology; Citrini's 2028 crisis stress test | Audits cross-scenario premises—including possible economic-regime changes—instead of grading each scenario inside its own ontology |
 | Data and figure practice | Epoch AI; Stanford HAI; METR; Our World in Data | Adopts provenance and restrained chart principles while preserving each source's license and not copying unique layouts |
 
 ## Verification rule
@@ -52,4 +52,3 @@ Use one of these labels where relevant:
 
 Do not copy third-party prose, code, unique layouts, or color systems. Do not
 render a third-party dataset until its license row permits the intended use.
-
