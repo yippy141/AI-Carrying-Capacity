@@ -72,6 +72,9 @@
 - [ ] Remap or retire staged `src-v0-dr-*` IDs in `v0_visual_system.json` so public-pilot readiness can pass.
 - [ ] Move six superseded content drafts intact to `research/archive/` in a scoped cleanup; do not delete their useful research material or cosmetically clear TODOs.
 - [ ] Obtain native-language human review for the contextual NBS source src-0049 before a public pilot.
+- [x] Adopt a living-evidence protocol with evidence vintages, explicit revisit triggers, and lead-only treatment for anonymous social-media claims.
+- [x] Adopt the one-primary-review, one-correction-pass convergence rule; backlog P2/P3 findings when no P0/P1 blocker remains.
+- [ ] Triage Anthropic's 2026-08-27 Model Hardware Standard preview into source staging as C2/C3, pathway-integration, and assurance evidence; do not automatically recode S1-S5.
 
 ## Next
 
@@ -119,11 +122,33 @@
 - [x] Confirm the four-scenario premise-audit ledger with a six-assumption cap.
 - [x] Harmonize evidence basis, public review status, and separate coding status.
 - [x] Bank the canonical method, gate review, intellectual lineage, third-party data policy, license register, and verified related-work register.
-- [ ] Obtain Jinhua's explicit probability judgment before activating any of the three method signposts.
+- [x] Obtain Jinhua's provisional probability judgment for the three method signposts; keep them pre-activation until measurement specifications are frozen.
+- [x] Add the authoritative-document manifest and mark conflicting earlier Fable/Spectrum/package documents as historical proposals.
+- [x] Clarify S1, S3, qualitative band logic, ordered-band semantics, and public display boundaries.
+- [x] Add the stage taxonomy and separate coder-submission schema; preserve disagreement by S-dimension.
+- [x] Add actor/subnational country scope, key governance to `profile_id`, and freeze the three initial anchor pathways.
+- [x] Record MHS routing and close the final bounded WP1.5 synchronization without starting WP2.
 - [ ] Verify the six staged or underspecified lineage leads before moving any into the canonical related-work register.
 
 ## WP2 — Three-anchor Structural Profiles pilot
 
-- [ ] Create the three profile CSV schemas from `docs/METHOD_PROFILES.md` after the method-gate branch is reviewed and merged.
+- [ ] Update the WP2 prompt for stable profile IDs, parent stages, pathway/application/lifecycle scope, explicit pathway variants, and ex ante C8 commercialization conditions.
+- [ ] Create the blank pilot taxonomy and coding-review worksheet that the original WP2 prompt incorrectly assumes already exists; do not mix Fable and blind values in the builder task.
+- [ ] Add `coding_as_of`, `last_reviewed`, and `revisit_triggers` to the WP2 worksheet, schemas, and validators.
+- [ ] Create blank country-modifier and governance templates; defer C1-C8 population to a limited evidence-backed WP2 mini-pilot.
+- [ ] Obtain separate Fable and blind model submissions, then generate an exception report before owner review.
+- [ ] Define the human/domain-review plan for software, manufacturing, and fusion before any row becomes canonical.
+- [ ] Create the profile CSV schemas from `docs/METHOD_PROFILES.md` after the method-gate branch is reviewed and merged.
 - [ ] Obtain at least one independent coding or named expert review before any pilot row becomes approved/canonical.
 - [ ] Implement and wire the Structural Profiles validators described in the canonical method.
+
+## WP3–WP5 prompt corrections
+
+- [ ] Revise WP3 sector hover behavior to show stage distributions or ranges, never a synthetic whole-sector S profile.
+- [ ] Keep signposts in `designing` or equivalent pre-activation status until their measurement contracts are complete.
+- [ ] Run the fusion evidence commission as source inventory and structured extraction first, followed by verification and only then synthesis.
+- [ ] Add economic-regime, distribution, adaptation, and topology-change assumptions to WP5 premise auditing.
+- [ ] Limit WP5 v1 to six shared premise dimensions across the four anchor scenarios.
+- [ ] Evaluate `citrini_2028_gic` as a staged stress test and seek counter-scenarios; do not treat it as a finding or fifth anchor by default.
+- [ ] Add dated premise and coupling reviews plus event-triggered refresh rules to the revised WP3–WP5 prompts.
+- [ ] Defer automated source monitoring and any public freshness dashboard until after the three-anchor pilot identifies load-bearing sources.

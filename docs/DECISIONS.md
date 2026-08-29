@@ -444,3 +444,130 @@ staged. Third-party datasets require a license row before first render.
 Reasoning: Attribution disciplines novelty claims, while source verification
 and licensing are separate gates. A stable citation does not itself authorize
 dataset redistribution.
+
+## 2026-08-28: Record owner approval of the M1.5 method gate
+
+Decision: Jinhua approves the sector-stage method, S1-S5, non-aggregation rule,
+governance overlay, coupling graph, scenario ledger, conservative contribution
+statement, Cybersecurity in Band 2, and Basic Science in Band 3 with a
+heterogeneity warning. Rename the relevant overview rows to `Digital media and
+entertainment` and `Materials development and qualification`. Record the three
+signpost ranges as provisional author judgments of 55–65%, 55–70%, and 70–85%.
+
+Reasoning: These decisions reflect the owner's intended public argument. The
+probabilities establish authorship but do not activate a signpost until its
+baseline, clock, source, and invalidation rules are frozen.
+
+## 2026-08-28: Make pathway, application, and lifecycle scope explicit
+
+Decision: Give each scoped stage profile a stable `profile_id` and separate
+`parent_stage_id`, `pathway_id`, `application_context`, `lifecycle_phase`, and
+`critical_path_role` fields. Do not concatenate scope into the identifier.
+Preserve fusion leaf stages under parent groups. Permit explicit pathway
+variants and jurisdiction-specific stages while keeping the intrinsic coding
+of a shared profile fixed.
+
+Reasoning: Materials, science, manufacturing, and fusion differ by experiment,
+application, qualification route, route to scale, and commercialization phase.
+A fixed whole-sector label or fixed country-neutral DAG would hide that
+jaggedness. Hierarchy preserves detail without creating a synthetic average.
+
+## 2026-08-28: Add commercialization fit without collapsing adaptation or distribution
+
+Decision: Add C8 ex ante commercialization conditions to the country-stage
+modifiers. C8 may cover demand visibility, business-model incentives,
+financing, and routes to commercialization, but not realized adoption, sales,
+revenue, productivity, or other downstream outcomes. Keep endogenous demand
+feedback, public legitimacy, labor adjustment, ownership, social protection,
+political institutions, distribution, and cultural or religious acceptance in
+evidence-backed coupling, adaptation, distribution, governance, and scenario
+layers rather than S/C composites.
+
+Reasoning: A technically successful R&D stage may still fail to scale or find a
+viable demand and financing path. Conversely, demand, standards, procurement,
+and reinforcing investment can accelerate conversion. Social and cultural
+conditions matter but are sector-specific and time-varying; treating them as a
+timeless country trait would invite essentialism and false precision.
+
+## 2026-08-28: Permit economic-regime and pathway topology changes in scenarios
+
+Decision: Add assumption type, economic regime, topology change, distribution
+channel, and adaptation channel to the scenario ledger. Stage Citrini
+Research's `The 2028 Global Intelligence Crisis` as a candidate stress test,
+not a fifth anchor or forecast. Keep v1 to six shared premise dimensions across
+the four anchors; staged stress tests map to the same dimensions.
+
+Reasoning: Today's production, labor-income, demand, ownership, and political
+relationships need not remain fixed under rapid AI and robotics deployment.
+The Citrini scenario is useful because it makes a displacement-and-demand
+feedback loop explicit, but its rapid substitution and policy-response
+assumptions require independent premise auditing.
+
+## 2026-08-28: Do not run subsequent work packages from the Fable prompts verbatim
+
+Decision: Before WP2, create an owner-reviewable coding worksheet and an
+independent-review plan. Correct WP3 so a sector mark shows stage distributions,
+not a synthetic whole-sector S profile. Do not automatically activate the three
+signposts in WP6 merely because the owner supplied ranges.
+
+Reasoning: The WP2 prompt assumes an attached author-reviewed pilot sheet that
+does not exist. The WP3 hover specification contradicts the stage-level unit of
+analysis. Signpost ownership and signpost testability are distinct gates.
+
+## 2026-08-28: Build freshness governance now and defer monitoring automation
+
+Decision: Adopt `docs/FRESHNESS_PROTOCOL.md` before WP2. Add `coding_as_of`,
+`last_reviewed`, and concrete `revisit_triggers` to the future profile objects,
+and equivalent period/review fields to governance, coupling, and scenario
+objects. Require a pre-publication freshness check of load-bearing sources.
+Triage official releases and verified deployments as evidence leads; treat
+anonymous or unattributed social-media claims as `lead_only`. Defer automated
+feeds, scheduled scans, and a public freshness dashboard until after the
+three-anchor pilot.
+
+Reasoning: The Atlas covers unusually fast-moving technology, policy, and
+deployment evidence. Dated provenance and event-triggered review are cheap to
+add before schemas exist and expensive to retrofit. Continuous monitoring now
+would create noise and workflow overhead before the pilot reveals which
+sources actually affect codings. Anthropic's 2026-08-27 Model Hardware Standard
+preview illustrates the distinction: it may alter scoped instrument-integration
+and experimental-workflow hypotheses, but originating-party proofs of concept
+do not establish broad scientific, manufacturing, or commercial conversion.
+
+## 2026-08-29: Freeze the final WP1.5 structural schemas and anchor scopes
+
+Decision: Make `docs/AUTHORITATIVE_DOCS.md` the conflict-resolution manifest
+for structural-profile work. Rename S1 to information intensity of the scoped
+stage and keep `critical_path_role` separate. Require S3 rationales to address
+both marginal attempt cost and attainable throughput. Replace the unmeasured
+two-thirds band threshold with a qualitative `predominantly` judgment and
+state that the five bands are ordered while entries within them are not
+ranked. Add a judgment-free stage taxonomy and a separate coder-submission
+table; compute disagreement by S-dimension rather than using one coding range.
+Add actor and subnational scope to country modifiers and key governance to
+`profile_id`. Freeze the mature-software, discrete-manufacturing NPI/operations,
+and tokamak-to-pilot-demonstration scopes for the first coding pass.
+
+Reasoning: These are pre-population integrity corrections, not another method
+review. They remove hidden precision, prevent hierarchy and reviewer records
+from drifting, avoid forced national averages, and give the three anchors
+enough scope to be coded consistently. Later material, application, firm,
+subnational, or fusion-pathway differences receive explicit variants rather
+than silently changing the frozen profiles.
+
+## 2026-08-29: Freeze display boundaries and the one-review convergence rule
+
+Decision: Limit `review_status=staged` profiles to local or private-lab routes.
+Permit `review_status=reviewed` with `coding_status=proposed` or `disputed` in a
+public pilot only with `EXPERT-CODED · DRAFT`; canonical approved rows may
+render without the draft qualifier. Treat Anthropic MHS initially as C2/C3,
+pathway-integration, and governance/assurance evidence rather than an automatic
+S1-S5 recoding. Give each work package one primary review, one correction pass,
+and a P0/P1-only recheck; backlog P2/P3 findings.
+
+Reasoning: A private prototype can expose method and interface problems before
+domain review is complete without presenting staged values as public evidence.
+MHS currently changes interfaces and organizational conversion conditions more
+directly than intrinsic physical time floors. A severity-based convergence
+rule preserves evidence integrity while preventing review from becoming the
+project's main output.
