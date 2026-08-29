@@ -1,12 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://aiconversionatlas.example/schemas/structural-profiles-exception-report.schema.json",
-  "title": "Structural Profiles pilot exception report",
-  "description": "A dimension-specific comparison of independent coding submissions. It preserves each submission and never averages, midpoint-selects, or forces consensus.",
+  "title": "Structural Profiles pilot reconciliation report",
+  "description": "An auditable comparison of all 31 profiles across S1-S5. It preserves both submissions and never averages, midpoint-selects, or forces consensus.",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "metadata",
+    "comparison_audit",
+    "summary_counts",
     "exceptions",
     "routine_domain_reviews"
   ],
@@ -17,9 +19,10 @@
       "required": [
         "generated_at",
         "fable_submission_id",
-        "blind_submission_id",
+        "independent_submission_id",
         "comparison_key",
         "comparison_rule",
+        "expected_comparison_count",
         "aggregation_rule",
         "fusion_review_rule"
       ],
@@ -32,7 +35,7 @@
           "type": "string",
           "minLength": 1
         },
-        "blind_submission_id": {
+        "independent_submission_id": {
           "type": "string",
           "minLength": 1
         },
@@ -43,7 +46,10 @@
           ]
         },
         "comparison_rule": {
-          "const": "compare_fable_and_blind_by_profile_id_and_s_dimension"
+          "const": "compare_fable_and_independent_by_profile_id_and_s_dimension"
+        },
+        "expected_comparison_count": {
+          "const": 155
         },
         "aggregation_rule": {
           "const": "preserve_submissions_no_averaging_midpoint_or_forced_consensus"
@@ -53,17 +59,71 @@
         }
       }
     },
+    "comparison_audit": {
+      "type": "array",
+      "description": "Exactly one row for each of the 31 frozen profile IDs crossed with S1-S5.",
+      "minItems": 155,
+      "maxItems": 155,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/comparisonAudit"
+      }
+    },
+    "summary_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "exact_agreement",
+        "one_point_difference",
+        "difference_ge_2",
+        "missing_fable",
+        "missing_independent",
+        "missing_both",
+        "total_comparisons"
+      ],
+      "properties": {
+        "exact_agreement": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "one_point_difference": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "difference_ge_2": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "missing_fable": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "missing_independent": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "missing_both": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total_comparisons": {
+          "const": 155
+        }
+      }
+    },
     "exceptions": {
       "type": "array",
+      "description": "Owner-routed subset of comparison_audit. Exact and one-point rows stay audit-only unless another semantic flag requires owner review.",
       "items": {
         "$ref": "#/$defs/exception"
       }
     },
     "routine_domain_reviews": {
       "type": "array",
-      "description": "Exactly one routine domain-review row for each of the 18 frozen fusion profiles. A profile also appears in exceptions when an owner-level flag applies.",
+      "description": "Exactly one routine domain-review row for each of the 18 frozen fusion profiles. This queue is separate from owner exceptions.",
       "minItems": 18,
       "maxItems": 18,
+      "uniqueItems": true,
       "items": {
         "$ref": "#/$defs/routineDomainReview"
       }
@@ -116,6 +176,107 @@
         }
       }
     },
+    "comparisonStatus": {
+      "enum": [
+        "exact_agreement",
+        "one_point_difference",
+        "difference_ge_2",
+        "missing_fable",
+        "missing_independent",
+        "missing_both"
+      ]
+    },
+    "semanticFlags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "absolute_difference_ge_2",
+          "extreme_0_vs_4",
+          "potential_band_or_critical_path_change",
+          "contradictory_rationales",
+          "missing_or_incompatible_source_support",
+          "missing_score",
+          "low_confidence_load_bearing_stage",
+          "scope_pathway_application_or_lifecycle_ambiguity"
+        ]
+      }
+    },
+    "comparisonAudit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_id",
+        "stage_id",
+        "pathway_id",
+        "s_dimension",
+        "comparison_status",
+        "numeric_difference",
+        "fable",
+        "independent",
+        "semantic_flags",
+        "owner_review_required",
+        "review_route"
+      ],
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "pattern": "^sp-[0-9]{4}$"
+        },
+        "stage_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pathway_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "s_dimension": {
+          "enum": [
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5"
+          ]
+        },
+        "comparison_status": {
+          "$ref": "#/$defs/comparisonStatus"
+        },
+        "numeric_difference": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fable": {
+          "$ref": "#/$defs/submissionView"
+        },
+        "independent": {
+          "$ref": "#/$defs/submissionView"
+        },
+        "semantic_flags": {
+          "$ref": "#/$defs/semanticFlags"
+        },
+        "owner_review_required": {
+          "type": "boolean"
+        },
+        "review_route": {
+          "enum": [
+            "audit_only",
+            "owner_review",
+            "domain_review",
+            "owner_and_domain_review"
+          ]
+        }
+      }
+    },
     "exception": {
       "type": "object",
       "additionalProperties": false,
@@ -125,9 +286,12 @@
         "stage_id",
         "pathway_id",
         "s_dimension",
-        "flags",
+        "comparison_status",
+        "numeric_difference",
         "fable",
-        "blind",
+        "independent",
+        "semantic_flags",
+        "owner_review_required",
         "review_route",
         "owner_disposition",
         "owner_rationale",
@@ -151,52 +315,54 @@
           "minLength": 1
         },
         "s_dimension": {
-          "description": "S1-S5 for dimension comparisons; null only for profile-level scope, rationale, evidence, or critical-path exceptions.",
           "enum": [
             "S1",
             "S2",
             "S3",
             "S4",
-            "S5",
-            null
+            "S5"
           ]
         },
-        "flags": {
-          "type": "array",
-          "minItems": 1,
-          "uniqueItems": true,
-          "items": {
-            "enum": [
-              "absolute_difference_ge_2",
-              "extreme_0_vs_4",
-              "potential_band_or_critical_path_change",
-              "contradictory_rationales",
-              "missing_or_incompatible_source_support",
-              "low_confidence_load_bearing_stage",
-              "scope_pathway_application_or_lifecycle_ambiguity"
-            ]
-          }
+        "comparison_status": {
+          "$ref": "#/$defs/comparisonStatus"
+        },
+        "numeric_difference": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "fable": {
           "$ref": "#/$defs/submissionView"
         },
-        "blind": {
+        "independent": {
           "$ref": "#/$defs/submissionView"
+        },
+        "semantic_flags": {
+          "$ref": "#/$defs/semanticFlags"
+        },
+        "owner_review_required": {
+          "const": true
         },
         "review_route": {
           "enum": [
             "owner_review",
-            "domain_review",
             "owner_and_domain_review"
           ]
         },
         "owner_disposition": {
           "enum": [
             "prefer_fable",
-            "prefer_blind",
+            "prefer_independent",
             "preserve_disagreement",
             "needs_domain_review",
-            "defer_missing_evidence",
+            "needs_better_evidence",
             null
           ]
         },
@@ -270,12 +436,14 @@
     }
   },
   "x-generation-rules": {
-    "join": "Match the two submissions on profile_id, then compare S1 through S5 independently.",
+    "join": "Create exactly one audit row for every frozen profile_id crossed with S1-S5, for 31 x 5 = 155 comparisons.",
+    "status_and_difference": "Use exact_agreement for difference 0, one_point_difference for difference 1, and difference_ge_2 for differences 2-4. numeric_difference is the absolute difference and is null whenever either score is missing.",
+    "missing_scores": "Use missing_fable, missing_independent, or missing_both as applicable and add the missing_score flag. Missing or invalid submissions may not be omitted from the audit.",
+    "summary": "Count all six comparison statuses and require their sum and total_comparisons to equal 155.",
     "no_aggregation": "Do not average, sum, weight, percentage-transform, midpoint-select, or force consensus between coders.",
-    "absolute_difference": "Flag any populated S-dimension whose absolute coder difference is 2 or more.",
-    "extreme_disagreement": "Flag every 0-versus-4 comparison even if another rule also fires.",
-    "interpretation_change": "Flag a disagreement that could alter a stage band or critical-path interpretation.",
-    "semantic_review": "Flag contradictory rationales, missing or incompatible support, low-confidence load-bearing stages, and scope/pathway/application/lifecycle ambiguity.",
-    "fusion_routing": "Place every frozen fusion profile in routine_domain_reviews. Add a separate exception only when an owner-level flag also applies."
+    "extreme_disagreement": "Add extreme_0_vs_4 to every 0-versus-4 comparison even when difference_ge_2 also applies.",
+    "owner_routing": "Exact agreements and one-point differences remain in comparison_audit and do not reach owner review by default. A one-point difference reaches owner review only when another semantic flag applies, including a potential band or critical-path change, contradictory rationale, incompatible evidence, or scope ambiguity. Missing scores route through missing_score and are never silently omitted.",
+    "semantic_review": "Set owner_review_required when potential band or critical-path change, contradictory rationales, missing or incompatible support, missing score, low-confidence load-bearing status, or scope/pathway/application/lifecycle ambiguity requires owner disposition.",
+    "fusion_routing": "Place every frozen fusion profile in routine_domain_reviews. This 18-profile domain queue remains separate from owner exceptions; add an owner exception only when an owner-level flag also applies."
   }
 }

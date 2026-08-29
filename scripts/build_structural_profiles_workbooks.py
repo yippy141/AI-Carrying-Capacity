@@ -12,7 +12,7 @@ from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 from openpyxl import Workbook
 from openpyxl.comments import Comment
-from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
+from openpyxl.styles import Alignment, Border, Font, PatternFill, Protection, Side
 from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.datavalidation import DataValidation
 
@@ -210,12 +210,24 @@ SUBMISSION_HEADERS = [
     "notes",
 ]
 
+SCOPE_REFERENCE_HEADERS = [
+    "profile_id",
+    "stage_id",
+    "parent_stage_id",
+    "description",
+    "pathway_id",
+    "application_context",
+    "lifecycle_phase",
+    "critical_path_role",
+]
+
 RUBRIC_HEADERS = [
     "dimension",
     "name",
     "direction",
-    "4_means",
     "0_means",
+    "2_guidance",
+    "4_means",
     "coding_instruction",
 ]
 
@@ -224,56 +236,92 @@ RUBRIC_ROWS = [
         "dimension": "S1",
         "name": "Information intensity of the scoped stage",
         "direction": "Higher means structurally easier for AI-driven improvement.",
-        "4_means": (
-            "Progress occurs primarily through information processing, analysis, "
-            "design, inference, communication, or software."
-        ),
         "0_means": (
             "Progress occurs primarily through physical transformation, biological "
             "processes, construction, or accumulated operating time."
         ),
+        "2_guidance": (
+            "Stage progress materially combines informational and physical, biological, "
+            "or operational work; neither clearly dominates under the stated scope."
+        ),
+        "4_means": (
+            "Progress occurs primarily through information processing, analysis, "
+            "design, inference, communication, or software."
+        ),
         "coding_instruction": (
             "Code how progress occurs within this stage, not its share of a wider "
-            "schedule. Critical-path role is separate."
+            "schedule. Critical-path role is separate. Values 1 and 3 require an "
+            "explicit intermediate-judgment rationale; do not interpolate mechanically."
         ),
     },
     {
         "dimension": "S2",
         "name": "Feedback speed",
         "direction": "Higher means structurally easier for AI-driven improvement.",
-        "4_means": "Learn-test-revise cycles occur in minutes to days.",
         "0_means": "Cycles take years to decades.",
-        "coding_instruction": "Classify the ordinary scoped feedback loop, not an ideal demo.",
+        "2_guidance": (
+            "The ordinary learn-test-revise cycle is generally measured in weeks to "
+            "months, rather than minutes/days or years/decades."
+        ),
+        "4_means": "Learn-test-revise cycles occur in minutes to days.",
+        "coding_instruction": (
+            "Classify the ordinary scoped feedback loop, not an ideal demo. Values 1 "
+            "and 3 require an explicit intermediate-judgment rationale; do not "
+            "interpolate mechanically."
+        ),
     },
     {
         "dimension": "S3",
         "name": "Experiment affordability and throughput",
         "direction": "Higher means structurally easier for AI-driven improvement.",
-        "4_means": "Attempts are near-free and parallel.",
         "0_means": "Attempts are scarce and expensive.",
+        "2_guidance": (
+            "Attempts require meaningful resources or scarce systems but remain "
+            "repeatable; throughput or parallelism is material but constrained."
+        ),
+        "4_means": "Attempts are near-free and parallel.",
         "coding_instruction": (
             "The rationale must address both marginal cost per attempt and attainable "
-            "parallel or serial throughput. Preserve divergence and lower confidence."
+            "parallel or serial throughput. Preserve divergence and lower confidence. "
+            "Values 1 and 3 require an explicit intermediate-judgment rationale; do "
+            "not interpolate mechanically."
         ),
     },
     {
         "dimension": "S4",
         "name": "Physical flexibility",
         "direction": "Higher means structurally easier for AI-driven improvement.",
+        "0_means": "Clock time is dominated by physical floors.",
+        "2_guidance": (
+            "Physical processes create meaningful delay, but no single physical, "
+            "biological, construction, curing, healing, or qualification floor "
+            "dominates the entire scoped stage."
+        ),
         "4_means": (
             "No construction, growth, curing, healing, or qualification floor "
             "dominates elapsed time."
         ),
-        "0_means": "Clock time is dominated by physical floors.",
-        "coding_instruction": "Code intrinsic physical time floors at the scoped stage.",
+        "coding_instruction": (
+            "Code intrinsic physical time floors at the scoped stage. Values 1 and 3 "
+            "require an explicit intermediate-judgment rationale; do not interpolate "
+            "mechanically."
+        ),
     },
     {
         "dimension": "S5",
         "name": "Intrinsic error tolerance",
         "direction": "Higher means structurally easier for AI-driven improvement.",
-        "4_means": "Errors are cheap, reversible, and low-externality.",
         "0_means": "Errors are catastrophic or irreversible.",
-        "coding_instruction": "Classify consequences and reversibility within scope.",
+        "2_guidance": (
+            "Errors create material cost, delay, or review burdens, but are usually "
+            "containable and reversible within the stated scope."
+        ),
+        "4_means": "Errors are cheap, reversible, and low-externality.",
+        "coding_instruction": (
+            "Classify consequences and reversibility within scope. Values 1 and 3 "
+            "require an explicit intermediate-judgment rationale; do not interpolate "
+            "mechanically."
+        ),
     },
 ]
 
@@ -288,7 +336,7 @@ EXCEPTION_HEADERS = [
 EXCEPTION_ROWS = [
     {
         "rule_id": "absolute_difference_ge_2",
-        "trigger": "Absolute Fable-versus-blind difference is 2 or more on an S-dimension.",
+        "trigger": "Absolute Fable-versus-independent difference is 2 or more on an S-dimension.",
         "owner_review": "Yes",
         "domain_review": "When technically load-bearing",
         "required_handling": "Preserve both values and rationales; do not average.",
@@ -319,7 +367,14 @@ EXCEPTION_ROWS = [
         "trigger": "Support is missing or the two source bases do not support the same scope.",
         "owner_review": "Yes",
         "domain_review": "As needed",
-        "required_handling": "Defer missing evidence when necessary; never invent a source ID.",
+        "required_handling": "Route to needs_better_evidence when necessary; never invent a source ID.",
+    },
+    {
+        "rule_id": "missing_score",
+        "trigger": "Either submission is missing or has an invalid S value for the comparison.",
+        "owner_review": "Yes",
+        "domain_review": "As needed",
+        "required_handling": "Keep the audit row, mark missing_score, and never silently omit it.",
     },
     {
         "rule_id": "low_confidence_load_bearing_stage",
@@ -396,10 +451,10 @@ ALLOWED_VALUES = {
     ],
     "owner_disposition": [
         "prefer_fable",
-        "prefer_blind",
+        "prefer_independent",
         "preserve_disagreement",
         "needs_domain_review",
-        "defer_missing_evidence",
+        "needs_better_evidence",
     ],
     "review_status": ["canonical", "reviewed", "staged", "superseded", "rejected"],
     "stage_applicability": ["present", "absent", "conditional", "not_assessable"],
@@ -411,12 +466,16 @@ ALLOWED_VALUES = {
 FIELD_DEFINITIONS = {
     "profile_id": "Stable opaque identifier for one scoped stage profile.",
     "stage_id": "Stable stage identifier from stages.csv.",
+    "description": "Frozen V1 statement of activity included and material exclusions.",
     "parent_stage_id": "Parent from stages.csv, or not_applicable for a root stage.",
     "sector": "Frozen anchor-sector label.",
     "workflow": "Readable workflow label for the scoped leaf stage.",
     "pathway_id": "Frozen technical or operational pathway identifier.",
     "application_context": "Frozen V1 anchor scope copied from the canonical method.",
-    "lifecycle_phase": "One canonical lifecycle value; blank here where assignment needs judgment.",
+    "lifecycle_phase": (
+        "Owner-approved primary V1 coding context; it does not claim that the stage "
+        "occurs exclusively in that lifecycle phase."
+    ),
     "critical_path_role": "Serial, parallel, conditional, time floor, or not yet assessed.",
     "rationale": "Coder explanation for the proposed classification.",
     "source_ids": "Identifiers for actual supporting sources; never invent them.",
@@ -514,7 +573,14 @@ def ordinal_validation() -> DataValidation:
 
 def preferred_width(header: str, values: list[str]) -> int:
     sample = max([len(header), *(len(str(value)) for value in values[:60])])
-    if header in {"application_context", "rationale", "notes", "required_handling"}:
+    if header in {
+        "application_context",
+        "description",
+        "rationale",
+        "notes",
+        "required_handling",
+        "2_guidance",
+    }:
         return 48
     if "source_ids" in header or header.endswith("_id") or header.endswith("_ids"):
         return min(32, max(18, sample + 2))
@@ -557,6 +623,7 @@ def add_table_sheet(
         cell.alignment = Alignment(wrap_text=True, vertical="center")
         role = "editable later" if header in editable_fields else "generated/reference"
         cell.comment = Comment(f"Cell role: {role}.", "AI Conversion Atlas")
+        cell.protection = Protection(locked=True)
     sheet.row_dimensions[3].height = 42
 
     for row_offset, record in enumerate(rows, start=4):
@@ -574,6 +641,7 @@ def add_table_sheet(
             cell.alignment = Alignment(wrap_text=True, vertical="top")
             cell.border = THIN_BOTTOM
             cell.number_format = "@"
+            cell.protection = Protection(locked=header not in editable_fields)
 
     for column, header in enumerate(headers, start=1):
         values = [record.get(header, "") for record in rows]
@@ -589,6 +657,9 @@ def add_table_sheet(
     sheet.sheet_properties.pageSetUpPr.fitToPage = True
     sheet.print_title_rows = "1:3"
     sheet.sheet_properties.pageSetUpPr.autoPageBreaks = False
+    sheet.protection.sheet = True
+    sheet.protection.autoFilter = False
+    sheet.protection.sort = False
 
     field_to_column = {header: index for index, header in enumerate(headers, start=1)}
     for field, values in dropdown_fields.items():
@@ -662,8 +733,8 @@ def add_start_here_sheet(workbook: Workbook) -> None:
         ),
         (
             "Blank means blank",
-            "S1-S5, C1-C8, rationales, source IDs, dates, confidence, notes, lifecycle "
-            "phases, country/governance rows, exception results, owner decisions, and "
+            "S1-S5, C1-C8, rationales, source IDs, dates, confidence, notes, "
+            "country/governance rows, exception results, owner decisions, and "
             "all approval/canonicalization fields must remain blank in this package.",
         ),
         (
@@ -760,10 +831,16 @@ def add_data_dictionary(workbook: Workbook) -> None:
                             "workflow",
                             "pathway_id",
                             "application_context",
+                            "lifecycle_phase",
                             "critical_path_role",
                             "display_order",
                             "leaf_status",
                             "label",
+                            "description",
+                            "coder_type",
+                            "coder_role",
+                            "coder_name",
+                            "coder_model",
                             "version",
                         } else "reference populated where supported"
                     ),
@@ -800,7 +877,8 @@ def build_reference_workbook(package_dir: Path) -> Path:
         RUBRIC_HEADERS,
         RUBRIC_ROWS,
         "Reference only. Higher is always structurally easier. Keep all five dimensions "
-        "separate; never sum, average, weight, rank, or percentage-transform them.",
+        "separate; never sum, average, weight, rank, or percentage-transform them. "
+        "The 2 anchor is operational guidance, not a cardinal midpoint or new method rule.",
     )
     add_table_sheet(
         workbook,
@@ -899,8 +977,10 @@ def build_submission_workbook(
     blind: bool,
 ) -> Path:
     profiles = read_csv(package_dir / "stage_profiles_template.csv", PROFILE_HEADERS)
+    stages = read_csv(package_dir / "stages.csv", STAGE_HEADERS)
     reviews = read_csv(package_dir / review_template, REVIEW_HEADERS)
     profile_by_id = {row["profile_id"]: row for row in profiles}
+    stage_by_id = {row["stage_id"]: row for row in stages}
     submission_rows: list[dict[str, str]] = []
     for review in reviews:
         profile = profile_by_id[review["profile_id"]]
@@ -927,9 +1007,30 @@ def build_submission_workbook(
         RUBRIC_HEADERS,
         RUBRIC_ROWS,
         "Reference only. Higher is always structurally easier. Keep dimensions separate; "
-        "do not sum, average, weight, rank, or percentage-transform them.",
+        "do not sum, average, weight, rank, or percentage-transform them. The 2 anchor "
+        "is operational guidance, not a cardinal midpoint or new method rule.",
     )
-    identity_fields = {"coder_type", "coder_role", "coder_name", "coder_model"}
+    scope_rows = [
+        {
+            "profile_id": profile["profile_id"],
+            "stage_id": profile["stage_id"],
+            "parent_stage_id": profile["parent_stage_id"],
+            "description": stage_by_id[profile["stage_id"]]["description"],
+            "pathway_id": profile["pathway_id"],
+            "application_context": profile["application_context"],
+            "lifecycle_phase": profile["lifecycle_phase"],
+            "critical_path_role": profile["critical_path_role"],
+        }
+        for profile in profiles
+    ]
+    add_table_sheet(
+        workbook,
+        "SCOPE_REFERENCE",
+        SCOPE_REFERENCE_HEADERS,
+        scope_rows,
+        "Read-only common scope. Both submission workbooks contain this identical "
+        "profile set, order, descriptions, and primary V1 lifecycle context.",
+    )
     editable = {
         "review_id",
         "S1",
@@ -946,11 +1047,12 @@ def build_submission_workbook(
         "notes",
     }
     if blind:
-        editable |= identity_fields
+        editable |= {"coder_type", "coder_name", "coder_model"}
         note = (
             "Gray cells are frozen scope references. Yellow cells must be completed by "
-            "the independent coder. Identity fields are intentionally neutral and blank. "
-            "Do not use another coder's submission or reasoning."
+            "the independent coder. coder_role=independent_coder is protected; the "
+            "independent task fills coder_type, coder_name, and coder_model. Do not use "
+            "another coder's submission or reasoning."
         )
     else:
         note = (

@@ -1,20 +1,15 @@
 # Unresolved scope ambiguities
 
-Only one field class remains unresolved in the blank package:
-`lifecycle_phase`. The frozen pathway scope determines the application context,
-but it does not uniquely map each leaf to one of the method's lifecycle values
-without substantive judgment. Accordingly, all 31 `lifecycle_phase` cells are
-blank.
+No genuine ambiguity currently prevents a frozen V1 scope field from being
+populated.
 
-| Pathway | Affected leaf rows | Why a single lifecycle value cannot be assigned from the frozen taxonomy alone |
-| --- | ---: | --- |
-| `mature_software_delivery_and_maintenance` | 5 | The leaves cross development, verification, deployment, and operations, and the method does not define whether a release-stage label such as `deployment` means `commercial_deployment` in an established production codebase. |
-| `discrete_manufacturing_npi_and_operations` | 8 | NPI and operations stages can span development, qualification, scale-up, and operations; the stage names do not by themselves fix the lifecycle boundary for a particular product or factory route. |
-| `tokamak_research_to_pilot_plant_demonstration` | 18 | The tokamak pathway intentionally spans research, development, qualification, demonstration, scale-up, and readiness work. Several leaves can serve more than one phase depending on facility and technical route. |
+The owner-approved `lifecycle_phase` values are primary V1 coding contexts, not
+claims that a stage occurs exclusively in one phase. The stage descriptions
+state the included activity and the material exclusions needed for the first
+coding pass. `critical_path_role` remains `not_assessed`; no binding status has
+been assigned.
 
-No application-context ambiguity blocks population: each profile uses the
-verbatim frozen V1 anchor scope. Software and manufacturing leaves have
-`parent_stage_id=not_applicable` because the canonical method freezes no parent
-groups for them. Fusion parent references follow the explicit frozen grouping.
-All `critical_path_role` values are `not_assessed`, as required until later
-coding establishes a role.
+If later evidence shows that a stage's intrinsic profile materially differs in
+another lifecycle phase, pathway, or application context, that case requires a
+versioned profile variant. It must not silently alter one of the 31 frozen V1
+rows.

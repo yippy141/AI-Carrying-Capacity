@@ -9,8 +9,9 @@ import json
 import re
 import shutil
 import tempfile
+from datetime import date, datetime, time
 from pathlib import Path
-from typing import Iterable
+from typing import Any, Iterable
 
 from openpyxl import load_workbook
 from openpyxl.utils import column_index_from_string
@@ -27,6 +28,9 @@ try:
         PROFILE_HEADERS,
         REFERENCE_WORKBOOK,
         REVIEW_HEADERS,
+        RUBRIC_HEADERS,
+        RUBRIC_ROWS,
+        SCOPE_REFERENCE_HEADERS,
         STAGE_HEADERS,
         SUBMISSION_HEADERS,
         build_all,
@@ -43,6 +47,9 @@ except ModuleNotFoundError:  # Supports direct execution from scripts/.
         PROFILE_HEADERS,
         REFERENCE_WORKBOOK,
         REVIEW_HEADERS,
+        RUBRIC_HEADERS,
+        RUBRIC_ROWS,
+        SCOPE_REFERENCE_HEADERS,
         STAGE_HEADERS,
         SUBMISSION_HEADERS,
         build_all,
@@ -110,6 +117,45 @@ EXPECTED_PATHWAYS = {
 }
 
 EXPECTED_PROFILE_IDS = [f"sp-{index:04d}" for index in range(1, 32)]
+EXPECTED_LIFECYCLE_PHASES = dict(
+    zip(
+        EXPECTED_PROFILE_IDS,
+        [
+            "development",
+            "development",
+            "development",
+            "commercial_deployment",
+            "operations",
+            "development",
+            "development",
+            "scale_up",
+            "scale_up",
+            "operations",
+            "operations",
+            "operations",
+            "operations",
+            "research",
+            "research",
+            "research",
+            "research",
+            "development",
+            "research",
+            "qualification",
+            "development",
+            "development",
+            "development",
+            "development",
+            "development",
+            "scale_up",
+            "demonstration",
+            "demonstration",
+            "demonstration",
+            "qualification",
+            "demonstration",
+        ],
+        strict=True,
+    )
+)
 S_FIELDS = ["S1", "S2", "S3", "S4", "S5"]
 C_FIELDS = [field for field in COUNTRY_HEADERS if re.fullmatch(r"C[1-8]_.+", field)]
 SCOPE_FIELDS = {
@@ -120,6 +166,7 @@ SCOPE_FIELDS = {
     "workflow",
     "pathway_id",
     "application_context",
+    "lifecycle_phase",
     "critical_path_role",
 }
 
@@ -151,6 +198,8 @@ REFERENCE_SHEETS = [
     "GOVERNANCE_TEMPLATE",
     "DATA_DICTIONARY",
 ]
+
+SUBMISSION_SHEETS = ["S1_S5_RUBRIC", "SCOPE_REFERENCE", "SUBMISSION"]
 
 
 class WorksheetValidationError(ValueError):
@@ -200,6 +249,10 @@ def validate_taxonomy(
             errors.append(
                 f"stages.csv:{row_number} leaf_status must be leaf or parent."
             )
+        if not row["description"].strip():
+            errors.append(
+                f"stages.csv:{row_number} description must freeze the V1 activity scope."
+            )
 
     for row_number, row in enumerate(stages, start=2):
         parent = row["parent_stage_id"]
@@ -228,6 +281,60 @@ def validate_taxonomy(
         errors.append(
             "stages.csv parent rows must be exactly the eight frozen fusion groups. "
             f"Found {sorted(actual_parents)}."
+        )
+
+    quality_scope = stage_by_id.get("quality_assurance", {}).get("description", "")
+    if not all(
+        phrase in quality_scope
+        for phrase in (
+            "in-process",
+            "end-of-line",
+            "ongoing production quality assurance",
+            "does not represent a separate regulated product-qualification pathway",
+        )
+    ):
+        errors.append(
+            "stages.csv quality_assurance must retain the owner-approved V1 production "
+            "quality scope and regulated-qualification exclusion."
+        )
+    for stage_id in (
+        "magnets",
+        "heating_and_current_drive",
+        "plasma_facing_components",
+        "tritium_and_fuel_cycle",
+        "blankets",
+    ):
+        description = stage_by_id.get(stage_id, {}).get("description", "")
+        if not all(
+            phrase in description
+            for phrase in (
+                "pilot-relevant",
+                "design, engineering, testing, and pre-integration",
+                "commercial-fleet rollout",
+            )
+        ):
+            errors.append(
+                f"stages.csv {stage_id} must retain the frozen pilot-relevant "
+                "subsystem scope and commercial-fleet exclusion."
+            )
+    if "fabrication after design maturity" not in stage_by_id.get(
+        "component_fabrication", {}
+    ).get("description", ""):
+        errors.append(
+            "stages.csv component_fabrication must remain scoped to pilot-relevant "
+            "fabrication after design maturity."
+        )
+    grid_scope = stage_by_id.get("grid_integration", {}).get("description", "")
+    if not all(
+        phrase in grid_scope
+        for phrase in (
+            "connection and technical integration for pilot demonstration",
+            "Excludes commercial fleet rollout",
+        )
+    ):
+        errors.append(
+            "stages.csv grid_integration must retain the pilot-demonstration scope "
+            "and commercial-fleet exclusion."
         )
     return stage_by_id
 
@@ -289,10 +396,11 @@ def validate_profiles(
                 f"stage_profiles_template.csv:{row_number} application_context must "
                 "carry the frozen anchor scope."
             )
-        if row["lifecycle_phase"]:
+        expected_lifecycle = EXPECTED_LIFECYCLE_PHASES.get(profile_id)
+        if row["lifecycle_phase"] != expected_lifecycle:
             errors.append(
-                f"stage_profiles_template.csv:{row_number} lifecycle_phase must remain "
-                "blank in this package pending substantive scope judgment."
+                f"stage_profiles_template.csv:{row_number} lifecycle_phase must be the "
+                f"owner-approved primary V1 context {expected_lifecycle!r}."
             )
         if row["critical_path_role"] != "not_assessed":
             errors.append(
@@ -339,11 +447,16 @@ def validate_review_templates(
                 )
 
     for row_number, row in enumerate(blind_rows, start=2):
+        if row["coder_role"] != "independent_coder":
+            errors.append(
+                f"profile_coding_reviews_blind_template.csv:{row_number} coder_role "
+                "must be the protected provenance value 'independent_coder'."
+            )
         for field in REVIEW_HEADERS:
-            if field != "profile_id" and row[field]:
+            if field not in {"profile_id", "coder_role"} and row[field]:
                 errors.append(
                     f"profile_coding_reviews_blind_template.csv:{row_number} {field} "
-                    "must be neutral and blank."
+                    "must remain blank for the independent task to complete."
                 )
         joined = " ".join(row.values()).lower()
         if any(text in joined for text in FORBIDDEN_BLIND_TEXT):
@@ -414,6 +527,67 @@ def validate_no_derived_headers(
                 )
 
 
+def validate_human_readable_package(package_dir: Path, errors: list[str]) -> None:
+    required_files = {
+        "START_HERE.md",
+        "RUBRIC.md",
+        "OWNER_REVIEW_GUIDE.md",
+        "worksheet-build-report.md",
+        "unresolved_scope_ambiguities.md",
+    }
+    contents: dict[str, str] = {}
+    for name in sorted(required_files):
+        path = package_dir / name
+        if not path.exists():
+            errors.append(f"Missing required human-readable package file: {name}")
+            continue
+        contents[name] = path.read_text(encoding="utf-8")
+
+    rubric = contents.get("RUBRIC.md", "")
+    normalized_rubric = " ".join(rubric.split())
+    for row in RUBRIC_ROWS:
+        if row["2_guidance"] not in normalized_rubric:
+            errors.append(
+                f"RUBRIC.md is missing the exact {row['dimension']} V1 2_guidance."
+            )
+    for phrase in (
+        "operational V1 coding guidance, not a cardinal midpoint",
+        "value of 1 or 3",
+        "must not be produced by mechanical interpolation",
+        "never sum, average, weight, rank, or",
+        "percentage-transform S1-S5",
+    ):
+        if phrase not in normalized_rubric:
+            errors.append(f"RUBRIC.md is missing required guidance: {phrase!r}.")
+
+    owner_guide = contents.get("OWNER_REVIEW_GUIDE.md", "")
+    normalized_owner_guide = " ".join(owner_guide.split())
+    for disposition in ALLOWED_VALUES["owner_disposition"]:
+        if f"`{disposition}`" not in owner_guide:
+            errors.append(
+                f"OWNER_REVIEW_GUIDE.md is missing disposition {disposition!r}."
+            )
+    if (
+        "FICTIONAL EXAMPLE" not in normalized_owner_guide
+        or "31 × 5 = 155" not in normalized_owner_guide
+    ):
+        errors.append(
+            "OWNER_REVIEW_GUIDE.md must contain a clearly fictional example and the "
+            "155-comparison denominator."
+        )
+
+    build_report = contents.get("worksheet-build-report.md", "")
+    for phrase in (
+        "canonical semantic-and-layout manifest",
+        "twice in one temporary runtime",
+        "every S1-S5 and C1-C8 field remains blank",
+    ):
+        if phrase not in build_report:
+            errors.append(
+                f"worksheet-build-report.md is missing required statement: {phrase!r}."
+            )
+
+
 def validate_exception_schema(path: Path, errors: list[str]) -> None:
     try:
         schema = json.loads(path.read_text(encoding="utf-8"))
@@ -424,19 +598,67 @@ def validate_exception_schema(path: Path, errors: list[str]) -> None:
         metadata = schema["properties"]["metadata"]["properties"]
         if metadata["comparison_key"]["const"] != ["profile_id", "s_dimension"]:
             errors.append("Exception schema must compare by profile_id and s_dimension.")
+        if metadata["expected_comparison_count"].get("const") != 155:
+            errors.append("Exception schema must fix the comparison denominator at 155.")
         aggregation = metadata["aggregation_rule"]["const"]
         if not all(token in aggregation for token in ("no_averaging", "midpoint", "consensus")):
             errors.append(
                 "Exception schema must explicitly prohibit averaging, midpoint selection, "
                 "and forced consensus."
             )
-        flags = schema["$defs"]["exception"]["properties"]["flags"]["items"]["enum"]
+        audit = schema["properties"]["comparison_audit"]
+        if audit.get("minItems") != 155 or audit.get("maxItems") != 155:
+            errors.append(
+                "Exception schema comparison_audit must require exactly 155 rows."
+            )
+        audit_required = set(schema["$defs"]["comparisonAudit"]["required"])
+        expected_audit_fields = {
+            "profile_id",
+            "stage_id",
+            "pathway_id",
+            "s_dimension",
+            "comparison_status",
+            "numeric_difference",
+            "fable",
+            "independent",
+            "semantic_flags",
+            "owner_review_required",
+            "review_route",
+        }
+        if audit_required != expected_audit_fields:
+            errors.append(
+                "Exception schema comparison audit is missing required provenance or "
+                "routing fields."
+            )
+        statuses = schema["$defs"]["comparisonStatus"]["enum"]
+        expected_statuses = {
+            "exact_agreement",
+            "one_point_difference",
+            "difference_ge_2",
+            "missing_fable",
+            "missing_independent",
+            "missing_both",
+        }
+        if set(statuses) != expected_statuses:
+            errors.append(
+                "Exception schema comparison statuses must contain exactly the six "
+                "required audit outcomes."
+            )
+        summary = schema["properties"]["summary_counts"]
+        if set(summary["required"]) != {*expected_statuses, "total_comparisons"}:
+            errors.append(
+                "Exception schema summary_counts must require all six statuses and a total."
+            )
+        if summary["properties"]["total_comparisons"].get("const") != 155:
+            errors.append("Exception schema summary total must equal 155.")
+        flags = schema["$defs"]["semanticFlags"]["items"]["enum"]
         expected_flags = {
             "absolute_difference_ge_2",
             "extreme_0_vs_4",
             "potential_band_or_critical_path_change",
             "contradictory_rationales",
             "missing_or_incompatible_source_support",
+            "missing_score",
             "low_confidence_load_bearing_stage",
             "scope_pathway_application_or_lifecycle_ambiguity",
         }
@@ -454,6 +676,32 @@ def validate_exception_schema(path: Path, errors: list[str]) -> None:
         if routine_definition["owner_decision_required"].get("const") is not False:
             errors.append(
                 "Routine fusion domain review must be distinct from an owner decision."
+            )
+        generation_rules = schema["x-generation-rules"]
+        for required_rule in (
+            "join",
+            "status_and_difference",
+            "missing_scores",
+            "summary",
+            "owner_routing",
+            "fusion_routing",
+        ):
+            if not generation_rules.get(required_rule):
+                errors.append(
+                    f"Exception schema is missing generation rule {required_rule!r}."
+                )
+        owner_routing = generation_rules["owner_routing"]
+        if not all(
+            phrase in owner_routing
+            for phrase in (
+                "Exact agreements and one-point differences",
+                "do not reach owner review by default",
+                "only when another semantic flag applies",
+            )
+        ):
+            errors.append(
+                "Exception schema must keep exact/one-point rows in the audit and route "
+                "one-point differences only when another semantic flag applies."
             )
     except (KeyError, TypeError) as exc:
         errors.append(f"Exception schema is missing required contract elements: {exc}")
@@ -617,8 +865,8 @@ def validate_workbooks(
     blind_path = package_dir / BLIND_WORKBOOK
 
     validate_workbook_structure(reference_path, REFERENCE_SHEETS, errors)
-    validate_workbook_structure(fable_path, ["S1_S5_RUBRIC", "SUBMISSION"], errors)
-    validate_workbook_structure(blind_path, ["S1_S5_RUBRIC", "SUBMISSION"], errors)
+    validate_workbook_structure(fable_path, SUBMISSION_SHEETS, errors)
+    validate_workbook_structure(blind_path, SUBMISSION_SHEETS, errors)
     if not all(path.exists() for path in (reference_path, fable_path, blind_path)):
         return
 
@@ -647,6 +895,78 @@ def validate_workbooks(
         errors.append(
             "Reference workbook owner, country-modifier, and governance templates must "
             "contain no populated rows."
+        )
+
+    fable_rubric = sheet_table(
+        fable_path, "S1_S5_RUBRIC", RUBRIC_HEADERS, errors
+    )
+    blind_rubric = sheet_table(
+        blind_path, "S1_S5_RUBRIC", RUBRIC_HEADERS, errors
+    )
+    reference_rubric = sheet_table(
+        reference_path, "S1_S5_RUBRIC", RUBRIC_HEADERS, errors
+    )
+    compare_rows(
+        "Reference workbook S1-S5 rubric",
+        reference_rubric,
+        RUBRIC_ROWS,
+        RUBRIC_HEADERS,
+        errors,
+    )
+    compare_rows(
+        "Fable workbook S1-S5 rubric",
+        fable_rubric,
+        RUBRIC_ROWS,
+        RUBRIC_HEADERS,
+        errors,
+    )
+    compare_rows(
+        "Blind workbook S1-S5 rubric",
+        blind_rubric,
+        RUBRIC_ROWS,
+        RUBRIC_HEADERS,
+        errors,
+    )
+
+    stage_by_id = {row["stage_id"]: row for row in stages}
+    expected_scope_rows = [
+        {
+            "profile_id": profile["profile_id"],
+            "stage_id": profile["stage_id"],
+            "parent_stage_id": profile["parent_stage_id"],
+            "description": stage_by_id.get(profile["stage_id"], {}).get(
+                "description", ""
+            ),
+            "pathway_id": profile["pathway_id"],
+            "application_context": profile["application_context"],
+            "lifecycle_phase": profile["lifecycle_phase"],
+            "critical_path_role": profile["critical_path_role"],
+        }
+        for profile in profiles
+    ]
+    fable_scope = sheet_table(
+        fable_path, "SCOPE_REFERENCE", SCOPE_REFERENCE_HEADERS, errors
+    )
+    blind_scope = sheet_table(
+        blind_path, "SCOPE_REFERENCE", SCOPE_REFERENCE_HEADERS, errors
+    )
+    compare_rows(
+        "Fable workbook common scope reference",
+        fable_scope,
+        expected_scope_rows,
+        SCOPE_REFERENCE_HEADERS,
+        errors,
+    )
+    compare_rows(
+        "Blind workbook common scope reference",
+        blind_scope,
+        expected_scope_rows,
+        SCOPE_REFERENCE_HEADERS,
+        errors,
+    )
+    if fable_scope != blind_scope:
+        errors.append(
+            "Fable and blind workbooks must contain identical SCOPE_REFERENCE rows."
         )
 
     fable_submission = sheet_table(
@@ -746,6 +1066,30 @@ def validate_workbooks(
     if any(text in blind_text or text in blind_metadata for text in FORBIDDEN_BLIND_TEXT):
         errors.append("Blind workbook contains seed-coder identity, values, or hints.")
 
+    blind_submission_sheet = blind_workbook["SUBMISSION"]
+    blind_headers = {
+        normalized(blind_submission_sheet.cell(3, column).value): column
+        for column in range(1, blind_submission_sheet.max_column + 1)
+    }
+    if not blind_submission_sheet.protection.sheet:
+        errors.append("Blind workbook SUBMISSION sheet must enable cell protection.")
+    for row_number in range(4, 35):
+        role_cell = blind_submission_sheet.cell(
+            row_number, blind_headers["coder_role"]
+        )
+        if role_cell.value != "independent_coder" or not role_cell.protection.locked:
+            errors.append(
+                f"Blind workbook SUBMISSION row {row_number} must prefill and protect "
+                "coder_role=independent_coder."
+            )
+        for field in ("coder_name", "coder_model"):
+            cell = blind_submission_sheet.cell(row_number, blind_headers[field])
+            if cell.value not in (None, "") or cell.protection.locked:
+                errors.append(
+                    f"Blind workbook SUBMISSION row {row_number} {field} must be blank "
+                    "and editable by the independent task."
+                )
+
     validate_dropdowns(
         reference_path,
         "STAGE_TAXONOMY",
@@ -815,6 +1159,318 @@ def validate_workbooks(
     )
 
 
+def manifest_value(value: object) -> object:
+    """Return a JSON-serializable scalar without platform-specific repr output."""
+    if isinstance(value, (datetime, date, time)):
+        return value.isoformat()
+    if isinstance(value, bytes):
+        return value.hex()
+    if value is None or isinstance(value, (str, int, float, bool)):
+        return value
+    return str(value)
+
+
+def color_manifest(color: object | None) -> dict[str, object] | None:
+    if color is None:
+        return None
+    raw = getattr(color, "__dict__", {})
+    return {
+        "type": raw.get("type"),
+        "rgb": raw.get("rgb"),
+        "indexed": raw.get("indexed"),
+        "auto": raw.get("auto"),
+        "theme": raw.get("theme"),
+        "tint": raw.get("tint"),
+    }
+
+
+def side_manifest(side: object | None) -> dict[str, object] | None:
+    if side is None:
+        return None
+    return {
+        "style": getattr(side, "style", None),
+        "color": color_manifest(getattr(side, "color", None)),
+    }
+
+
+def font_manifest(font: object) -> dict[str, object]:
+    return {
+        "name": getattr(font, "name", None),
+        "size": getattr(font, "sz", None),
+        "bold": getattr(font, "b", None),
+        "italic": getattr(font, "i", None),
+        "underline": getattr(font, "u", None),
+        "strike": getattr(font, "strike", None),
+        "color": color_manifest(getattr(font, "color", None)),
+        "vert_align": getattr(font, "vertAlign", None),
+        "charset": getattr(font, "charset", None),
+        "family": getattr(font, "family", None),
+        "scheme": getattr(font, "scheme", None),
+        "outline": getattr(font, "outline", None),
+        "shadow": getattr(font, "shadow", None),
+        "condense": getattr(font, "condense", None),
+        "extend": getattr(font, "extend", None),
+    }
+
+
+def fill_manifest(fill: object) -> dict[str, object]:
+    stops = []
+    for stop in getattr(fill, "stop", ()) or ():
+        stops.append(
+            {
+                "position": getattr(stop, "position", None),
+                "color": color_manifest(getattr(stop, "color", None)),
+            }
+        )
+    return {
+        "kind": type(fill).__name__,
+        "fill_type": getattr(fill, "fill_type", None),
+        "pattern_type": getattr(fill, "patternType", None),
+        "fg_color": color_manifest(getattr(fill, "fgColor", None)),
+        "bg_color": color_manifest(getattr(fill, "bgColor", None)),
+        "degree": getattr(fill, "degree", None),
+        "left": getattr(fill, "left", None),
+        "right": getattr(fill, "right", None),
+        "top": getattr(fill, "top", None),
+        "bottom": getattr(fill, "bottom", None),
+        "stops": sorted(stops, key=lambda item: json.dumps(item, sort_keys=True)),
+    }
+
+
+def border_manifest(border: object) -> dict[str, object]:
+    return {
+        "left": side_manifest(getattr(border, "left", None)),
+        "right": side_manifest(getattr(border, "right", None)),
+        "top": side_manifest(getattr(border, "top", None)),
+        "bottom": side_manifest(getattr(border, "bottom", None)),
+        "diagonal": side_manifest(getattr(border, "diagonal", None)),
+        "vertical": side_manifest(getattr(border, "vertical", None)),
+        "horizontal": side_manifest(getattr(border, "horizontal", None)),
+        "diagonal_up": getattr(border, "diagonalUp", None),
+        "diagonal_down": getattr(border, "diagonalDown", None),
+        "outline": getattr(border, "outline", None),
+    }
+
+
+def alignment_manifest(alignment: object) -> dict[str, object]:
+    return {
+        "horizontal": getattr(alignment, "horizontal", None),
+        "vertical": getattr(alignment, "vertical", None),
+        "text_rotation": getattr(alignment, "textRotation", None),
+        "wrap_text": getattr(alignment, "wrapText", None),
+        "shrink_to_fit": getattr(alignment, "shrinkToFit", None),
+        "indent": getattr(alignment, "indent", None),
+        "relative_indent": getattr(alignment, "relativeIndent", None),
+        "justify_last_line": getattr(alignment, "justifyLastLine", None),
+        "reading_order": getattr(alignment, "readingOrder", None),
+    }
+
+
+def protection_manifest(protection: object) -> dict[str, object]:
+    return {
+        "locked": getattr(protection, "locked", None),
+        "hidden": getattr(protection, "hidden", None),
+    }
+
+
+def comment_manifest(comment: object | None) -> dict[str, object] | None:
+    if comment is None:
+        return None
+    return {
+        "text": getattr(comment, "text", None),
+        "author": getattr(comment, "author", None),
+        "width": getattr(comment, "width", None),
+        "height": getattr(comment, "height", None),
+    }
+
+
+def header_footer_manifest(section: object) -> dict[str, object]:
+    return {
+        "left": getattr(getattr(section, "left", None), "text", None),
+        "center": getattr(getattr(section, "center", None), "text", None),
+        "right": getattr(getattr(section, "right", None), "text", None),
+    }
+
+
+def workbook_manifest(workbook_path: Path) -> dict[str, Any]:
+    """Build a canonical semantic-and-layout manifest for an XLSX workbook."""
+    workbook = load_workbook(workbook_path, data_only=False)
+    manifest: dict[str, Any] = {
+        "properties": {
+            "creator": workbook.properties.creator,
+            "title": workbook.properties.title,
+            "subject": workbook.properties.subject,
+            "description": workbook.properties.description,
+        },
+        "sheet_names": list(workbook.sheetnames),
+        "sheets": [],
+    }
+    for sheet in workbook.worksheets:
+        cells: list[dict[str, object]] = []
+        for row in sheet.iter_rows(
+            min_row=1,
+            max_row=sheet.max_row,
+            min_col=1,
+            max_col=sheet.max_column,
+        ):
+            for cell in row:
+                if cell.value is None and cell.comment is None and not cell.has_style:
+                    continue
+                cells.append(
+                    {
+                        "coordinate": cell.coordinate,
+                        "value": manifest_value(cell.value),
+                        "data_type": cell.data_type,
+                        "number_format": cell.number_format,
+                        "comment": comment_manifest(cell.comment),
+                        "font": font_manifest(cell.font),
+                        "fill": fill_manifest(cell.fill),
+                        "border": border_manifest(cell.border),
+                        "alignment": alignment_manifest(cell.alignment),
+                        "protection": protection_manifest(cell.protection),
+                    }
+                )
+
+        row_dimensions = [
+            {
+                "index": index,
+                "height": dimension.height,
+                "hidden": dimension.hidden,
+                "outline_level": dimension.outlineLevel,
+                "collapsed": dimension.collapsed,
+                "thick_top": getattr(dimension, "thickTop", None),
+                "thick_bottom": getattr(dimension, "thickBot", None),
+            }
+            for index, dimension in sorted(sheet.row_dimensions.items())
+        ]
+        column_dimensions = [
+            {
+                "index": index,
+                "width": dimension.width,
+                "hidden": dimension.hidden,
+                "outline_level": dimension.outlineLevel,
+                "collapsed": dimension.collapsed,
+                "best_fit": dimension.bestFit,
+                "min": dimension.min,
+                "max": dimension.max,
+            }
+            for index, dimension in sorted(
+                sheet.column_dimensions.items(),
+                key=lambda item: column_index_from_string(item[0]),
+            )
+        ]
+        validations: list[dict[str, object]] = []
+        for validation in sheet.data_validations.dataValidation:
+            target_ranges = sorted(str(cell_range) for cell_range in validation.ranges)
+            validations.append(
+                {
+                    "type": validation.type,
+                    "operator": validation.operator,
+                    "formula1": manifest_value(validation.formula1),
+                    "formula2": manifest_value(validation.formula2),
+                    "allow_blank": validation.allow_blank,
+                    "show_error_message": validation.showErrorMessage,
+                    "show_input_message": validation.showInputMessage,
+                    "error": validation.error,
+                    "error_title": validation.errorTitle,
+                    "prompt": validation.prompt,
+                    "prompt_title": validation.promptTitle,
+                    "target_ranges": target_ranges,
+                }
+            )
+        validations.sort(key=lambda item: json.dumps(item, sort_keys=True))
+
+        freeze_panes = sheet.freeze_panes
+        if hasattr(freeze_panes, "coordinate"):
+            freeze_panes = freeze_panes.coordinate
+        page_setup = sheet.page_setup
+        page_margins = sheet.page_margins
+        print_options = sheet.print_options
+        page_setup_properties = sheet.sheet_properties.pageSetUpPr
+        protection = sheet.protection
+        manifest["sheets"].append(
+            {
+                "name": sheet.title,
+                "visibility": sheet.sheet_state,
+                "show_gridlines": sheet.sheet_view.showGridLines,
+                "used_range": sheet.calculate_dimension(),
+                "cells": cells,
+                "merged_ranges": sorted(str(item) for item in sheet.merged_cells.ranges),
+                "row_dimensions": row_dimensions,
+                "column_dimensions": column_dimensions,
+                "freeze_panes": freeze_panes,
+                "auto_filter": sheet.auto_filter.ref,
+                "data_validations": validations,
+                "sheet_protection": {
+                    "sheet": protection.sheet,
+                    "objects": protection.objects,
+                    "scenarios": protection.scenarios,
+                    "format_cells": protection.formatCells,
+                    "format_columns": protection.formatColumns,
+                    "format_rows": protection.formatRows,
+                    "insert_columns": protection.insertColumns,
+                    "insert_rows": protection.insertRows,
+                    "delete_columns": protection.deleteColumns,
+                    "delete_rows": protection.deleteRows,
+                    "select_locked_cells": protection.selectLockedCells,
+                    "select_unlocked_cells": protection.selectUnlockedCells,
+                    "auto_filter": protection.autoFilter,
+                    "sort": protection.sort,
+                },
+                "print": {
+                    "orientation": page_setup.orientation,
+                    "paper_size": page_setup.paperSize,
+                    "scale": page_setup.scale,
+                    "fit_to_width": page_setup.fitToWidth,
+                    "fit_to_height": page_setup.fitToHeight,
+                    "first_page_number": page_setup.firstPageNumber,
+                    "use_first_page_number": page_setup.useFirstPageNumber,
+                    "black_and_white": page_setup.blackAndWhite,
+                    "draft": page_setup.draft,
+                    "cell_comments": page_setup.cellComments,
+                    "errors": page_setup.errors,
+                    "horizontal_dpi": page_setup.horizontalDpi,
+                    "vertical_dpi": page_setup.verticalDpi,
+                    "copies": page_setup.copies,
+                    "fit_to_page": page_setup_properties.fitToPage,
+                    "auto_page_breaks": page_setup_properties.autoPageBreaks,
+                    "print_title_rows": sheet.print_title_rows,
+                    "print_title_cols": sheet.print_title_cols,
+                    "print_area": str(sheet.print_area) if sheet.print_area else None,
+                    "horizontal_centered": print_options.horizontalCentered,
+                    "vertical_centered": print_options.verticalCentered,
+                    "headings": print_options.headings,
+                    "grid_lines": print_options.gridLines,
+                    "grid_lines_set": print_options.gridLinesSet,
+                    "margins": {
+                        "left": page_margins.left,
+                        "right": page_margins.right,
+                        "top": page_margins.top,
+                        "bottom": page_margins.bottom,
+                        "header": page_margins.header,
+                        "footer": page_margins.footer,
+                    },
+                    "odd_header": header_footer_manifest(sheet.oddHeader),
+                    "odd_footer": header_footer_manifest(sheet.oddFooter),
+                    "even_header": header_footer_manifest(sheet.evenHeader),
+                    "even_footer": header_footer_manifest(sheet.evenFooter),
+                    "first_header": header_footer_manifest(sheet.firstHeader),
+                    "first_footer": header_footer_manifest(sheet.firstFooter),
+                },
+            }
+        )
+    return manifest
+
+
+def canonical_manifest_json(workbook_path: Path) -> str:
+    return json.dumps(
+        workbook_manifest(workbook_path),
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    )
+
+
 def validate_reproducible_workbooks(package_dir: Path, errors: list[str]) -> None:
     input_names = [
         "stages.csv",
@@ -827,16 +1483,28 @@ def validate_reproducible_workbooks(package_dir: Path, errors: list[str]) -> Non
     ]
     with tempfile.TemporaryDirectory() as temporary_directory:
         temporary = Path(temporary_directory)
-        for name in input_names:
-            shutil.copy2(package_dir / name, temporary / name)
-        build_all(temporary)
+        first_build = temporary / "first_build"
+        second_build = temporary / "second_build"
+        first_build.mkdir()
+        second_build.mkdir()
+        for build_directory in (first_build, second_build):
+            for name in input_names:
+                shutil.copy2(package_dir / name, build_directory / name)
+            build_all(build_directory)
         for name in (REFERENCE_WORKBOOK, FABLE_WORKBOOK, BLIND_WORKBOOK):
             committed = package_dir / name
-            rebuilt = temporary / name
-            if not committed.exists() or committed.read_bytes() != rebuilt.read_bytes():
+            rebuilt = first_build / name
+            if not committed.exists():
+                continue
+            if canonical_manifest_json(committed) != canonical_manifest_json(rebuilt):
                 errors.append(
-                    f"{name} is not the reproducible output of "
-                    "scripts/build_structural_profiles_workbooks.py."
+                    f"{name} semantic-and-layout manifest does not match the rebuilt "
+                    "output of scripts/build_structural_profiles_workbooks.py."
+                )
+            if rebuilt.read_bytes() != (second_build / name).read_bytes():
+                errors.append(
+                    f"{name} is not byte-identical across two builds in the same "
+                    "temporary runtime. Workbook generation is nondeterministic."
                 )
 
 
@@ -902,6 +1570,7 @@ def validate(package_dir: Path = DEFAULT_PACKAGE_DIR) -> dict[str, int]:
         ],
         errors,
     )
+    validate_human_readable_package(package_dir, errors)
     validate_exception_schema(package_dir / "exception_report.schema.json", errors)
     validate_workbooks(
         package_dir,

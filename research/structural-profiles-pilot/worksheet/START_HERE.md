@@ -46,9 +46,9 @@ S-cells (31 profiles × 5 dimensions). After both submissions return and an
 exception report is generated, Jinhua reviews only flagged disagreements,
 load-bearing low-confidence cases, scope or evidence problems, and any issue
 that could change a stage's band or critical-path interpretation. The allowed
-owner dispositions are `prefer_fable`, `prefer_blind`,
+owner dispositions are `prefer_fable`, `prefer_independent`,
 `preserve_disagreement`, `needs_domain_review`, and
-`defer_missing_evidence`. None requires a forced consensus.
+`needs_better_evidence`. None requires a forced consensus.
 
 **Later domain experts** review technically load-bearing cases in their areas.
 Every fusion profile goes into a later domain-informed review queue. A routine
@@ -70,9 +70,10 @@ appears in the exception queue.
 5. Validate each return against the frozen profile set, ordering, allowed
    values, provenance rules, and blank-package schema. Missing support stays
    missing; it is never replaced with an invented source ID.
-6. In a new task, generate the dimension-specific exception report. Compare
-   S1 with S1, S2 with S2, and so on for each `profile_id`; never average the
-   two coders.
+6. In a new task, generate the dimension-specific reconciliation report. Keep
+   one audit row for every profile and S-dimension (31 × 5 = 155), including
+   exact agreements, one-point differences, and missing scores. Never average
+   the two coders or silently omit a comparison.
 7. Send Jinhua only the exception report and the owner-decision view. Jinhua
    records one allowed disposition for each owner-level exception and may
    defer a case rather than manufacture certainty.
@@ -87,11 +88,12 @@ appears in the exception queue.
 ## Which file is safe to send
 
 - **Send to Fable:** `fable_submission_template.xlsx` only. It contains the
-  common rubric, frozen scope references, blank submission fields, and Fable's
-  authoritative provenance.
+  common 0/2/4 rubric, read-only `SCOPE_REFERENCE`, blank submission fields,
+  and Fable's authoritative provenance.
 - **Send to the blind independent model:** `blind_submission_template.xlsx`
-  only. It contains the same profile rows and rubric in the same order, but no
-  Fable identity, values, rationales, sources, or hints.
+  only. It contains the same profile rows, rubric, and `SCOPE_REFERENCE` in the
+  same order, with protected `coder_role=independent_coder`, but no Fable
+  identity, values, rationales, sources, or hints.
 - **Keep with Jinhua/Codex:**
   `structural_profiles_reference_and_owner_review.xlsx`, the CSV/JSON
   templates, and this guide. The owner workbook describes the comparison and
@@ -106,16 +108,16 @@ blank:
   coder note;
 - every C1–C8 value and every country-modifier row;
 - every governance-overlay row;
-- every lifecycle phase that the frozen taxonomy does not determine without
-  substantive judgment;
 - every exception-report result and owner-decision row; and
 - all approval, canonicalization, reviewer, selected-review, and changelog
   fields.
 
 The profile scope, taxonomy, stable opaque `profile_id`, frozen `pathway_id`,
-and `critical_path_role=not_assessed` are reference structure, not research
-findings. Blank cells mean not yet coded or not yet decided; they do not mean
-zero, not applicable, agreement, or approval.
+owner-approved primary V1 `lifecycle_phase`, and
+`critical_path_role=not_assessed` are reference structure, not research
+findings. A primary lifecycle context does not claim that a stage occurs
+exclusively in that phase. Blank cells mean not yet coded or not yet decided;
+they do not mean zero, not applicable, agreement, or approval.
 
 ## Package map
 
@@ -127,7 +129,7 @@ canonical submission schema without any S values. The country and governance
 CSVs are header-only blank templates. `owner_decisions_template.csv` is
 header-only because Jinhua should see exceptions, not 155 pre-created decision
 rows. `exception_report.schema.json` specifies later comparison and routing
-without midpoint or consensus rules.
+for all 155 dimension comparisons without midpoint or consensus rules.
 
 Run `python3 scripts/build_structural_profiles_workbooks.py` to regenerate the
 three workbooks and `python3 scripts/validate_structural_profiles_worksheet.py`

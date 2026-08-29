@@ -9,11 +9,15 @@ import shutil
 import tempfile
 import unittest
 from pathlib import Path
+from zipfile import ZipFile
+
+from openpyxl import load_workbook
 
 try:
     from scripts.build_structural_profiles_workbooks import (
         COUNTRY_HEADERS,
         DEFAULT_PACKAGE_DIR,
+        FABLE_WORKBOOK,
         PROFILE_HEADERS,
         REVIEW_HEADERS,
         STAGE_HEADERS,
@@ -26,6 +30,7 @@ except ModuleNotFoundError:  # Supports direct execution from scripts/.
     from build_structural_profiles_workbooks import (  # type: ignore[no-redef]
         COUNTRY_HEADERS,
         DEFAULT_PACKAGE_DIR,
+        FABLE_WORKBOOK,
         PROFILE_HEADERS,
         REVIEW_HEADERS,
         STAGE_HEADERS,
@@ -105,8 +110,33 @@ class StructuralProfilesWorksheetValidatorTests(unittest.TestCase):
         self._write_csv(path, REVIEW_HEADERS, rows)
 
         error = self._assert_invalid("identical profile set and ordering")
-        self.assertIn("must be neutral and blank", str(error))
+        self.assertIn("must remain blank for the independent task", str(error))
         self.assertIn("seed-coder identity or hints", str(error))
+
+    def test_rejects_blind_provenance_role_drift(self) -> None:
+        path = self.package_dir / "profile_coding_reviews_blind_template.csv"
+        _, rows = self._read_csv(path)
+        rows[0]["coder_role"] = ""
+        self._write_csv(path, REVIEW_HEADERS, rows)
+
+        self._assert_invalid("must be the protected provenance value")
+
+    def test_rejects_lifecycle_or_stage_description_drift(self) -> None:
+        profiles_path = self.package_dir / "stage_profiles_template.csv"
+        _, profiles = self._read_csv(profiles_path)
+        profiles[3]["lifecycle_phase"] = "development"
+        self._write_csv(profiles_path, PROFILE_HEADERS, profiles)
+
+        stages_path = self.package_dir / "stages.csv"
+        _, stages = self._read_csv(stages_path)
+        next(row for row in stages if row["stage_id"] == "quality_assurance")[
+            "description"
+        ] = ""
+        self._write_csv(stages_path, STAGE_HEADERS, stages)
+
+        error = self._assert_invalid("owner-approved primary V1 context")
+        self.assertIn("description must freeze the V1 activity scope", str(error))
+        self.assertIn("quality_assurance must retain", str(error))
 
     def test_rejects_populated_s_values_and_invented_source_ids(self) -> None:
         path = self.package_dir / "stage_profiles_template.csv"
@@ -146,6 +176,24 @@ class StructuralProfilesWorksheetValidatorTests(unittest.TestCase):
 
         self._assert_invalid("Reference workbook scoped profiles does not match")
 
+    def test_accepts_platform_container_byte_differences(self) -> None:
+        workbook_path = self.package_dir / FABLE_WORKBOOK
+        original_bytes = workbook_path.read_bytes()
+        with ZipFile(workbook_path, "a") as archive:
+            archive.comment = b"different ZIP container metadata"
+        self.assertNotEqual(original_bytes, workbook_path.read_bytes())
+
+        summary = validate(self.package_dir)
+        self.assertEqual(summary["scoped_profiles"], 31)
+
+    def test_rejects_workbook_layout_manifest_drift(self) -> None:
+        workbook_path = self.package_dir / FABLE_WORKBOOK
+        workbook = load_workbook(workbook_path)
+        workbook["SCOPE_REFERENCE"].column_dimensions["D"].width = 17
+        workbook.save(workbook_path)
+
+        self._assert_invalid("semantic-and-layout manifest does not match")
+
     def test_rejects_exception_schema_contract_drift(self) -> None:
         path = self.package_dir / "exception_report.schema.json"
         schema = json.loads(path.read_text(encoding="utf-8"))
@@ -153,9 +201,11 @@ class StructuralProfilesWorksheetValidatorTests(unittest.TestCase):
             "owner_disposition"
         ]["enum"]
         dispositions.remove("preserve_disagreement")
+        schema["properties"]["comparison_audit"]["maxItems"] = 154
         path.write_text(json.dumps(schema, indent=2) + "\n", encoding="utf-8")
 
-        self._assert_invalid("owner dispositions do not match")
+        error = self._assert_invalid("owner dispositions do not match")
+        self.assertIn("comparison_audit must require exactly 155", str(error))
 
 
 if __name__ == "__main__":

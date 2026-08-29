@@ -82,7 +82,10 @@ The builder regenerates the owner reference workbook and the separate Fable
 and blind submission workbooks from the machine-readable templates under
 `research/structural-profiles-pilot/worksheet/`. The validator fails on scope
 drift, populated S/C values, invented source IDs, coder leakage, mismatched
-country/profile pathways, workbook/CSV drift, or prohibited aggregation.
+country/profile pathways, workbook/CSV drift, or prohibited aggregation. It
+compares committed workbooks with temporary rebuilds through a canonical
+semantic-and-layout manifest, then requires two builds in the same runtime to
+be byte-identical.
 
 ## Expected current posture
 
