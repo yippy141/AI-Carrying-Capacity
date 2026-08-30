@@ -1,13 +1,28 @@
-# Fable seed coding submission — note
+# Seed coding submission — note
 
-Submission: WP2-PRE A, Fable seed S1–S5 coding for the 31 frozen Structural
-Profiles.
+Submission: WP2-PRE A, seed S1–S5 coding for the 31 frozen Structural Profiles.
 
 - Coder provenance: `coder_type=model`, `coder_role=seed_proposer`,
-  `coder_name=fable`, `coder_model=claude-fable-5`.
-- Review IDs: `fable-sp-0001-v1` through `fable-sp-0031-v1`.
+  `coder_name=Claude Code`, `coder_model=claude-opus-5`.
+- Review IDs: `seed-sp-0001-v1` through `seed-sp-0031-v1`.
 - `coding_as_of=2026-08-30`; `submission_status=submitted`.
-- Files: `fable_submission_v1.xlsx`, `fable_submission_v1.csv`.
+- Files: `seed_submission_v1.xlsx`, `seed_submission_v1.csv`.
+
+## Attribution
+
+Fable remains the original architect of the Structural Conversion Profiles
+framework. The S1–S5 method, the five dimensions, the band structure, and the
+seed proposals recorded in `docs/METHOD_PROFILES.md` are Fable's, and
+`proposed_by=fable` / `proposed_model=claude-fable-5` remain correct wherever
+they appear on those framework records.
+
+Fable did not produce this row-level coding submission. The 31 profiles and 155
+S-values in these files were coded in Claude Code using Claude Opus 5, and the
+provenance fields name that coder. An earlier version of this submission
+misattributed the row-level coding to Fable; this was corrected on owner
+confirmation as a metadata-only change. No S-value, rationale, confidence
+judgment, source gap, timestamp, scope field, or row order was altered by the
+correction, which touched `review_id`, `coder_name`, and `coder_model` only.
 
 ## Completion
 
@@ -149,8 +164,9 @@ report should look first.
   independent-coder branch, pull request, workbook, CSV, values, rationales,
   notes, or commits were listed, inspected, fetched, or searched for, and no web
   browsing was performed. The inputs were the authoritative documents named in
-  the issue, the worksheet package, the source register, and
-  `fable_submission_template.xlsx`.
+  the issue, the worksheet package, the source register, and the submission
+  template `fable_submission_template.xlsx`, whose filename reflects the
+  worksheet package as frozen at the base commit.
 - **No profile was approved or canonicalized.** Every row is a proposed model
   coding with `submission_status=submitted`. No `coding_status`,
   `review_status`, `reviewed_by`, `independent_review_by`, `approved_by`,
