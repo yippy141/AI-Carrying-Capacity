@@ -22,6 +22,14 @@ EXPECTED_HASHES = {
     "seed_submission_v1.csv": "9723a3c3a006b701fed3d000f77d89379610bc51f85eff3555b696078708e675",
     "independent_submission_v1.csv": "4176afa878a850d7155a95772884bec72756353440b588f30e5414a37acdb973",
 }
+EXPECTED_PROTECTED_HASHES = {
+    "comparison_audit_v1.csv": "85ed3710a1b25cdaf71228a02ed38fe115febe7cf12613fd40c7b65382ef93f2",
+    "owner_exceptions_v1.csv": "a6db404e5ee59f06d66348124126c3c4ae4165536ff117a7102bdde22e835c81",
+    "reconciliation_report_v1.json": "e81de7da0d62f6bd3d18c27c2a274b044b04392b2987532a9820f6cde1a1f85e",
+}
+EXPECTED_OWNER_WORKBOOK_HASH = (
+    "a4b8685430d0020915ce35303819f467339da9712c7e63f64cff5b8ab213ef4b"
+)
 EXPECTED_HEADS = {
     "seed_submission_id": "pr-33@3bc7e1d3e16d507fe7374ae66a3af6eace519ca4",
     "independent_submission_id": "pr-32@86dbff4aab694d413a33d3c4a8b0d28047d73c2f",
@@ -43,6 +51,28 @@ EXPECTED_COUNTS = {
     "missing_independent": 0,
     "missing_both": 0,
 }
+ALLOWED_DISPOSITIONS = {
+    "prefer_seed",
+    "prefer_independent",
+    "preserve_disagreement",
+    "needs_domain_review",
+    "needs_better_evidence",
+}
+UNRESOLVED_DISPOSITIONS = {
+    "preserve_disagreement",
+    "needs_domain_review",
+    "needs_better_evidence",
+}
+EXPECTED_DISPOSITION_COUNTS = Counter(
+    {
+        "prefer_seed": 9,
+        "prefer_independent": 7,
+        "needs_better_evidence": 4,
+        "needs_domain_review": 2,
+        "preserve_disagreement": 1,
+    }
+)
+POST_RECONCILIATION_ROUTE = "clarify_S5_then_targeted_S5_adjudication"
 EXPECTED_FILES = {
     "RECONCILIATION_NOTE.md",
     "seed_submission_v1.csv",
@@ -51,7 +81,11 @@ EXPECTED_FILES = {
     "reconciliation_report_v1.json",
     "owner_exceptions_v1.csv",
     "owner_exception_review_v1.xlsx",
+    "owner_decisions_v1.csv",
     "fusion_domain_review_queue_v1.csv",
+    "fusion_domain_review_brief_v1.md",
+    "evidence_gap_backlog_v1.csv",
+    "targeted_s5_adjudication_backlog_v1.csv",
 }
 EXPECTED_SUBMISSION_KEYS = {
     "review_id",
@@ -193,6 +227,12 @@ def validate_schema_normalization() -> None:
 
 
 def validate_raw_submissions() -> tuple[list[dict[str, str]], list[dict[str, str]]]:
+    for file_name, expected_hash in EXPECTED_PROTECTED_HASHES.items():
+        require(
+            hashlib.sha256((PACKAGE / file_name).read_bytes()).hexdigest()
+            == expected_hash,
+            f"{file_name} changed during owner review.",
+        )
     rows_by_label = {}
     for file_name, expected_hash in EXPECTED_HASHES.items():
         data = (PACKAGE / file_name).read_bytes()
@@ -405,31 +445,74 @@ def validate_flat_outputs(report: dict, audit_csv: list[dict[str, str]]) -> None
     )
 
 
-def validate_owner_workbook() -> None:
-    workbook = load_workbook(
-        PACKAGE / "owner_exception_review_v1.xlsx", read_only=False, data_only=False
+def validate_owner_workbook() -> list[dict[str, str]]:
+    workbook_path = PACKAGE / "owner_exception_review_v1.xlsx"
+    require(
+        hashlib.sha256(workbook_path.read_bytes()).hexdigest()
+        == EXPECTED_OWNER_WORKBOOK_HASH,
+        "Adopted owner workbook is not byte-equivalent to the verified attachment.",
     )
+    workbook = load_workbook(workbook_path, read_only=False, data_only=False)
     require(
         workbook.sheetnames
-        == ["OWNER_SUMMARY", "OWNER_EXCEPTIONS", "CROSS_CUTTING_S5"],
+        == [
+            "OWNER_SUMMARY",
+            "OWNER_EXCEPTIONS",
+            "CROSS_CUTTING_S5",
+            "PM_RECOMMENDATIONS",
+        ],
         "Owner workbook sheet set/order drifted.",
     )
+    summary_note = workbook["OWNER_SUMMARY"]["A18"].value
+    require(
+        isinstance(summary_note, str)
+        and summary_note.startswith("PM recommendation added:"),
+        "Owner workbook is missing its clearly labeled PM note.",
+    )
+
     owner_sheet = workbook["OWNER_EXCEPTIONS"]
     headers = [cell.value for cell in owner_sheet[3]]
     require(
         headers[-2:] == ["owner disposition", "owner rationale"],
-        "Owner workbook editable columns drifted.",
+        "Owner workbook decision columns drifted.",
     )
-    owner_data = [row for row in owner_sheet.iter_rows(min_row=4, values_only=True) if row[0]]
+    owner_data = [
+        row for row in owner_sheet.iter_rows(min_row=4, values_only=True) if row[0]
+    ]
     require(len(owner_data) == 23, "Owner workbook must show exactly 23 exceptions.")
+    workbook_decisions = []
+    for row in owner_data:
+        disposition = row[-2]
+        rationale = row[-1]
+        require(
+            disposition in ALLOWED_DISPOSITIONS,
+            f"{row[0]} lacks exactly one allowed owner disposition.",
+        )
+        require(
+            isinstance(rationale, str) and bool(rationale.strip()),
+            f"{row[0]} lacks an owner rationale.",
+        )
+        workbook_decisions.append(
+            {
+                "exception_id": str(row[0]),
+                "owner_disposition": str(disposition),
+                "owner_rationale": rationale,
+            }
+        )
     require(
-        all(row[-2] is None and row[-1] is None for row in owner_data),
-        "Owner workbook contains a prefilled row decision.",
+        Counter(row["owner_disposition"] for row in workbook_decisions)
+        == EXPECTED_DISPOSITION_COUNTS,
+        "Owner workbook disposition counts drifted.",
     )
+
     cross = workbook["CROSS_CUTTING_S5"]
     require(
-        cross["B9"].value is None and cross["G9"].value is None,
-        "S5 convention choice or correction route must remain blank.",
+        cross["B10"].value == "include_reasonably_foreseeable_escaped_consequences",
+        "Owner workbook S5 convention choice drifted.",
+    )
+    require(
+        cross["G10"].value == POST_RECONCILIATION_ROUTE,
+        "Owner workbook post-reconciliation route drifted.",
     )
     affected = [row for row in cross.iter_rows(min_row=14, values_only=True) if row[0]]
     require(len(affected) == 19, "Owner workbook must identify all 19 S5 differences.")
@@ -442,6 +525,245 @@ def validate_owner_workbook() -> None:
     ]
     require(formulas == ["=SUM(B4:B9)"], "Owner workbook formula set drifted.")
 
+    pm = workbook["PM_RECOMMENDATIONS"]
+    require(
+        pm["A1"].value
+        == "PM-recommended owner review — Structural Profiles reconciliation",
+        "PM recommendation sheet title drifted.",
+    )
+    pm_counts = {
+        str(pm.cell(row, 1).value): int(pm.cell(row, 2).value)
+        for row in range(9, 14)
+    }
+    require(
+        Counter(pm_counts) == EXPECTED_DISPOSITION_COUNTS,
+        "PM recommendation sheet disposition counts drifted.",
+    )
+    require(pm["B14"].value == 23, "PM recommendation sheet total must equal 23.")
+    return workbook_decisions
+
+
+def validate_owner_decisions(
+    workbook_decisions: list[dict[str, str]],
+) -> list[dict[str, str]]:
+    decisions = read_csv(PACKAGE / "owner_decisions_v1.csv")
+    require(len(decisions) == 23, "owner_decisions_v1.csv must contain 23 rows.")
+    require(
+        len({row["exception_id"] for row in decisions}) == 23,
+        "Owner decision IDs must be unique.",
+    )
+    require(
+        [
+            {
+                "exception_id": row["exception_id"],
+                "owner_disposition": row["owner_disposition"],
+                "owner_rationale": row["owner_rationale"],
+            }
+            for row in decisions
+        ]
+        == workbook_decisions,
+        "Owner CSV does not preserve the workbook decisions exactly.",
+    )
+    require(
+        Counter(row["owner_disposition"] for row in decisions)
+        == EXPECTED_DISPOSITION_COUNTS,
+        "Owner CSV disposition counts drifted.",
+    )
+    for row in decisions:
+        require(
+            row["owner_disposition"] in ALLOWED_DISPOSITIONS,
+            f"{row['exception_id']} has an invalid disposition.",
+        )
+        require(bool(row["owner_rationale"].strip()), f"{row['exception_id']} lacks rationale.")
+        expected_state = (
+            "unresolved"
+            if row["owner_disposition"] in UNRESOLVED_DISPOSITIONS
+            else "owner_preference_recorded"
+        )
+        require(
+            row["decision_state"] == expected_state,
+            f"{row['exception_id']} decision state drifted.",
+        )
+        require(
+            not row["selected_s_value"],
+            f"{row['exception_id']} silently populated a selected S-value.",
+        )
+    require(
+        sum(row["decision_state"] == "unresolved" for row in decisions) == 7,
+        "Exactly seven owner exception rows must remain unresolved.",
+    )
+    return decisions
+
+
+def validate_targeted_s5_backlog(
+    audit_csv: list[dict[str, str]], decisions: list[dict[str, str]]
+) -> None:
+    backlog = read_csv(PACKAGE / "targeted_s5_adjudication_backlog_v1.csv")
+    require(len(backlog) == 19, "Targeted S5 backlog must contain 19 rows.")
+    expected_audit = [
+        row
+        for row in audit_csv
+        if row["s_dimension"] == "S5" and int(row["numeric_difference"] or 0) > 0
+    ]
+    require(
+        [row["profile_id"] for row in backlog]
+        == [row["profile_id"] for row in expected_audit],
+        "Targeted S5 profile order drifted from the 155-row audit.",
+    )
+    decisions_by_key = {
+        (row["profile_id"], row["s_dimension"]): row for row in decisions
+    }
+    for backlog_row, audit_row in zip(backlog, expected_audit):
+        require(
+            backlog_row["seed_s5"] == audit_row["seed_value"]
+            and backlog_row["independent_s5"] == audit_row["independent_value"]
+            and backlog_row["numeric_difference"] == audit_row["numeric_difference"]
+            and backlog_row["comparison_status"] == audit_row["comparison_status"],
+            f"Targeted S5 audit trail drifted at {backlog_row['profile_id']}.",
+        )
+        decision = decisions_by_key.get((backlog_row["profile_id"], "S5"))
+        if decision:
+            require(
+                backlog_row["owner_exception_id"] == decision["exception_id"]
+                and backlog_row["owner_disposition"] == decision["owner_disposition"]
+                and backlog_row["owner_rationale"] == decision["owner_rationale"],
+                f"Targeted S5 owner decision drifted at {backlog_row['profile_id']}.",
+            )
+        else:
+            require(
+                not backlog_row["owner_exception_id"]
+                and not backlog_row["owner_disposition"]
+                and not backlog_row["owner_rationale"],
+                f"Non-owner S5 row was silently adjudicated at {backlog_row['profile_id']}.",
+            )
+        require(
+            not backlog_row["selected_s5"],
+            f"Targeted S5 row {backlog_row['profile_id']} has a selected value.",
+        )
+        require(
+            backlog_row["post_reconciliation_route"] == POST_RECONCILIATION_ROUTE,
+            f"Targeted S5 route drifted at {backlog_row['profile_id']}.",
+        )
+    require(
+        sum(bool(row["owner_exception_id"]) for row in backlog) == 7,
+        "Targeted S5 backlog must include seven owner-routed decisions.",
+    )
+    require(
+        sum(not row["owner_exception_id"] for row in backlog) == 12,
+        "Targeted S5 backlog must retain 12 audit-only one-point differences.",
+    )
+
+
+def validate_fusion_review_artifacts() -> None:
+    fusion_rows = read_csv(PACKAGE / "fusion_domain_review_queue_v1.csv")
+    fusion_ids = [row["profile_id"] for row in fusion_rows]
+    require(len(fusion_rows) == 18, "Fusion queue must remain exactly 18 profiles.")
+
+    brief = (PACKAGE / "fusion_domain_review_brief_v1.md").read_text(encoding="utf-8")
+    for profile_id in fusion_ids:
+        require(profile_id in brief, f"Fusion brief omits {profile_id}.")
+    priority_stages = [
+        "experiment selection",
+        "plasma control",
+        "materials qualification",
+        "tritium/fuel cycle",
+        "blankets",
+        "commissioning",
+        "reliability demonstration",
+        "licensing",
+        "grid integration",
+    ]
+    brief_lower = brief.lower()
+    for stage in priority_stages:
+        require(stage in brief_lower, f"Fusion brief omits priority: {stage}.")
+
+    evidence = read_csv(PACKAGE / "evidence_gap_backlog_v1.csv")
+    gap_counts = Counter(row["evidence_gap_type"] for row in evidence)
+    require(
+        set(gap_counts)
+        == {
+            "internal_fusion_test_pack_not_yet_banked",
+            "canonical_source_id_missing",
+            "regulatory_or_domain_expert_required",
+            "no_directly_comparable_observed_case_exists",
+        },
+        "Evidence backlog gap taxonomy drifted.",
+    )
+    require(
+        gap_counts["internal_fusion_test_pack_not_yet_banked"] == 1
+        and gap_counts["canonical_source_id_missing"] == 18
+        and gap_counts["regulatory_or_domain_expert_required"] == 18
+        and gap_counts["no_directly_comparable_observed_case_exists"] == 3,
+        "Evidence backlog gap counts drifted.",
+    )
+    require(
+        all(not row["source_id"] for row in evidence),
+        "Evidence backlog invented or promoted a source ID.",
+    )
+    evidence_profile_ids = {
+        row["profile_id"] for row in evidence if row["profile_id"]
+    }
+    require(
+        evidence_profile_ids == set(fusion_ids),
+        "Evidence backlog must cover all 18 fusion profiles.",
+    )
+
+
+def validate_method_and_decision_record() -> None:
+    rule = (
+        "S5 includes the direct, reasonably foreseeable consequences of an erroneous\n"
+        "stage output within the frozen pathway and application, up to the next\n"
+        "independent assurance or control boundary. It excludes remote harms that\n"
+        "require a separate downstream failure and excludes jurisdiction-specific\n"
+        "assurance strength or latency, which belong in C6 or the governance overlay."
+    )
+    method = (ROOT / "docs" / "METHOD_PROFILES.md").read_text(encoding="utf-8")
+    decisions = (ROOT / "docs" / "DECISIONS.md").read_text(encoding="utf-8")
+    require(rule in method, "METHOD_PROFILES.md omits the adopted S5 rule.")
+    require(rule in decisions, "DECISIONS.md omits the adopted S5 rule.")
+    require(
+        "not a reopening\nof the M1.5 method gate" in method,
+        "Method does not identify S5 as a bounded M1.5 clarification.",
+    )
+    require(
+        POST_RECONCILIATION_ROUTE in method + decisions,
+        "Post-reconciliation route is not recorded.",
+    )
+    require(
+        "coder_name=fable" not in method and "coder_model=claude-fable-5" not in method,
+        "Canonical method retains stale row-level Fable provenance.",
+    )
+
+
+def validate_no_derived_or_canonical_outputs() -> None:
+    for file_name in [
+        "owner_decisions_v1.csv",
+        "targeted_s5_adjudication_backlog_v1.csv",
+        "evidence_gap_backlog_v1.csv",
+    ]:
+        rows = read_csv(PACKAGE / file_name)
+        require(rows, f"{file_name} is empty.")
+        forbidden_headers = {
+            header
+            for header in rows[0]
+            if any(
+                token in header.lower()
+                for token in ("average", "percentage", "composite", "approved_by")
+            )
+        }
+        require(
+            not forbidden_headers,
+            f"{file_name} created prohibited derived/approval fields: {forbidden_headers}.",
+        )
+    require(
+        all(not row["selected_s_value"] for row in read_csv(PACKAGE / "owner_decisions_v1.csv")),
+        "Owner decisions created selected S-values.",
+    )
+    require(
+        all(not row["selected_s5"] for row in read_csv(PACKAGE / "targeted_s5_adjudication_backlog_v1.csv")),
+        "Targeted S5 backlog created selected S5 values.",
+    )
+
 
 def validate_note() -> None:
     note = (PACKAGE / "RECONCILIATION_NOTE.md").read_text(encoding="utf-8")
@@ -451,10 +773,12 @@ def validate_note() -> None:
         "one_point_difference` | 57",
         "difference_ge_2` | 2",
         "blank canonical `source_ids` on 31 of 31 profile rows",
-        "locally contained errors only",
-        "reasonably foreseeable consequences",
+        "S5 includes the direct, reasonably foreseeable consequences",
+        POST_RECONCILIATION_ROUTE,
+        "Seven exception rows remain unresolved",
+        "Owner-review correction recorded on `2026-08-31`",
         "exactly 18 profiles",
-        "does not select, approve, canonicalize, or implement any profile row",
+        "does not approve, canonicalize, or implement any profile row",
     ]
     for phrase in required_phrases:
         require(phrase in note, f"Reconciliation note is missing: {phrase}")
@@ -470,11 +794,17 @@ def validate() -> None:
     seed_rows, independent_rows = validate_raw_submissions()
     report, audit_csv = validate_report(seed_rows, independent_rows)
     validate_flat_outputs(report, audit_csv)
-    validate_owner_workbook()
+    workbook_decisions = validate_owner_workbook()
+    decisions = validate_owner_decisions(workbook_decisions)
+    validate_targeted_s5_backlog(audit_csv, decisions)
+    validate_fusion_review_artifacts()
+    validate_method_and_decision_record()
+    validate_no_derived_or_canonical_outputs()
     validate_note()
     print(
         "Structural Profiles reconciliation validation passed: "
-        "155 comparisons, 23 owner exceptions, 18 fusion reviews."
+        "155 comparisons, 23 owner decisions, 19 targeted S5 rows, "
+        "18 fusion reviews."
     )
 
 

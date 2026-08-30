@@ -1,10 +1,10 @@
 # Structural Conversion Profiles
 
 Status: owner-approved with executive amendments on 2026-08-28 and final
-bounded synchronization on 2026-08-29. This document is the canonical
-specification for the WP2 pilot under `docs/AUTHORITATIVE_DOCS.md`. It
-supersedes the proposed "Compressibility Spectrum" coordinate and any
-whole-sector numeric coding.
+bounded synchronization on 2026-08-29, plus the bounded S5 clarification on
+2026-08-31. This document is the canonical specification for the WP2 pilot
+under `docs/AUTHORITATIVE_DOCS.md`. It supersedes the proposed
+"Compressibility Spectrum" coordinate and any whole-sector numeric coding.
 
 ## Purpose and unit of analysis
 
@@ -52,6 +52,17 @@ physical experiments are often expensive and time-locked. The correlation is
 acceptable because the band method never sums or averages the dimensions. A
 weighted average or composite of S-dimensions is prohibited because it would
 both double count and impose unjustified cardinal distances.
+
+S5 includes the direct, reasonably foreseeable consequences of an erroneous
+stage output within the frozen pathway and application, up to the next
+independent assurance or control boundary. It excludes remote harms that
+require a separate downstream failure and excludes jurisdiction-specific
+assurance strength or latency, which belong in C6 or the governance overlay.
+
+This is a bounded clarification of the accepted S5 definition, not a reopening
+of the M1.5 method gate. It preserves the frozen stage, pathway, application,
+and lifecycle scope; it does not import remote downstream harms or silently
+recode either submitted review.
 
 Every S3 rationale must address both marginal cost per attempt and attainable
 parallel or serial throughput. These can diverge: an expensive experiment may
@@ -145,9 +156,10 @@ review_id,profile_id,coder_type,coder_role,coder_name,coder_model,S1,S2,S3,S4,S5
 
 `coder_type` is `human` or `model`. A human submission identifies the person
 or documented reviewer role in `coder_name`; a model submission identifies the
-provider/model in `coder_model`. Fable seed rows retain
-`coder_role=seed_proposer`, `coder_name=fable`, and
-`coder_model=claude-fable-5`.
+provider/model in `coder_model`. The pilot seed submission retains
+`coder_role=seed_proposer`, `coder_name=Claude Code`, and
+`coder_model=claude-opus-5`. Fable is credited as framework architect, not as
+the row-level coder.
 
 `submission_status` is `submitted`, `withdrawn`, or `superseded`; it describes
 the submission record and does not grant approval to the selected profile.
@@ -197,9 +209,12 @@ of any shared profile.
 
 ### Provenance and approval
 
-The seed proposals originated with Fable and must retain
-`proposed_by=fable` and `proposed_model=claude-fable-5`. The 2026-08-27 gate
-review does not turn those proposals into observations.
+The row-level seed submission originated with Claude Code using Claude Opus 5
+and retains that provenance in its coding review. The independent submission
+originated with Codex using GPT-5.6 at extra-high reasoning effort. Fable
+remains credited as framework architect; that credit is not row-level coding
+provenance. The 2026-08-27 gate review and the owner reconciliation review do
+not turn either submission into observations or canonical profile rows.
 
 A pilot row cannot become `coding_status=approved` or
 `review_status=canonical` unless:

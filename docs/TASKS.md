@@ -95,6 +95,7 @@
 - [ ] Create V0 sector module schema.
 - [ ] Add tests once data transformation scripts exist.
 - [ ] Add source-driven charts only after reviewed indicators exist.
+- [ ] Narrow the dynamic filesystem trace through `next.config.ts` / `lib/registers.ts` so Turbopack no longer warns that the whole project may be included in the NFT list.
 
 ## WP1 — Design grammar refit
 
@@ -138,7 +139,10 @@
 - [x] Create blank country-modifier and governance templates; defer C1-C8 and governance population to a limited evidence-backed WP2 mini-pilot.
 - [x] Freeze judgment-free stage descriptions, owner-approved primary V1 lifecycle contexts, shared 0/2/4 coding guidance, blind-review provenance, and the 155-comparison reconciliation contract for the coding handoff.
 - [x] Validate the separate Claude Code / Claude Opus 5 seed and Codex / GPT-5.6 extra-high independent submissions; pin their corrected heads, preserve immutable normalized copies, and generate the 155-row reconciliation audit, owner-only exception package, and 18-profile fusion queue.
-- [ ] Complete Jinhua's 23-row owner-exception review and choose the cross-cutting S5 post-reconciliation correction route without pre-approving canonical rows.
+- [x] Complete the delegated 23-row owner-exception review, adopt every entered disposition and rationale, clarify the bounded S5 convention, and record `clarify_S5_then_targeted_S5_adjudication` without pre-approving canonical rows.
+- [ ] Inventory, verify, and bank relevant evidence from the internal Fusion Test pack; assign canonical source IDs only after source-register review.
+- [ ] Run routine domain-informed review for all 18 fusion profiles, prioritizing experiment selection, plasma control, materials qualification, tritium/fuel cycle, blankets, commissioning, reliability demonstration, licensing, and grid integration.
+- [ ] Complete targeted S5 adjudication for the 19 affected rows using the clarified boundary convention, the seven owner-routed S5 decisions, and the preserved 12-row audit trail; do not reopen S1-S4.
 - [ ] Define the human/domain-review plan for software, manufacturing, and fusion before any row becomes canonical.
 - [ ] Create the profile CSV schemas from `docs/METHOD_PROFILES.md` after the method-gate branch is reviewed and merged.
 - [ ] Obtain at least one independent coding or named expert review before any pilot row becomes approved/canonical.

@@ -51,6 +51,7 @@ REQUIRED_PATHS = [
     "scripts/validate_structural_profiles_worksheet_test.py",
     "scripts/build_structural_profiles_reconciliation.py",
     "scripts/build_structural_profiles_reconciliation.mjs",
+    "scripts/apply_structural_profiles_owner_review.py",
     "scripts/validate_structural_profiles_reconciliation.py",
     "scripts/check_launch_readiness.py",
     "scripts/build_v0_dataset.py",
@@ -82,7 +83,11 @@ REQUIRED_PATHS = [
     "research/structural-profiles-pilot/reconciliation/reconciliation_report_v1.json",
     "research/structural-profiles-pilot/reconciliation/owner_exceptions_v1.csv",
     "research/structural-profiles-pilot/reconciliation/owner_exception_review_v1.xlsx",
+    "research/structural-profiles-pilot/reconciliation/owner_decisions_v1.csv",
     "research/structural-profiles-pilot/reconciliation/fusion_domain_review_queue_v1.csv",
+    "research/structural-profiles-pilot/reconciliation/fusion_domain_review_brief_v1.md",
+    "research/structural-profiles-pilot/reconciliation/evidence_gap_backlog_v1.csv",
+    "research/structural-profiles-pilot/reconciliation/targeted_s5_adjudication_backlog_v1.csv",
 ]
 
 EXPECTED_HEADERS = {

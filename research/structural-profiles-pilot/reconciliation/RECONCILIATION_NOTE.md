@@ -44,6 +44,41 @@ Owner-routed exceptions: **23**. Exact and one-point rows remain audit-only unle
 | Fusion, magnetic confinement | 22 |
 | Software engineering | 1 |
 
+## Adopted owner dispositions
+
+The owner delegated the exception review and adopted the completed workbook.
+All 23 routed exceptions have one allowed disposition and a nonblank rationale;
+the exact entries are preserved in `owner_exception_review_v1.xlsx` and
+`owner_decisions_v1.csv`.
+
+Before adoption, the PM workbook was compared with the original blank workbook.
+The common sheets differ only in the 46 owner disposition/rationale cells, the
+two cross-cutting S5 decision cells, and the clearly labeled PM note and its
+supporting merge/row formatting; the owner-rationale column was widened for the
+entered text. `PM_RECOMMENDATIONS` is the only added sheet. The original
+formula, tables, validations, protected context cells, and 19-row S5 audit
+display are unchanged.
+
+| Owner disposition | Count |
+| --- | ---: |
+| `prefer_seed` | 9 |
+| `prefer_independent` | 7 |
+| `needs_better_evidence` | 4 |
+| `needs_domain_review` | 2 |
+| `preserve_disagreement` | 1 |
+| **Total** | **23** |
+
+Seven exception rows remain unresolved and have no selected S-value:
+
+- `exc-sp-0020-s2` and `exc-sp-0020-s4` — better evidence and canonical source IDs required;
+- `exc-sp-0030-s2` and `exc-sp-0030-s3` — fusion-regulatory domain review required;
+- `exc-sp-0030-s5` — preserve the S5 disagreement pending targeted adjudication; and
+- `exc-sp-0031-s3` and `exc-sp-0031-s4` — better evidence and a frozen site/pathway case required.
+
+The other 16 dispositions record an owner preference between submissions, not
+an approval or canonical profile value. `selected_s_value` remains blank in
+the decision export.
+
 ## Systematic source gap and confidence
 
 Both submissions have blank canonical `source_ids` on 31 of 31 profile rows (62 blank submission fields total, or 155 blank comparison views per coder). There are no non-resolving nonblank IDs. This systematic gap is counted here and is not itself replicated into 155 owner decisions. It routes only where the exception row records that the gap materially affects a load-bearing, low-confidence, scope-sensitive, or disputed judgment.
@@ -61,7 +96,19 @@ The repeated S5 difference is a boundary-allocation question, not 19 separate in
 
 Owner question: should S5 assess **(a) locally contained errors only**, or **(b) the reasonably foreseeable consequences of an erroneous stage output escaping that stage**?
 
-No convention is selected here. The owner workbook leaves both the convention choice and post-reconciliation correction route blank. All original values remain unchanged.
+The owner adopts the following bounded convention:
+
+S5 includes the direct, reasonably foreseeable consequences of an erroneous
+stage output within the frozen pathway and application, up to the next
+independent assurance or control boundary. It excludes remote harms that
+require a separate downstream failure and excludes jurisdiction-specific
+assurance strength or latency, which belong in C6 or the governance overlay.
+
+This clarifies the accepted S5 definition without reopening the M1.5 method
+gate. The post-reconciliation route is
+`clarify_S5_then_targeted_S5_adjudication`. All original S5 values remain
+unchanged, S1-S4 are not reopened, and neither coder is averaged or selected
+globally.
 
 S5 differs on 19 profiles: seed is higher on 18, equal on 12 of all 31 profiles, and lower on 1. The two two-point gaps are `sp-0003` verification and validation and `sp-0030` licensing; there are no larger gaps.
 
@@ -87,14 +134,37 @@ S5 differs on 19 profiles: seed is higher on 18, equal on 12 of all 31 profiles,
 | `sp-0030` | Licensing | 2 | 0 | 2 |
 | `sp-0031` | Grid integration | 1 | 0 | 1 |
 
+`targeted_s5_adjudication_backlog_v1.csv` preserves these 19 rows. Seven carry
+their owner-routed dispositions and rationales; the other 12 retain their
+one-point audit trail for the later S5-only adjudication. No backlog row has a
+selected S5 value.
+
 ## Fusion domain-review queue
 
 `fusion_domain_review_queue_v1.csv` contains exactly 18 profiles (`sp-0014` through `sp-0031`). It is a routine domain-review queue, separate from owner exceptions. A fusion row appears in the owner subset only when another recorded semantic trigger applies.
 
+`fusion_domain_review_brief_v1.md` routes all 18 profiles and prioritizes
+experiment selection, plasma control, materials qualification, tritium/fuel
+cycle, blankets, commissioning, reliability demonstration, licensing, and
+grid integration. `evidence_gap_backlog_v1.csv` keeps the internal-pack,
+missing-source-ID, expert-review, and no-comparable-observed-case states
+separate. No evidence lead or URL is promoted into the canonical source
+register in this PR.
+
 ## Gate status and next step
 
-Structural blocker: none. The comparison denominator is 155 and the six status counts sum to 155. The owner-exception workbook contains no prefilled disposition, rationale, S5 convention choice, or correction route.
+Structural blocker: none. The comparison denominator remains 155 and the six
+status counts sum to 155. The immutable raw submissions and all 155 comparison
+rows remain unchanged. The adopted owner review is complete, with seven
+unresolved exception rows explicitly retained without selected values.
 
-Jinhua reviews `owner_exception_review_v1.xlsx` next. This package does not select, approve, canonicalize, or implement any profile row. It creates no country modifiers, governance codings, public UI, WP2 data, composite, average, midpoint, or forced consensus.
+The next gate is source inventory and banking followed by named domain review
+for all 18 fusion profiles and targeted adjudication of the 19 S5 differences.
+Fusion domain review, source banking, targeted S5 adjudication, and WP2
+implementation remain open.
 
-Generated at `2026-08-30T14:48:16Z`.
+This package does not approve, canonicalize, or implement any profile row. It
+creates no country modifiers, governance codings, public UI, WP2 data,
+composite, average, midpoint, or forced consensus.
+
+Owner-review correction recorded on `2026-08-31`.
