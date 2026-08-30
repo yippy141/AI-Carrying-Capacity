@@ -1,7 +1,7 @@
 # Independent S1–S5 coding submission
 
 - Completion: 31 profiles and 155 S-values completed.
-- Provenance: `coder_name=Codex`. The runtime exposed the agent identity as Codex but did not expose a precise provider/model label; `coder_model=model_identifier_not_exposed` is therefore recorded in every row rather than guessed.
+- Provenance: `coder_name=Codex`; `coder_role=independent_coder`; `coder_model=gpt-5.6`; reasoning_effort=extra_high; model provenance supplied by owner after task completion.
 - Coding date: `2026-08-30`; submitted at: `2026-08-30T11:06:03.257Z`.
 - Confidence counts: high 6; medium 14; low 11.
 - Blank `source_ids`: 31 rows. The frozen canonical source register has no source that directly supports these scoped intrinsic stage judgments; every row records a concise `source_gap:` note.
