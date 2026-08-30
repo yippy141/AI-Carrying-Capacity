@@ -49,6 +49,9 @@ REQUIRED_PATHS = [
     "scripts/build_structural_profiles_workbooks.py",
     "scripts/validate_structural_profiles_worksheet.py",
     "scripts/validate_structural_profiles_worksheet_test.py",
+    "scripts/build_structural_profiles_reconciliation.py",
+    "scripts/build_structural_profiles_reconciliation.mjs",
+    "scripts/validate_structural_profiles_reconciliation.py",
     "scripts/check_launch_readiness.py",
     "scripts/build_v0_dataset.py",
     "research/deep-research/README.md",
@@ -72,6 +75,14 @@ REQUIRED_PATHS = [
     "research/structural-profiles-pilot/worksheet/structural_profiles_reference_and_owner_review.xlsx",
     "research/structural-profiles-pilot/worksheet/fable_submission_template.xlsx",
     "research/structural-profiles-pilot/worksheet/blind_submission_template.xlsx",
+    "research/structural-profiles-pilot/reconciliation/RECONCILIATION_NOTE.md",
+    "research/structural-profiles-pilot/reconciliation/seed_submission_v1.csv",
+    "research/structural-profiles-pilot/reconciliation/independent_submission_v1.csv",
+    "research/structural-profiles-pilot/reconciliation/comparison_audit_v1.csv",
+    "research/structural-profiles-pilot/reconciliation/reconciliation_report_v1.json",
+    "research/structural-profiles-pilot/reconciliation/owner_exceptions_v1.csv",
+    "research/structural-profiles-pilot/reconciliation/owner_exception_review_v1.xlsx",
+    "research/structural-profiles-pilot/reconciliation/fusion_domain_review_queue_v1.csv",
 ]
 
 EXPECTED_HEADERS = {

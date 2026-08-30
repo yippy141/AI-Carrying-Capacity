@@ -137,7 +137,8 @@
 - [x] Add `coding_as_of`, `last_reviewed`, and `revisit_triggers` to the blank WP2 worksheet templates, schemas, and validators; keep all freshness values unpopulated until coding begins.
 - [x] Create blank country-modifier and governance templates; defer C1-C8 and governance population to a limited evidence-backed WP2 mini-pilot.
 - [x] Freeze judgment-free stage descriptions, owner-approved primary V1 lifecycle contexts, shared 0/2/4 coding guidance, blind-review provenance, and the 155-comparison reconciliation contract for the coding handoff.
-- [ ] Obtain separate Fable and blind model submissions, then generate an exception report before owner review.
+- [x] Validate the separate Claude Code / Claude Opus 5 seed and Codex / GPT-5.6 extra-high independent submissions; pin their corrected heads, preserve immutable normalized copies, and generate the 155-row reconciliation audit, owner-only exception package, and 18-profile fusion queue.
+- [ ] Complete Jinhua's 23-row owner-exception review and choose the cross-cutting S5 post-reconciliation correction route without pre-approving canonical rows.
 - [ ] Define the human/domain-review plan for software, manufacturing, and fusion before any row becomes canonical.
 - [ ] Create the profile CSV schemas from `docs/METHOD_PROFILES.md` after the method-gate branch is reviewed and merged.
 - [ ] Obtain at least one independent coding or named expert review before any pilot row becomes approved/canonical.

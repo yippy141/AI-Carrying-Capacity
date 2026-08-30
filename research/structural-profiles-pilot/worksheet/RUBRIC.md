@@ -30,3 +30,12 @@ produced by mechanical interpolation.
 - S5 concerns consequences and reversibility inside the stated scope.
 - Missing evidence or an unresolved judgment stays missing; never invent a
   source ID or force a value.
+
+## Unresolved S5 boundary convention
+
+Reconciliation does not decide whether “inside the stated scope” means only
+errors contained within that stage or also the reasonably foreseeable
+consequences of an erroneous stage output escaping into deployment,
+operations, qualification, or licensed operation. Both submitted conventions
+and every original S5 value remain intact pending an owner-selected
+post-reconciliation correction route.

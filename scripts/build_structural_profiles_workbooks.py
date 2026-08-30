@@ -167,12 +167,12 @@ OWNER_HEADERS = [
     "stage_id",
     "S_dimension",
     "exception_flags",
-    "fable_value",
-    "blind_value",
-    "fable_rationale",
-    "blind_rationale",
-    "fable_source_ids",
-    "blind_source_ids",
+    "seed_value",
+    "independent_value",
+    "seed_rationale",
+    "independent_rationale",
+    "seed_source_ids",
+    "independent_source_ids",
     "owner_disposition",
     "owner_rationale",
     "domain_review_requested",
@@ -336,7 +336,7 @@ EXCEPTION_HEADERS = [
 EXCEPTION_ROWS = [
     {
         "rule_id": "absolute_difference_ge_2",
-        "trigger": "Absolute Fable-versus-independent difference is 2 or more on an S-dimension.",
+        "trigger": "Absolute seed-versus-independent difference is 2 or more on an S-dimension.",
         "owner_review": "Yes",
         "domain_review": "When technically load-bearing",
         "required_handling": "Preserve both values and rationales; do not average.",
@@ -450,7 +450,7 @@ ALLOWED_VALUES = {
         "diffusion",
     ],
     "owner_disposition": [
-        "prefer_fable",
+        "prefer_seed",
         "prefer_independent",
         "preserve_disagreement",
         "needs_domain_review",
@@ -707,10 +707,11 @@ def add_start_here_sheet(workbook: Workbook) -> None:
         ),
         (
             "Roles",
-            "Fable later proposes the seed coding. A blind independent model codes "
-            "without seeing that submission. Codex later validates and produces a "
-            "dimension-specific exception report. Jinhua reviews exceptions only. "
-            "Domain experts later review all fusion rows and other routed cases.",
+            "The completed seed coding was produced in Claude Code using Claude Opus "
+            "5. The independent coding was produced by Codex using GPT-5.6 at "
+            "extra-high reasoning effort. Fable remains the framework architect, not "
+            "the row-level coder. Jinhua reviews routed exceptions only; domain "
+            "experts later review all fusion rows and other routed cases.",
         ),
         (
             "Owner workload",
@@ -721,9 +722,9 @@ def add_start_here_sheet(workbook: Workbook) -> None:
         ),
         (
             "Safe handoff",
-            "Send only fable_submission_template.xlsx to Fable. Send only "
-            "blind_submission_template.xlsx to the blind model. Keep this owner "
-            "workbook and all returned submissions out of the blind task.",
+            "The original Fable-named template is a historical handoff artifact. For "
+            "reconciliation, use the immutable seed_submission_v1.csv and "
+            "independent_submission_v1.csv copies pinned to their recorded PR heads.",
         ),
         (
             "Sequence",

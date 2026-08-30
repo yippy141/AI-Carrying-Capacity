@@ -619,7 +619,7 @@ def validate_exception_schema(path: Path, errors: list[str]) -> None:
             "s_dimension",
             "comparison_status",
             "numeric_difference",
-            "fable",
+            "seed",
             "independent",
             "semantic_flags",
             "owner_review_required",
@@ -635,7 +635,7 @@ def validate_exception_schema(path: Path, errors: list[str]) -> None:
             "exact_agreement",
             "one_point_difference",
             "difference_ge_2",
-            "missing_fable",
+            "missing_seed",
             "missing_independent",
             "missing_both",
         }
