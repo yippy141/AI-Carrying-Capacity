@@ -53,6 +53,5 @@ Local correction-pass results:
 - `npm run build`: passed; Next.js retained its existing non-fatal dynamic file
   tracing warning.
 
-The full GitHub Actions result is recorded in draft PR #28 after the single
-correction commit is pushed. The pull request remains draft until that workflow
-is green.
+PR #28 was merged after its correction commit passed GitHub Actions. The
+corresponding main-branch CI run also passed.

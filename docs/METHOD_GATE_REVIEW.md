@@ -1,7 +1,8 @@
 # M1.5 Method Gate Review
 
 Date: 2026-08-27; owner approval recorded 2026-08-28; final bounded
-synchronization recorded 2026-08-29
+synchronization recorded 2026-08-29; bounded S5 clarification recorded
+2026-08-31 without reopening the gate
 Reviewer: Codex (GPT-5.6), acting on the owner's request  
 Source proposal: Fable, `claude-fable-5`  
 Disposition: owner-approved with amendments; Layer 2 may proceed only after the
@@ -19,7 +20,7 @@ any future stage-level coding as canonical before independent review.
 | S2/S3/S4 collinearity | Accepted and clarified | Harmless under non-aggregated bands; sums, averages, weights, and derived percentages remain prohibited. S3 rationales separately address marginal attempt cost and attainable throughput. |
 | Sixteen-sector band tree | Accepted with two row amendments | Cybersecurity moves 1→2 because low-consequence verification fails. Materials science moves 5→4 because decade-scale qualification is not universal to the sector. Basic science retains Band 3 with a heterogeneity flag. The bands are ordered, but entries within them are not ranked; the tree uses qualitative `predominantly`, not an invented task share. |
 | Anchor stage granularity | Amended and frozen | Manufacturing gains physical production, commissioning, quality, and maintenance stages. Fusion gains subsystem, reliability, fuel-cycle, blanket, and grid stages. A separate stage taxonomy supplies referential integrity, and the three pathway scopes are frozen before coding. |
-| Provenance | Accepted and tightened | Fable/model provenance is mandatory. Coder submissions live separately from the selected profile row. Public review status is separated from coding status. Approval requires owner review and an identified independent review; disagreement is preserved by dimension. |
+| Provenance | Accepted and tightened | Framework credit and row-level coding provenance remain separate. Fable is the framework architect; the seed rows are attributed to Claude Code / Claude Opus 5 and the independent rows to Codex / GPT-5.6 at extra-high reasoning effort. Coder submissions live separately from the selected profile row. Public review status is separated from coding status. Approval requires owner review and an identified independent review; disagreement is preserved by dimension. |
 | Three signposts | Owner-approved, pre-activation | Author ranges are 55–65%, 55–70%, and 70–85%. Definitions and clocks must still be preregistered. |
 | Governance overlay | Accepted with schema addition | Anchor sectors only for v1. Governance is keyed to scoped `profile_id`, with optional jurisdiction and actor scope. Added `assurance_functions` and provenance/evidence fields to match the prose and audit requirements. |
 | Coupling graph | Accepted with two node refinements and a schema correction | Eight edges retained. Magnitude categories are separated from confidence in magnitude. Equal widths confirmed. |

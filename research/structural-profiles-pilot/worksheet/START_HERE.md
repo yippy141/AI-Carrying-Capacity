@@ -22,31 +22,30 @@ been supplied, and no row has been approved or made canonical.
 
 ## Who does what
 
-**Fable** is the seed proposer. In a later, separate task, Fable receives the
-Fable-only workbook and supplies its own S1–S5 proposals, rationales, source
-IDs, coding date, and confidence. Its authoritative provenance is already
-filled as `coder_type=model`, `coder_role=seed_proposer`,
-`coder_name=fable`, and `coder_model=claude-fable-5`. Those fields identify the
-submission; they do not approve it.
+**The seed proposer** is Claude Code using Claude Opus 5. Its completed
+submission uses `coder_type=model`, `coder_role=seed_proposer`,
+`coder_name=Claude Code`, and `coder_model=claude-opus-5`.
 
-**The blind independent model** is a rubric-reliability check. It receives only
-the neutral blind workbook, without Fable's identity, values, rationales,
-sources, or hints. The independent task fills its own coder identity and makes
-its classification without seeing Fable's return. A second model is not a
-substitute for domain expertise.
+**The independent coder** is Codex using GPT-5.6 at extra-high reasoning
+effort. Its completed submission was produced without seeing the seed return.
+A second model is not a substitute for domain expertise.
 
-**Codex** maintains the blank package, validates returned structures, and—only
-in a later task—compares the two submissions by `profile_id` and individual
-S-dimension. Codex may generate the exception report but does not average the
-coders, silently choose a midpoint, approve a row, or turn either submission
-into canonical data.
+**Fable** remains credited as the original Structural Conversion Profiles
+framework architect. Fable did not produce either row-level submission. The
+Fable-specific names in the original blank handoff files are historical
+package labels, not row-level coder provenance.
+
+**Codex** maintains the package, validates returned structures, and compares
+the two submissions by `profile_id` and individual S-dimension. Codex may
+generate the exception report but does not average the coders, silently choose
+a midpoint, approve a row, or turn either submission into canonical data.
 
 **Jinhua** is the owner and exception reviewer. Jinhua does not review all 155
 S-cells (31 profiles × 5 dimensions). After both submissions return and an
 exception report is generated, Jinhua reviews only flagged disagreements,
 load-bearing low-confidence cases, scope or evidence problems, and any issue
 that could change a stage's band or critical-path interpretation. The allowed
-owner dispositions are `prefer_fable`, `prefer_independent`,
+owner dispositions are `prefer_seed`, `prefer_independent`,
 `preserve_disagreement`, `needs_domain_review`, and
 `needs_better_evidence`. None requires a forced consensus.
 
@@ -57,52 +56,46 @@ exception by itself, and it does not imply that the owner must adjudicate the
 row. Any fusion row with a substantive disagreement or evidence problem also
 appears in the exception queue.
 
-## The exact sequence after this pull request
+## Reconciliation sequence
 
-1. Review and merge this blank package. Confirm that the workbooks regenerate
-   from the CSV/JSON templates and that validation still passes.
-2. Send `fable_submission_template.xlsx` to Fable in a separate coding task.
-   Do not send the blind workbook as a shared collaboration file.
-3. Independently send `blind_submission_template.xlsx` to a model that cannot
-   see Fable's task, template identity fields, return, rationales, or sources.
-4. Receive the two completed files separately. Do not copy values or reasoning
-   from one into the other.
-5. Validate each return against the frozen profile set, ordering, allowed
-   values, provenance rules, and blank-package schema. Missing support stays
-   missing; it is never replaced with an invented source ID.
-6. In a new task, generate the dimension-specific reconciliation report. Keep
-   one audit row for every profile and S-dimension (31 × 5 = 155), including
-   exact agreements, one-point differences, and missing scores. Never average
-   the two coders or silently omit a comparison.
-7. Send Jinhua only the exception report and the owner-decision view. Jinhua
-   records one allowed disposition for each owner-level exception and may
-   defer a case rather than manufacture certainty.
-8. Route every fusion row, plus any other row flagged for subject-matter
-   review, to later domain experts. Keep routine domain review distinct from
+1. The blank package was reviewed and merged with reproducible workbook and
+   schema validation.
+2. The two coders produced separate returns. The original Fable-named seed
+   handoff template remains historical package provenance, not the completed
+   row-level coder record.
+3. The corrected seed and independent heads were pinned after CI, and the
+   provenance-only commits were verified not to change values or rationales.
+4. Each return is validated independently against the frozen profile set,
+   ordering, allowed values, provenance, and workbook/CSV parity. Missing
+   support stays missing; it is never replaced with an invented source ID.
+5. Reconciliation keeps one audit row for every profile and S-dimension
+   (31 × 5 = 155), including exact agreements, one-point differences, and
+   missing scores. It never averages the coders or silently omits a comparison.
+6. Jinhua receives only the owner-routed exception workbook plus the single
+   cross-cutting S5 convention question. Jinhua may defer a case rather than
+   manufacture certainty.
+7. Every fusion row, plus any other row flagged for subject-matter review,
+   enters later domain review. Routine domain review remains distinct from
    owner adjudication.
-9. Only after those steps, start a separate WP2 implementation and population
-   task. Preserve the original submissions, disagreements, dates, and review
-   provenance. No row becomes approved or canonical unless the full method
+8. Only after those steps may a separate WP2 implementation and population
+   task begin. No row becomes approved or canonical unless the full method
    contract is satisfied.
 
-## Which file is safe to send
+## Which completed files enter reconciliation
 
-- **Send to Fable:** `fable_submission_template.xlsx` only. It contains the
-  common 0/2/4 rubric, read-only `SCOPE_REFERENCE`, blank submission fields,
-  and Fable's authoritative provenance.
-- **Send to the blind independent model:** `blind_submission_template.xlsx`
-  only. It contains the same profile rows, rubric, and `SCOPE_REFERENCE` in the
-  same order, with protected `coder_role=independent_coder`, but no Fable
-  identity, values, rationales, sources, or hints.
-- **Keep with Jinhua/Codex:**
-  `structural_profiles_reference_and_owner_review.xlsx`, the CSV/JSON
-  templates, and this guide. The owner workbook describes the comparison and
-  review workflow, so it is not a blind-coding input.
+- **Seed:** immutable normalized `seed_submission_v1.csv`, pinned to the
+  corrected PR head and credited to Claude Code / Claude Opus 5.
+- **Independent:** immutable normalized `independent_submission_v1.csv`,
+  pinned to the corrected PR head and credited to Codex / GPT-5.6 at
+  extra-high reasoning effort.
+- **Owner review:** the generated owner-exception workbook only. Neither raw
+  coding submission is merged or used as canonical profile data.
 
-## What must remain blank now
+## What remains unpopulated
 
-Until the separate coding and review tasks begin, keep all of the following
-blank:
+The original worksheet templates remain blank research structure. The
+reconciliation workbook also leaves every owner decision blank. Do not
+populate any of the following in this package:
 
 - every S1–S5 value, coder rationale, source ID, coding date, confidence, and
   coder note;
@@ -121,15 +114,17 @@ they do not mean zero, not applicable, agreement, or approval.
 
 ## Package map
 
-The reference workbook is the human-readable owner view. The Fable and blind
-workbooks are separate coding inputs. `stages.csv` and
+The reference workbook is the human-readable owner view. The Fable-named and
+blind workbooks are the historical separate coding inputs. `stages.csv` and
 `stage_profiles_template.csv` define the frozen taxonomy and 31 scoped profile
 rows. The two `profile_coding_reviews_*_template.csv` files mirror the
 canonical submission schema without any S values. The country and governance
 CSVs are header-only blank templates. `owner_decisions_template.csv` is
 header-only because Jinhua should see exceptions, not 155 pre-created decision
 rows. `exception_report.schema.json` specifies later comparison and routing
-for all 155 dimension comparisons without midpoint or consensus rules.
+for all 155 dimension comparisons without midpoint or consensus rules. In the
+reconciliation contract, role-based labels are authoritative: `seed`,
+`seed_submission_id`, `prefer_seed`, and `seed_*` owner columns.
 
 Run `python3 scripts/build_structural_profiles_workbooks.py` to regenerate the
 three workbooks and `python3 scripts/validate_structural_profiles_worksheet.py`

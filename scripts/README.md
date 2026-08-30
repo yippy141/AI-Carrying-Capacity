@@ -12,6 +12,7 @@ python3 scripts/validate_source_register.py
 python3 scripts/validate_indicator_catalog.py
 python3 scripts/validate_structural_profiles_worksheet.py
 python3 -m unittest scripts/validate_structural_profiles_worksheet_test.py
+python3 scripts/validate_structural_profiles_reconciliation.py
 npm run typecheck
 npm run lint
 npm run build
@@ -86,6 +87,20 @@ country/profile pathways, workbook/CSV drift, or prohibited aggregation. It
 compares committed workbooks with temporary rebuilds through a canonical
 semantic-and-layout manifest, then requires two builds in the same runtime to
 be byte-identical.
+
+## Structural Profiles reconciliation package
+
+```sh
+python3 scripts/validate_structural_profiles_reconciliation.py
+```
+
+The issue #31 builder pins the corrected PR #33 seed and PR #32 independent
+heads, validates each submission and its workbook independently, verifies that
+the provenance corrections did not change scores or rationales, and generates
+the 155-row audit, owner-only exception subset, and 18-profile fusion queue.
+The validator protects immutable submission hashes, role-based `seed`
+terminology, model identities, comparison counts, blank owner decisions, and
+the separate S5 convention question.
 
 ## Expected current posture
 

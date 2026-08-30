@@ -18,7 +18,7 @@
       "additionalProperties": false,
       "required": [
         "generated_at",
-        "fable_submission_id",
+        "seed_submission_id",
         "independent_submission_id",
         "comparison_key",
         "comparison_rule",
@@ -31,7 +31,7 @@
           "type": "string",
           "format": "date-time"
         },
-        "fable_submission_id": {
+        "seed_submission_id": {
           "type": "string",
           "minLength": 1
         },
@@ -46,7 +46,7 @@
           ]
         },
         "comparison_rule": {
-          "const": "compare_fable_and_independent_by_profile_id_and_s_dimension"
+          "const": "compare_seed_and_independent_by_profile_id_and_s_dimension"
         },
         "expected_comparison_count": {
           "const": 155
@@ -76,7 +76,7 @@
         "exact_agreement",
         "one_point_difference",
         "difference_ge_2",
-        "missing_fable",
+        "missing_seed",
         "missing_independent",
         "missing_both",
         "total_comparisons"
@@ -94,7 +94,7 @@
           "type": "integer",
           "minimum": 0
         },
-        "missing_fable": {
+        "missing_seed": {
           "type": "integer",
           "minimum": 0
         },
@@ -134,12 +134,39 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
+        "review_id",
+        "coder_role",
+        "coder_name",
+        "coder_model",
+        "reasoning_effort",
         "value",
         "rationale",
         "source_ids",
         "confidence"
       ],
       "properties": {
+        "review_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "coder_role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "coder_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "coder_model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reasoning_effort": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "value": {
           "anyOf": [
             {
@@ -181,7 +208,7 @@
         "exact_agreement",
         "one_point_difference",
         "difference_ge_2",
-        "missing_fable",
+        "missing_seed",
         "missing_independent",
         "missing_both"
       ]
@@ -212,7 +239,7 @@
         "s_dimension",
         "comparison_status",
         "numeric_difference",
-        "fable",
+        "seed",
         "independent",
         "semantic_flags",
         "owner_review_required",
@@ -255,7 +282,7 @@
             }
           ]
         },
-        "fable": {
+        "seed": {
           "$ref": "#/$defs/submissionView"
         },
         "independent": {
@@ -288,7 +315,7 @@
         "s_dimension",
         "comparison_status",
         "numeric_difference",
-        "fable",
+        "seed",
         "independent",
         "semantic_flags",
         "owner_review_required",
@@ -338,7 +365,7 @@
             }
           ]
         },
-        "fable": {
+        "seed": {
           "$ref": "#/$defs/submissionView"
         },
         "independent": {
@@ -358,7 +385,7 @@
         },
         "owner_disposition": {
           "enum": [
-            "prefer_fable",
+            "prefer_seed",
             "prefer_independent",
             "preserve_disagreement",
             "needs_domain_review",
@@ -393,7 +420,14 @@
         "owner_decision_required",
         "status",
         "domain_reviewer",
-        "notes"
+        "notes",
+        "seed_review_id",
+        "seed_coder_name",
+        "seed_coder_model",
+        "independent_review_id",
+        "independent_coder_name",
+        "independent_coder_model",
+        "independent_reasoning_effort"
       ],
       "properties": {
         "profile_id": {
@@ -431,6 +465,29 @@
             "string",
             "null"
           ]
+        },
+        "seed_review_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "seed_coder_name": {
+          "const": "Claude Code"
+        },
+        "seed_coder_model": {
+          "const": "claude-opus-5"
+        },
+        "independent_review_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "independent_coder_name": {
+          "const": "Codex"
+        },
+        "independent_coder_model": {
+          "const": "gpt-5.6"
+        },
+        "independent_reasoning_effort": {
+          "const": "extra_high"
         }
       }
     }
@@ -438,7 +495,7 @@
   "x-generation-rules": {
     "join": "Create exactly one audit row for every frozen profile_id crossed with S1-S5, for 31 x 5 = 155 comparisons.",
     "status_and_difference": "Use exact_agreement for difference 0, one_point_difference for difference 1, and difference_ge_2 for differences 2-4. numeric_difference is the absolute difference and is null whenever either score is missing.",
-    "missing_scores": "Use missing_fable, missing_independent, or missing_both as applicable and add the missing_score flag. Missing or invalid submissions may not be omitted from the audit.",
+    "missing_scores": "Use missing_seed, missing_independent, or missing_both as applicable and add the missing_score flag. Missing or invalid submissions may not be omitted from the audit.",
     "summary": "Count all six comparison statuses and require their sum and total_comparisons to equal 155.",
     "no_aggregation": "Do not average, sum, weight, percentage-transform, midpoint-select, or force consensus between coders.",
     "extreme_disagreement": "Add extreme_0_vs_4 to every 0-versus-4 comparison even when difference_ge_2 also applies.",

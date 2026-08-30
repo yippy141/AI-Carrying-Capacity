@@ -597,3 +597,58 @@ Reasoning: Both model coders need the same bounded stage context before they
 apply S1-S5. A declared primary context removes avoidable scope drift while
 preserving the method's ability to represent genuinely different lifecycle
 variants later.
+
+## 2026-08-30: Normalize reconciliation provenance to role-based seed labels
+
+Decision: Attribute the row-level seed submission to Claude Code using Claude
+Opus 5 and the independent submission to Codex using GPT-5.6 at extra-high
+reasoning effort. Retain Fable as framework architect, not as a row-level
+coder. In reconciliation, replace Fable-specific labels with
+`seed_submission_id`, the `seed` submission key, `prefer_seed`, `seed_*` owner
+columns, and `seed_submission_v1.csv`; use `missing_seed` for the corresponding
+comparison status. Preserve the corrected PR heads and immutable submission
+hashes in the review record.
+
+Do not make blank `source_ids` an automatic owner exception on all 155
+comparisons. Count the systematic gap and route it only when it materially
+affects a load-bearing, low-confidence, scope-sensitive, or disputed judgment.
+Treat the repeated S5 boundary-allocation difference as one cross-cutting owner
+question: locally contained errors only versus reasonably foreseeable escaped
+consequences. Preserve every original value and require a later correction
+route rather than silently recoding, averaging, or forcing consensus.
+
+Reasoning: Role-based labels separate framework authorship from actual coding
+provenance and prevent a metadata correction from becoming a substantive
+recode. Targeted evidence routing keeps the owner workload exception-based,
+while a single convention question exposes the systematic S5 disagreement
+without manufacturing dozens of duplicate row decisions.
+
+## 2026-08-31: Adopt the delegated owner review and clarify S5
+
+Decision: Adopt the completed 23-row owner-review workbook after verifying it
+against the blank review workbook. Record nine `prefer_seed`, seven
+`prefer_independent`, four `needs_better_evidence`, two
+`needs_domain_review`, and one `preserve_disagreement` dispositions. The seven
+rows in the last three categories remain unresolved; no disposition creates an
+approved or canonical profile row, and no unresolved row receives a selected
+S-value.
+
+S5 includes the direct, reasonably foreseeable consequences of an erroneous
+stage output within the frozen pathway and application, up to the next
+independent assurance or control boundary. It excludes remote harms that
+require a separate downstream failure and excludes jurisdiction-specific
+assurance strength or latency, which belong in C6 or the governance overlay.
+
+Treat this as a bounded clarification of the accepted S5 definition, not a
+reopening of the M1.5 method gate. Record the post-reconciliation route as
+`clarify_S5_then_targeted_S5_adjudication`. Preserve both submissions and all
+original S5 values; do not average coders, choose a model globally, or reopen
+S1-S4. Carry all 19 affected S5 rows into a targeted adjudication backlog,
+including the seven owner-routed S5 decisions and the 12 remaining one-point
+audit records.
+
+Reasoning: One consistent boundary rule resolves the cross-cutting method
+ambiguity while preserving the row-level evidence and disagreement record.
+Source banking and named fusion-domain review remain the next gate because the
+owner dispositions do not cure blank canonical source IDs or create directly
+comparable observed cases.
