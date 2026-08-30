@@ -137,7 +137,8 @@
 - [x] Add `coding_as_of`, `last_reviewed`, and `revisit_triggers` to the blank WP2 worksheet templates, schemas, and validators; keep all freshness values unpopulated until coding begins.
 - [x] Create blank country-modifier and governance templates; defer C1-C8 and governance population to a limited evidence-backed WP2 mini-pilot.
 - [x] Freeze judgment-free stage descriptions, owner-approved primary V1 lifecycle contexts, shared 0/2/4 coding guidance, blind-review provenance, and the 155-comparison reconciliation contract for the coding handoff.
-- [ ] Obtain separate Fable and blind model submissions, then generate an exception report before owner review.
+- [x] Complete the blind independent model submission for all 31 frozen profiles without reconciliation, approval, or canonicalization.
+- [ ] Obtain the separate Fable submission, then generate an exception report before owner review.
 - [ ] Define the human/domain-review plan for software, manufacturing, and fusion before any row becomes canonical.
 - [ ] Create the profile CSV schemas from `docs/METHOD_PROFILES.md` after the method-gate branch is reviewed and merged.
 - [ ] Obtain at least one independent coding or named expert review before any pilot row becomes approved/canonical.
