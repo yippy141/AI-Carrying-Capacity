@@ -571,3 +571,29 @@ MHS currently changes interfaces and organizational conversion conditions more
 directly than intrinsic physical time floors. A severity-based convergence
 rule preserves evidence integrity while preventing review from becoming the
 project's main output.
+
+## 2026-08-30: Enforce country-modifier pathway referential integrity
+
+Decision: Require every populated `country_stage_modifiers.pathway_id` to
+exactly match the `pathway_id` of its referenced `profile_id` in
+`stage_profiles.csv`, and fail WP2 validation on any mismatch.
+
+Reasoning: Retaining both fields is useful for explicit exports, but allowing
+them to diverge would attach a country condition to the wrong technical route.
+This is a referential-integrity clarification, not a change to the frozen
+profile method.
+
+## 2026-08-30: Freeze primary V1 lifecycle coding contexts
+
+Decision: Assign each of the 31 pilot profiles the owner-approved primary V1
+`lifecycle_phase` used for the first coding pass. This is a coding context, not
+a claim that a stage occurs exclusively in one lifecycle phase. Keep
+`critical_path_role=not_assessed`; the lifecycle assignment does not establish
+binding status. If a stage's intrinsic profile materially differs in another
+lifecycle phase, create a versioned profile variant rather than silently
+changing the frozen V1 row.
+
+Reasoning: Both model coders need the same bounded stage context before they
+apply S1-S5. A declared primary context removes avoidable scope drift while
+preserving the method's ability to represent genuinely different lifecycle
+variants later.

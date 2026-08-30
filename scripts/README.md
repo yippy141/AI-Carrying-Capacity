@@ -10,6 +10,8 @@ Run these before opening a pull request:
 python3 scripts/validate_repo.py
 python3 scripts/validate_source_register.py
 python3 scripts/validate_indicator_catalog.py
+python3 scripts/validate_structural_profiles_worksheet.py
+python3 -m unittest scripts/validate_structural_profiles_worksheet_test.py
 npm run typecheck
 npm run lint
 npm run build
@@ -67,6 +69,23 @@ python3 scripts/build_v0_dataset.py
 ```
 
 This builds processed metadata JSON from the canonical CSV registers. It should use only validated register fields and should not invent indicator values.
+
+## Structural Profiles blank worksheet package
+
+```sh
+python3 scripts/build_structural_profiles_workbooks.py
+python3 scripts/validate_structural_profiles_worksheet.py
+python3 -m unittest scripts/validate_structural_profiles_worksheet_test.py
+```
+
+The builder regenerates the owner reference workbook and the separate Fable
+and blind submission workbooks from the machine-readable templates under
+`research/structural-profiles-pilot/worksheet/`. The validator fails on scope
+drift, populated S/C values, invented source IDs, coder leakage, mismatched
+country/profile pathways, workbook/CSV drift, or prohibited aggregation. It
+compares committed workbooks with temporary rebuilds through a canonical
+semantic-and-layout manifest, then requires two builds in the same runtime to
+be byte-identical.
 
 ## Expected current posture
 
