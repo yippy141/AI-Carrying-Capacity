@@ -61,6 +61,12 @@ jobs:
       - name: Test fusion evidence package
         run: python3 -m unittest scripts/validate_fusion_evidence_test.py
 
+      - name: Test fusion source-promotion and downstream source guards
+        run: python3 -m unittest scripts/validate_fusion_source_promotion_test.py
+
+      - name: Validate fusion source promotion
+        run: python3 scripts/validate_fusion_source_promotion.py
+
       - name: Validate fusion evidence package
         run: python3 scripts/validate_fusion_evidence.py
 

@@ -694,3 +694,29 @@ Reasoning: An enacted law and a regulator's current rulemaking page are
 observations of legal status, not programme announcements. A bank-local category
 corrects that provenance error without silently changing the public method or
 turning procedural dates into empirical licensing-performance evidence.
+
+## 2026-09-01: Promote reviewed fusion source identities, not claims
+
+Decision: After verifying merged PR #36 and its exact corrected head
+`f1e4b09b7d9bbb39b7cceb351dc93280a0c097d9`, apply issue #37's owner/PM
+disposition: promote all 44 already-staged records as reviewed sources, retain
+their `fusion-src-*` IDs, and keep `fusion-src-013`/`015` excluded. Preserve
+the original 55 canonical records and every banked limitation, tier,
+independent-validation status, numerical locator, translation caveat, and
+target/programme/company/pathway restriction.
+
+Normalize only the final PRC law and two NRC legal/status records (`004`,
+`039`, `040`) to `official_claim_status=not_official_claim`; do not alter the
+public evidence-chip ontology. Verified multilingual identity may enter with
+a missing translation reviewer, but direct public quotation or load-bearing
+translated wording remains blocked pending native-language/specialist review.
+Tier-C and company/operator records remain barred from independently observed
+empirical use. Preserve the failed STEP refresh as a before-public-use
+restriction, not a fabricated fresh verification.
+
+Reasoning: Source identity review is orthogonal to claim, translation, domain,
+and profile approval. The source-promotion ledger and note record the gate;
+append-only and frozen-input checks replace the old whole-register freeze
+without permitting any S, owner, raw-submission, comparison-audit, S5-backlog,
+claim/profile, C/governance, or WP2 changes. Domain review and S5 adjudication
+remain later, separately authorized work.

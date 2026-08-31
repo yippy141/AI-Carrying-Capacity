@@ -10,6 +10,10 @@ import xml.etree.ElementTree as ET
 import zipfile
 from pathlib import Path
 
+from validate_fusion_source_promotion import (
+    SourcePromotionValidationError,
+    validate as validate_source_promotion,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "research" / "fusion-evidence"
@@ -18,7 +22,6 @@ PACK_HASH = "ab6e2cec6ac9f58fcc03e65a5c73bd1fb0d508f0041c887048e24da0a5611347"
 PACK_MARKER = b"<!-- BEGIN LOSSLESS BANKED ATTACHMENT -->\n"
 
 PROTECTED_HASHES = {
-    "data/sources/source_register.csv": "7898d97031f30ec04324650f860a5749122575981cf40b79dd2db1683c9dc443",
     "research/structural-profiles-pilot/reconciliation/seed_submission_v1.csv": "9723a3c3a006b701fed3d000f77d89379610bc51f85eff3555b696078708e675",
     "research/structural-profiles-pilot/reconciliation/independent_submission_v1.csv": "4176afa878a850d7155a95772884bec72756353440b588f30e5414a37acdb973",
     "research/structural-profiles-pilot/reconciliation/comparison_audit_v1.csv": "85ed3710a1b25cdaf71228a02ed38fe115febe7cf12613fd40c7b65382ef93f2",
@@ -315,6 +318,13 @@ def validate(package: Path = PACKAGE, *, require_workbook: bool = True) -> None:
 
     if require_workbook and (package / "fusion_source_review_v1.xlsx").exists():
         validate_workbook(package / "fusion_source_review_v1.xlsx", errors)
+
+    # Issue #37 replaces the old whole-register freeze with append-only source
+    # promotion checks; all pre-promotion rows and other data stay protected.
+    try:
+        validate_source_promotion()
+    except SourcePromotionValidationError as exc:
+        errors.append(str(exc))
 
     if errors:
         raise FusionEvidenceValidationError("\n".join(f"- {error}" for error in errors))
