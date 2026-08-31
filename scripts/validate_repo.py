@@ -15,6 +15,10 @@ from validate_adoption_depth import (
     validate as validate_adoption_depth,
 )
 from validate_design_placeholders import validate as validate_design_placeholders
+from validate_fusion_evidence import (
+    FusionEvidenceValidationError,
+    validate as validate_fusion_evidence,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -46,6 +50,8 @@ REQUIRED_PATHS = [
     "scripts/validate_adoption_depth_test.py",
     "scripts/validate_design_placeholders.py",
     "scripts/validate_design_placeholders_test.py",
+    "scripts/validate_fusion_evidence.py",
+    "scripts/validate_fusion_evidence_test.py",
     "scripts/build_structural_profiles_workbooks.py",
     "scripts/validate_structural_profiles_worksheet.py",
     "scripts/validate_structural_profiles_worksheet_test.py",
@@ -88,6 +94,16 @@ REQUIRED_PATHS = [
     "research/structural-profiles-pilot/reconciliation/fusion_domain_review_brief_v1.md",
     "research/structural-profiles-pilot/reconciliation/evidence_gap_backlog_v1.csv",
     "research/structural-profiles-pilot/reconciliation/targeted_s5_adjudication_backlog_v1.csv",
+    "research/fusion-evidence/README.md",
+    "research/fusion-evidence/VERIFICATION_REPORT.md",
+    "research/fusion-evidence/fusion_test_evidence_pack_2026-08-12.md",
+    "research/fusion-evidence/source_inventory_v1.csv",
+    "research/fusion-evidence/claim_source_map_v1.csv",
+    "research/fusion-evidence/profile_evidence_coverage_v1.csv",
+    "research/fusion-evidence/staged_source_register_additions_v1.csv",
+    "research/fusion-evidence/rejected_and_deferred_sources_v1.csv",
+    "research/fusion-evidence/refresh_and_change_log_v1.csv",
+    "research/fusion-evidence/fusion_source_review_v1.xlsx",
 ]
 
 EXPECTED_HEADERS = {
@@ -260,6 +276,13 @@ def validate_design_reference_values() -> None:
         )
 
 
+def validate_fusion_evidence_package() -> None:
+    try:
+        validate_fusion_evidence()
+    except FusionEvidenceValidationError as exc:
+        fail(f"Fusion evidence validation failed:\n{exc}")
+
+
 def validate_json_files() -> None:
     for relative_path in JSON_FILES:
         with (ROOT / relative_path).open(encoding="utf-8") as handle:
@@ -315,6 +338,7 @@ def main() -> None:
     validate_csv_headers()
     validate_adoption_depth_data()
     validate_design_reference_values()
+    validate_fusion_evidence_package()
     validate_json_files()
     validate_report_names()
     validate_ifr_density_vintage()

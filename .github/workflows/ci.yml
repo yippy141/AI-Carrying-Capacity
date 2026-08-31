@@ -58,6 +58,12 @@ jobs:
       - name: Validate Structural Profiles reconciliation package
         run: python3 scripts/validate_structural_profiles_reconciliation.py
 
+      - name: Test fusion evidence package
+        run: python3 -m unittest scripts/validate_fusion_evidence_test.py
+
+      - name: Validate fusion evidence package
+        run: python3 scripts/validate_fusion_evidence.py
+
       - name: Validate adoption-depth observations
         run: python3 scripts/validate_adoption_depth.py
 

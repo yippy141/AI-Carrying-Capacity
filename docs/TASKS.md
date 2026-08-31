@@ -140,7 +140,8 @@
 - [x] Freeze judgment-free stage descriptions, owner-approved primary V1 lifecycle contexts, shared 0/2/4 coding guidance, blind-review provenance, and the 155-comparison reconciliation contract for the coding handoff.
 - [x] Validate the separate Claude Code / Claude Opus 5 seed and Codex / GPT-5.6 extra-high independent submissions; pin their corrected heads, preserve immutable normalized copies, and generate the 155-row reconciliation audit, owner-only exception package, and 18-profile fusion queue.
 - [x] Complete the delegated 23-row owner-exception review, adopt every entered disposition and rationale, clarify the bounded S5 convention, and record `clarify_S5_then_targeted_S5_adjudication` without pre-approving canonical rows.
-- [ ] Inventory, verify, and bank relevant evidence from the internal Fusion Test pack; assign canonical source IDs only after source-register review.
+- [x] Inventory, verify, and bank relevant evidence from the internal Fusion Test pack; retain provisional candidate IDs and defer canonical IDs to source-register review. See `research/fusion-evidence/` and issue #35.
+- [ ] Review the issue #35 promotion exceptions only: native-language/legal scope where load-bearing, the unresolved HEAT-ML publisher page/DOI, and the unverified ITER sector-count and NSTX-U completion percentages; do not reopen S1-S5 in source review.
 - [ ] Run routine domain-informed review for all 18 fusion profiles, prioritizing experiment selection, plasma control, materials qualification, tritium/fuel cycle, blankets, commissioning, reliability demonstration, licensing, and grid integration.
 - [ ] Complete targeted S5 adjudication for the 19 affected rows using the clarified boundary convention, the seven owner-routed S5 decisions, and the preserved 12-row audit trail; do not reopen S1-S4.
 - [ ] Define the human/domain-review plan for software, manufacturing, and fusion before any row becomes canonical.
