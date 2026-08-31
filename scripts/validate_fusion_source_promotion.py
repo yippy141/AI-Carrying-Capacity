@@ -54,7 +54,18 @@ FROZEN_TREES = {
     "research/structural-profiles-pilot": "7dd666356e4d17d958e14a85471120539fa8ee798d2e3a14d4caf71f83234b9c",
     BANK: "df8d3f4c9473eaecb8ff58a972abcc73b63724e3019f0ffb7cf17787aa97d172",
 }
-TREE_EXCLUSIONS = {REGISTER, f"{BANK}/{LEDGER}", f"{BANK}/{NOTE}"}
+# Issue #39 explicitly authorizes these five NEW synthesis outputs only.
+# Keep every pre-existing input and every expected digest unchanged. The
+# domain-review validator checks these outputs and freezes the full promoted
+# register, ledger and evidence bank in addition to the original input trees.
+DOMAIN_REVIEW_OUTPUTS = {
+    f"research/structural-profiles-pilot/domain-review/{name}" for name in (
+        "fusion_domain_review_v1.csv", "fusion_dimension_review_v1.csv",
+        "fusion_domain_review_v1.xlsx", "FUSION_DOMAIN_REVIEW_NOTE.md",
+        "fusion_human_expert_queue_v1.csv",
+    )
+}
+TREE_EXCLUSIONS = {REGISTER, f"{BANK}/{LEDGER}", f"{BANK}/{NOTE}"} | DOMAIN_REVIEW_OUTPUTS
 
 
 class SourcePromotionValidationError(ValueError):

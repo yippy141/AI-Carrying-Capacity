@@ -19,6 +19,10 @@ from validate_fusion_evidence import (
     FusionEvidenceValidationError,
     validate as validate_fusion_evidence,
 )
+from validate_fusion_domain_review import (
+    DomainReviewValidationError,
+    validate as validate_fusion_domain_review,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -54,6 +58,8 @@ REQUIRED_PATHS = [
     "scripts/validate_fusion_evidence_test.py",
     "scripts/validate_fusion_source_promotion.py",
     "scripts/validate_fusion_source_promotion_test.py",
+    "scripts/validate_fusion_domain_review.py",
+    "scripts/validate_fusion_domain_review_test.py",
     "scripts/build_structural_profiles_workbooks.py",
     "scripts/validate_structural_profiles_worksheet.py",
     "scripts/validate_structural_profiles_worksheet_test.py",
@@ -108,6 +114,11 @@ REQUIRED_PATHS = [
     "research/fusion-evidence/fusion_source_review_v1.xlsx",
     "research/fusion-evidence/source_promotion_decisions_v1.csv",
     "research/fusion-evidence/SOURCE_PROMOTION_NOTE.md",
+    "research/structural-profiles-pilot/domain-review/fusion_domain_review_v1.csv",
+    "research/structural-profiles-pilot/domain-review/fusion_dimension_review_v1.csv",
+    "research/structural-profiles-pilot/domain-review/fusion_human_expert_queue_v1.csv",
+    "research/structural-profiles-pilot/domain-review/fusion_domain_review_v1.xlsx",
+    "research/structural-profiles-pilot/domain-review/FUSION_DOMAIN_REVIEW_NOTE.md",
 ]
 
 EXPECTED_HEADERS = {
@@ -343,6 +354,10 @@ def main() -> None:
     validate_adoption_depth_data()
     validate_design_reference_values()
     validate_fusion_evidence_package()
+    try:
+        validate_fusion_domain_review()
+    except DomainReviewValidationError as exc:
+        fail(f"Fusion domain review validation failed:\n{exc}")
     validate_json_files()
     validate_report_names()
     validate_ifr_density_vintage()

@@ -720,3 +720,35 @@ append-only and frozen-input checks replace the old whole-register freeze
 without permitting any S, owner, raw-submission, comparison-audit, S5-backlog,
 claim/profile, C/governance, or WP2 changes. Domain review and S5 adjudication
 remain later, separately authorized work.
+
+## 2026-09-01: Keep fusion domain synthesis separate from adjudication
+
+Decision: After verifying merged PR #38 and its exact source-promotion head
+`3c8987175f6975347cc01a768c21d3386ff27cd6` in main, implement issue #39 as
+`model_domain_synthesis`: 18 frozen profiles and 90 separate S-dimension
+recommendations, using only the already reviewed canonical fusion evidence.
+Record the actual Codex Desktop / `gpt-5.6-sol` / `xhigh` runtime provenance.
+Preserve both submissions, owner dispositions, all nine empirical gaps, and
+the existing 19-row S5 backlog. No recommendation is a score implementation,
+named human sign-off, approval, or canonical profile.
+
+Apply the frozen stage boundary to S1, ordinary learning cycles to S2, both
+attempt cost and attainable throughput to S3, intrinsic physical floors to
+S4, and the owner-approved bounded escaped-consequence rule to S5. Explicitly
+mark unverified S5 assurance boundaries as assumptions. Route 19 material
+specialist questions and 27 owner exceptions without requiring the owner to
+re-review all 90 cells. Proposed technical and jurisdiction variants remain
+questions for later scoping, not implemented profiles or country modifiers.
+
+Issue #39's five new domain-review outputs are an explicit exception to the
+earlier source-promotion package freeze; retain every original expected hash.
+Add a separate gate pinning the complete promoted source register, evidence
+bank, immutable coding/owner inputs, method authorities and data/UI trees,
+with adversarial tests and exact CSV/workbook agreement checks. No hidden
+ordinal average, composite, or production profile is permitted.
+
+Reasoning: Canonical source identity does not establish an observed pilot
+outcome, transferability, or a numeric S value. A structured model synthesis
+can make technical disagreements and missing evidence reviewable without
+manufacturing closure. Submit a draft for one substantive PM review and one
+correction pass; targeted S5 adjudication and WP2 remain later gates.
