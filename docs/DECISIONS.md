@@ -652,3 +652,45 @@ ambiguity while preserving the row-level evidence and disagreement record.
 Source banking and named fusion-domain review remain the next gate because the
 owner dispositions do not cure blank canonical source IDs or create directly
 comparable observed cases.
+
+## 2026-08-31: Separate fusion source verification from profile adjudication
+
+Decision: Bank the issue #35 Fusion Test pack as a noncanonical internal
+source-discovery map. Use stable provisional `fusion-src-*` candidate IDs in
+the inventory and staging export; assign canonical source IDs only after a
+separate source-register review. Classify each atomic claim as an observed
+experimental result, observed facility milestone, official target, company
+target, programme announcement, proof of concept, model or scenario estimate,
+inference, or commentary. Record S1-S5 source coverage for exactly the 18 frozen
+fusion profiles without selecting or recoding any S value.
+
+Keep owner review exception-based: surface the seven promotion/scope exceptions
+already routed by the reconciliation inputs plus the HH70 source-description
+correction, and leave every owner-decision field blank. Domain review and any S
+adjudication remain later gates.
+
+Reasoning: Verifying that a source and locator are real does not establish that
+the evidence matches a profile, pathway, lifecycle phase, jurisdiction, or S
+dimension. Provisional IDs prevent an inventory from silently becoming the
+canonical register, while explicit evidence categories prevent facility
+milestones, targets, announcements, and company claims from being promoted as
+observed AI or power-plant outcomes.
+
+## 2026-08-31: Type legal status precisely inside the fusion research bank
+
+Decision: Add `observed legal/regulatory status` to the issue #35 research-bank
+evidence categories for enacted law, proposed rules, and current regulator
+status pages. Keep those legal states explicit and distinct from programme
+announcements, observed licence-review outcomes, and each other. Do not change
+the global public evidence-basis ontology in this bounded correction pass.
+
+Treat regulatory documents as direct evidence of their legal or procedural
+status only. They do not by themselves establish plant-licence review duration,
+feedback speed, affordability, throughput, or an intrinsic physical-process
+floor. In particular, a rulemaking public-comment interval is not a
+plant-licence review duration.
+
+Reasoning: An enacted law and a regulator's current rulemaking page are
+observations of legal status, not programme announcements. A bank-local category
+corrects that provenance error without silently changing the public method or
+turning procedural dates into empirical licensing-performance evidence.
