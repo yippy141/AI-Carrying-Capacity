@@ -675,3 +675,22 @@ dimension. Provisional IDs prevent an inventory from silently becoming the
 canonical register, while explicit evidence categories prevent facility
 milestones, targets, announcements, and company claims from being promoted as
 observed AI or power-plant outcomes.
+
+## 2026-08-31: Type legal status precisely inside the fusion research bank
+
+Decision: Add `observed legal/regulatory status` to the issue #35 research-bank
+evidence categories for enacted law, proposed rules, and current regulator
+status pages. Keep those legal states explicit and distinct from programme
+announcements, observed licence-review outcomes, and each other. Do not change
+the global public evidence-basis ontology in this bounded correction pass.
+
+Treat regulatory documents as direct evidence of their legal or procedural
+status only. They do not by themselves establish plant-licence review duration,
+feedback speed, affordability, throughput, or an intrinsic physical-process
+floor. In particular, a rulemaking public-comment interval is not a
+plant-licence review duration.
+
+Reasoning: An enacted law and a regulator's current rulemaking page are
+observations of legal status, not programme announcements. A bank-local category
+corrects that provenance error without silently changing the public method or
+turning procedural dates into empirical licensing-performance evidence.

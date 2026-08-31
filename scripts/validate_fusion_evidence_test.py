@@ -60,6 +60,25 @@ class FusionEvidencePackageTest(unittest.TestCase):
         self.assertTrue(any(row["evidence_basis"] == "observed facility milestone" for row in inventory))
         self.assertTrue(any(row["evidence_basis"] == "company target" for row in inventory))
         self.assertTrue(any(row["evidence_basis"] == "programme announcement" for row in inventory))
+        self.assertTrue(any(row["evidence_basis"] == "observed legal/regulatory status" for row in inventory))
+
+    def test_bounded_p1_corrections_are_present(self) -> None:
+        inventory = {row["candidate_source_id"]: row for row in rows("source_inventory_v1.csv")}
+        claims = {row["claim_id"]: row for row in rows("claim_source_map_v1.csv")}
+        rejected = rows("rejected_and_deferred_sources_v1.csv")
+
+        self.assertIn("Article 39", inventory["fusion-src-004"]["numerical_claims_and_locators"])
+        self.assertEqual(inventory["fusion-src-023"]["verification_status"], "verified_peer_reviewed")
+        self.assertEqual(inventory["fusion-src-030"]["url_or_doi"], "https://www.pppl.gov/nstx-u")
+        self.assertEqual(inventory["fusion-src-037"]["verification_status"], "verified_official_primary")
+        self.assertIn("fusion-src-045", inventory)
+        self.assertIn("fusion-src-046", inventory)
+        self.assertEqual(claims["fusion-clm-082"]["directness"], "indirect")
+        self.assertEqual(claims["fusion-clm-084"]["directness"], "indirect")
+        self.assertFalse(
+            {"fusion-src-023", "fusion-src-030", "fusion-src-037"}
+            & {row["candidate_source_id"] for row in rejected}
+        )
 
 
 if __name__ == "__main__":

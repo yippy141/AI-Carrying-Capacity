@@ -69,7 +69,8 @@ CHANGE_HEADER = [
 EVIDENCE_BASES = {
     "observed experimental result", "observed facility milestone", "official target",
     "company target", "programme announcement", "proof of concept",
-    "model or scenario estimate", "inference", "commentary",
+    "model or scenario estimate", "observed legal/regulatory status", "inference",
+    "commentary",
 }
 
 PROFILES = [
@@ -172,7 +173,7 @@ SOURCES = [
     source("fusion-src-001", "S-CN-EAST", "全超导托卡马克EAST装置实现亿度千秒高约束模等离子体运行", "EAST achieves a 100-million-degree 1,000-second high-confinement plasma", "Institute of Plasma Physics, Chinese Academy of Sciences", "2025-01-20", "zh", "official_facility_release", "administrative_data", "official_research_institute", "official_observed_statistic", "not_applicable", "https://www.ipp.cas.cn/xwdt/ttxw/202501/t20250120_410191.html", "B", "observed facility milestone", "China", "plasma_control;reliability_demonstration", "sp-0018;sp-0029", "S2;S3;S4", "EAST reported a 1,066-second high-confinement plasma and earlier long-pulse milestones.", "1,066 s H-mode; article body paragraph 2. More than 150,000 discharges; paragraph 4.", "A long plasma pulse is not net energy, plant availability, component life, or an AI result.", "verified_official_primary", "stage_scope_limited", original_language_url="https://www.ipp.cas.cn/xwdt/ttxw/202501/t20250120_410191.html", translation_note="Machine-assisted translation checked against the Chinese page; native-language review required before public quotation."),
     source("fusion-src-002", "S-CN-CRAFT-TF", "CRAFT项目环向场（TF）磁体绕组制造顺利完工", "CRAFT toroidal-field magnet winding manufacturing completed", "Institute of Plasma Physics, Chinese Academy of Sciences", "2026-03-09", "zh", "official_facility_release", "administrative_data", "official_research_institute", "official_program_claim", "not_applicable", "https://www.ipp.cas.cn/hnxny/kyxm/202603/t20260309_825283.html", "B", "observed facility milestone", "China", "magnets;component_fabrication", "sp-0021;sp-0026", "S2;S3;S4;S5", "The CRAFT TF winding completed manufacturing and passed the stated project milestone.", "Completion event 2026-02-26; article paragraphs 1-2. Dimensions and mass are in paragraph 3.", "Component completion is not integrated tokamak or power-plant performance.", "verified_official_primary", "stage_scope_limited", original_language_url="https://www.ipp.cas.cn/hnxny/kyxm/202603/t20260309_825283.html", translation_note="Machine-assisted translation checked against the Chinese page; engineering terms need native specialist review if quoted."),
     source("fusion-src-003", "S-CN-ROADMAP", "核能技术方向研究及发展路线图丨中国工程科学", "Research and development roadmap for nuclear energy technologies", "State Administration of Science, Technology and Industry for National Defense / Chinese Academy of Engineering authors", "2023-05-15", "zh", "official_roadmap_republication", "government_strategy", "government_and_named_experts", "official_program_claim", "not_applicable", "https://www.sastind.gov.cn/n10086205/n10086408/n10104280/c10386340/content.html", "B", "commentary", "China", "theory_and_system_design;materials_qualification;tritium_and_fuel_cycle;blankets", "sp-0014;sp-0020;sp-0024;sp-0025", "S2;S3;S4;S5", "The text identifies long-pulse operation, neutron-resistant materials, and tritium self-sufficiency as unresolved requirements and says no shortcut has been found.", "CFETR demonstration target around 2050; section 磁约束聚变能.", "The page republishes a 2018 China Engineering Science article in 2023; it is not a newly issued 2023 roadmap or an observed result.", "verified_official_primary", "stage_scope_limited", original_language_url="https://www.sastind.gov.cn/n10086205/n10086408/n10104280/c10386340/content.html", translation_note="Machine-assisted translation checked against the Chinese text; preserve the 2018-origin/2023-republication distinction."),
-    source("fusion-src-004", "S-CN-LAW", "中华人民共和国原子能法", "Atomic Energy Law of the People's Republic of China", "National People's Congress (Ministry of Commerce legal database mirror)", "2025-09-12", "zh", "official_legal_text", "law_or_regulation", "legislature", "official_program_claim", "not_applicable", "https://policy.mofcom.gov.cn/claw/clawContent.shtml?id=103716", "A", "programme announcement", "China", "licensing", "sp-0030", "S2;S3;S4;S5", "The law includes controlled thermonuclear fusion within the national atomic-energy legal framework.", "Effective 2026-01-15; promulgation and effective dates in header. Controlled thermonuclear fusion provision: Article 37.", "A statute establishes authority and duties; it is not a completed fusion licensing case or evidence of review duration.", "verified_official_primary", "stage_scope_limited", original_language_url="https://policy.mofcom.gov.cn/claw/clawContent.shtml?id=103716", translation_note="Article number and dates checked in the Chinese legal text; legal interpretation requires a qualified reviewer."),
+    source("fusion-src-004", "S-CN-LAW", "中华人民共和国原子能法", "Atomic Energy Law of the People's Republic of China", "National People's Congress / China Atomic Energy Authority republication", "2025-09-12", "zh", "official_legal_text", "law_or_regulation", "legislature", "official_program_claim", "not_applicable", "https://www.caea.gov.cn/n6760338/n6760344/n10763762/n10763767/c10704020/content.html", "A", "observed legal/regulatory status", "China", "licensing", "sp-0030", "S2;S3;S4;S5", "The final law encourages and supports controlled-thermonuclear-fusion R&D in Article 14 and establishes a fusion-suited regulatory system with graded/classified management in Article 39.", "Adopted 2025-09-12; page heading. Effective 2026-01-15; Article 62. Fusion R&D support: Article 14. Fusion-specific supervision and graded/classified management of fusion fuels and devices/facilities: Article 39.", "An enacted law establishes legal status and authority; it is not a completed fusion licensing case or evidence of review duration. Earlier draft numbering differed, and final Article 37 concerns disused radioactive-source recovery/disposal.", "verified_official_primary", "stage_scope_limited", original_language_url="https://www.caea.gov.cn/n6760338/n6760344/n10763762/n10763767/c10704020/content.html", translation_note="Final-law locators checked against the official Chinese full text: Articles 14 and 39. Earlier draft numbering must not be used as the final-law locator; legal interpretation requires a qualified reviewer."),
     source("fusion-src-005", "S-CN-HL3", "中国核工业报：新一代人造太阳“中国环流三号”再创我国可控核聚变新纪录", "CNNC newspaper: HL-3 sets a new Chinese controlled-fusion record", "China National Nuclear Corporation / Southwestern Institute of Physics", "2025-05-28", "zh", "official_company_newspaper", "corporate_report", "state_owned_enterprise", "official_observed_statistic", "not_independently_validated", "https://www.cnnc.com.cn/cnnc/resource/cms/article/1373577/836c94bef055494188026fb7cef9c850/2025060311055363962.pdf", "B", "observed facility milestone", "China", "heating_and_current_drive;plasma_control", "sp-0022;sp-0018", "S2;S3;S4", "HL-3 reported simultaneous high ion and electron temperatures after heating-system upgrades.", "Ion temperature 117 million °C and electron temperature 160 million °C; newspaper page containing the 28 May HL-3 article, lead paragraphs.", "Official operator reporting, not independent validation; temperature milestones are not net energy or reliability.", "verified_official_primary", "stage_scope_limited", original_language_url="https://www.cnnc.com.cn/cnnc/resource/cms/article/1373577/836c94bef055494188026fb7cef9c850/2025060311055363962.pdf", translation_note="Machine-assisted translation checked against the Chinese PDF; precise heating-power values were not promoted."),
     source("fusion-src-006", "S-CN-HL3-ROAD", "聚变堆主机关键系统综合研究设施建设进展", "Progress toward an HL-3 burning-plasma experiment", "China Atomic Energy Authority", "missing", "zh", "official_program_release", "government_strategy", "government", "official_target", "not_applicable", "https://www.caea.gov.cn/n6760338/n6760342/c10711680/content.html", "B", "official target", "China", "plasma_control;commissioning", "sp-0018;sp-0028", "S2;S3;S4;S5", "The official page states a target for an HL-3 burning-plasma experiment in 2027.", "2027 target; article body.", "The date is an official target, not an observed experiment, completion milestone, or schedule guarantee.", "verified_official_primary", "stage_scope_limited", original_language_url="https://www.caea.gov.cn/n6760338/n6760342/c10711680/content.html", translation_note="Machine-assisted translation checked against the Chinese page; retain target language."),
     source("fusion-src-007", "S-CN-HL3-AI", "High-fidelity data-driven dynamics model for reinforcement learning-based control in HL-3 tokamak", "High-fidelity data-driven dynamics model for reinforcement learning-based control in HL-3 tokamak", "Wu et al.; Communications Physics", "2025-10-03", "en", "peer_reviewed_paper", "peer_reviewed_paper", "research_authors", "not_official_claim", "independently_validated", "https://doi.org/10.1038/s42005-025-02302-y", "A", "observed experimental result", "China", "simulation;plasma_control", "sp-0015;sp-0018", "S1;S2;S3", "A learned dynamics model trained an RL controller that ran live on HL-3 at 1 kHz and tracked targets in reported shots.", "1 kHz controller and 400 ms duration; Methods and Results, HL-3 experiments. Shot identifiers #12781 and #6698; figure captions.", "Research-device demonstration; no nuclear-safety case, plant reliability, or transfer to pilot conditions.", "verified_peer_reviewed", "stage"),
@@ -191,28 +192,30 @@ SOURCES = [
     source("fusion-src-020", "S-AI-TRANSFER", "Disruption prediction for future tokamaks using parameter-based transfer learning", "Disruption prediction for future tokamaks using parameter-based transfer learning", "Zheng et al.; Communications Physics", "2023-07-17", "en", "peer_reviewed_paper", "peer_reviewed_paper", "research_authors", "not_official_claim", "independently_validated", "https://doi.org/10.1038/s42005-023-01296-9", "A", "proof of concept", "China", "diagnostics;plasma_control", "sp-0017;sp-0018", "S1;S2;S3;S5", "Parameter-based transfer learning was evaluated from J-TEXT to a small EAST dataset for disruption prediction.", "20 EAST shots; dataset/Methods section.", "Offline, small-target-domain proof of concept; not live transfer to a future pilot plant.", "verified_peer_reviewed", "stage_scope_limited"),
     source("fusion-src-021", "S-AI-DIAG", "Multimodal super-resolution: discovering hidden physics and its application to fusion plasmas", "Multimodal super-resolution: discovering hidden physics and its application to fusion plasmas", "Jalalvand et al.; Nature Communications", "2025-09-26", "en", "peer_reviewed_paper", "peer_reviewed_paper", "research_authors", "not_official_claim", "independently_validated", "https://doi.org/10.1038/s41467-025-63492-1", "A", "proof of concept", "United States", "diagnostics", "sp-0017", "S1;S2;S3", "A multimodal model reconstructed high-frequency diagnostic structure from DIII-D historical data.", "4,000 DIII-D discharges from 2017-2022; Methods, Data acquisition. Diagnostic sampling frequencies from 200 Hz to 2 MHz; same section.", "Retrospective/synthetic diagnostic reconstruction; not a qualified replacement for safety instrumentation.", "verified_peer_reviewed", "stage_scope_limited"),
     source("fusion-src-022", "unassigned_pack_table", "GS-DeepNet: mastering tokamak plasma equilibria with deep neural networks and the Grad–Shafranov equation", "GS-DeepNet: mastering tokamak plasma equilibria with deep neural networks and the Grad–Shafranov equation", "Joung et al.; Scientific Reports", "2023-09-22", "en", "peer_reviewed_paper", "peer_reviewed_paper", "research_authors", "not_official_claim", "independently_validated", "https://doi.org/10.1038/s41598-023-42991-5", "A", "proof of concept", "international", "simulation;diagnostics", "sp-0015;sp-0017", "S1;S2;S3", "The paper presents a learned equilibrium-reconstruction surrogate for real-time use.", "50 KSTAR discharges and about 10,000 time slices; Methods, 'How to train GS-DeepNet'.", "Model benchmark; not a closed-loop or safety-qualified deployment.", "verified_peer_reviewed", "stage_scope_limited"),
-    source("fusion-src-023", "unassigned_pack_table", "HEAT-ML research highlight", "HEAT-ML research highlight", "Princeton Plasma Physics Laboratory", "missing", "en", "official_research_highlight", "expert_commentary", "official_research_institute", "official_program_claim", "unknown", "https://www.pppl.gov/news/2026", "B", "proof of concept", "United States", "simulation;plasma_facing_components", "sp-0015;sp-0023", "S1;S2;S3", "The pack describes a surrogate for magnetic-shadow calculations relevant to plasma-facing components.", "missing; the pack did not supply a DOI and the bounded verification pass did not recover a stable article URL.", "Publisher page/DOI and exact paper title were not stably verified.", "unverified_locator", "defer", notes="No promotion until the original PPPL article and Fusion Engineering and Design DOI resolve."),
+    source("fusion-src-023", "unassigned_pack_table", "Finding the shadows in a fusion system faster with AI", "Finding the shadows in a fusion system faster with AI", "Corona Rivera et al.; Princeton Plasma Physics Laboratory / Fusion Engineering and Design", "2025-08-13", "en", "official_research_highlight", "peer_reviewed_paper", "research_authors", "not_official_claim", "independently_validated", "https://www.pppl.gov/news/2025/finding-shadows-fusion-system-faster-ai", "A", "proof of concept", "United States", "simulation", "sp-0015", "S1;S2;S3", "HEAT-ML is a scoped surrogate for SPARC magnetic-shadow calculations, reducing one geometry-specific calculation from around 30 minutes to a few milliseconds.", "Around 30 minutes for one conventional HEAT simulation and longer for complex geometry; PPPL paragraphs 101-102. A few milliseconds with HEAT-ML and approximately 1,000 SPARC HEAT simulations in the training database; paragraph 102. Peer-reviewed DOI: https://doi.org/10.1016/j.fusengdes.2025.115010.", "The present method covers 15 tiles in a small part of SPARC's exhaust geometry and is tied to that design; it is not plant-level schedule acceleration, materials qualification, or a generic plasma-facing-component result.", "verified_peer_reviewed", "stage_scope_limited", notes="Exact PPPL publisher locator verified; linked paper: Fusion Engineering and Design 217 (2025) 115010, DOI 10.1016/j.fusengdes.2025.115010."),
     source("fusion-src-024", "S-US-STELLAR", "PPPL launches STELLAR-AI platform to accelerate fusion energy research", "PPPL launches STELLAR-AI platform to accelerate fusion energy research", "Princeton Plasma Physics Laboratory", "2026-01-22", "en", "official_program_release", "government_strategy", "official_research_institute", "official_program_claim", "not_applicable", "https://www.pppl.gov/news/2026/pppl-launches-stellar-ai-platform-accelerate-fusion-energy-research", "B", "programme announcement", "United States", "theory_and_system_design;simulation;experiment_selection", "sp-0014;sp-0015;sp-0016", "S1;S2;S3", "PPPL announced a platform linking AI, high-performance computing, and future NSTX-U experiments.", "No demonstrated schedule reduction. Source says some simulations/training exercises can take months; article body.", "Programme announcement and capability intent, not an observed AI-shortened research cycle; its 'NSTX-U this year' wording was superseded by a 2027 experiment target.", "verified_official_primary", "stage_scope_limited"),
     source("fusion-src-025", "S-US-STELLFOUNDRY", "Bringing fusion energy to the grid using artificial intelligence", "Bringing fusion energy to the grid using artificial intelligence", "Princeton Plasma Physics Laboratory", "2026-02-03", "en", "official_program_release", "government_strategy", "official_research_institute", "official_program_claim", "not_applicable", "https://www.pppl.gov/news/2026/bringing-fusion-energy-grid-using-artificial-intelligence", "B", "programme announcement", "United States", "theory_and_system_design;simulation;experiment_selection", "sp-0014;sp-0015;sp-0016", "S1;S2;S3", "PPPL announced the StellFoundry collaboration for AI-enabled stellarator design and surrogate modelling.", "30 researchers and 10 organizations; article lead/body.", "Programme announcement; no observed plant-design, construction, or grid schedule reduction.", "verified_official_primary", "stage_scope_limited"),
     source("fusion-src-026", "S-US-MPEX", "MPEX user research forum 2026", "MPEX user research forum 2026", "Oak Ridge National Laboratory", "2026-03-20", "en", "official_facility_page", "administrative_data", "official_research_institute", "official_program_claim", "not_applicable", "https://mpex.ornl.gov/murf-2026/", "B", "programme announcement", "United States", "materials_qualification;plasma_facing_components", "sp-0020;sp-0023", "S2;S3;S4", "MPEX is under assembly and is intended to expose materials, including neutron-irradiated samples, to reactor-edge-like plasma conditions.", "Up to 1,000,000 s exposure capability; facility description on page.", "MPEX does not itself supply a fusion-spectrum neutron field; intended capability is not an observed qualification programme.", "verified_official_primary", "stage_scope_limited"),
     source("fusion-src-027", "S-US-MPEX-AI", "AI-accelerated fusion materials test facility", "AI-accelerated fusion materials test facility", "Oak Ridge National Laboratory", "2026-06-15", "en", "official_research_highlight", "government_strategy", "official_research_institute", "official_program_claim", "not_applicable", "https://www.ornl.gov/research-highlight/ai-accelerated-fusion-materials-test-facility", "B", "programme announcement", "United States", "simulation;materials_qualification;plasma_facing_components", "sp-0015;sp-0020;sp-0023", "S1;S2;S3;S4", "ORNL describes digital twins and AI methods being developed for MPEX.", "No observed AI-shortening value reported; page text.", "Announced/developing capability, not demonstrated materials qualification or component-life acceleration.", "verified_official_primary", "stage_scope_limited"),
     source("fusion-src-028", "S-US-DOE-ROAD;S-US-DCP", "Fusion Science and Technology Roadmap", "Fusion Science and Technology Roadmap", "U.S. Department of Energy", "2026-06-09", "en", "official_roadmap", "government_strategy", "government", "official_program_claim", "not_applicable", "https://www.energy.gov/documents/fusion-science-and-technology-roadmap", "A", "programme announcement", "United States", "theory_and_system_design;simulation;experiment_selection;materials_qualification;tritium_and_fuel_cycle;blankets", "sp-0014;sp-0015;sp-0016;sp-0020;sp-0024;sp-0025", "S1;S2;S3;S4;S5", "The roadmap defines six challenge areas and an AI-Fusion Digital Convergence Platform as a programme direction.", "AI-Fusion DCP and six challenge areas; roadmap PDF page 26 and challenge-area sections.", "Official roadmap and targets, not observed reductions in materials, blanket, tritium, licensing, or construction time.", "verified_official_primary", "stage_scope_limited"),
     source("fusion-src-029", "S-US-DIII-D", "DIII-D National Fusion Program completes facility upgrade", "DIII-D National Fusion Program completes facility upgrade", "General Atomics", "2024-05-08", "en", "facility_operator_release", "corporate_report", "facility_operator", "not_official_claim", "not_independently_validated", "https://www.ga.com/diii-d-national-fusion-program-completes-facility-upgrade", "C", "observed facility milestone", "United States", "diagnostics;heating_and_current_drive;commissioning", "sp-0017;sp-0022;sp-0028", "S2;S3;S4", "The operator reports completion of an eight-month facility upgrade and return toward operation.", "Eight-month upgrade; release lead. Installed systems listed in body.", "Facility milestone, not an AI result or a directly comparable nuclear commissioning programme.", "verified_company_primary", "stage_scope_limited"),
-    source("fusion-src-030", "S-US-NSTXU", "Delivery of magnet bundle signals new age of fusion research", "Delivery of magnet bundle signals new age of fusion research", "Princeton Plasma Physics Laboratory", "2026-06-08", "en", "official_facility_release", "administrative_data", "official_research_institute", "official_target", "not_applicable", "https://www.pppl.gov/news/2026/delivery-magnet-bundle-signals-new-age-fusion-research", "B", "official target", "United States", "magnets;component_fabrication;construction;commissioning", "sp-0021;sp-0026;sp-0027;sp-0028", "S2;S3;S4;S5", "PPPL reports delivery of the central magnet bundle and now expects experiments in 2027.", "2027 experiment target; article lead/body.", "Target, not completed recommissioning; the pack's 93% figure was not located on this page and is not promoted.", "verified_official_primary", "stage_scope_limited"),
+    source("fusion-src-030", "S-US-NSTXU", "National Spherical Torus Experiment-Upgrade (NSTX-U)", "National Spherical Torus Experiment-Upgrade (NSTX-U)", "Princeton Plasma Physics Laboratory", "missing", "en", "official_project_status_page", "administrative_data", "official_research_institute", "official_observed_statistic", "not_applicable", "https://www.pppl.gov/nstx-u", "B", "observed facility milestone", "United States", "construction;commissioning", "sp-0027;sp-0028", "S2;S3;S4", "PPPL's living project page states that the NSTX-U Recovery Project is 93% complete.", "93% Recovery Project completion status; section 'Recovery Project', checked 2026-08-31.", "Living-page project status, not a fixed historical statistic, completed recommissioning, or an experimental outcome.", "verified_official_primary", "stage_scope_limited", notes="Freshness trigger: recheck before promotion and whenever PPPL changes the Recovery Project timeline/status or announces recommissioning or experiments."),
     source("fusion-src-031", "S-US-SPARC", "SPARC technology page", "SPARC technology page", "Commonwealth Fusion Systems", "missing", "en", "company_program_page", "corporate_report", "company", "not_official_claim", "not_independently_validated", "https://www.cfs.energy/technology/", "C", "company target", "United States", "magnets;construction;commissioning;grid_integration", "sp-0021;sp-0027;sp-0028;sp-0031", "S2;S3;S4", "CFS describes SPARC construction and a target for plasma energy gain greater than one.", "No stable publication date on the living page; performance target described on page.", "Company target and living page; no observed Q>1 result or grid connection.", "verified_company_primary", "stage_scope_limited", notes="Freshness must be rechecked at promotion because the page is undated and mutable."),
     source("fusion-src-032", "S-DE-W7X", "Neue Bestwerte Wendelstein 7-X", "New best values at Wendelstein 7-X", "Max Planck Institute for Plasma Physics", "2025-06-03", "de", "official_facility_release", "administrative_data", "official_research_institute", "official_observed_statistic", "not_applicable", "https://www.ipp.mpg.de/5532474/w7x", "B", "observed experimental result", "Germany", "plasma_control;plasma_facing_components;reliability_demonstration", "sp-0018;sp-0023;sp-0029", "S2;S3;S4", "W7-X reported a long-pulse triple-product result and a separate high-energy-turnover discharge.", "43 s triple-product result and 360 s / 1.8 GJ energy turnover; article sections 'Weltbestes Tripelprodukt' and energy turnover.", "Different discharges/metrics; neither is net energy, DT operation, plant availability, or blanket life.", "verified_official_primary", "stage_scope_limited", original_language_url="https://www.ipp.mpg.de/5532474/w7x", translation_note="German source checked; preserve that 43 s and 360 s / 1.8 GJ describe different records."),
     source("fusion-src-033", "S-JP-JT60", "First plasma 23 October", "First plasma 23 October", "JT-60SA Organization (QST/Fusion for Energy)", "2023-10-24", "en", "official_facility_release", "administrative_data", "international_program", "official_observed_statistic", "not_applicable", "https://www.jt60sa.org/wp/first-plasma-23-october/", "B", "observed facility milestone", "Japan;European Union", "construction;commissioning", "sp-0027;sp-0028", "S2;S3;S4;S5", "JT-60SA achieved first plasma during integrated commissioning.", "First plasma 2023-10-23; release lead.", "Low-power research commissioning milestone; not high-power operation, DT commissioning, or commercial reliability.", "verified_official_primary", "stage_scope_limited"),
     source("fusion-src-034", "S-JP-JT60", "OP2 has started", "OP2 has started", "JT-60SA Organization (QST/Fusion for Energy)", "2026-04-28", "en", "official_facility_release", "administrative_data", "international_program", "official_target", "not_applicable", "https://www.jt60sa.org/wp/op2-has-started/", "B", "official target", "Japan;European Union", "heating_and_current_drive;commissioning", "sp-0022;sp-0028", "S2;S3;S4;S5", "OP2 component commissioning began, with plasma operations including ECRH and NBI targeted by end-2026.", "End-2026 plasma-operations target; final paragraph. Commissioning sequence; middle paragraphs.", "Mixed current facility milestone and future target; not proof that the experimental campaign or high-power commissioning is complete.", "verified_official_primary", "stage_scope_limited"),
     source("fusion-src-035", "S-UK-STEP", "About STEP", "About STEP", "UK Industrial Fusion Solutions / UK Atomic Energy Authority", "missing", "en", "official_program_page", "government_strategy", "government_program", "official_target", "not_applicable", "https://step.ukaea.uk/about/", "B", "official target", "United Kingdom", "theory_and_system_design;construction;tritium_and_fuel_cycle;grid_integration", "sp-0014;sp-0027;sp-0024;sp-0031", "S2;S3;S4;S5", "STEP targets first operations around 2040 and net energy in the 2040s at West Burton.", "2040 first-operations target; page section 'Our vision'. Net-energy-in-2040s statement; UKIFS section.", "Undated living programme page and official target; no observed construction, tritium self-sufficiency, or grid output.", "verified_official_primary", "stage_scope_limited", notes="Recheck living-page wording before promotion."),
     source("fusion-src-036", "S-ITER-BASE", "ITER Machine Assembly Overview", "ITER Machine Assembly Overview", "ITER Organization", "missing", "en", "official_program_page", "government_strategy", "international_program", "official_target", "not_applicable", "https://www.iter.org/project/assembly-overview", "B", "official target", "international", "component_fabrication;construction;commissioning", "sp-0026;sp-0027;sp-0028", "S2;S3;S4;S5", "ITER's revised staged baseline separates assembly, integrated commissioning, research operation, and later DT preparation.", "Cryostat closure 2033; integrated commissioning 2033-34; start of research operation 2034; page timeline. Dates labeled baseline proposal.", "Official baseline proposal, not observed completion; later phases add nuclear/tritium systems.", "verified_official_primary", "stage_scope_limited"),
-    source("fusion-src-037", "S-ITER-2026", "ITER Machine Assembly Overview", "ITER Machine Assembly Overview", "ITER Organization", "missing", "en", "official_program_page", "administrative_data", "international_program", "official_program_claim", "not_applicable", "https://www.iter.org/project/assembly-overview", "B", "observed facility milestone", "international", "component_fabrication;construction;commissioning", "sp-0026;sp-0027;sp-0028", "S2;S3;S4", "The current page documents the assembly/commissioning topology but does not substantiate the pack's 'sixth of nine sectors' July-2026 numerical claim.", "missing for sixth-of-nine claim; no precise locator recovered on the stable page.", "Use for phase definitions only; defer the July-2026 sector-count claim pending the exact original news page.", "partially_verified_scope_only", "defer"),
+    source("fusion-src-037", "S-ITER-2026", "Millions of data points, one successful lift", "Millions of data points, one successful lift", "ITER Organization", "2026-07-29", "en", "official_facility_release", "administrative_data", "international_program", "official_observed_statistic", "not_applicable", "https://www.iter.org/node/20687/millions-data-points-one-successful-lift", "B", "observed facility milestone", "international", "construction", "sp-0027", "S2;S3;S4", "ITER reports that its sixth of nine tokamak sector modules landed in the pit on 28 July 2026, putting two-thirds of the plasma chamber in place.", "Lift ran 27-28 July 2026; article paragraphs 162-167. Sixth of nine modules and two-thirds of chamber in place; paragraphs 162 and 167. The official project milestone page https://www.iter.org/project/road-iter also records the sixth-module milestone.", "Observed construction/facility milestone only; not an AI result, integrated chamber completion, commissioning, or plant completion.", "verified_official_primary", "stage_scope_limited"),
     source("fusion-src-038", "S-ITER-TRITIUM", "Tritium breeding", "Tritium breeding", "ITER Organization", "missing", "en", "official_program_page", "government_strategy", "international_program", "official_program_claim", "not_applicable", "https://www.iter.org/machine/supporting-systems/tritium-breeding", "B", "programme announcement", "international", "tritium_and_fuel_cycle;blankets;grid_integration", "sp-0024;sp-0025;sp-0031", "S2;S3;S4;S5", "ITER will test breeding-blanket mockups; large-scale tritium production and recycling still require further research.", "Four TBM concepts and two equatorial ports; TBM Program section. No quantitative performance result claimed.", "Future test programme; ITER is not a tritium-self-sufficient power plant and testing is not qualification of a commercial blanket.", "verified_official_primary", "stage_scope_limited"),
-    source("fusion-src-039", "S-US-NRC", "Regulatory Framework for Fusion Machines; Proposed Rule", "Regulatory Framework for Fusion Machines; Proposed Rule", "U.S. Nuclear Regulatory Commission / Federal Register", "2026-02-26", "en", "official_proposed_rule", "law_or_regulation", "regulator", "official_program_claim", "not_applicable", "https://www.federalregister.gov/documents/2026/02/26/2026-03865/regulatory-framework-for-fusion-machines", "A", "programme announcement", "United States", "licensing", "sp-0030", "S2;S3;S4;S5", "The NRC proposed a Part 30-based, technology-neutral licensing framework for fusion machines.", "91 FR 9476; Federal Register citation and document header. 90-day comment period ending 2026-05-27; Dates section.", "Proposed rule and draft guidance, not a final rule or an observed plant licence review.", "verified_official_primary", "stage"),
-    source("fusion-src-040", "S-US-NRC", "Fusion Machine Rulemaking Status", "Fusion Machine Rulemaking Status", "U.S. Nuclear Regulatory Commission", "2026-08-27", "en", "official_regulator_status_page", "administrative_data", "regulator", "official_program_claim", "not_applicable", "https://www.nrc.gov/materials/fusion/rulemaking-status", "A", "programme announcement", "United States", "licensing", "sp-0030", "S2;S3;S4;S5", "As of 27 August 2026, the NRC still lists the February proposed rule and draft guidance; a final fusion rule is not listed.", "Page Last Reviewed/Updated 2026-08-27; footer. Proposed-rule milestone 2026-02-26; table.", "Regulatory status, not evidence of licence throughput or a completed plant application.", "verified_official_primary", "stage"),
+    source("fusion-src-039", "S-US-NRC", "Regulatory Framework for Fusion Machines; Proposed Rule", "Regulatory Framework for Fusion Machines; Proposed Rule", "U.S. Nuclear Regulatory Commission / Federal Register", "2026-02-26", "en", "official_proposed_rule", "law_or_regulation", "regulator", "official_program_claim", "not_applicable", "https://www.federalregister.gov/documents/2026/02/26/2026-03865/regulatory-framework-for-fusion-machines", "A", "observed legal/regulatory status", "United States", "licensing", "sp-0030", "S2;S3;S4;S5", "The NRC published a proposed Part 30-based, technology-neutral licensing framework for fusion machines.", "91 FR 9476; Federal Register citation and document header. 90-day rulemaking comment period ending 2026-05-27; Dates section.", "Proposed rule and draft guidance, not a final rule, observed plant-licence review, or licence-review-duration dataset.", "verified_official_primary", "stage"),
+    source("fusion-src-040", "S-US-NRC", "Fusion Machine Rulemaking Status", "Fusion Machine Rulemaking Status", "U.S. Nuclear Regulatory Commission", "2026-08-27", "en", "official_regulator_status_page", "administrative_data", "regulator", "official_program_claim", "not_applicable", "https://www.nrc.gov/materials/fusion/rulemaking-status", "A", "observed legal/regulatory status", "United States", "licensing", "sp-0030", "S2;S3;S4;S5", "As of 27 August 2026, the NRC still lists the February proposed rule and draft guidance; a final fusion rule is not listed.", "Page Last Reviewed/Updated 2026-08-27; footer. Proposed-rule milestone 2026-02-26; table.", "Current regulator status, not evidence of licence throughput, a completed plant application, or licence-review duration.", "verified_official_primary", "stage"),
     source("fusion-src-041", "S-IAEA-SAFE", "Technical Meeting on Design Safety, Safety Assessment and Regulatory Considerations for Fusion Facilities", "Technical Meeting on Design Safety, Safety Assessment and Regulatory Considerations for Fusion Facilities", "International Atomic Energy Agency", "missing", "en", "official_meeting_document", "government_strategy", "international_organization", "official_program_claim", "not_applicable", "https://www.iaea.org/sites/default/files/25/02/evt2405228_information_sheet_.pdf", "B", "programme announcement", "international", "licensing", "sp-0030", "S2;S3;S4;S5", "The meeting document states that an IAEA safety report on fusion design and regulation was being finalized.", "Meeting dates and objective; information sheet pages 1-2.", "Meeting/programme document, not a published fusion-specific safety standard or an observed licensing result.", "verified_official_primary", "stage_scope_limited"),
     source("fusion-src-042", "S-TOKAMAK-ENERGY", "Fusion energy technology", "Fusion energy technology", "Tokamak Energy", "missing", "en", "company_program_page", "corporate_report", "company", "not_official_claim", "not_independently_validated", "https://tokamakenergy.com/our-fusion-energy-and-hts-technology/fusion-energy-technology/", "C", "company target", "United Kingdom", "magnets;heating_and_current_drive;plasma_control", "sp-0021;sp-0022;sp-0018", "S2;S3;S4", "The company reports ST40 and Demo4 milestones and presents their relevance to future fusion systems.", "1 MA plasma current and 100 million °C ion temperature; ST40 section. Living page has no stable publication date.", "First-party company page; metric definitions and independent validation must be checked before any outcome claim.", "verified_company_primary", "stage_scope_limited", notes="Treat observed items as company-reported; not evidence of a commercial plant."),
     source("fusion-src-043", "S-TYPEONE", "Fusion With a Twist", "Fusion With a Twist", "Type One Energy", "missing", "en", "company_program_page", "corporate_report", "company", "not_official_claim", "not_independently_validated", "https://typeoneenergy.com/our-technology/", "C", "company target", "United States", "theory_and_system_design;magnets;construction;commissioning;grid_integration", "sp-0014;sp-0021;sp-0027;sp-0028;sp-0031", "S2;S3;S4", "The company targets Infinity One commissioning/startup in 2029 and describes an Infinity Two 400 MWe design.", "2029 Infinity One target and 400 MWe Infinity Two design; page sections 'Infinity One' and 'Infinity Two'.", "Company targets and design claims; Infinity One will not generate electricity and no grid outcome is observed.", "verified_company_primary", "stage_scope_limited", notes="Preserve the testbed-versus-power-plant distinction."),
     source("fusion-src-044", "S-PROXIMA", "Alpha Alliance: 30+ European industrial companies join forces to deliver fusion demonstrator Alpha", "Alpha Alliance: 30+ European industrial companies join forces to deliver fusion demonstrator Alpha", "Proxima Fusion", "2026-02-25", "en", "company_release", "corporate_report", "company", "not_official_claim", "not_independently_validated", "https://www.proximafusion.com/press-news/alpha-alliance-30-european-industrial-companies-join-forces-to-deliver-fusion-demonstrator-alpha", "C", "company target", "Germany", "theory_and_system_design;component_fabrication;construction;grid_integration", "sp-0014;sp-0026;sp-0027;sp-0031", "S2;S3;S4", "Proxima announced an industrial consortium for its planned Alpha net-energy stellarator demonstrator.", "More than 30 companies; headline/lead. No observed construction or performance value.", "Company programme announcement and target; pathway is stellarator, not the frozen tokamak pathway, so use only as pathway contrast.", "verified_company_primary", "stage_scope_limited"),
+    source("fusion-src-045", "targeted_ifmif_dones", "The IFMIF-DONES Irradiation Modules", "The IFMIF-DONES Irradiation Modules", "Arbeiter et al.; Nuclear Fusion", "2025-09-30", "en", "peer_reviewed_paper", "peer_reviewed_paper", "research_authors", "not_official_claim", "independently_validated", "https://doi.org/10.1088/1741-4326/add172", "A", "model or scenario estimate", "European Union;Spain", "materials_qualification", "sp-0020", "S2;S3;S4", "The peer-reviewed design describes IFMIF-DONES irradiation modules intended to produce future fusion-like materials data, including the HFTM and post-irradiation examination chain.", "HFTM expects up to 50 dpa in 3 years in a limited volume at 250-550 °C; HFTM section. Post-irradiation examination steps; TRTM and conclusions sections. DOI 10.1088/1741-4326/add172.", "IFMIF-DONES and its modules are under design/development; no completed or accepted qualification dataset exists. Spectrum/transmutation matching is material-dependent: Eurofer is tailored, while tungsten/copper conditions are not perfectly matched.", "verified_peer_reviewed", "stage_scope_limited"),
+    source("fusion-src-046", "targeted_ifmif_dones", "IFMIF-DONES: Experimental strategy for fusion materials qualification", "IFMIF-DONES: Experimental strategy for fusion materials qualification", "Angel Ibarra / IFMIF-DONES; International Atomic Energy Agency technical meeting", "2025-09-04", "en", "official_meeting_contribution", "government_strategy", "international_program", "official_target", "not_applicable", "https://conferences.iaea.org/event/406/contributions/37622/", "B", "official target", "European Union;Spain", "materials_qualification", "sp-0020", "S2;S3;S4", "The official technical contribution describes the planned accelerator-driven fusion-like neutron spectrum, HFTM irradiation campaigns, and the role of the resulting data in materials qualification.", "Up to 20-30 dpa over 2.5 full-power years in 300 cm3 and 50 dpa in 3 full-power years in 100 cm3; Description paragraphs 1-2. Expected operational date 2034; Description paragraph 1.", "The facility is under construction and the values are programme design targets, not observed irradiation campaigns or a completed accepted qualification dataset. Post-irradiation examination remains part of the qualification chain.", "verified_official_primary", "stage_scope_limited"),
 ]
 
 
@@ -223,7 +226,7 @@ PROFILE_EVIDENCE = {
         "maturity": "official programme evidence only",
     },
     "sp-0015": {
-        "best": "fusion-src-007;fusion-src-017;fusion-src-022;fusion-src-024",
+        "best": "fusion-src-007;fusion-src-017;fusion-src-022;fusion-src-023;fusion-src-024",
         "statuses": ["directly supported", "indirectly supported/analogy", "indirectly supported/analogy", "contradicted or complicated", "no suitable source located"],
         "maturity": "peer-reviewed proof of concept plus programme evidence",
     },
@@ -248,12 +251,12 @@ PROFILE_EVIDENCE = {
         "maturity": "programme announcement; no fusion-qualified material outcome",
     },
     "sp-0020": {
-        "best": "fusion-src-003;fusion-src-026;fusion-src-027;fusion-src-028;fusion-src-038",
-        "statuses": ["indirectly supported/analogy", "contradicted or complicated", "contradicted or complicated", "directly supported", "no suitable source located"],
-        "maturity": "official requirements and planned facilities; no completed qualification case",
+        "best": "fusion-src-046;fusion-src-045;fusion-src-003;fusion-src-026;fusion-src-027;fusion-src-028;fusion-src-038",
+        "statuses": ["indirectly supported/analogy", "directly supported", "indirectly supported/analogy", "directly supported", "no suitable source located"],
+        "maturity": "peer-reviewed design and official programme targets; no completed accepted qualification dataset",
     },
     "sp-0021": {
-        "best": "fusion-src-002;fusion-src-012;fusion-src-014;fusion-src-030",
+        "best": "fusion-src-002;fusion-src-012;fusion-src-014",
         "statuses": ["indirectly supported/analogy", "directly supported", "contradicted or complicated", "directly supported", "contradicted or complicated"],
         "maturity": "observed component/facility milestones with scope limits",
     },
@@ -278,12 +281,12 @@ PROFILE_EVIDENCE = {
         "maturity": "official gap statements and future TBM programme",
     },
     "sp-0026": {
-        "best": "fusion-src-002;fusion-src-014;fusion-src-016;fusion-src-030",
+        "best": "fusion-src-002;fusion-src-014;fusion-src-016",
         "statuses": ["contradicted or complicated", "directly supported", "contradicted or complicated", "directly supported", "directly supported"],
         "maturity": "observed fusion-component manufacture and acceptance milestones",
     },
     "sp-0027": {
-        "best": "fusion-src-010;fusion-src-012;fusion-src-016;fusion-src-033;fusion-src-036",
+        "best": "fusion-src-010;fusion-src-012;fusion-src-016;fusion-src-030;fusion-src-033;fusion-src-036;fusion-src-037",
         "statuses": ["contradicted or complicated", "directly supported", "contradicted or complicated", "directly supported", "directly supported"],
         "maturity": "observed facility milestones plus official baseline",
     },
@@ -299,14 +302,24 @@ PROFILE_EVIDENCE = {
     },
     "sp-0030": {
         "best": "fusion-src-004;fusion-src-039;fusion-src-040;fusion-src-041",
-        "statuses": ["contradicted or complicated", "directly supported", "no suitable source located", "directly supported", "indirectly supported/analogy"],
-        "maturity": "enacted authority and proposed framework; no pilot-plant licence case",
+        "statuses": ["contradicted or complicated", "contradicted or complicated", "no suitable source located", "indirectly supported/analogy", "indirectly supported/analogy"],
+        "maturity": "enacted law and proposed-rule status; no comparable pilot-plant licence-duration case",
     },
     "sp-0031": {
         "best": "fusion-src-031;fusion-src-035;fusion-src-038;fusion-src-043;fusion-src-044",
         "statuses": ["not assessable under current scope", "no suitable source located", "no suitable source located", "indirectly supported/analogy", "no suitable source located"],
         "maturity": "official/company targets only; no fusion-grid operating case",
     },
+}
+
+SPECIAL_CLAIM_TEXT = {
+    ("sp-0020", "S2"): "IFMIF-DONES design and programme-target sources directly establish a planned multi-year irradiation-and-post-irradiation-examination feedback chain for materials qualification; they do not report a completed dataset.",
+    ("sp-0020", "S3"): "IFMIF-DONES planned irradiation volumes and modular campaigns inform qualification throughput only indirectly; they do not establish observed affordability, completed throughput, or acceptance.",
+    ("sp-0020", "S4"): "IFMIF-DONES design and programme-target sources directly support a substantial physical materials-qualification time floor: roughly 2.5-3 full-power years of irradiation before the remaining examination and acceptance chain.",
+    ("sp-0030", "S2"): "The enacted-law, proposed-rule, and regulator-status sources establish legal status but do not empirically establish fusion licence-review feedback speed; the NRC rulemaking comment interval is not a plant-licence review duration.",
+    ("sp-0030", "S3"): "No suitable source in this bounded pass directly establishes the affordability or throughput of a comparable fusion pilot-plant licensing review; this is not evidence of absence.",
+    ("sp-0030", "S4"): "The legal and regulatory sources provide at most indirect, partial evidence about licensing elapsed-time floors; they do not empirically prove that licensing lacks an intrinsic process constraint.",
+    ("sp-0030", "S5"): "The legal and regulatory sources inform licensing error tolerance only indirectly and remain domain-sensitive; no completed comparable fusion licence case resolves the issue.",
 }
 
 OWNER_EXCEPTION_ROUTES = {
@@ -363,7 +376,10 @@ def build_coverage_and_claims() -> tuple[list[dict[str, str]], list[dict[str, st
         }
         for index, dim in enumerate(S_DEFINITIONS):
             status = evidence["statuses"][index]
-            claim_text = _claim_text(workflow, dim, status)
+            claim_text = SPECIAL_CLAIM_TEXT.get(
+                (profile_id, dim),
+                _claim_text(workflow, dim, status),
+            )
             if status == "directly supported":
                 claim_type = best_sources[0]["evidence_basis"].split(";")[0]
                 evidence_basis = claim_type
@@ -393,6 +409,10 @@ def build_coverage_and_claims() -> tuple[list[dict[str, str]], list[dict[str, st
                 missing_reason = "bounded_search_no_suitable_source_located_not_evidence_of_absence"
                 next_action = "targeted_primary_source_search_only_if_load_bearing"
             review_route = OWNER_EXCEPTION_ROUTES.get((profile_id, dim), "routine_domain_review_no_owner_action")
+            scope_match = "exact_stage" if directness == "direct" else ("partial" if directness == "indirect" else "not_assessable")
+            lifecycle_match = "matched" if directness == "direct" else ("partial" if directness == "indirect" else "not_assessable")
+            if profile_id == "sp-0020" and dim in {"S2", "S4"}:
+                lifecycle_match = "designed_under_development_not_completed"
             row.update({
                 f"{dim}_status": status,
                 f"{dim}_load_bearing_claim": claim_text,
@@ -413,9 +433,9 @@ def build_coverage_and_claims() -> tuple[list[dict[str, str]], list[dict[str, st
                 "candidate_source_ids": best_ids if directness != "none" else "missing",
                 "support_direction": support_direction,
                 "directness": directness,
-                "scope_match": "exact_stage" if directness == "direct" else ("partial" if directness == "indirect" else "not_assessable"),
+                "scope_match": scope_match,
                 "pathway_match": "frozen_tokamak_pathway" if profile_id not in {"sp-0031"} else "mixed_targets_only",
-                "lifecycle_match": "matched" if directness == "direct" else ("partial" if directness == "indirect" else "not_assessable"),
+                "lifecycle_match": lifecycle_match,
                 "quantitative_value": "missing",
                 "unit": "missing",
                 "denominator": "missing",
@@ -441,8 +461,17 @@ NUMERICAL_CLAIMS = [
     ("sp-0026", "component_fabrication", "S4", "A second one-eighth BEST vacuum-vessel sector passed acceptance and was delivered after the pack cut-off.", "observed facility milestone", "S-CN-MFG", "fusion-src-016", "supports", "direct", "exact_stage", "frozen_tokamak_pathway", "component_fabrication", "1/8", "vessel sector", "second reported sector", "2026-08-14", "Article paragraph 2.", "Not full vessel completion or construction completion."),
     ("sp-0029", "reliability_demonstration", "S4", "W7-X reported 1.8 GJ energy turnover during a 360-second discharge.", "observed experimental result", "S-DE-W7X", "fusion-src-032", "complicates", "direct", "partial", "stellarator_pathway_contrast", "research_device", "1.8", "gigajoules", "energy turnover in a 360-second discharge", "2025 campaign", "Article energy-turnover section.", "Different metric/discharge from the 43-second triple-product result; not availability."),
     ("sp-0028", "commissioning", "S4", "ITER's baseline proposal schedules integrated commissioning in 2033-34 before research operation in 2034.", "official target", "S-ITER-BASE", "fusion-src-036", "supports_with_limits", "direct", "exact_stage", "frozen_tokamak_pathway", "future_international_facility", "2033-2034", "calendar years", "baseline proposal", "current baseline page", "Assembly overview timeline.", "Target schedule, not observed duration or completion."),
-    ("sp-0030", "licensing", "S2", "The NRC proposed rule opened a 90-day public-comment period ending 27 May 2026.", "programme announcement", "S-US-NRC", "fusion-src-039", "supports_with_limits", "direct", "exact_stage", "frozen_tokamak_pathway", "rulemaking_not_licence", "90", "days", "public-comment period", "2026-02-26 to 2026-05-27", "Federal Register Dates section.", "Rulemaking interval is not a plant-licence review duration."),
+    ("sp-0030", "licensing", "S2", "The NRC proposed rule opened a 90-day public-comment period ending 27 May 2026.", "observed legal/regulatory status", "S-US-NRC", "fusion-src-039", "complicates", "direct", "partial", "frozen_tokamak_pathway", "rulemaking_not_licence", "90", "days", "rulemaking public-comment period; not a plant-licence review", "2026-02-26 to 2026-05-27", "Federal Register Dates section.", "Rulemaking interval is not a plant-licence review duration and cannot support a licensing-feedback-speed estimate."),
     ("sp-0031", "grid_integration", "S4", "STEP targets first operations for 2040; this is not an observed grid milestone.", "official target", "S-UK-STEP", "fusion-src-035", "complicates", "direct", "partial", "spherical_tokamak_contrast", "future_program", "2040", "year", "programme target", "living page verified 2026-08-31", "About page section 'Our vision'.", "Undated living page; target is not an outcome."),
+    ("sp-0015", "simulation", "S2", "A conventional HEAT magnetic-shadow calculation could take around 30 minutes for one simulation and longer for complex geometries.", "proof of concept", "unassigned_pack_table", "fusion-src-023", "supports_with_limits", "direct", "exact_stage", "frozen_tokamak_pathway", "geometry_specific_simulation", "30", "minutes", "one SPARC magnetic-shadow simulation", "published 2025-08-13", "PPPL article paragraph 101.", "Calculation time for a small geometry-specific design task is not plant schedule or materials-qualification duration."),
+    ("sp-0015", "simulation", "S2", "HEAT-ML reduced the scoped magnetic-shadow calculation to a few milliseconds.", "proof of concept", "unassigned_pack_table", "fusion-src-023", "supports_with_limits", "direct", "exact_stage", "frozen_tokamak_pathway", "geometry_specific_simulation", "few", "milliseconds", "one SPARC magnetic-shadow calculation", "published 2025-08-13", "PPPL article paragraph 102; linked DOI 10.1016/j.fusengdes.2025.115010.", "The method is tied to 15 tiles in a small part of SPARC's exhaust geometry; no plant-level acceleration is established."),
+    ("sp-0015", "simulation", "S3", "The HEAT-ML neural network used a training database of approximately 1,000 SPARC HEAT simulations.", "proof of concept", "unassigned_pack_table", "fusion-src-023", "supports_with_limits", "direct", "exact_stage", "frozen_tokamak_pathway", "geometry_specific_simulation", "1000", "simulations", "approximately; SPARC HEAT training database", "published 2025-08-13", "PPPL article paragraph 102.", "Training-set size is not an affordability, qualification-throughput, or generic plasma-facing-component outcome."),
+    ("sp-0027", "construction", "S4", "ITER installed the sixth of nine tokamak sector modules during 27-28 July 2026, putting two-thirds of the plasma chamber in place.", "observed facility milestone", "S-ITER-2026", "fusion-src-037", "supports_with_limits", "direct", "exact_stage", "frozen_tokamak_pathway", "construction_not_completion", "6", "sector modules", "nine-module plasma chamber; two-thirds installed", "2026-07-27 to 2026-07-28", "ITER article paragraphs 162 and 167; official road-to-ITER milestone page.", "Observed construction milestone only; not an AI result, completed chamber, commissioning, or plant completion."),
+    ("sp-0028", "commissioning", "S4", "PPPL's living NSTX-U page stated that the Recovery Project was 93% complete when checked on 31 August 2026.", "observed facility milestone", "S-US-NSTXU", "fusion-src-030", "supports_with_limits", "direct", "partial", "frozen_tokamak_pathway", "living_project_status_not_recommissioning", "93", "percent", "NSTX-U Recovery Project status on a mutable living page", "checked 2026-08-31", "PPPL NSTX-U page, section 'Recovery Project'.", "Not completed recommissioning, a fixed historical statistic, or an experimental outcome; recheck on any project-page update."),
+    ("sp-0020", "materials_qualification", "S2", "IFMIF-DONES targets roughly 20-30 dpa over about 2.5 full-power years in approximately 300 cm3.", "official target", "targeted_ifmif_dones", "fusion-src-046", "supports_with_limits", "direct", "exact_stage", "frozen_tokamak_pathway", "designed_under_development_not_completed", "20-30", "dpa", "approximately 300 cm3 high-flux volume", "about 2.5 full-power years", "IAEA technical-meeting contribution, Description paragraph 2.", "Accelerator-driven fusion-like neutron exposure target; not an observed campaign or completed accepted qualification dataset."),
+    ("sp-0020", "materials_qualification", "S2", "IFMIF-DONES targets 50 dpa in about 3 full-power years in approximately 100 cm3.", "official target", "targeted_ifmif_dones", "fusion-src-045;fusion-src-046", "supports_with_limits", "direct", "exact_stage", "frozen_tokamak_pathway", "designed_under_development_not_completed", "50", "dpa", "approximately 100 cm3 high-flux volume", "about 3 full-power years", "IAEA contribution Description paragraph 2; peer-reviewed paper HFTM section, DOI 10.1088/1741-4326/add172.", "A designed irradiation target directly supports a physical time floor but is not a completed dataset."),
+    ("sp-0020", "materials_qualification", "S4", "The IFMIF-DONES qualification chain includes post-irradiation examination after the multi-year HFTM campaign.", "model or scenario estimate", "targeted_ifmif_dones", "fusion-src-045", "supports_with_limits", "direct", "exact_stage", "frozen_tokamak_pathway", "designed_under_development_not_completed", "missing", "missing", "missing", "future programme", "Peer-reviewed paper discussion of post-irradiation tests and TRTM PIE; DOI 10.1088/1741-4326/add172.", "Irradiation duration does not exhaust the qualification timeline; examination and acceptance remain downstream."),
+    ("sp-0020", "materials_qualification", "S3", "IFMIF-DONES material and transmutation matching varies by material: the HFTM is tailored to Eurofer, while tungsten and copper conditions are not perfectly matched.", "model or scenario estimate", "targeted_ifmif_dones", "fusion-src-045", "complicates", "direct", "exact_stage", "frozen_tokamak_pathway", "material_specific_transfer", "missing", "missing", "missing", "facility design", "Peer-reviewed paper Introduction/HFTM discussion; DOI 10.1088/1741-4326/add172.", "Do not generalize one material's dpa and transmutation match to all fusion-grade materials."),
 ]
 
 
@@ -502,24 +531,6 @@ REJECTED_ROWS = [
         "affected_profile_ids": "sp-0027;sp-0028", "affected_s_dimensions": "S2;S3;S4", "last_verified": ACCESS_DATE, "notes": "Do not extrapolate to plant construction or commissioning.",
     },
     {
-        "record_id": "fusion-rej-003", "pack_source_id": "unassigned_pack_table",
-        "candidate_source_id": "fusion-src-023", "title_or_claim": "HEAT-ML simulation claim",
-        "url_or_doi": "https://www.pppl.gov/news/2026", "disposition": "deferred",
-        "reason_code": "unverified_url_or_doi",
-        "reason": "The pack did not provide a stable PPPL article URL or DOI, and the exact publisher page/paper could not be recovered in the bounded pass.",
-        "permitted_limited_use": "Research lead only; no claim support or source-register promotion.",
-        "affected_profile_ids": "sp-0015;sp-0023", "affected_s_dimensions": "S1;S2;S3", "last_verified": ACCESS_DATE, "notes": "Verify exact Fusion Engineering and Design paper before reuse.",
-    },
-    {
-        "record_id": "fusion-rej-004", "pack_source_id": "S-ITER-2026",
-        "candidate_source_id": "fusion-src-037", "title_or_claim": "ITER July 2026 sixth-of-nine sector count",
-        "url_or_doi": "https://www.iter.org/project/assembly-overview", "disposition": "deferred",
-        "reason_code": "unverified_numeric_claim",
-        "reason": "The stable assembly page verifies phase topology but not the pack's July-2026 sixth-of-nine numerical claim; the exact original news page was not recovered.",
-        "permitted_limited_use": "Use the stable page for assembly and commissioning phase definitions only.",
-        "affected_profile_ids": "sp-0026;sp-0027;sp-0028", "affected_s_dimensions": "S2;S3;S4", "last_verified": ACCESS_DATE, "notes": "No numerical promotion without a precise locator.",
-    },
-    {
         "record_id": "fusion-rej-005", "pack_source_id": "S-AI-KSTAR-D3D",
         "candidate_source_id": "fusion-src-019", "title_or_claim": "Simplified 'up to 90%' fusion-performance improvement",
         "url_or_doi": "https://doi.org/10.1038/s41467-024-48415-w", "disposition": "rejected_as_worded",
@@ -527,15 +538,6 @@ REJECTED_ROWS = [
         "reason": "The paper reports several device- and metric-specific changes; the pack's compressed percentage omits the exact metric, denominator, device, and condition.",
         "permitted_limited_use": "Cite the peer-reviewed cross-device experiment qualitatively or extract a metric-specific value with a Results/figure locator.",
         "affected_profile_ids": "sp-0016;sp-0017;sp-0018", "affected_s_dimensions": "S2;S3", "last_verified": ACCESS_DATE, "notes": "The source remains staged; only the simplified number is rejected.",
-    },
-    {
-        "record_id": "fusion-rej-006", "pack_source_id": "S-US-NSTXU",
-        "candidate_source_id": "fusion-src-030", "title_or_claim": "NSTX-U is 93% complete",
-        "url_or_doi": "https://www.pppl.gov/news/2026/delivery-magnet-bundle-signals-new-age-fusion-research", "disposition": "deferred",
-        "reason_code": "unverified_numeric_claim",
-        "reason": "The verified PPPL page supports a central-magnet delivery and a 2027 experiment target, but not the 93% value.",
-        "permitted_limited_use": "Use the verified delivery milestone and target with their exact status labels.",
-        "affected_profile_ids": "sp-0021;sp-0026;sp-0027;sp-0028", "affected_s_dimensions": "S2;S3;S4", "last_verified": ACCESS_DATE, "notes": "Do not infer overall completion percentage.",
     },
     {
         "record_id": "fusion-rej-007", "pack_source_id": "S-CN-CRAFT-TF",
@@ -640,6 +642,69 @@ CHANGE_ROWS = [
         "candidate_source_ids": "fusion-src-040", "source_locator": "Page update footer and rulemaking-milestones table.",
         "notes": "Do not infer licensing throughput from rulemaking status.",
     },
+    {
+        "change_id": "fusion-change-004", "source_or_claim": "PRC Atomic Energy Law final-law locator",
+        "old_status_at_cutoff": "The evidence bank incorrectly cited Article 37 as the final law's fusion-specific regulatory provision.",
+        "current_status": "The final law supports controlled-fusion R&D in Article 14 and establishes fusion-specific supervision plus graded/classified management in Article 39; Article 37 concerns disused radioactive sources.",
+        "change_date": "2025-09-12", "affected_profile_ids": "sp-0030", "affected_s_dimensions": "S2;S3;S4;S5",
+        "materiality": "p1_final_law_locator_correction", "smallest_action": "Replace the mirror and draft-number carryover with the CAEA final text and Articles 14/39.",
+        "candidate_source_ids": "fusion-src-004", "source_locator": "CAEA full text, Articles 14, 37, 39, and 62.",
+        "notes": "Earlier draft numbering differed; never cite draft numbering as the final-law locator.",
+    },
+    {
+        "change_id": "fusion-change-005", "source_or_claim": "HEAT-ML source and numeric locator",
+        "old_status_at_cutoff": "The PPPL locator and linked paper were unresolved, so the claim was deferred.",
+        "current_status": "The exact PPPL page and linked Fusion Engineering and Design DOI verify the scoped 30-minute-to-milliseconds calculation result and approximately 1,000-simulation training set.",
+        "change_date": "2025-08-13", "affected_profile_ids": "sp-0015", "affected_s_dimensions": "S1;S2;S3",
+        "materiality": "p1_locator_and_numeric_resolution", "smallest_action": "Stage fusion-src-023 as a simulation/design proof of concept with geometry limits.",
+        "candidate_source_ids": "fusion-src-023", "source_locator": "PPPL paragraphs 95-103; DOI 10.1016/j.fusengdes.2025.115010.",
+        "notes": "Do not transfer the calculation result to plant schedule, qualification, or generic PFC performance.",
+    },
+    {
+        "change_id": "fusion-change-006", "source_or_claim": "ITER sixth sector-module milestone locator",
+        "old_status_at_cutoff": "The sixth-of-nine July 2026 count lacked a precise original locator and was deferred.",
+        "current_status": "ITER's official article records the 27-28 July lift, the sixth of nine modules, and two-thirds of the plasma chamber in place.",
+        "change_date": "2026-07-29", "affected_profile_ids": "sp-0027", "affected_s_dimensions": "S2;S3;S4",
+        "materiality": "p1_locator_and_numeric_resolution", "smallest_action": "Stage fusion-src-037 as an observed construction/facility milestone only.",
+        "candidate_source_ids": "fusion-src-037", "source_locator": "ITER article paragraphs 162-167 and road-to-ITER milestone page.",
+        "notes": "Not an AI result, commissioning, chamber completion, or plant completion.",
+    },
+    {
+        "change_id": "fusion-change-007", "source_or_claim": "NSTX-U 93% living-page status locator",
+        "old_status_at_cutoff": "The 93% value was not found on the previously used PPPL news article and was deferred.",
+        "current_status": "PPPL's NSTX-U project page states that the Recovery Project is 93% complete as checked 2026-08-31.",
+        "change_date": "2026-08-31", "affected_profile_ids": "sp-0027;sp-0028", "affected_s_dimensions": "S2;S3;S4",
+        "materiality": "p1_locator_and_numeric_resolution", "smallest_action": "Retain the percentage only as mutable project status with a revisit trigger.",
+        "candidate_source_ids": "fusion-src-030", "source_locator": "PPPL NSTX-U page, section 'Recovery Project'.",
+        "notes": "Not completed recommissioning, a fixed historical statistic, or an experimental outcome.",
+    },
+    {
+        "change_id": "fusion-change-008", "source_or_claim": "IFMIF-DONES materials-qualification evidence",
+        "old_status_at_cutoff": "The bank lacked a targeted fusion-like neutron-source design for the materials-qualification time floor.",
+        "current_status": "Peer-reviewed and official programme sources define accelerator-driven fusion-like irradiation, multi-year HFTM targets, material-specific matching, and downstream PIE.",
+        "change_date": "2026-08-31", "affected_profile_ids": "sp-0020", "affected_s_dimensions": "S2;S3;S4",
+        "materiality": "p1_targeted_load_bearing_source_addition", "smallest_action": "Add fusion-src-045 and fusion-src-046 with under-development and no-completed-dataset limits.",
+        "candidate_source_ids": "fusion-src-045;fusion-src-046", "source_locator": "DOI 10.1088/1741-4326/add172; IAEA contribution Description paragraphs 1-2.",
+        "notes": "This improves source coverage without selecting or recoding any S value.",
+    },
+    {
+        "change_id": "fusion-change-009", "source_or_claim": "Licensing S2/S4 evidence overclaim",
+        "old_status_at_cutoff": "Coverage rows treated the legal/rulemaking set as direct support for licensing S2 and S4.",
+        "current_status": "S2 is complicated/unresolved empirically and S4 is only indirect/partial; the 90-day comment period remains explicitly non-comparable to a plant-licence review.",
+        "change_date": "2026-08-31", "affected_profile_ids": "sp-0030", "affected_s_dimensions": "S2;S4",
+        "materiality": "p1_claim_support_correction_not_profile_recode", "smallest_action": "Correct fusion-clm-082 and fusion-clm-084 plus dependent coverage wording.",
+        "candidate_source_ids": "fusion-src-004;fusion-src-039;fusion-src-040;fusion-src-041", "source_locator": "Claim-source map and source limitations.",
+        "notes": "No S value or owner disposition changes.",
+    },
+    {
+        "change_id": "fusion-change-010", "source_or_claim": "Legal/regulatory evidence category",
+        "old_status_at_cutoff": "The final PRC law and NRC rulemaking records were categorized as programme announcements.",
+        "current_status": "The bank now uses observed legal/regulatory status while keeping enacted law, proposed rule, and current rulemaking status distinct.",
+        "change_date": "2026-08-31", "affected_profile_ids": "sp-0030", "affected_s_dimensions": "S2;S3;S4;S5",
+        "materiality": "p1_research_bank_category_correction", "smallest_action": "Update only the research-bank taxonomy and validators.",
+        "candidate_source_ids": "fusion-src-004;fusion-src-039;fusion-src-040", "source_locator": "Final law; Federal Register proposed rule; NRC status page.",
+        "notes": "The global public evidence-basis ontology is unchanged.",
+    },
 ]
 
 
@@ -717,16 +782,34 @@ def bank_pack(source_path: Path) -> None:
     (OUT / "fusion_test_evidence_pack_2026-08-12.md").write_bytes(header + raw)
 
 
-def write_readme() -> None:
+def write_readme(
+    inventory: list[dict[str, str]],
+    claims: list[dict[str, str]],
+    coverage: list[dict[str, str]],
+    staged: list[dict[str, str]],
+) -> None:
+    exception_count = sum(
+        1 for row in claims if row["review_route"] != "routine_domain_review_no_owner_action"
+    )
     text = f"""# Fusion evidence bank
 
 This folder is the issue #35 first-pass source inventory for **The Fusion Test — Evidence Pack for Frontier Is Not Fate**. The banked pack has a research cut-off of **{PACK_CUTOFF}**. It is an internal synthesis and source-discovery map, not a canonical evidence source.
 
 ## What was done
 
-Every candidate in the pack's prioritized source register was checked against an original publisher page, official document, company primary page, or DOI. Chinese claims were checked against original-language primary sources first. The resulting inventory keeps these categories separate: observed experimental result, observed facility milestone, official target, company target, programme announcement, proof of concept, model or scenario estimate, inference, and commentary.
+Every candidate in the pack's prioritized source register was checked against an original publisher page, official document, company primary page, or DOI. Chinese claims were checked against original-language primary sources first. The resulting inventory keeps these categories separate: observed experimental result, observed facility milestone, observed legal/regulatory status, official target, company target, programme announcement, proof of concept, model or scenario estimate, inference, and commentary. The added legal/regulatory category is local to this research bank and does not change the global public evidence-basis ontology.
 
 The outputs do not alter the canonical source register. `staged_source_register_additions_v1.csv` contains only provisional candidate IDs and `review_status=staged`; it is a review queue, not a promotion. Rejected or deferred claims remain visible in `rejected_and_deferred_sources_v1.csv`, including valid sources that do not support the pack's stronger wording.
+
+## Current counts
+
+- Candidate sources: **{len(inventory)}**
+- Proposed staged rows: **{len(staged)}**
+- Atomic claim-source rows: **{len(claims)}**
+- Frozen profile rows: **{len(coverage)}**
+- Rejected/deferred records: **{len(REJECTED_ROWS)}**
+- Refresh/change rows: **{len(CHANGE_ROWS)}**
+- Genuine owner-facing claim exceptions: **{exception_count}**
 
 ## Why source verification is separate from S adjudication
 
@@ -746,7 +829,7 @@ A real source can still be irrelevant to a profile, mismatched to a lifecycle ph
 
 ## Owner exceptions only
 
-The owner is not asked to inspect every uncontested source. The workbook surfaces only seven claim-level exceptions already routed by the authoritative reconciliation inputs: materials-qualification S2/S4 promotion scope, licensing S2/S3/S5 regulatory review, and grid-integration S3/S4 review. A separate HH70 source-characterization correction is shown as a source exception; it does not ask for S adjudication.
+The owner is not asked to inspect every uncontested source. The workbook surfaces only {exception_count} claim-level exceptions already routed by the authoritative reconciliation inputs: materials-qualification S2/S4 promotion scope, licensing S2/S3/S5 regulatory review, and grid-integration S3/S4 review. A separate HH70 source-characterization correction is shown as a source exception; it does not ask for S adjudication. The bounded P1 corrections do not create new owner workload.
 
 ## Exact next gate
 
@@ -764,6 +847,7 @@ def write_report(
     verification_counts = Counter(row["verification_status"] for row in inventory)
     evidence_counts = Counter(row["evidence_basis"] for row in inventory)
     rejection_counts = Counter(row["reason_code"] for row in REJECTED_ROWS)
+    change_counts = Counter(row["materiality"] for row in CHANGE_ROWS)
     coverage_counts = Counter()
     for row in coverage:
         for dim in S_DEFINITIONS:
@@ -792,8 +876,11 @@ Scope: source inventory and verification only
 - Frozen fusion profile coverage rows: **{len(coverage)}**
 - S-dimension coverage cells: **{len(coverage) * len(S_DEFINITIONS)}**
 - Genuine owner-facing claim exceptions: **{exception_count}**
-- Material post-cut-off source changes: **1**
-- Material source-characterization corrections: **1**
+- Refresh/change log rows: **{len(CHANGE_ROWS)}**
+- Material post-cut-off source changes: **{change_counts['material_source_refresh_not_profile_recode']}**
+- Material source-characterization corrections: **{change_counts['material_source_characterization_correction']}**
+- P1 locator/numeric resolutions: **{change_counts['p1_locator_and_numeric_resolution']}**
+- P1 targeted load-bearing source additions: **{change_counts['p1_targeted_load_bearing_source_addition']}**
 
 ## Inventory evidence categories
 
@@ -817,7 +904,7 @@ These are source-coverage statuses, not S values and not a recoding recommendati
 ## Unresolved load-bearing gaps
 
 1. **Experiment selection (sp-0016):** live control and diagnostic papers are adjacent evidence, but no primary study was located that measures an AI-driven reduction in the elapsed or costly physical experiment-selection loop.
-2. **Materials qualification (sp-0020):** no completed, qualification-grade fusion-spectrum neutron programme with an accepted pilot-plant material dataset was located. MPEX is under assembly and does not itself generate a fusion-spectrum neutron field.
+2. **Materials qualification (sp-0020):** IFMIF-DONES directly supports a designed multi-year fusion-like neutron irradiation floor followed by post-irradiation examination, but the facility is under development and no completed, accepted qualification-grade pilot-plant materials dataset was located. MPEX is under assembly and does not itself generate a fusion-spectrum neutron field.
 3. **Plasma-facing components (sp-0023):** no source demonstrates pilot-relevant lifetime under the combined neutron, heat-flux, cycling, erosion, and maintainability envelope.
 4. **Tritium and fuel cycle (sp-0024):** no integrated, self-sufficient breeder/extraction/processing/inventory loop at pilot scale was located.
 5. **Blankets (sp-0025):** ITER's TBM programme is future testing; no integrated power-plant blanket has been qualified in a representative fusion environment.
@@ -833,6 +920,11 @@ These are source-coverage statuses, not S values and not a recoding recommendati
 - **BEST, 14 August 2026:** an official Shanghai SASAC page reports acceptance/delivery of a second one-eighth vacuum-vessel sector and factory ring assembly of a third one-eighth cold-shield sector. This updates component-fabrication evidence only; it does not establish plant completion.
 - **HH70 source characterization:** the original Energy Singularity page does explicitly make the AI-feedback causal claim. Because it supplies no method or independent validation, the correction changes the description of the source but does not promote the claim as an observed AI result.
 - **NRC freshness check, 27 August 2026:** the regulator still lists a proposed rule and draft guidance, not a final fusion rule.
+- **PRC Atomic Energy Law:** the final-law locators are Article 14 for controlled-fusion R&D support and Article 39 for fusion-specific supervision and graded/classified management. Earlier draft numbering is not used as the final-law locator.
+- **Resolved locators:** HEAT-ML, the ITER sixth-sector-module milestone, and the NSTX-U 93% living-page project status now have exact primary locators and are no longer listed as unverified deferrals.
+- **IFMIF-DONES:** two targeted sources add the accelerator-driven fusion-like spectrum, multi-year HFTM targets, post-irradiation examination, and material-specific transmutation limits without implying a completed dataset.
+- **Licensing support:** S2 is complicated/unresolved empirically and S4 is indirect/partial; the NRC's 90-day rulemaking comment period is not treated as a plant-licence review duration.
+- **Research-bank category:** final law and current rulemaking status use `observed legal/regulatory status`; enacted law, proposed rule, and final rule remain distinct.
 
 ## Exact next gate
 
@@ -856,7 +948,7 @@ def main() -> None:
     write_csv(OUT / "staged_source_register_additions_v1.csv", STAGED_HEADER, staged)
     write_csv(OUT / "rejected_and_deferred_sources_v1.csv", REJECTED_HEADER, REJECTED_ROWS)
     write_csv(OUT / "refresh_and_change_log_v1.csv", CHANGE_HEADER, CHANGE_ROWS)
-    write_readme()
+    write_readme(SOURCES, claims, coverage, staged)
     write_report(SOURCES, claims, coverage, staged)
     print(
         f"Built fusion evidence bank: {len(SOURCES)} sources, {len(staged)} staged, "

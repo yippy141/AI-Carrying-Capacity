@@ -4,9 +4,19 @@ This folder is the issue #35 first-pass source inventory for **The Fusion Test â
 
 ## What was done
 
-Every candidate in the pack's prioritized source register was checked against an original publisher page, official document, company primary page, or DOI. Chinese claims were checked against original-language primary sources first. The resulting inventory keeps these categories separate: observed experimental result, observed facility milestone, official target, company target, programme announcement, proof of concept, model or scenario estimate, inference, and commentary.
+Every candidate in the pack's prioritized source register was checked against an original publisher page, official document, company primary page, or DOI. Chinese claims were checked against original-language primary sources first. The resulting inventory keeps these categories separate: observed experimental result, observed facility milestone, observed legal/regulatory status, official target, company target, programme announcement, proof of concept, model or scenario estimate, inference, and commentary. The added legal/regulatory category is local to this research bank and does not change the global public evidence-basis ontology.
 
 The outputs do not alter the canonical source register. `staged_source_register_additions_v1.csv` contains only provisional candidate IDs and `review_status=staged`; it is a review queue, not a promotion. Rejected or deferred claims remain visible in `rejected_and_deferred_sources_v1.csv`, including valid sources that do not support the pack's stronger wording.
+
+## Current counts
+
+- Candidate sources: **46**
+- Proposed staged rows: **44**
+- Atomic claim-source rows: **109**
+- Frozen profile rows: **18**
+- Rejected/deferred records: **11**
+- Refresh/change rows: **10**
+- Genuine owner-facing claim exceptions: **7**
 
 ## Why source verification is separate from S adjudication
 
@@ -26,7 +36,7 @@ A real source can still be irrelevant to a profile, mismatched to a lifecycle ph
 
 ## Owner exceptions only
 
-The owner is not asked to inspect every uncontested source. The workbook surfaces only seven claim-level exceptions already routed by the authoritative reconciliation inputs: materials-qualification S2/S4 promotion scope, licensing S2/S3/S5 regulatory review, and grid-integration S3/S4 review. A separate HH70 source-characterization correction is shown as a source exception; it does not ask for S adjudication.
+The owner is not asked to inspect every uncontested source. The workbook surfaces only 7 claim-level exceptions already routed by the authoritative reconciliation inputs: materials-qualification S2/S4 promotion scope, licensing S2/S3/S5 regulatory review, and grid-integration S3/S4 review. A separate HH70 source-characterization correction is shown as a source exception; it does not ask for S adjudication. The bounded P1 corrections do not create new owner workload.
 
 ## Exact next gate
 

@@ -77,7 +77,8 @@ DIMENSIONS = ["S1", "S2", "S3", "S4", "S5"]
 EVIDENCE_BASES = {
     "observed experimental result", "observed facility milestone", "official target",
     "company target", "programme announcement", "proof of concept",
-    "model or scenario estimate", "inference", "commentary",
+    "model or scenario estimate", "observed legal/regulatory status", "inference",
+    "commentary",
 }
 COVERAGE_STATUSES = {
     "directly supported", "indirectly supported/analogy",
@@ -185,12 +186,12 @@ def validate(package: Path = PACKAGE, *, require_workbook: bool = True) -> None:
     require(inventory_header == INVENTORY_HEADER, "Source inventory header drifted.", errors)
     require(claim_header == CLAIM_HEADER, "Claim-source header drifted.", errors)
     require(staged_header == STAGED_HEADER, "Staged source-register header drifted.", errors)
-    require(len(inventory) == 44, f"Expected 44 source candidates, found {len(inventory)}.", errors)
-    require(len(staged) == 40, f"Expected 40 staged rows, found {len(staged)}.", errors)
-    require(len(claims) == 100, f"Expected 100 atomic claim rows, found {len(claims)}.", errors)
+    require(len(inventory) == 46, f"Expected 46 corrected source candidates, found {len(inventory)}.", errors)
+    require(len(staged) == 44, f"Expected 44 corrected staged rows, found {len(staged)}.", errors)
+    require(len(claims) == 109, f"Expected 109 corrected atomic claim rows, found {len(claims)}.", errors)
     require(len(coverage) == 18, f"Expected exactly 18 profile rows, found {len(coverage)}.", errors)
-    require(len(rejected) == 14, f"Expected 14 rejected/deferred records, found {len(rejected)}.", errors)
-    require(len(changes) == 3, f"Expected 3 refresh/change rows, found {len(changes)}.", errors)
+    require(len(rejected) == 11, f"Expected 11 corrected rejected/deferred records, found {len(rejected)}.", errors)
+    require(len(changes) == 10, f"Expected 10 corrected refresh/change rows, found {len(changes)}.", errors)
     require(_unique(inventory, "candidate_source_id"), "Candidate source IDs are missing or duplicated.", errors)
     require(_unique(claims, "claim_id"), "Claim IDs are missing or duplicated.", errors)
 
@@ -210,6 +211,40 @@ def validate(package: Path = PACKAGE, *, require_workbook: bool = True) -> None:
             text = " ".join([row["key_claims"], row["notes"]]).lower()
             require("ai result" not in text and "ai-driven" not in text, f"source_inventory:{line}: facility milestone presented as AI result", errors)
 
+    law = inventory_by_id.get("fusion-src-004", {})
+    require(law.get("url_or_doi") == "https://www.caea.gov.cn/n6760338/n6760344/n10763762/n10763767/c10704020/content.html", "PRC law must use the CAEA final-text locator.", errors)
+    require(law.get("evidence_basis") == "observed legal/regulatory status", "PRC final law has the wrong research-bank evidence category.", errors)
+    require("Article 39" in law.get("numerical_claims_and_locators", ""), "PRC final law must cite Article 39 for fusion regulation.", errors)
+    require("Article 37" in law.get("limitations", "") and "disused radioactive" in law.get("limitations", ""), "PRC law must record that final Article 37 concerns disused radioactive sources.", errors)
+
+    heat = inventory_by_id.get("fusion-src-023", {})
+    require(heat.get("url_or_doi") == "https://www.pppl.gov/news/2025/finding-shadows-fusion-system-faster-ai", "HEAT-ML exact PPPL locator is missing.", errors)
+    require("10.1016/j.fusengdes.2025.115010" in " ".join(heat.values()), "HEAT-ML linked DOI is missing.", errors)
+    require(heat.get("verification_status") == "verified_peer_reviewed", "HEAT-ML must no longer be unverified.", errors)
+
+    iter_source = inventory_by_id.get("fusion-src-037", {})
+    require(iter_source.get("verification_status") == "verified_official_primary", "ITER sixth-module source must be verified official primary.", errors)
+    require("sixth of nine" in iter_source.get("key_claims", "").lower(), "ITER sixth-of-nine milestone is missing.", errors)
+
+    nstx = inventory_by_id.get("fusion-src-030", {})
+    require(nstx.get("url_or_doi") == "https://www.pppl.gov/nstx-u", "NSTX-U must use the living project page.", errors)
+    require("93%" in nstx.get("numerical_claims_and_locators", ""), "NSTX-U 93% status is missing.", errors)
+    require("Freshness trigger" in nstx.get("notes", ""), "NSTX-U living-page status lacks a freshness trigger.", errors)
+
+    for source_id in ("fusion-src-045", "fusion-src-046"):
+        require(source_id in inventory_by_id, f"Targeted IFMIF-DONES source is missing: {source_id}", errors)
+    ifmif_text = " ".join(
+        " ".join(inventory_by_id[source_id].values())
+        for source_id in ("fusion-src-045", "fusion-src-046")
+        if source_id in inventory_by_id
+    )
+    for required_text in ("20-30 dpa", "2.5 full-power years", "300 cm3", "50 dpa", "3 full-power years", "100 cm3", "post-irradiation", "not perfectly matched"):
+        require(required_text.lower() in ifmif_text.lower(), f"IFMIF-DONES scope is missing: {required_text}", errors)
+
+    for source_id in ("fusion-src-004", "fusion-src-039", "fusion-src-040"):
+        require(inventory_by_id.get(source_id, {}).get("evidence_basis") == "observed legal/regulatory status", f"{source_id} has the wrong legal/regulatory evidence category.", errors)
+    require(inventory_by_id.get("fusion-src-039", {}).get("source_type") == "official_proposed_rule", "NRC proposed rule must remain distinct from final law/rule.", errors)
+
     staged_ids = {row["source_id"] for row in staged}
     expected_staged_ids = {
         row["candidate_source_id"]
@@ -225,6 +260,7 @@ def validate(package: Path = PACKAGE, *, require_workbook: bool = True) -> None:
         require("Provisional candidate ID; not canonical" in row["notes"], f"staged_register:{line}: candidate status not explicit", errors)
 
     owner_exceptions: set[tuple[str, str]] = set()
+    claims_by_id = {row["claim_id"]: row for row in claims}
     for line, row in enumerate(claims, start=2):
         require(row["profile_id"] in PROFILE_IDS, f"claim_map:{line}: profile_id does not resolve", errors)
         require(row["s_dimension"] in DIMENSIONS, f"claim_map:{line}: invalid S dimension", errors)
@@ -246,6 +282,17 @@ def validate(package: Path = PACKAGE, *, require_workbook: bool = True) -> None:
         ("sp-0031", "S3"), ("sp-0031", "S4"),
     }
     require(owner_exceptions == expected_exceptions, f"Owner exception set drifted: {sorted(owner_exceptions)}", errors)
+    licensing_s2 = claims_by_id.get("fusion-clm-082", {})
+    licensing_s4 = claims_by_id.get("fusion-clm-084", {})
+    require(licensing_s2.get("support_direction") == "complicates" and licensing_s2.get("directness") == "indirect", "fusion-clm-082 must not claim direct empirical licensing feedback-speed support.", errors)
+    require(licensing_s4.get("support_direction") == "supports_with_limits" and licensing_s4.get("directness") == "indirect", "fusion-clm-084 must be indirect/partial at most.", errors)
+    nrc_comment = claims_by_id.get("fusion-clm-099", {})
+    require(nrc_comment.get("support_direction") == "complicates", "NRC comment period must complicate, not support, licence-duration inference.", errors)
+    require("not a plant-licence review duration" in nrc_comment.get("counterevidence_or_confounder", ""), "NRC comment-period non-comparability is missing.", errors)
+
+    rejected_candidates = {row["candidate_source_id"] for row in rejected}
+    for resolved_source_id in ("fusion-src-023", "fusion-src-030", "fusion-src-037"):
+        require(resolved_source_id not in rejected_candidates, f"Resolved source remains incorrectly deferred: {resolved_source_id}", errors)
 
     require([row["profile_id"] for row in coverage] == PROFILE_IDS, "Coverage rows must be the ordered frozen profile set sp-0014..sp-0031.", errors)
     require(not any(column in coverage_header for column in DIMENSIONS), "Coverage file may not contain S1-S5 coding value columns.", errors)
