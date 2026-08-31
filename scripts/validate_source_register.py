@@ -5,8 +5,11 @@ from __future__ import annotations
 
 import argparse
 import csv
+import re
 import sys
+from datetime import date
 from pathlib import Path
+from urllib.parse import urlsplit
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -91,6 +94,46 @@ def is_missing(value: str | None) -> bool:
 
 def is_placeholder(row: dict[str, str]) -> bool:
     return (row.get("placeholder") or "").strip().lower() in TRUE_VALUES
+
+
+def has_source_locator(value: str | None) -> bool:
+    """Check locator syntax; actual fusion verification is pinned to its bank."""
+    if is_missing(value):
+        return False
+    value = (value or "").strip()
+    if re.fullmatch(r"(?:doi:)?10\.\d{4,9}/\S+", value, re.IGNORECASE):
+        return True
+    try:
+        locator = urlsplit(value)
+        return (
+            locator.scheme in {"http", "https"}
+            and bool(locator.hostname)
+            and "." in locator.hostname
+            and locator.hostname not in {"example.com", "example.org", "example.net"}
+            and not any(character.isspace() for character in value)
+        )
+    except ValueError:
+        return False
+
+
+def empirical_source_restrictions(source: dict[str, str], evidence_label: str) -> list[str]:
+    """Source review does not make a target or company report an empirical value."""
+    if evidence_label not in {"observed", "estimated"}:
+        return []
+    restrictions = []
+    if source.get("reliability_tier") in {"C", "D", "E"}:
+        restrictions.append("empirical values cannot use tier C/D/E sources")
+    if source.get("method_type") in {"expert_commentary", "placeholder"} or is_placeholder(source):
+        restrictions.append("empirical values cannot use commentary/placeholder sources")
+    if evidence_label == "observed":
+        if source.get("official_claim_status") in {"official_target", "official_program_claim", "mixed"}:
+            restrictions.append("official targets/programme claims cannot be observed empirical outcomes")
+        if source.get("method_type") == "law_or_regulation" or source.get("source_type") == "official_regulator_status_page":
+            restrictions.append("legal/regulatory status is not an observed empirical outcome")
+        if (source.get("independent_validation_status") == "not_independently_validated"
+                and source.get("method_type") in {"corporate_report", "media_report"}):
+            restrictions.append("company/operator reporting is not independently observed empirical evidence")
+    return restrictions
 
 
 def read_rows(path: Path) -> tuple[list[str], list[dict[str, str]]]:
@@ -238,6 +281,17 @@ def validate(path: Path = DEFAULT_SOURCE_REGISTER) -> list[dict[str, str]]:
                 errors.append(
                     f"{path}:{line_number}: reviewed rows require last_verified"
                 )
+            if (row.get("review_status") or "").strip() == "reviewed":
+                if not has_source_locator(row.get("url_or_doi")):
+                    errors.append(f"{path}:{line_number}: reviewed rows require a valid non-placeholder URL/DOI locator")
+                try:
+                    date.fromisoformat(row.get("last_verified") or "")
+                except ValueError:
+                    errors.append(f"{path}:{line_number}: reviewed last_verified must be an ISO date")
+                if (row.get("method_type") == "law_or_regulation"
+                        or row.get("source_type") == "official_regulator_status_page"):
+                    if row.get("official_claim_status") != "not_official_claim":
+                        errors.append(f"{path}:{line_number}: reviewed legal/regulatory records must use not_official_claim")
 
     if errors:
         for error in errors:

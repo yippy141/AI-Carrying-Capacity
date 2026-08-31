@@ -52,6 +52,8 @@ REQUIRED_PATHS = [
     "scripts/validate_design_placeholders_test.py",
     "scripts/validate_fusion_evidence.py",
     "scripts/validate_fusion_evidence_test.py",
+    "scripts/validate_fusion_source_promotion.py",
+    "scripts/validate_fusion_source_promotion_test.py",
     "scripts/build_structural_profiles_workbooks.py",
     "scripts/validate_structural_profiles_worksheet.py",
     "scripts/validate_structural_profiles_worksheet_test.py",
@@ -104,6 +106,8 @@ REQUIRED_PATHS = [
     "research/fusion-evidence/rejected_and_deferred_sources_v1.csv",
     "research/fusion-evidence/refresh_and_change_log_v1.csv",
     "research/fusion-evidence/fusion_source_review_v1.xlsx",
+    "research/fusion-evidence/source_promotion_decisions_v1.csv",
+    "research/fusion-evidence/SOURCE_PROMOTION_NOTE.md",
 ]
 
 EXPECTED_HEADERS = {

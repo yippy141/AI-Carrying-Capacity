@@ -10,6 +10,7 @@ import sys
 from pathlib import Path
 
 from validate_source_register import DEFAULT_SOURCE_REGISTER
+from validate_source_register import empirical_source_restrictions
 from validate_source_register import is_missing
 from validate_source_register import is_placeholder as is_placeholder_source
 from validate_source_register import validate as validate_source_register
@@ -290,6 +291,8 @@ def validate(
                         f"{indicator_catalog}:{line_number}: empirical indicator cannot use "
                         f"placeholder source {source_id}"
                     )
+                for restriction in empirical_source_restrictions(source, evidence_label):
+                    errors.append(f"{indicator_catalog}:{line_number}: {source_id}: {restriction}")
 
         if is_placeholder_indicator(row):
             if missing_reason != "placeholder":

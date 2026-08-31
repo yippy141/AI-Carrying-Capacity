@@ -10,6 +10,16 @@ the M1.5 documentation gate.
 
 Canonical register for reviewed sources. Placeholder rows are non-evidentiary.
 
+Reviewed source identity is not claim, translation, or profile approval. Issue
+#37's fusion records retain stable `fusion-src-*` IDs and banked evidence
+vintages; their promotion date and surviving restrictions are recorded in
+`research/fusion-evidence/source_promotion_decisions_v1.csv`. Legal/regulatory
+records use `not_official_claim`, not programme-claim status. Missing
+translation review does not block verified identity, but direct public
+quotation and load-bearing translated wording remain blocked until the stated
+native-language/specialist review. Company/operator and tier-C source review
+does not authorize independently observed empirical outcomes.
+
 | Field | Meaning |
 | --- | --- |
 | source_id | Stable ID, e.g. `src-0001`. |

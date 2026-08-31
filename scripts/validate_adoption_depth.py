@@ -11,6 +11,11 @@ from collections import defaultdict
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 
+try:
+    from .validate_source_register import empirical_source_restrictions
+except ImportError:  # Direct execution from the scripts directory.
+    from validate_source_register import empirical_source_restrictions
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OBSERVATIONS = ROOT / "data" / "observations" / "adoption_depth.csv"
@@ -327,6 +332,8 @@ def validate(
                 f"{observation_path}:{line_number}: source_id {source_id!r} must be a "
                 "non-placeholder canonical source"
             )
+        for restriction in empirical_source_restrictions(source, row.get("evidence_label", "")):
+            errors.append(f"{observation_path}:{line_number}: {source_id}: {restriction}")
 
         family = _source_family(source, row)
         contexts.append(
