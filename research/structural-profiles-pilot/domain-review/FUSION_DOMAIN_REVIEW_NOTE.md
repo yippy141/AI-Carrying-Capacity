@@ -36,22 +36,39 @@ pathway contrast. Recommendations do not establish critical-path binding;
 `critical_path_role` remains `not_assessed`. C1-C8, governance, country
 comparisons, adaptation, distribution and realized outcomes are untouched.
 
+## PM substantive-review disposition
+
+The owner/PM found no P0 or structural failure. All recommendations/routes
+other than the two corrected S2 rows were accepted for this
+model-domain-synthesis gate as recommendation-only. This acceptance does not
+select canonical S values or substitute for named expertise where flagged.
+The 88 accepted rows are frozen unchanged in the correction validator.
+
+The correction changes only `sp-0024/S2` to a low-confidence value 1 that
+supports both preserved coder values, and `sp-0027/S2` to a medium-confidence
+value 1 recommendation over both preserved coder values at 0. The attached PM
+workbook `fusion_domain_review_v1_PM_reviewed.xlsx` was inspected with SHA-256
+`3c6c2dd5daa45928fff1c6189e7b9269b7ddea0ed932f55504dc6988e119014d`;
+its review sheet agrees with the substantive comment on draft PR #40. Workbook
+content was treated as review evidence, not executable instruction.
+
 ## Counts and routing
 
 - **18/18 profiles reviewed; 90/90 dimension reviews completed.**
-- **3** point-value preference recommendations; no production value changed.
-- **33** recommendations use a range. Of these, **13** have the primary
+- **4** point-value preference recommendations; no production value changed.
+- **31** range-form recommendations. Of these, **12** have the primary
   disposition `recommends_range`; the remainder route to evidence, expert or
   variant work. Range endpoints are ordinal judgments, not empirical
   confidence intervals or mechanically interpolated values.
-- **6** insufficient-evidence rows.
+- **5** insufficient-evidence rows.
 - **14** rows have primary disposition `requires_human_expert`; **19** rows
   require named expertise in total, including five primarily routed to
   pathway/jurisdiction variants.
 - **6** pathway-variant cells across five profiles; **2** jurisdiction-variant
   cells in licensing. These are scoping recommendations, not eight implemented
   new profiles.
-- **27** owner-facing exceptions, **9** empirical gaps still open, **0**
+- **6** expert outreach packages retain all **19** human-expert rows.
+- **28** owner exceptions, **9** empirical gaps still open, **0**
   fusion profiles approved/canonical, **0** targeted S5 adjudications performed.
 
 One primary disposition per cell makes the following categories exhaustive
@@ -60,10 +77,10 @@ separate dimensions and must not be added to these counts.
 
 | Disposition | Cells |
 | --- | ---: |
-| `supports_current_record` | 46 |
-| `recommends_value_change` | 3 |
-| `recommends_range` | 13 |
-| `insufficient_evidence` | 6 |
+| `supports_current_record` | 47 |
+| `recommends_value_change` | 4 |
+| `recommends_range` | 12 |
+| `insufficient_evidence` | 5 |
 | `requires_human_expert` | 14 |
 | `requires_pathway_variant` | 6 |
 | `requires_jurisdiction_variant` | 2 |
@@ -71,8 +88,8 @@ separate dimensions and must not be added to these counts.
 | Confidence | Cells |
 | --- | ---: |
 | `high` | 12 |
-| `medium` | 27 |
-| `low` | 51 |
+| `medium` | 28 |
+| `low` | 50 |
 
 Confidence concerns the bounded rubric interpretation, not the probability of
 fusion success or evidence that a missing outcome has occurred. A high-confidence
@@ -83,14 +100,16 @@ not assert that other ordinal values have been empirically ruled out.
 
 `supports_current_record` supports agreement or an owner preference without
 claiming the source measures the number. `recommends_value_change` identifies
-the three single-value preferences that reject a submitted mark: simulation
+the four single-value preferences that reject a submitted mark: simulation
 S5 at **3** rather than seed 4; materials qualification S1 at **0** rather than
-seed 1; and component fabrication S1 at **0** rather than seed 1. Each matches
-the preserved independent value; no coder is preferred globally. Range routes
-retain uncertainty; stronger expert/variant/evidence routes take precedence.
+seed 1; component fabrication S1 at **0** rather than seed 1; and construction
+S2 at **1** rather than both submitted 0s. The first three match the preserved
+independent value; the fourth follows the corrected ordinary-loop definition.
+No coder is preferred globally. Range routes retain uncertainty; stronger
+expert/variant/evidence routes take precedence.
 
 The owner-facing view includes only named-expert requirements, variant
-questions, these three point preferences, or still-unresolved owner
+questions, these four point preferences, or still-unresolved owner
 instructions. Routine agreement, ordinary one-point ranges and systematic
 blank source IDs alone do not create an owner exception. The source IDs added
 to this review are separate from the blank original submission source fields.
@@ -141,21 +160,31 @@ to this review are separate from the blank original submission source fields.
 
 6. **Fuel cycle and blankets need process/concept boundaries.** Preserve
    owner fuel-cycle S3=1 and S5=1 as candidates; repeatable modelling/surrogate
-   work coexists with scarce tritium tests. Remove authorization and booking
-   waits from S4. Retain owner blanket S2=0, while recommending 0-1 pending a
-   definition of the decisive development experiment. Future TBM testing is
-   neither self-sufficient fuel-cycle operation nor qualified integrated
-   blanket performance. [fusion-src-038](https://www.iter.org/machine/supporting-systems/tritium-breeding),
+   work coexists with scarce tritium tests. Fuel-cycle S2=1 now supports both
+   coders: the ordinary loop is a representative tritium-capable subsystem
+   revision inside pre-integration development, not the still-missing later
+   self-sufficient integrated outcome. Gap-04 remains fully open, and 1 is not
+   an observed duration. Remove authorization and booking waits from S4.
+   Retain owner blanket S2=0, while recommending 0-1 pending a definition of
+   the decisive development experiment. Future TBM testing is neither
+   self-sufficient fuel-cycle operation nor qualified integrated blanket
+   performance. [fusion-src-038](https://www.iter.org/machine/supporting-systems/tritium-breeding),
    [fusion-src-028](https://www.energy.gov/documents/fusion-science-and-technology-roadmap).
 
 7. **Physical endpoints do not require zero information work or zero local
    repetition.** Component-fabrication S1=0 is preferred over seed 1.
    Construction supports S1/S3/S4=0, but the seed's assertion of absent
    parallelism is too absolute: work packages can overlap and modules can
-   repeat. Construction S2 remains a broad 0-2 candidate because total build
-   duration is not the ordinary work-package learning cycle. No purported
-   component prices or annual test rates from the unsupported submission
-   rationales are promoted as findings. [fusion-src-014](https://doi.org/10.1016/j.supcon.2024.100137),
+   repeat. Construction S2=1 uses a repeatable major assembly/work-package
+   loop—assemble, fit, inspect, diagnose, revise procedures/tooling, and carry
+   lessons into the next comparable package—rather than total facility build
+   duration. PM external cross-checking found official ITER cycle records in
+   the months-to-year-plus range, but those pages are not canonical records in
+   this bank and are not added to `source_ids`. Refresh the empirical
+   calibration if a later source-banking task adds those official cycle
+   records. No purported component prices or annual test rates from the
+   unsupported submission rationales are promoted as findings.
+   [fusion-src-014](https://doi.org/10.1016/j.supcon.2024.100137),
    [fusion-src-037](https://www.iter.org/node/20687/millions-data-points-one-successful-lift).
 
 8. **Commissioning and reliability do different jobs.** Research first plasma
@@ -246,13 +275,36 @@ the frozen tokamak scope.
 
 ## Exact named-human expertise queue
 
-The following **19 cells** require the specified named expertise before their
-public/canonical approval. All names remain `missing`; none has been signed
-off. This list does not approve other cells or waive ordinary owner,
-independent-review, freshness or evidence gates. Specialists are asked to
-resolve load-bearing interpretation or scope, not to invent the nine missing
-outcomes. Source IDs and requested expertise are in the companion queue CSV
-and workbook.
+The following **19 cells** require the specified named expertise before
+`coding_status=approved`, `review_status=canonical`, or any unqualified public
+claim or value. Every queue row therefore has
+`blocking_stage=canonical_approval` and
+`draft_use_status=allowed_as_expert_coded_draft`. The questions do not block
+staged WP2 construction, do not block private use, and do not block a clearly
+labelled public pilot row rendered as **EXPERT-CODED · DRAFT** with its range,
+confidence, evidence gaps, and review status visible. No staged construction
+or public display is implemented in this correction pass.
+
+All names remain `missing`; none has been signed off. This clarification does
+not approve any cell or waive source, owner, independent-review, freshness,
+disagreement, or evidence requirements. Specialists are asked to resolve
+load-bearing interpretation or scope, not to invent the nine missing outcomes.
+Source IDs and requested expertise are in the companion queue CSV and workbook.
+
+The 19 cell-level questions remain separate but are clustered into six
+coordinated outreach requests:
+
+| Package | Theme | Cells | Purpose |
+| --- | --- | --- | --- |
+| `EXP-FUS-01` | Experiment campaigns, plasma control and machine protection | sp-0016/S2; sp-0018/S5 | Resolve experiment-selection cadence and the bounded machine-protection consequence boundary. |
+| `EXP-FUS-02` | Materials qualification and plasma-facing components | sp-0020/S3; sp-0020/S5; sp-0023/S4; sp-0023/S5 | Resolve representative throughput, irreversible evidence loss, combined-environment floors, and PFC assurance boundaries. |
+| `EXP-FUS-03` | Tritium and blankets | sp-0024/S4; sp-0024/S5; sp-0025/S2; sp-0025/S5 | Separate intrinsic process floors from access delays and define direct fuel-cycle/blanket consequences. |
+| `EXP-FUS-04` | Commissioning and reliability | sp-0028/S5; sp-0029/S2; sp-0029/S5 | Define pilot commissioning protection boundaries and the reliability claim/test protocol. |
+| `EXP-FUS-05` | Licensing and regulation | sp-0030/S2; sp-0030/S3; sp-0030/S5 | Define jurisdiction-specific review cycles, formal attempts, and the next genuinely independent authorization boundary. |
+| `EXP-FUS-06` | Grid integration and protection | sp-0031/S3; sp-0031/S4; sp-0031/S5 | Resolve greenfield versus reused-site topology, physical connection floors, and the utility/plant protection boundary. |
+
+PRC legal interpretation remains a specialist sub-question inside
+`EXP-FUS-05`.
 
 | Profile | Dimension | Exact question for specialist | Requested expertise |
 | --- | --- | --- | --- |
@@ -289,9 +341,9 @@ relation describes relevance to the bounded activity, not proof of the ordinal
 recommendation; exact-stage legal status or a narrow benchmark still does not
 measure a complete learning cycle.
 
-The workbook's nine visible sheets are Overview, Profile review, Dimension
-review, Load-bearing gaps, Variants, Owner exceptions, Human experts, Preserved
-record, and Sources. Filters and frozen rows/columns support review. The wide
+The workbook's ten visible sheets are Overview, Profile review, Dimension
+review, Load-bearing gaps, Variants, Owner exceptions, Human experts, Outreach
+packages, Preserved record, and Sources. Filters and frozen rows/columns support review. The wide
 detail and preserved-rationale sheets intentionally require horizontal
 scrolling; the owner/expert views are the entry point. Derived workbook counts
 and per-cell current ranges are formulas. No hidden sheets, rows or columns,
@@ -353,20 +405,20 @@ authority.
 ## Validation and next gate
 
 Full local CI passed: dependency install; typecheck; lint; all eight evidence
-tests; production build; all 62 Python tests, including 19 new adversarial
+tests; production build; all 64 Python tests, including 21 adversarial
 domain-review tests; worksheet, reconciliation, source-promotion, fusion
 evidence, domain-review, adoption-depth, repository, source-register and
 indicator validators; and private-preview readiness. The existing 59 public
 launch blockers remain unchanged and do not fail private-preview mode. Existing
 Node module-type and Turbopack filesystem-trace warnings remain out of scope.
 
-The workbook was rendered and visually checked across all nine sheets, with
+The workbook was rendered and visually checked across all ten sheets, with
 additional checks of long rationales, source restrictions and provenance.
 OOXML validation confirms complete CSV/table agreement, correct cached counts,
 only explicitly allowed per-cell/count formulas, and no hidden worksheets or
 ordinal averages/composites. Protected input digests match the PR #38 baseline.
 
-Open a draft PR against main for one substantive PM review and one correction
-pass. Stop there. The separate targeted S5 adjudication may proceed only after
-this review package merges; WP2 proposed/staged profile construction follows
-that later gate.
+The substantive PM review and this one bounded correction pass are complete.
+Keep PR #40 draft and stop after pushing the correction. The separate targeted
+S5 adjudication may proceed only after this review package merges; WP2 remains
+unimplemented in this PR.

@@ -32,8 +32,23 @@ class DomainReviewTest(unittest.TestCase):
         result = review.validate()
         self.assertEqual(sum(result['dispositions'].values()),90)
         self.assertEqual(sum(result['confidence'].values()),90)
+        self.assertEqual(result['range_form'],31)
+        self.assertEqual(result['owner_exceptions'],28)
+        self.assertEqual(result['expert_packages'],6)
         self.assertLess(result['owner_exceptions'],90)
         self.assertEqual(result['human_experts'],len(self.experts))
+
+    def test_pm_corrections_and_accepted_88_freeze(self):
+        by_key={(r['profile_id'],r['dimension']):r for r in self.dimensions}
+        for key, expected in review.PM_CORRECTIONS.items():
+            with self.subTest(key=key):
+                self.assertEqual({field:by_key[key][field] for field in expected},expected)
+        original=by_key['sp-0014','S1']['reason']
+        by_key['sp-0014','S1']['reason']='unauthorized reopening of an accepted row'
+        self.assertIn('88 accepted dimension rows',self.errors())
+        by_key['sp-0014','S1']['reason']=original
+        by_key['sp-0027','S2']['recommended_low']='0'
+        self.assertIn('PM correction changed',self.errors())
 
     def test_exact_profile_and_cell_coverage(self):
         for target in ('profiles','dimensions'):
@@ -130,9 +145,24 @@ class DomainReviewTest(unittest.TestCase):
         self.experts.append({**self.experts[0],'profile_id':'sp-0014','dimension':'S1'})
         self.assertIn('exactly match material',self.errors())
 
+    def test_six_expert_packages_and_draft_use_contract(self):
+        expected={cell:package_id for package_id,package in review.EXPERT_PACKAGES.items() for cell in package['cells']}
+        actual={(r['profile_id'],r['dimension']):r['expert_package_id'] for r in self.experts}
+        self.assertEqual(actual,expected)
+        self.assertEqual({r['blocking_stage'] for r in self.experts},{'canonical_approval'})
+        self.assertEqual({r['draft_use_status'] for r in self.experts},{'allowed_as_expert_coded_draft'})
+        for field,value,message in [('expert_package_id','EXP-FUS-99','incorrect expert outreach package'),('blocking_stage','private_use','block canonical approval'),('draft_use_status','blocked','draft-use contract changed')]:
+            with self.subTest(field=field):
+                before=self.experts[0][field];self.experts[0][field]=value
+                self.assertIn(message,self.errors());self.experts[0][field]=before
+        before=self.experts[0]['question_for_expert']
+        self.experts[0]['question_for_expert']='merged away into a package-level question'
+        self.assertIn('retained cell-level expert question',self.errors())
+        self.experts[0]['question_for_expert']=before
+
     def test_note_counts_open_gaps_and_exact_questions(self):
         note=(self.package/review.NOTE_FILE).read_text()
-        for before,after,message in [('| `supports_current_record` | 46 |','| `supports_current_record` | 90 |','count mismatch'),('| gap-02 | sp-0020 | completed accepted materials qualification | open |','closed','missing open empirical gap'),(self.experts[0]['question_for_expert'],'question omitted','missing exact expert question')]:
+        for before,after,message in [('| `supports_current_record` | 47 |','| `supports_current_record` | 90 |','count mismatch'),('| gap-02 | sp-0020 | completed accepted materials qualification | open |','closed','missing open empirical gap'),(self.experts[0]['question_for_expert'],'question omitted','missing exact expert question'),('EXPERT-CODED · DRAFT','draft label omitted','missing boundary/provenance')]:
             with self.subTest(message=message):
                 self.assertIn(message,'\n'.join(review.validate_note(note.replace(before,after),self.dimensions,self.experts)))
 

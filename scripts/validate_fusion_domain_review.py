@@ -61,7 +61,8 @@ prior_coverage_status s5_next_boundary s5_bounded_consequence s5_excluded_conseq
 s5_boundary_status s5_backlog_status s5_adjudication_performed named_expert_required
 variant_type variant_question owner_exception""".split()) | PROVENANCE.keys()
 EXPERT_FIELDS = set("""profile_id dimension question_for_expert why_load_bearing source_ids
-requested_expertise named_reviewer status reviewer_type""".split())
+requested_expertise named_reviewer status reviewer_type expert_package_id blocking_stage
+draft_use_status""".split())
 ASSESSMENT_FIELDS = """dimension_review_id seed_value independent_value owner_disposition
 current_range_low current_range_high source_ids evidence_relation technical_assessment
 recommended_low recommended_high recommendation_confidence disposition reason revisit_trigger""".split()
@@ -75,6 +76,60 @@ GAPS = {
     "sp-0029": ("gap-07", "commercial reliability/availability"),
     "sp-0030": ("gap-08", "comparable completed fusion licensing"),
     "sp-0031": ("gap-09", "observed fusion grid export"),
+}
+ACCEPTED_88_DIGEST = "5b890c585935666497830380d19aba2da2914ec7076a0aea80adf90e2819c994"
+EXPERT_QUESTION_DIGEST = "572eb98d132085e91cfb13359aede7eebdafc0c66fbcac74c1a7a68fdc8433ab"
+EXPERT_QUESTION_FIELDS = ('profile_id','dimension','question_for_expert','why_load_bearing',
+                          'source_ids','requested_expertise','named_reviewer','status','reviewer_type')
+PM_CORRECTIONS = {
+    ('sp-0024','S2'): {
+        'recommended_low':'1', 'recommended_high':'1',
+        'disposition':'supports_current_record', 'recommendation_confidence':'low',
+        'owner_exception':'false', 'source_ids':'fusion-src-038;fusion-src-028',
+    },
+    ('sp-0027','S2'): {
+        'recommended_low':'1', 'recommended_high':'1',
+        'disposition':'recommends_value_change', 'recommendation_confidence':'medium',
+        'owner_exception':'true', 'source_ids':'fusion-src-037;fusion-src-036',
+    },
+}
+EXPERT_PACKAGES = {
+    'EXP-FUS-01': {
+        'theme':'Experiment campaigns, plasma control and machine protection',
+        'cells':(('sp-0016','S2'),('sp-0018','S5')),
+        'primary_expertise':'Tokamak campaign scientist; plasma-control and machine-protection engineer',
+        'purpose':'Resolve experiment-selection cadence and the bounded machine-protection consequence boundary.',
+    },
+    'EXP-FUS-02': {
+        'theme':'Materials qualification and plasma-facing components',
+        'cells':(('sp-0020','S3'),('sp-0020','S5'),('sp-0023','S4'),('sp-0023','S5')),
+        'primary_expertise':'Fusion irradiation/materials-qualification and plasma-material-interaction specialists',
+        'purpose':'Resolve representative throughput, irreversible evidence loss, combined-environment floors, and PFC assurance boundaries.',
+    },
+    'EXP-FUS-03': {
+        'theme':'Tritium and blankets',
+        'cells':(('sp-0024','S4'),('sp-0024','S5'),('sp-0025','S2'),('sp-0025','S5')),
+        'primary_expertise':'Tritium processing/confinement and blanket engineering/test-safety specialists',
+        'purpose':'Separate intrinsic process floors from access delays and define direct fuel-cycle/blanket consequences.',
+    },
+    'EXP-FUS-04': {
+        'theme':'Commissioning and reliability',
+        'cells':(('sp-0028','S5'),('sp-0029','S2'),('sp-0029','S5')),
+        'primary_expertise':'Fusion commissioning, nuclear/tritium systems safety, reliability and maintainability specialists',
+        'purpose':'Define pilot commissioning protection boundaries and the reliability claim/test protocol.',
+    },
+    'EXP-FUS-05': {
+        'theme':'Licensing and regulation',
+        'cells':(('sp-0030','S2'),('sp-0030','S3'),('sp-0030','S5')),
+        'primary_expertise':'Fusion licensing practitioner/regulator; qualified Chinese legal reviewer for PRC wording',
+        'purpose':'Define jurisdiction-specific review cycles, formal attempts, and the next genuinely independent authorization boundary.',
+    },
+    'EXP-FUS-06': {
+        'theme':'Grid integration and protection',
+        'cells':(('sp-0031','S3'),('sp-0031','S4'),('sp-0031','S5')),
+        'primary_expertise':'Grid-interconnection, power-plant electrical, construction/commissioning, and protection engineers',
+        'purpose':'Resolve greenfield versus reused-site topology, physical connection floors, and the utility/plant protection boundary.',
+    },
 }
 FROZEN_TREES = {
     "data": "156c6f8c2b0923cdb869bfc2e64eb56842763184285562e44aed47056eaa77a6",
@@ -172,6 +227,29 @@ def validate_records(profiles: list[dict[str, str]], dimensions: list[dict[str, 
     coverage = {r['profile_id']: r for r in read_rows(root / BANK / 'profile_evidence_coverage_v1.csv')}
     stages = {r['stage_id']: r for r in read_rows(root / 'research/structural-profiles-pilot/worksheet/stages.csv')}
     by_key = {key(r): r for r in dimensions}
+    accepted = [r for r in dimensions if key(r) not in PM_CORRECTIONS]
+    accepted_digest = hashlib.sha256(json.dumps(
+        accepted, ensure_ascii=False, sort_keys=True, separators=(',',':')
+    ).encode()).hexdigest()
+    check(len(accepted) == 88 and accepted_digest == ACCEPTED_88_DIGEST,
+          'PM correction pass changed one of the 88 accepted dimension rows')
+    for correction_key, expected in PM_CORRECTIONS.items():
+        row = by_key[correction_key]
+        for field, value in expected.items():
+            check(row[field] == value, f'{correction_key}: PM correction changed ({field})')
+    construction = by_key['sp-0027','S2']
+    check('ordinary learn-test-revise cycle' in construction['technical_assessment'] and
+          'major assembly/work-package loop' in construction['technical_assessment'] and
+          'not canonical here' in construction['technical_transferability'],
+          'sp-0027/S2: PM construction learning-unit rationale or evidence boundary lost')
+    check(construction['revisit_trigger'] ==
+          'Revisit if a different construction learning unit is frozen, or if reviewed work-package/module cycle data support a materially different ordinary loop.',
+          'sp-0027/S2: PM revisit trigger changed')
+    fuel_cycle = by_key['sp-0024','S2']
+    check('gap-04' in fuel_cycle['technical_assessment'] and
+          'pre-integration development stage' in fuel_cycle['technical_assessment'] and
+          fuel_cycle['unresolved_gap_ids'] == 'gap-04',
+          'sp-0024/S2: pre-integration boundary or open gap-04 lost')
     for r in profiles + dimensions:
         p = r['profile_id']
         for field in ('stage_id', 'workflow', 'pathway_id', 'application_context', 'lifecycle_phase'):
@@ -259,28 +337,68 @@ def validate_records(profiles: list[dict[str, str]], dimensions: list[dict[str, 
                 errors.append(f'{p}/{d}: malformed profile assessment')
     expected_experts = {key(r) for r in dimensions if r['named_expert_required'] == 'true'}
     check({key(r) for r in experts} == expected_experts, 'Human-expert queue must exactly match material named-expert cells')
+    expected_package_by_cell = {
+        cell: package_id for package_id, package in EXPERT_PACKAGES.items()
+        for cell in package['cells']
+    }
+    check(len(expected_package_by_cell) == 19 and len(experts) == 19,
+          'Exactly 19 cell questions in six expert packages required')
+    question_digest = hashlib.sha256(json.dumps(
+        [{field:r[field] for field in EXPERT_QUESTION_FIELDS} for r in experts],
+        ensure_ascii=False, sort_keys=True, separators=(',',':')
+    ).encode()).hexdigest()
+    check(question_digest == EXPERT_QUESTION_DIGEST,
+          'PM correction pass changed or deleted a retained cell-level expert question')
     for r in experts:
         c = by_key.get(key(r), {})
         check(r['source_ids'] == c.get('source_ids'), f'{key(r)}: expert source IDs mismatch')
         check(r['named_reviewer'] == 'missing' and r['status'] == 'pending_named_specialist' and r['reviewer_type'] == 'model_domain_synthesis', f'{key(r)}: false named-human sign-off')
+        check(r['expert_package_id'] == expected_package_by_cell.get(key(r)),
+              f'{key(r)}: incorrect expert outreach package')
+        check(r['blocking_stage'] == 'canonical_approval',
+              f'{key(r)}: expert question must block canonical approval')
+        check(r['draft_use_status'] == 'allowed_as_expert_coded_draft',
+              f'{key(r)}: labelled draft-use contract changed')
         for field in ('question_for_expert','why_load_bearing','requested_expertise'):
             check(len(r[field].strip()) > 20, f'{key(r)}: inadequate expert {field}')
+    prc_expert = next((r['requested_expertise'] for r in experts
+                       if key(r) == ('sp-0030','S2')), '')
+    check('qualified Chinese legal reviewer' in prc_expert,
+          'EXP-FUS-05: PRC legal specialist sub-question lost')
+    expected_dispositions = {
+        'supports_current_record':47, 'recommends_value_change':4,
+        'recommends_range':12, 'insufficient_evidence':5,
+        'requires_human_expert':14, 'requires_pathway_variant':6,
+        'requires_jurisdiction_variant':2,
+    }
+    expected_confidence = {'high':12,'medium':28,'low':50}
+    check(dict(Counter(r['disposition'] for r in dimensions)) == expected_dispositions,
+          'PM disposition counts changed')
+    check(dict(Counter(r['recommendation_confidence'] for r in dimensions)) == expected_confidence,
+          'PM confidence counts changed')
+    check(sum(r['recommended_low'] != r['recommended_high'] for r in dimensions) == 31,
+          'PM range-form count changed')
+    check(sum(r['owner_exception'] == 'true' for r in dimensions) == 28,
+          'PM owner-exception count changed')
     return errors
 
 
-def counts(dimensions: list[dict[str, str]]) -> dict:
+def counts(dimensions: list[dict[str, str]], experts: list[dict[str, str]] | tuple = ()) -> dict:
     return {
         'dispositions': Counter(r['disposition'] for r in dimensions),
         'confidence': Counter(r['recommendation_confidence'] for r in dimensions),
         'range_form': sum(r['recommended_low'] != r['recommended_high'] for r in dimensions),
         'human_experts': sum(r['named_expert_required'] == 'true' for r in dimensions),
+        'expert_packages': len({r['expert_package_id'] for r in experts}),
         'owner_exceptions': sum(r['owner_exception'] == 'true' for r in dimensions),
     }
 
 
 def validate_note(note: str, dimensions: list[dict[str, str]], experts: list[dict[str, str]]) -> list[str]:
     errors = []
-    for category, value in (counts(dimensions)['dispositions'] | counts(dimensions)['confidence']).items():
+    normalized_note = re.sub(r'\s+', ' ', note)
+    summary = counts(dimensions,experts)
+    for category, value in (summary['dispositions'] | summary['confidence']).items():
         if f'| `{category}` | {value} |' not in note:
             errors.append(f'Review note count mismatch: {category}')
     for p, (gid, name) in GAPS.items():
@@ -289,10 +407,25 @@ def validate_note(note: str, dimensions: list[dict[str, str]], experts: list[dic
     for r in experts:
         if f"| {r['profile_id']} | {r['dimension']} | {r['question_for_expert']} |" not in note:
             errors.append(f"Review note missing exact expert question: {r['profile_id']}/{r['dimension']}")
+    for package_id, package in EXPERT_PACKAGES.items():
+        cells = '; '.join(f'{p}/{d}' for p,d in package['cells'])
+        if f'| `{package_id}` | {package["theme"]} | {cells} |' not in note:
+            errors.append(f'Review note missing expert outreach package: {package_id}')
     for required in ('model_domain_synthesis', 'gpt-5.6-sol', 'xhigh', 'not human expert sign-off',
-                     'No S-value was written', 'No WP2 implementation', '3c8987175f6975347cc01a768c21d3386ff27cd6'):
-        if required not in note:
+                     'No S-value was written', 'No WP2 implementation', '3c8987175f6975347cc01a768c21d3386ff27cd6',
+                     'EXPERT-CODED · DRAFT', 'blocking_stage=canonical_approval',
+                     'draft_use_status=allowed_as_expert_coded_draft',
+                     'do not block staged WP2 construction', 'do not block private use',
+                     'unqualified public claim or value',
+                     'All recommendations/routes other than the two corrected S2 rows were accepted'):
+        if required not in normalized_note:
             errors.append(f'Review note missing boundary/provenance: {required}')
+    for label, value in (('range-form recommendations',summary['range_form']),
+                         ('human-expert rows',summary['human_experts']),
+                         ('expert outreach packages',summary['expert_packages']),
+                         ('owner exceptions',summary['owner_exceptions'])):
+        if f'**{value}** {label}' not in note:
+            errors.append(f'Review note count mismatch: {label}')
     return errors
 
 
@@ -321,8 +454,13 @@ def workbook_tables(profiles, dimensions, experts, root=ROOT) -> dict:
         profile_rows.append([p['profile_id'],p['workflow'],p['lifecycle_phase'],p['frozen_scope'],*summaries,p['unresolved_gap_ids'],p['unresolved_gaps'],p['source_ids'],p['pathway_id'],p['application_context'],p['critical_path_role']])
     tables['Profile review'] = (['Profile ID','Workflow','Lifecycle','Frozen scope','S1 assessment','S2 assessment','S3 assessment','S4 assessment','S5 assessment','Open gap IDs','Unresolved empirical gaps','Canonical source IDs','Pathway','Application context','Critical path role'], profile_rows)
     tables['Human experts'] = (
-        ['Profile ID','Dimension','Question for named specialist','Why load-bearing','Canonical source IDs','Requested expertise','Named reviewer','Status'],
-        [[r[k] for k in ('profile_id','dimension','question_for_expert','why_load_bearing','source_ids','requested_expertise','named_reviewer','status')] for r in experts],
+        ['Profile ID','Dimension','Outreach package','Question for named specialist','Why load-bearing','Canonical source IDs','Requested expertise','Blocking stage','Draft-use status','Named reviewer','Status'],
+        [[r[k] for k in ('profile_id','dimension','expert_package_id','question_for_expert','why_load_bearing','source_ids','requested_expertise','blocking_stage','draft_use_status','named_reviewer','status')] for r in experts],
+    )
+    tables['Outreach packages'] = (
+        ['Package ID','Theme','Cell-level questions','Question count','Primary expertise','Blocking stage','Draft-use status','Purpose'],
+        [[package_id,package['theme'],'; '.join(f'{p}/{d}' for p,d in package['cells']),len(package['cells']),package['primary_expertise'],'canonical_approval','allowed_as_expert_coded_draft',package['purpose']]
+         for package_id,package in EXPERT_PACKAGES.items()],
     )
     tables['Variants'] = (
         ['Profile ID','Dimension','Variant type','Recommended interval','Scope question for later work','Technical constraint','Canonical source IDs'],
@@ -372,7 +510,7 @@ def validate_workbook(path: Path, profiles, dimensions, experts, root=ROOT) -> l
     ns = {'s':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
     rns = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships'
     expected = workbook_tables(profiles,dimensions,experts,root)
-    summary = counts(dimensions)
+    summary = counts(dimensions,experts)
     formula_cells = {}
     for i, _ in enumerate(dimensions,5):
         for col, formula in [('E',f'MIN(C{i}:D{i})'),('F',f'MAX(C{i}:D{i})'),('J',f'IF(H{i}=I{i},"value","range")')]:
@@ -384,6 +522,7 @@ def validate_workbook(path: Path, profiles, dimensions, experts, root=ROOT) -> l
         'B7': ('COUNTIF(\'Dimension review\'!J5:J94,"range")',summary['range_form']),
         'B8': (f"COUNTA('Human experts'!A5:A{len(experts)+4})",len(experts)),
         'B9': (f"COUNTA('Owner exceptions'!A5:A{summary['owner_exceptions']+4})",summary['owner_exceptions']),
+        'B10': ("COUNTA('Outreach packages'!A5:A10)",summary['expert_packages']),
     }
     disposition_order = ['supports_current_record','recommends_value_change','recommends_range','insufficient_evidence','requires_human_expert','requires_pathway_variant','requires_jurisdiction_variant']
     for i, d in enumerate(disposition_order,12):
@@ -398,8 +537,8 @@ def validate_workbook(path: Path, profiles, dimensions, experts, root=ROOT) -> l
         if 'xl/sharedStrings.xml' in archive.namelist():
             shared = [''.join(si.itertext()) for si in ET.fromstring(archive.read('xl/sharedStrings.xml'))]
         sheet_nodes = book.findall('s:sheets/s:sheet',ns)
-        if {s.attrib['name'] for s in sheet_nodes} != set(expected) | {'Overview'} or len(sheet_nodes)!=9:
-            return ['Workbook must contain exactly the nine documented visible review sheets']
+        if {s.attrib['name'] for s in sheet_nodes} != set(expected) | {'Overview'} or len(sheet_nodes)!=10:
+            return ['Workbook must contain exactly the ten documented visible review sheets']
         if book.find('s:definedNames',ns) is not None or any('externalLink' in name or 'vbaProject' in name for name in archive.namelist()):
             errors.append('Workbook contains unapproved named/linked/hidden computation')
         seen_formulas = set()
@@ -467,7 +606,7 @@ def validate(root: Path = ROOT) -> dict:
         errors.extend(validate_workbook(package / WORKBOOK_FILE,profiles,dimensions,experts,root))
     if errors:
         raise DomainReviewValidationError('\n'.join(errors))
-    return counts(dimensions)
+    return counts(dimensions,experts)
 
 
 if __name__ == '__main__':

@@ -752,3 +752,31 @@ outcome, transferability, or a numeric S value. A structured model synthesis
 can make technical disagreements and missing evidence reviewable without
 manufacturing closure. Submit a draft for one substantive PM review and one
 correction pass; targeted S5 adjudication and WP2 remain later gates.
+
+## 2026-09-03: Adopt the bounded PM correction to fusion domain synthesis
+
+Decision: Accept 88 of 90 issue #39 profile-dimension recommendations and
+routes unchanged as `recommendation_only`. Correct only construction S2
+(`sp-0027/S2`) from 0-2 to a medium-confidence 1/value-change recommendation
+and pre-integration tritium/fuel-cycle S2 (`sp-0024/S2`) from 0-1 to a
+low-confidence 1 supporting both original coders. Preserve both submitted
+zeros for construction, both submitted ones for fuel-cycle development, all
+original rationales, owner dispositions, source IDs and protected inputs.
+Gap-04 remains open. The PM's official ITER construction-cycle cross-check is
+context for the correction, not a canonical source addition; refresh empirical
+calibration only through a later source-banking task.
+
+Retain all 19 cell-level specialist questions, grouped into six coordinated
+outreach packages. Each blocks `coding_status=approved`,
+`review_status=canonical` and unqualified public use. It does not block private
+use, staged WP2 construction, or public-pilot display that visibly renders
+`EXPERT-CODED · DRAFT` with range, confidence, evidence gaps and review status.
+This clarification does not waive source, owner, independent-review, freshness,
+disagreement or evidence requirements.
+
+Reasoning: S2 measures the ordinary learn-test-revise cycle inside the frozen
+stage. A repeatable major construction work-package loop supports 1 without
+using total facility duration, while the missing integrated self-sufficient
+fuel-cycle outcome belongs after the frozen pre-integration development loop.
+The correction improves scope fidelity and expert-outreach usability without
+reopening M1.5, selecting a canonical value, adjudicating S5, or starting WP2.
