@@ -67,6 +67,12 @@ jobs:
       - name: Validate fusion source promotion
         run: python3 scripts/validate_fusion_source_promotion.py
 
+      - name: Test fusion domain review guardrails
+        run: python3 -m unittest scripts/validate_fusion_domain_review_test.py
+
+      - name: Validate fusion domain review package
+        run: python3 scripts/validate_fusion_domain_review.py
+
       - name: Validate fusion evidence package
         run: python3 scripts/validate_fusion_evidence.py
 
