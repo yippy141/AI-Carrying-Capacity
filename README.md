@@ -1,5 +1,7 @@
 # Frontier Is Not Fate
 
+Current project checkpoint and task-start instructions: `docs/PROJECT_STATE.md`.
+
 **Frontier Is Not Fate** is an editorial web study of how accessible AI
 capability becomes—or fails to become—national capacity. The **AI Conversion
 Atlas** is the evidence system underneath it.

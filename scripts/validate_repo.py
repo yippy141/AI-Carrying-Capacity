@@ -23,6 +23,10 @@ from validate_fusion_domain_review import (
     DomainReviewValidationError,
     validate as validate_fusion_domain_review,
 )
+from validate_targeted_s5_adjudication import (
+    S5AdjudicationValidationError,
+    validate as validate_targeted_s5_adjudication,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,11 +35,14 @@ REQUIRED_PATHS = [
     "README.md",
     "AGENTS.md",
     "docs/AGENT_BRIEF.md",
+    "docs/PROJECT_STATE.md",
+    "docs/ROADMAP.md",
     "docs/AGENT_LOCKS.md",
     "docs/AGENT_RUNBOOK.md",
     "docs/METHOD.md",
     "docs/TASKS.md",
     "docs/DECISIONS.md",
+    "reports/PM_STATUS.md",
     "docs/RESEARCH_INTAKE.md",
     "data/sources/source_register.csv",
     "data/indicators/indicator_catalog.csv",
@@ -60,6 +67,9 @@ REQUIRED_PATHS = [
     "scripts/validate_fusion_source_promotion_test.py",
     "scripts/validate_fusion_domain_review.py",
     "scripts/validate_fusion_domain_review_test.py",
+    "scripts/build_targeted_s5_adjudication.mjs",
+    "scripts/validate_targeted_s5_adjudication.py",
+    "scripts/validate_targeted_s5_adjudication_test.py",
     "scripts/build_structural_profiles_workbooks.py",
     "scripts/validate_structural_profiles_worksheet.py",
     "scripts/validate_structural_profiles_worksheet_test.py",
@@ -119,6 +129,10 @@ REQUIRED_PATHS = [
     "research/structural-profiles-pilot/domain-review/fusion_human_expert_queue_v1.csv",
     "research/structural-profiles-pilot/domain-review/fusion_domain_review_v1.xlsx",
     "research/structural-profiles-pilot/domain-review/FUSION_DOMAIN_REVIEW_NOTE.md",
+    "research/structural-profiles-pilot/adjudication/targeted_s5_adjudication_v1.csv",
+    "research/structural-profiles-pilot/adjudication/targeted_s5_adjudication_v1.xlsx",
+    "research/structural-profiles-pilot/adjudication/three_anchor_human_review_plan_v1.csv",
+    "research/structural-profiles-pilot/adjudication/S5_ADJUDICATION_NOTE.md",
 ]
 
 EXPECTED_HEADERS = {
@@ -358,6 +372,10 @@ def main() -> None:
         validate_fusion_domain_review()
     except DomainReviewValidationError as exc:
         fail(f"Fusion domain review validation failed:\n{exc}")
+    try:
+        validate_targeted_s5_adjudication()
+    except S5AdjudicationValidationError as exc:
+        fail(f"Targeted S5 adjudication validation failed:\n{exc}")
     validate_json_files()
     validate_report_names()
     validate_ifr_density_vintage()

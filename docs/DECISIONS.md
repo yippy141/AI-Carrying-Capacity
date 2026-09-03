@@ -780,3 +780,43 @@ using total facility duration, while the missing integrated self-sufficient
 fuel-cycle outcome belongs after the frozen pre-integration development loop.
 The correction improves scope fidelity and expert-outreach usability without
 reopening M1.5, selecting a canonical value, adjudicating S5, or starting WP2.
+
+## 2026-09-03: Preserve uncertainty in the targeted S5 adjudication
+
+Decision: Adjudicate exactly the existing 19-row S5 backlog under the frozen
+bounded escaped-consequence rule without reopening S1-S4. Record 12
+provisional point selections, six preserved ranges, and one preserved owner
+disagreement. Of the point selections, one is `selected_provisional` and 11
+are `selected_provisional_pending_named_expert`; seven rows remain without a
+point. Record seven medium-confidence and 12 low-confidence judgments. These
+are reviewed qualitative adjudications, not observations, implemented
+production profiles, scores, approvals, or canonical rows.
+
+Preserve each original submission value and full rationale, comparison status,
+owner disposition and rationale, merged fusion recommendation, and source-ID
+state. Record the assumed next independent boundary, its detection mechanism,
+authority, timing, and correlated-failure concern, plus bounded and excluded
+consequences. Where independence or consequence severity remains unresolved,
+retain a range or disagreement instead of manufacturing a midpoint. Keep all
+nine fusion empirical gaps open and all blank source IDs explicitly missing.
+
+Retain EXP-FUS-01 through EXP-FUS-06 and their 19 exact questions, and add
+EXP-SW-01 and EXP-MFG-01. All eight packages block approved/canonical status;
+they do not block private use, staged WP2 construction, or public-pilot display
+visibly labelled `EXPERT-CODED · DRAFT` with point or range, confidence, gaps,
+and review state visible. Package existence does not constitute human review.
+
+Adopt `docs/PROJECT_STATE.md` as a derived execution and control-plane
+checkpoint, with one-line entry pointers from the agent brief and README and
+synchronized roadmap and PM status. It does not supersede
+`docs/AUTHORITATIVE_DOCS.md`, change the frozen method, or become a new scoring
+authority. The protected submissions, audit, reconciliation decisions,
+fusion evidence and source-promotion records, source register, merged domain
+review, production data, country/governance data, public content, UI, figures,
+forecasts, and scenarios remain unchanged.
+
+Reasoning: The bounded rule is useful only if the next assurance boundary is
+genuinely independent and the consequence before it is scoped explicitly.
+Keeping unresolved rows non-point and keeping review dependencies distinct
+from draft-use eligibility makes the WP2 handoff auditable without falsely
+closing evidence or approval gates.
