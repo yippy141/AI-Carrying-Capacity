@@ -30,8 +30,10 @@ export function FigureShell({
   reviewStatus,
   source,
   subtitle,
-  title
+  title,
+  draftPreview = false
 }: {
+  draftPreview?: boolean;
   basis: EvidenceBasis;
   children: ReactNode;
   definitionsDiffer?: boolean;
@@ -45,7 +47,7 @@ export function FigureShell({
   title: string;
 }) {
   const figureId = `figure-${number.toLowerCase()}`;
-  if (!isPublicReviewStatus(reviewStatus)) return null;
+  if (!isPublicReviewStatus(reviewStatus) && !(draftPreview && reviewStatus === "staged")) return null;
 
   return (
     <figure className="mb-24" id={figureId}>
@@ -64,7 +66,7 @@ export function FigureShell({
           <p>
             {source}{" "}
             <span className="ml-1 inline-block align-middle">
-              <EvidenceChip basis={basis} reviewStatus={reviewStatus} />
+              {reviewStatus === "staged" ? <span>Draft use · author review pending</span> : <EvidenceChip basis={basis} reviewStatus={reviewStatus} />}
             </span>
             {definitionsDiffer ? (
               <span className="ml-2 font-mono text-[11px] uppercase tracking-[0.05em] text-ink">

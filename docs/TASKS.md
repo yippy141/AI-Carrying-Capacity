@@ -166,3 +166,24 @@
 - [ ] Evaluate `citrini_2028_gic` as a staged stress test and seek counter-scenarios; do not treat it as a finding or fifth anchor by default.
 - [ ] Add dated premise and coupling reviews plus event-triggered refresh rules to the revised WP3–WP5 prompts.
 - [ ] Defer automated source monitoring and any public freshness dashboard until after the three-anchor pilot identifies load-bearing sources.
+
+## First reader edition — 2026-09-06
+
+- [x] Verify merged PR #42 and its adjudication/checkpoint on current main; create `release/first-reader-edition`.
+- [x] Adopt finite release scope; separate this edition from completion of all country/sector/expert/forecast work.
+- [x] Build 31 staged profiles, 62 original review rows and 155 linked dispositions; carry only 12 historical S5 selections and keep all other selections null.
+- [x] Amend model-assessment display wording and nullable schema without altering historical raw codings or S definitions.
+- [x] Build continuous four-figure study, shared paper/print view, finite evidence access and draft contribution statement.
+- [x] Preserve legacy scatter and unfinished routes in the public archive; correct NBS unplotted presentation without modifying observations.
+- [x] Stage the finite QJE/METR source set and three exact operational/fusion uses with caveats, tool vintage, quality, uncertainty, reuse and actual review state.
+- [x] Separate historical snapshot integrity, current runtime/provenance/publication checks and PR scope; retain original expected hashes.
+- [x] Write author explanation and proposed comprehension tasks; do not invent human feedback.
+- [x] Complete local browser/security/build verification, with 12 browser checks and zero known lockfile vulnerabilities; record results and real limitations.
+- [x] Open draft PR #43; verify hosted CI passes, and check the existing automatic Vercel preview redirects unauthenticated requests to sign-in.
+- [ ] Jinhua reads QJE Table II/design, METR original plus February update, and TCV task-to-plant boundary; edits `lib/readerCopy.ts` and makes the publication decision.
+- [ ] Obtain five actual outside-reader attempts once recipients/channels are supplied; record hesitation rather than simulated reactions.
+- [ ] Choose root code and original-content/data terms; do not call an unlicensed repository open source.
+
+Earlier broad profile-UI/country/expert tasks remain backlog work, not hidden
+release dependencies. Human review of restricted translated wording and any
+publisher-figure/raw-dataset reuse still blocks those specific uses.

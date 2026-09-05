@@ -53,3 +53,7 @@ logs/
 tmp/
 *.tmp
 *.bak
+
+# Browser test runtime outputs (curated evidence is in reports/)
+/test-results/
+/playwright-report/

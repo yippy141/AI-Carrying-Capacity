@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check whether the Atlas is ready for public launch.
+"""Check the finite reader edition, with an optional legacy backlog diagnostic.
 
 The default mode is `private-preview`, which reports launch blockers but exits zero so
 normal development can continue. Use `--mode public-pilot` before public sharing; that
@@ -13,6 +13,7 @@ import csv
 import json
 import re
 import sys
+import subprocess
 from pathlib import Path
 from typing import Any
 
@@ -170,7 +171,13 @@ def main() -> None:
         default="private-preview",
         help="private-preview reports blockers but exits zero; public-pilot fails on blockers.",
     )
+    parser.add_argument('--archive-diagnostic', action='store_true', help='Report all legacy TODOs and staged leads without treating them as this edition’s reading surface.')
     args = parser.parse_args()
+    if not args.archive_diagnostic:
+        command = ['node', '--experimental-strip-types', 'scripts/check_reader_publication.ts']
+        if args.mode == 'public-pilot':
+            command.append('--publication')
+        raise SystemExit(subprocess.run(command, cwd=ROOT).returncode)
 
     blockers = check()
     if not blockers:

@@ -95,8 +95,7 @@ test("SVG and PNG export source is generated from the plotted model", () => {
     ...ADOPTION_DEPTH_FIGURE_IDS.ecb,
     ADOPTION_DEPTH_FIGURE_IDS.btosAllFirms,
     ...ADOPTION_DEPTH_FIGURE_IDS.btosAdopters,
-    ...ADOPTION_DEPTH_FIGURE_IDS.eurostatSize,
-    ADOPTION_DEPTH_FIGURE_IDS.chinaContext
+    ...ADOPTION_DEPTH_FIGURE_IDS.eurostatSize
   ];
 
   assert.match(svg, /^<svg /);
@@ -109,8 +108,10 @@ test("SVG and PNG export source is generated from the plotted model", () => {
   assert.match(svg, />60%<\/text>/);
   assert.match(svg, /Source: Eurostat 2025 ICT enterprise survey/);
   assert.match(svg, /Universe: Enterprises with 10 or more employees/);
-  assert.match(svg, /verified 2026-08-21/);
+  assert.match(svg, /verification 2026-08-21/);
   for (const observationId of expectedIds) {
     assert.match(svg, new RegExp(observationId));
   }
 });
+
+test("restricted contextual NBS value is neither plotted nor exported",()=>{ const model=buildAdoptionDepthFigureModel(loadAdoptionDepth()); assert.ok(!model.plottedObservationIds.includes(ADOPTION_DEPTH_FIGURE_IDS.chinaContext)); assert.doesNotMatch(buildAdoptionDepthExportSvg(model), /16\.4%/); });

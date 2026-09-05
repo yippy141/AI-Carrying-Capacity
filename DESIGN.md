@@ -82,3 +82,18 @@ Only data-state changes may animate, at 160–240ms ease-out. There are no
 entrance or ambient animations. `prefers-reduced-motion` reduces all motion.
 Keyboard focus is visible, interactions are reachable, contrast targets WCAG
 AA, and every figure has a text alternative that states its claim and values.
+
+## First reader edition extension
+
+The primary surface is Read mode: four continuous figure scenes with optional
+source detail and a shared paper view. Preserve the established font families,
+paper/ink rules and country-only US/China colors. New mechanism and outcome
+figures use ink/gray, labeled units and meaningful state changes. No entrance
+animation or forced reading time. Model-generated qualitative assessments use
+“Analyst assessment · AI-assisted” with actual review state separately visible;
+historical raw evidence labels remain intact.
+
+At 390px, multi-panel figures stack; source tables alone scroll horizontally.
+Native range inputs, radio choices, visible focus, live result text, reset,
+reduced-motion rules and printable equations support the mechanism. Fonts are
+bundled locally. Curated browser captures live under `reports/reader-edition/`.

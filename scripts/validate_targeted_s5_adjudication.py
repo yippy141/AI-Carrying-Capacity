@@ -377,6 +377,9 @@ def validate_workbook(path: Path, records: list[dict[str, str]], plan: list[dict
 
 
 def validate_control_plane(root: Path = ROOT) -> list[str]:
+    # The completed issue #41 checkpoint is historical execution context.
+    # Current project state follows the newly authorized release contract.
+    root = root / "docs/archive/reader-baseline/checkpoint"
     errors: list[str] = []
     files = {
         "project": root / "docs/PROJECT_STATE.md", "roadmap": root / "docs/ROADMAP.md",

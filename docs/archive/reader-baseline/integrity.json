@@ -1,0 +1,69 @@
+{
+  "base_commit": "5dcf523e250b1989a92c034d8f4e40706df94051",
+  "immutable_files": {
+    "research/fusion-evidence/README.md": "609a2f6853b7b8f862d257eb72e3c0dae79026b85dfebce153639973e9a6d30e",
+    "research/fusion-evidence/SOURCE_PROMOTION_NOTE.md": "a97e8f0e00f0ecda73bed3eefd13c6270c4f874382c2a2bbf0e1eec03de4178b",
+    "research/fusion-evidence/VERIFICATION_REPORT.md": "298c6e1c7ac85648ea0da40a98544de42a88fd28832cb83c2f8a96d3c4978b4c",
+    "research/fusion-evidence/build_evidence_bank.py": "4ccf8354bf3d4e837174880a351eec5abcf2f2f043d44a43ea268a16452e2e33",
+    "research/fusion-evidence/claim_source_map_v1.csv": "0ac87ab44bc13f27fd1ae011cec0f5f44b090174b551b04d5100849ab6bbd00a",
+    "research/fusion-evidence/fusion_source_review_v1.xlsx": "1f41f7fea2997ce7c825c28e57be397329e13b32a138f28d064e4aec46b2d8ca",
+    "research/fusion-evidence/fusion_test_evidence_pack_2026-08-12.md": "411fe7e1a48afddd388907e0f7688f2eda727335117a66a56c00e9fbb61387e7",
+    "research/fusion-evidence/profile_evidence_coverage_v1.csv": "0ce514c60cb1047de676b63c99c11e4348a9950874a67ae9f7e81c54288abde3",
+    "research/fusion-evidence/refresh_and_change_log_v1.csv": "0727276519ab74f653f6f0bd58451da61da87a00f32c099927204c76eea6150c",
+    "research/fusion-evidence/rejected_and_deferred_sources_v1.csv": "e9705bacad6c55133c3c2d306484b143ff6b8f50a87325df0a5185e2504def6d",
+    "research/fusion-evidence/source_inventory_v1.csv": "1f9ec478cdabc8202fd807d9948371d426f03be88b61d90e8e765329030e1e35",
+    "research/fusion-evidence/source_promotion_decisions_v1.csv": "0647fecd3c1e19bedde5fec2e50172cbfc73472afaaf06268524630cba6dee74",
+    "research/fusion-evidence/staged_source_register_additions_v1.csv": "c0b8374ed5a213aac3ed2fa6a2685c502b14fdf187ff9e94e0d4564b238dbd3d",
+    "research/structural-profiles-pilot/adjudication/S5_ADJUDICATION_NOTE.md": "a5cd7dfa3dfcb711f2b82decefda245ff302180d569032f025f14e7937c05920",
+    "research/structural-profiles-pilot/adjudication/targeted_s5_adjudication_v1.csv": "04df4750d1f1b864634ad1e4c8d4170df498adbb49bdc565b7880c25e8e949a0",
+    "research/structural-profiles-pilot/adjudication/targeted_s5_adjudication_v1.xlsx": "15c9bab2adc0af1f26527ffc9379dd261339f0170623e70ee95ba64acc7680b3",
+    "research/structural-profiles-pilot/adjudication/three_anchor_human_review_plan_v1.csv": "1645bb662de7c39de0e5df777ff19c47d141df46d4a0f33581a97ce049a39f64",
+    "research/structural-profiles-pilot/domain-review/FUSION_DOMAIN_REVIEW_NOTE.md": "1b84cd53b727fcc5d28faf1e38eddfb54889b882a5ed6c59ce00c2e6ce4259d5",
+    "research/structural-profiles-pilot/domain-review/fusion_dimension_review_v1.csv": "901f5108960acb5308a878a31c536759a623afe1ab64c32e68b1c6b9ae7056f0",
+    "research/structural-profiles-pilot/domain-review/fusion_domain_review_v1.csv": "75d383c4acf13e4c0dd157a27b4daf18bcafd8f1935da41058842ce8864cbe23",
+    "research/structural-profiles-pilot/domain-review/fusion_domain_review_v1.xlsx": "91990423a8879f8820a6adbf4e8fa160618e8e7bbb35f80814722eff5acdc18d",
+    "research/structural-profiles-pilot/domain-review/fusion_human_expert_queue_v1.csv": "36dabc915cdf3caa07167b32835eef913715e1eb18a66a443227d7b7e9dc3807",
+    "research/structural-profiles-pilot/reconciliation/RECONCILIATION_NOTE.md": "dd1731d8dc9ec580b547472781bb59e2588a6c71209ca51883466d9da6d11c3c",
+    "research/structural-profiles-pilot/reconciliation/comparison_audit_v1.csv": "85ed3710a1b25cdaf71228a02ed38fe115febe7cf12613fd40c7b65382ef93f2",
+    "research/structural-profiles-pilot/reconciliation/evidence_gap_backlog_v1.csv": "284ad472870e17052c29d3e67b358ffa3315ff7bd0402c4636736f14f83d4128",
+    "research/structural-profiles-pilot/reconciliation/fusion_domain_review_brief_v1.md": "8b9daac2b6623f07aca93167c8be9dfc7c13b7401b2acd461562b841133200b0",
+    "research/structural-profiles-pilot/reconciliation/fusion_domain_review_queue_v1.csv": "af39f91e6fbab8a77e7721578b569993f41728c152b1f4eeb899434cd7bb5e0d",
+    "research/structural-profiles-pilot/reconciliation/independent_submission_v1.csv": "4176afa878a850d7155a95772884bec72756353440b588f30e5414a37acdb973",
+    "research/structural-profiles-pilot/reconciliation/owner_decisions_v1.csv": "c31ebb8a7de988617a9848232af7185afb46089bfd553d3293a189db3b8df168",
+    "research/structural-profiles-pilot/reconciliation/owner_exception_review_v1.xlsx": "a4b8685430d0020915ce35303819f467339da9712c7e63f64cff5b8ab213ef4b",
+    "research/structural-profiles-pilot/reconciliation/owner_exceptions_v1.csv": "a6db404e5ee59f06d66348124126c3c4ae4165536ff117a7102bdde22e835c81",
+    "research/structural-profiles-pilot/reconciliation/reconciliation_report_v1.json": "e81de7da0d62f6bd3d18c27c2a274b044b04392b2987532a9820f6cde1a1f85e",
+    "research/structural-profiles-pilot/reconciliation/seed_submission_v1.csv": "9723a3c3a006b701fed3d000f77d89379610bc51f85eff3555b696078708e675",
+    "research/structural-profiles-pilot/reconciliation/targeted_s5_adjudication_backlog_v1.csv": "1bde31728e77ba10d19bb4f54b83841dc150a88a60b37cba65fe389d46964238",
+    "research/structural-profiles-pilot/worksheet/OWNER_REVIEW_GUIDE.md": "95e334b2d99bbad21e09f4d92e0666c18f1f14b9914df6acf8a3fe8deadef6b7",
+    "research/structural-profiles-pilot/worksheet/RUBRIC.md": "ca6b2b255f3b87e2e6dc8667bd5c46f08318d712732d7f68d84761a6c625d73e",
+    "research/structural-profiles-pilot/worksheet/START_HERE.md": "61bf4503ce52ced2eb14c08b79281a9d1626081989852b223915ffc4ef84f678",
+    "research/structural-profiles-pilot/worksheet/blind_submission_template.xlsx": "b9ca77ad940937a54893f23868f606815b87a986d0f0e07c4786c5618a9f1c8b",
+    "research/structural-profiles-pilot/worksheet/country_stage_modifiers_template.csv": "a09eb61f34818c0d23921be977b03d9199bd986f4ac3f3dc14452ccd35c63794",
+    "research/structural-profiles-pilot/worksheet/exception_report.schema.json": "37d62e0434e154ec8f29092dda3bfc006bae207027cb79482b292d415f7d7fea",
+    "research/structural-profiles-pilot/worksheet/fable_submission_template.xlsx": "b56006ab2d747fae24e4e5df428eda5bbd2db8eea1599b2ff61b0366409e8b2b",
+    "research/structural-profiles-pilot/worksheet/governance_overlay_template.csv": "ec28bea2e2ba135304708f51bccf385efe6d6ae377cb69c60da309820db48d75",
+    "research/structural-profiles-pilot/worksheet/owner_decisions_template.csv": "648f31e835d1fa37b0ab7383d63045bf8e00c324a8323f810d3cc5b7c337c356",
+    "research/structural-profiles-pilot/worksheet/profile_coding_reviews_blind_template.csv": "0939e22bf273b0816f82ab18d643921a5cdf377c97b94e173a63dbb16dee38db",
+    "research/structural-profiles-pilot/worksheet/profile_coding_reviews_fable_template.csv": "c5a7ddf1eb515bcf5d9476d59be3079cdbdf285d4a3d98739966841da8e3bbad",
+    "research/structural-profiles-pilot/worksheet/stage_profiles_template.csv": "af6559e0d550de1edece5d7fa816bf93e6ea1317755e1110cfeb6ecd8a1254d7",
+    "research/structural-profiles-pilot/worksheet/stages.csv": "00ca18abad976840e166f1acce701ef9d7021bbb0ffe90a15eaed39fb459f539",
+    "research/structural-profiles-pilot/worksheet/structural_profiles_reference_and_owner_review.xlsx": "86bccefaf918738071e9c7a89f78d7fd518cf569b39e00c8af7462cbcdfb728e",
+    "research/structural-profiles-pilot/worksheet/unresolved_scope_ambiguities.md": "4a50199c9a8dd317dd0046d36d617ee2ecb11057844a4eec0b936e70f27d3af0",
+    "research/structural-profiles-pilot/worksheet/worksheet-build-report.md": "36844acbaa1f8ebd53039100833c25439fb96fab309a451127399f3d2fdcc292"
+  },
+  "append_only_files": {
+    "data/sources/source_register.csv": {
+      "bytes": 125967,
+      "sha256": "1545d0c29e272898e6695759c937496c0316f2b3181915e5d5b1de26cb5eaa7d"
+    },
+    "data/claims/claim_ledger.csv": {
+      "bytes": 18494,
+      "sha256": "49601344bf10364683bbde6683f83cc635b3928d714e49a3c1390ed7f0f5c326"
+    },
+    "data/licenses/data_licenses.csv": {
+      "bytes": 1667,
+      "sha256": "1ea541f29fc52b0a081d589ec3efbd7348597c7f9fb63480ea2068fbe11005f1"
+    }
+  }
+}
