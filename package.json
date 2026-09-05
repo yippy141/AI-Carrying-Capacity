@@ -3,31 +3,42 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "READER_EDITION_MODE=review-preview next dev --webpack --hostname 127.0.0.1",
+    "build": "npm run check:reader && READER_EDITION_MODE=review-preview next build --webpack && npm run check:rendered",
+    "start": "next start --hostname 127.0.0.1",
     "lint": "python3 scripts/validate_design_placeholders.py && eslint . --max-warnings=0",
     "test:design": "python3 -m unittest scripts/validate_design_placeholders_test.py",
     "typecheck": "tsc --noEmit",
-    "test:evidence": "node --test --experimental-strip-types lib/*.test.ts"
+    "test:evidence": "node --test --experimental-strip-types lib/*.test.ts",
+    "build:publication": "node --experimental-strip-types scripts/check_reader_publication.ts --publication && READER_EDITION_MODE=publication next build --webpack && node --experimental-strip-types scripts/check_reader_publication.ts --publication --rendered",
+    "check:reader": "node --experimental-strip-types scripts/check_reader_publication.ts",
+    "check:rendered": "node --experimental-strip-types scripts/check_reader_publication.ts --rendered",
+    "test:browser": "playwright test",
+    "test:history": "python3 -m unittest scripts/test_historical_reader_snapshot.py"
   },
   "dependencies": {
     "html-to-image": "^1.11.13",
-    "next": "16.2.9",
+    "next": "^16.3.4",
     "react": "19.2.7",
-    "react-dom": "19.2.7"
+    "react-dom": "19.2.7",
+    "zod": "^4.5.4"
   },
   "overrides": {
-    "postcss": "8.5.15"
+    "postcss": "8.5.28"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "4.3.1",
+    "@axe-core/playwright": "^4.13.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/newsreader": "^5.3.0",
+    "@playwright/test": "^1.63.0",
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^22.19.3",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.2",
-    "eslint-config-next": "16.2.9",
-    "tailwindcss": "4.3.1",
+    "eslint-config-next": "^16.3.4",
+    "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3"
   }
 }

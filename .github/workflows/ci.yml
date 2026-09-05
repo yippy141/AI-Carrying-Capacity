@@ -5,6 +5,9 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
   validate:
     name: Validate app and evidence guardrails
@@ -13,6 +16,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -96,3 +102,28 @@ jobs:
 
       - name: Check private-preview readiness
         run: python3 scripts/check_launch_readiness.py --mode private-preview
+
+      - name: Test historical snapshot manifests
+        run: npm run test:history
+
+      - name: Check reader PR scope and staged projection
+        run: |
+          python3 scripts/check_reader_scope.py
+          python3 -m unittest scripts/test_reader_profiles.py
+
+      - name: Audit actual dependency lockfile
+        run: npm audit --audit-level=moderate
+
+      - name: Install browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Test reader journeys and accessibility
+        run: npm run test:browser
+
+      - name: Retain browser diagnostics on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reader-browser-diagnostics
+          path: test-results/
+          retention-days: 7

@@ -2,10 +2,10 @@ import Link from "next/link";
 
 const navItems = [
   { href: "/", label: "Study" },
-  { href: "/findings", label: "Findings" },
+  { href: "/paper", label: "Paper" },
   { href: "/evidence", label: "Evidence" },
-  { href: "/forecasts", label: "Forecasts" },
-  { href: "/methods", label: "Methods" }
+  { href: "/methods", label: "Methods" },
+  { href: "/about", label: "About" }
 ];
 
 export function SiteHeader() {
@@ -33,7 +33,7 @@ export function SiteHeader() {
             </ul>
           </nav>
           <span className="font-mono text-[11px] uppercase tracking-[0.06em] text-ink-soft">
-            v1.1
+            Reader RC
           </span>
         </div>
       </div>

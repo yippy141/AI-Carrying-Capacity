@@ -32,3 +32,21 @@ orthogonal public gate. Analytic type no longer doubles as a chip label.
 - Conceptual figures must say so in the caption; their coordinates may never gain axes with units.
 - Modeled figures name the model owner and the estimate vintage in the caption.
 - Forecast figures show status and update history; resolved questions stay visible.
+
+## First reader edition disposition — 2026-09-06
+
+This dated release table supersedes the earlier “Live” placements for the finite
+reader surface; original rows above remain historical.
+
+| Reader figure | Actual implementation | Basis and use state | Required context |
+| --- | --- | --- | --- |
+| 1: Reported use has several meanings | AdoptionDepthFigure, existing canonical CSV | Observed plus hatched Census model estimate; existing exact claims | ECB/Census/Eurostat panels separate; ten marks; NBS retained unplotted; observation verification 2026-08-21, not edition date |
+| 2: Different work, different effects | OperationalOutcomes | Two staged empirical uses for finite review | QJE staggered rollout/GPT-3/one firm; METR randomized selected tasks/early-2025 tools/2026 selection caveat; no pooling |
+| 3: Change the workflow assumptions | MechanismExperiment | Hypothetical scenario arithmetic | Serial sum versus independent parallel max; repeated min-capacity model separate; explicit units and omissions; AI can affect more stages |
+| 4: A real control result | FusionTrace | Staged authored TCV observation plus labeled transfer interpretations | Physical control demonstration; no plant effect; planned exposure is not accepted qualification; bank absence is not universal absence |
+
+Hero ribbon F0 and legacy conceptual scatter F2 no longer carry the primary
+argument; the scatter remains under `/lab#historical-scatter`. Old F3 comparative
+chain component is retained in source history, outside the reader edition.
+Forecasts remain archived and unactivated. FigureShell exports, source links,
+text alternatives and actual 1440/390px captures accompany this package.

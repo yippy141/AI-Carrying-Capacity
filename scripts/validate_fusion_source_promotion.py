@@ -102,14 +102,10 @@ def tree_digest(root: Path, directory: str) -> str:
 
 
 def validate_protected_inputs(root: Path) -> list[str]:
-    errors = []
-    prefix = b"".join((root / REGISTER).read_bytes().splitlines(keepends=True)[:BASE_REGISTER_LINES])
-    if hashlib.sha256(prefix).hexdigest() != BASE_REGISTER_HASH:
-        errors.append("Pre-promotion source-register rows changed; additions must be append-only.")
-    for directory, expected in FROZEN_TREES.items():
-        if tree_digest(root, directory) != expected:
-            errors.append(f"Protected source-promotion input tree changed: {directory}")
-    return errors
+    # Completed-package app-tree bans are archived, not rehashed. See
+    # docs/READER_EDITION_BOUNDARY.md and test_historical_reader_snapshot.py.
+    from reader_integrity import validate_current_integrity
+    return validate_current_integrity(root)
 
 
 def validate_records(

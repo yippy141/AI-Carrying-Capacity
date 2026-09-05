@@ -1,26 +1,21 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Inter, Newsreader } from "next/font/google";
+import localFont from "next/font/local";
 
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import "./globals.css";
 
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  variable: "--font-newsreader",
-  weight: ["500", "600"]
+const newsreader = localFont({
+  src: [{path:'../node_modules/@fontsource/newsreader/files/newsreader-latin-500-normal.woff2',weight:'500'}, {path:'../node_modules/@fontsource/newsreader/files/newsreader-latin-600-normal.woff2',weight:'600'}],
+  variable: '--font-newsreader', display: 'swap'
 });
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["400", "500", "600"]
+const inter = localFont({
+  src: [{path:'../node_modules/@fontsource/inter/files/inter-latin-400-normal.woff2',weight:'400'}, {path:'../node_modules/@fontsource/inter/files/inter-latin-500-normal.woff2',weight:'500'}, {path:'../node_modules/@fontsource/inter/files/inter-latin-600-normal.woff2',weight:'600'}],
+  variable: '--font-inter', display: 'swap'
 });
-
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  variable: "--font-ibm-plex-mono",
-  weight: ["400", "500"]
+const ibmPlexMono = localFont({
+  src: [{path:'../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2',weight:'400'}, {path:'../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2',weight:'500'}],
+  variable: '--font-ibm-plex-mono', display: 'swap'
 });
 
 export const metadata: Metadata = {
@@ -28,8 +23,9 @@ export const metadata: Metadata = {
     default: "Frontier Is Not Fate",
     template: "%s | Frontier Is Not Fate"
   },
+  robots: { index: false, follow: false },
   description:
-    "An interactive study of when advanced AI becomes national power — and when infrastructure, institutions, and organization flatten the return. Built on the AI Conversion Atlas evidence system."
+    "What does a better AI model change, through which workflow, and what else must happen before it becomes a useful outcome?"
 };
 
 export default function RootLayout({
@@ -43,6 +39,7 @@ export default function RootLayout({
       lang="en"
     >
       <body>
+        <a className="skip-link" href="#main-content">Skip to content</a>
         <SiteHeader />
         {children}
         <SiteFooter />

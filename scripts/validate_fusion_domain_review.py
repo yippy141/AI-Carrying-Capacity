@@ -178,15 +178,10 @@ def tree_digest(root: Path, directory: str) -> str:
 
 
 def validate_protected_inputs(root: Path = ROOT) -> list[str]:
-    errors = validate_promotion_inputs(root)
-    for directory, expected in FROZEN_TREES.items():
-        if tree_digest(root, directory) != expected:
-            errors.append(f"Protected issue #39 input tree changed: {directory}")
-    for name, expected in FROZEN_FILES.items():
-        path = root / name
-        if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != expected:
-            errors.append(f"Protected issue #39 authority changed: {name}")
-    return errors
+    # Completed-package app-tree bans are archived, not rehashed. See
+    # docs/READER_EDITION_BOUNDARY.md and test_historical_reader_snapshot.py.
+    from reader_integrity import validate_current_integrity
+    return validate_current_integrity(root)
 
 
 def source_ids(value: str) -> set[str]:

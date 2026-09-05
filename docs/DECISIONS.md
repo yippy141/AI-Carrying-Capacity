@@ -820,3 +820,45 @@ genuinely independent and the consequence before it is scoped explicitly.
 Keeping unresolved rows non-point and keeping review dependencies distinct
 from draft-use eligibility makes the WP2 handoff auditable without falsely
 closing evidence or approval gates.
+
+## 2026-09-06: Authorize the finite first reader edition
+
+Adopt `RELEASE_SCOPE.md` for an informed AI-governance/policy reader: one study,
+paper/print, evidence and contribution statement. The objective is explainable
+research authorship and comprehension. Completing all C1–C8 rows, expert
+outreach, sixteen sectors, forecasts or scenarios is not a release dependency.
+New exact operational/fusion claims remain staged for the combined release
+review. Jinhua's personal passages and assistance statement await his final edit.
+
+## 2026-09-06: Preserve unresolved dimensions and label model assistance honestly
+
+Adopt schema 1.1: nullable selected S values for non-approved profiles, with one
+linked disposition per dimension and immutable underlying submissions. Carry
+only explicit historical S5 selections; agreements and recommendations alone
+are not new selections. No S definition or historical judgment changes.
+
+Amend the controlling display rule narrowly: model-generated `expert-coded`
+records display as “Analyst assessment · AI-assisted”, with draft status and
+actual human-review state separately visible. Preserve raw labels and model
+roles; no named specialist validation is implied. See METHOD_PROFILES and
+READER_EDITION_BOUNDARY. This edition does not expose a profile score wall.
+
+## 2026-09-06: End completed-package whole-app mutation bans
+
+Preserve original nested manifests and authority versions at the PR #42 base.
+Test historical digests against that snapshot; pin immutable research records
+and accepted register prefixes in current checks. Replace entire app/components/
+lib/public/content freezes with current schema, provenance, eligibility and
+PR changed-file scope checks. Completed source/coding work was authorized to
+freeze its own inputs, not permanently prohibit future authorized app work.
+Do not refresh historical expected hashes. Production publication remains gated
+by exact reachable uses and author review, not all archive TODOs.
+
+## 2026-09-06: Preserve the existing fonts and use a portable build
+
+Keep Newsreader, Inter and IBM Plex Mono, bundled from pinned Fontsource
+packages with OFL notices. This removes Google font fetches during build and
+reading. Use Next's supported webpack mode for build and local development because the installed Turbopack
+worker port is blocked in this execution environment even on the escalated
+attempt. This is a build-engine choice, not an application-framework rewrite.
+Patch audited dependencies; record the actual audit against the final lockfile.

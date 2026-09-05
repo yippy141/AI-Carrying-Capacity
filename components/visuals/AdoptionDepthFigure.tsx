@@ -121,12 +121,12 @@ export function AdoptionDepthFigure({
   const [notUsing] = model.ecb.rows;
   const [narrow, comprehensive] = model.btos.adopterOnly;
   const [small, medium, large] = model.eurostat.sizeGradient;
-  const china = model.china.context;
+
 
   return (
     <div
       data-observation-ids={model.plottedObservationIds.join(" ")}
-      aria-label={`Figure 1. ECB reported categories: ${model.ecb.rows.map((row) => formatPercent(row.value)).join(", ")}. U.S. Census: ${formatPercent(model.btos.allFirms.value)} of all employer businesses, ${formatPercent(narrow.value)} narrow functional users, ${formatPercent(comprehensive.value)} comprehensive model estimate. Eurostat small, medium, and large firms: ${formatPercent(small.value)}, ${formatPercent(medium.value)}, ${formatPercent(large.value)}. China context only: ${formatPercent(china.value)} of above-scale enterprises.`}
+      aria-label={`Figure 1. ECB reported categories: ${model.ecb.rows.map((row) => formatPercent(row.value)).join(", ")}. U.S. Census: ${formatPercent(model.btos.allFirms.value)} of all employer businesses, ${formatPercent(narrow.value)} narrow functional users, ${formatPercent(comprehensive.value)} comprehensive model estimate. Eurostat small, medium, and large firms: ${formatPercent(small.value)}, ${formatPercent(medium.value)}, ${formatPercent(large.value)}. China: contextual source withheld pending translation review.`}
       role="group"
     >
       <p className="max-w-[66ch] text-[15px] leading-6 text-ink-soft">
@@ -189,7 +189,7 @@ export function AdoptionDepthFigure({
             </ul>
           </div>
           <PanelSource>
-            ECB SAFE Q4 2025 · {notUsing.source_id} · denominator: {notUsing.denominator}
+            <a className="focus-ring underline" href="/evidence#adoption-ecb">ECB SAFE Q4 2025 — source and caveat</a> · denominator: {notUsing.denominator}
           </PanelSource>
         </section>
 
@@ -226,7 +226,7 @@ export function AdoptionDepthFigure({
             </div>
           </div>
           <PanelSource>
-            Census CES Working Paper 26-25 · {model.btos.allFirms.source_id} · Q23 denominator: {model.btos.allFirms.denominator} · Q24 denominator: {narrow.denominator}
+            <a className="focus-ring underline" href="/evidence#adoption-census">Census CES Working Paper 26-25 — source and caveat</a> · Q23 denominator: {model.btos.allFirms.denominator} · Q24 denominator: {narrow.denominator}
           </PanelSource>
         </section>
 
@@ -250,7 +250,7 @@ export function AdoptionDepthFigure({
             Diffusion context only. This panel does not measure depth of use.
           </p>
           <PanelSource>
-            Eurostat 2025 enterprise AI-use data · {small.source_id} · universe: {small.survey_universe}
+            <a className="focus-ring underline" href="/evidence#adoption-eurostat">Eurostat 2025 — source and caveat</a> · universe: {small.survey_universe}
           </PanelSource>
         </section>
 
@@ -263,33 +263,9 @@ export function AdoptionDepthFigure({
             source="NBS · China"
             title="A different firm universe gives context only."
           />
-          <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.05em] text-ink-soft">
-            Above-scale enterprises · axis 0–20%
-          </p>
-          <div className="relative mt-5 min-h-56 pt-16">
-            <AnnotationLayer
-              annotations={[
-                {
-                  id: "china-universe",
-                  label: "Not an all-firm survey.",
-                  labelX: 82,
-                  labelY: 18,
-                  anchorX: 82,
-                  anchorY: 48,
-                  align: "center"
-                }
-              ]}
-            />
-            <ScaleBar color="var(--cn)" max={20} row={china} />
-            <Axis max={20} midpoint={10} />
-            <p className="mt-5 text-[13px] leading-5 text-ink-soft">
-              Official-source statistic. It is not directly comparable with
-              ECB, Census, or Eurostat and supports no country ranking.
-            </p>
-          </div>
-          <PanelSource>
-            NBS Fifth National Economic Census · {china.source_id} · denominator: {china.denominator}
-          </PanelSource>
+          <p className="mt-5 text-[15px] leading-7 text-ink-soft">The NBS Fifth National Economic Census covers a different enterprise universe. It cannot supply a comparable all-firm adoption rate or a national ranking here.</p>
+          <p className="mt-5 text-[15px] leading-7 text-ink-soft">The contextual observation is retained in the research record, unplotted. Load-bearing translated wording awaits native-language human review.</p>
+          <PanelSource><a className="focus-ring underline" href="/evidence#nbs-restriction">NBS — scope and translation restriction</a></PanelSource>
         </section>
       </div>
     </div>

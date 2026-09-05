@@ -31,3 +31,12 @@ Avoid SaaS dashboards that imply live precision, scorecard templates that collap
 ## Accessibility & Inclusion
 
 Use WCAG AA as the baseline assumption. Support keyboard navigation, visible focus states, readable contrast, reduced-motion preferences, and plain-language labels for missing, placeholder, estimated, qualitative-coded, official-claim, and observed evidence states.
+
+## Current reader edition (2026-09-06; supersedes scaffold positioning)
+
+Frontier Is Not Fate is an authored study for informed AI-governance and
+technology-policy readers. Success is understanding what a better model changes
+in a workflow and what else enables a useful outcome, with Jinhua able to explain
+and own the claims. The finite edition is a complete reading experience rather
+than a scaffold. See `docs/RELEASE_SCOPE.md`; payment and dwell-time optimization
+are not objectives. Existing broader research remains available as history.
