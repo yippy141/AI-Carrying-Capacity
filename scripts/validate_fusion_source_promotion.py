@@ -65,7 +65,17 @@ DOMAIN_REVIEW_OUTPUTS = {
         "fusion_human_expert_queue_v1.csv",
     )
 }
-TREE_EXCLUSIONS = {REGISTER, f"{BANK}/{LEDGER}", f"{BANK}/{NOTE}"} | DOMAIN_REVIEW_OUTPUTS
+# Issue #41 explicitly authorizes these four NEW adjudication outputs. They are
+# separately validated and the complete merged domain-review package is pinned
+# by validate_targeted_s5_adjudication.py; no other pilot-tree path is exempt.
+S5_ADJUDICATION_OUTPUTS = {
+    f"research/structural-profiles-pilot/adjudication/{name}" for name in (
+        "targeted_s5_adjudication_v1.csv", "targeted_s5_adjudication_v1.xlsx",
+        "three_anchor_human_review_plan_v1.csv", "S5_ADJUDICATION_NOTE.md",
+    )
+}
+TREE_EXCLUSIONS = ({REGISTER, f"{BANK}/{LEDGER}", f"{BANK}/{NOTE}"}
+                   | DOMAIN_REVIEW_OUTPUTS | S5_ADJUDICATION_OUTPUTS)
 
 
 class SourcePromotionValidationError(ValueError):

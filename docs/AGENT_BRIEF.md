@@ -1,5 +1,7 @@
 # AI Conversion Atlas Agent Brief
 
+Current execution context: read `docs/PROJECT_STATE.md` first; it does not supersede the method authority in `docs/AUTHORITATIVE_DOCS.md`.
+
 ## Project
 
 AI Conversion Atlas studies how societies convert accessible AI capability into material outcomes: productivity, state capacity, scientific output, strategic power, and broadly distributed welfare.

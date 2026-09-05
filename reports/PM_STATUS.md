@@ -1,133 +1,96 @@
 # PM Status
 
-Last updated: 2026-07-11.
+Last updated: 2026-09-03.
+Read first: `docs/PROJECT_STATE.md`.
 
 ## Current posture
 
-**Private preview only.** PR #21 is merged and the Frontier Is Not Fate
-structural reset is complete. No product-reset branch is active. The accepted
-public information architecture remains Study / What we know / Evidence /
-Forecasts / Methods / About.
+**Private preview; final bounded pre-WP2 gate.** Current `main` is PR #40 merge
+`e6edd06ee0e9c78214989d31c5647525b7c91cdd`, containing correction head
+`ee609a8dc2c587304b237d9ede9f7514b18ad55d`. The active issue #41 branch is
+`research/targeted-s5-adjudication`.
 
-The active workstream is the first canonical empirical figure:
-**“Adoption is not integration.”** This branch promotes the source family,
-creates a canonical observation table, renders Figure 1, updates the public
-narrative and claim ledger, and adds data-integrity tests. It does not make the
-project public-pilot ready.
+Issue #41 adjudicates the existing 19-row S5 backlog and repairs the project
+control plane. It does not create a production profile, populate C1-C8 or
+governance, build UI, change figures/forecasts/scenarios, approve a profile, or
+start WP2.
 
-## Active branch
+## Current program state
 
-| Branch | Objective | Status |
-| --- | --- | --- |
-| evidence/adoption-depth-figure | Canonical adoption-depth evidence and empirical Figure 1 | Validation and screenshots complete; ready for draft review |
-
-## Recent merge and issue housekeeping
-
-- PR #20 merged the claim ledger, launch essay v1.1, and original conceptual
-  figure work.
-- PR #21 merged the Frontier Is Not Fate private-preview structural reset.
-- GitHub issue #7 is closed as completed by the merged claim-ledger work.
-- GitHub issue #10 is closed as completed by the merged launch-essay and
-  structural-reset work.
-- Their descriptions and history were not rewritten.
-
-## Evidence status
-
-| Layer | Current count and state |
+| Object | State |
 | --- | --- |
-| Canonical sources | 49 reviewed non-placeholder rows |
-| Non-evidentiary placeholders | 6 |
-| Canonical source-register total | 55 rows |
-| Remaining staged source rows | 41: 19 in the July 5 file and 22 in the July 11 file |
-| Staging rows reconciled this sprint | 2 mapped to canonical sources; 4 duplicate or superseded rows rejected |
-| Canonical adoption-depth observations | 12 |
-| Claim ledger | 37 total: 6 approved, 14 approved_with_caveat, 17 staged |
-| Live empirical figures | 1: Adoption is not integration |
+| Frozen pilot profiles | 31 |
+| Coding comparisons | 155 |
+| Reconciliation owner exceptions/decisions | 23 |
+| Fusion-domain-review owner exceptions | 28; a distinct 90-cell gate |
+| Promoted fusion source identities | 44 reviewed |
+| Fusion model-domain review | 90/90 cells; recommendation-only |
+| Fusion named-specialist queue | 19 exact questions in 6 packages |
+| Fusion empirical gaps | 9 open |
+| Targeted S5 adjudication | 19/19 rows completed in this draft package |
 
-The Figure 1 observations include four ECB intensity categories, four BTOS
-use/breadth observations, and four Eurostat overall/size observations. Figure 1
-plots ten of the twelve rows; the employment-weighted BTOS summary and Eurostat
-overall value remain in the canonical table but are not plotted.
+## Issue #41 adjudication result
 
-## Branch validation and review artifacts
+| Dimension | Count |
+| --- | ---: |
+| Software rows | 5 |
+| Manufacturing rows | 4 |
+| Fusion rows | 10 |
+| Point selections | 12 |
+| Range/disagreement forms | 7 |
+| `selected_provisional` | 1 |
+| `selected_provisional_pending_named_expert` | 11 |
+| `preserved_range` | 6 |
+| `preserved_disagreement` | 1 |
+| `needs_better_evidence` | 0 |
+| Medium confidence | 7 |
+| Low confidence | 12 |
 
-Typecheck, lint, production build, seven TypeScript evidence tests, eight
-observation-validator unit tests, repository validation, source-register
-validation, indicator-catalog validation, and canonical observation validation
-pass. Private-preview readiness reports the 59 known legacy blockers without
-failing, as intended.
+Seven rows remain without a point: sp-0011, sp-0012, sp-0013, sp-0014,
+sp-0020, sp-0023, and sp-0030. The reasons are variable or unverified
+independent boundaries, direct-consequence uncertainty, open fusion evidence
+gaps, and—in licensing—the owner's explicit 0-2 disagreement. No midpoint was
+manufactured.
 
-Review screenshots are committed under `reports/screenshots/`: a desktop
-Figure 1 view, a desktop Panel C view, and three 390px views covering the
-figure header/Panel A, Panel B, and Panel C.
+## Expert and evidence gate
 
-## Source-review corrections that must persist
+- Retain EXP-FUS-01 through EXP-FUS-06 and all 19 exact fusion questions.
+- Add EXP-SW-01 for the five mature production-software S5 boundaries.
+- Add EXP-MFG-01 for the four discrete-manufacturing S5 boundaries.
+- All eight packages block canonical approval, not private use, staged WP2, or
+  public-pilot display visibly labelled `EXPERT-CODED · DRAFT` with
+  point/range, confidence, gaps, and review state visible.
+- gap-01 through gap-09 remain open. Eleven S5 rows retain blank source IDs and
+  explicit source gaps; reviewed fusion source identities keep their original
+  maturity and use restrictions.
 
-1. ECB’s four reported SAFE categories total 98%. The two-point residual may
-   reflect “don’t know” responses and rounding. Do not normalize the values or
-   derive 73% any use.
-2. BTOS Q23 uses a prior-two-week all-business question. Q24 uses a separate
-   prior-six-month list of 15 functions. The 18%, 57%, and 4% values are not a
-   same-question funnel.
-3. The BTOS paper reports 32% employment-weighted use in its summary while
-   Table C.7 reports 31.2%. The 32% summary remains disclosed and unplotted.
-4. The 4% “comprehensive adopter” value is a latent-class estimate, not a
-   direct response or “all 15 functions” measure.
-5. China’s 16.4% applies only to above-scale enterprises in 2023 and remains
-   contextual; it is not comparable with SAFE, Eurostat, or BTOS.
+## Deliverables and validation
 
-## Remaining public-pilot blockers
+The package contains the 19-row adjudication CSV and workbook, the eight-row
+human review plan, `S5_ADJUDICATION_NOTE.md`, focused validator and adversarial
+tests, CI integration, and synchronized project-state, roadmap, status, task,
+decision, brief, and README pointers.
 
-- Forty-one staged source rows still require promotion, deferral, or rejection
-  review.
-- Six legacy content drafts contain public-readiness TODO markers. They are
-  useful research material but are obsolete as current public copy and should
-  be moved intact to research/archive in a scoped cleanup.
-- Forty-five staged visual references still use non-canonical src-v0-dr IDs.
-  This sprint does not rewrite them for cosmetic readiness.
-- Every forecast probability range remains hidden pending author review.
-- fc-0006 still requires an author decision to resolve, rebase, or retire it;
-  the probability range is unchanged.
-- Native-language human review is still recommended for the NBS contextual
-  source.
-- A final adversarial public-pilot review remains open under issue #11.
+The full local CI sequence passed on 2026-09-03: typecheck, lint, evidence and
+design tests, production build, 72 Python validator tests, all package and
+repository validators, and private-preview readiness. Readiness continues to
+report 59 non-failing public-launch blockers in private-preview mode; this
+package does not change or waive them. Draft-PR checks remain required.
 
-The research lab is now explicitly marked noindex/no-follow for the private
-preview. A login gate is not recommended at this stage: noindex preserves
-review access without implying the lab is public evidence. If confidential or
-licensed material enters the lab later, access control should replace robots
-metadata.
+## Protected state
 
-## Legacy content archive candidates
-
-Move these files intact rather than deleting or cosmetically clearing their
-research TODOs:
-
-- content/essays/launch-draft.md
-- content/methodology/v0.md
-- content/country-briefs/china.md
-- content/country-briefs/united-states.md
-- content/sector-briefs/manufacturing-robotics.md
-- content/sector-briefs/compute-energy.md
-
-Current public pages and content/essays/launch-essay-v1.md supersede these as
-product copy.
+The package must leave S1-S4 records, raw submissions, the 155-row audit, owner
+decisions, fusion evidence and source-promotion records, the canonical source
+register, merged domain review, production `data/profiles`, C/governance,
+couplings, scenarios, forecasts, figures, public content, and UI unchanged.
+Focused validation pins those protected objects. Zero profile rows are approved
+or canonical. WP2 has not begun.
 
 ## Next order
 
-1. Review this branch’s source-promotion report, observation rows, Figure 1,
-   claims, and screenshots.
-2. Merge only after review; do not auto-merge.
-3. Archive obsolete content drafts in a separate scoped cleanup.
-4. Resolve or rebase fc-0006 and review every forecast range.
-5. Remap or retire the 45 staged visual references.
-6. Run issue #11’s final adversarial review in public-pilot mode.
-
-## Human decisions
-
-1. Approve the source-specific wording and denominators in Figure 1.
-2. Decide whether future work should use the BTOS 32% summary or the 31.2%
-   table value for employment-weighted analysis.
-3. Resolve, rebase, or retire fc-0006.
-4. Confirm when the project should move from private preview toward a public
-   pilot.
+1. Open the issue #41 draft PR against `main` and stop implementation.
+2. Conduct one substantive PM review.
+3. Make one bounded correction pass; recheck only P0/P1 blockers.
+4. Merge when no P0/P1 blocker remains.
+5. Begin WP2 proposed/staged profile construction in one batch. Do not insert
+   another general pre-gate.

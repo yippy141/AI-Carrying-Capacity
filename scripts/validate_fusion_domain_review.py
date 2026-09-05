@@ -2,7 +2,8 @@
 """Issue #39: validate recommendations without granting profile approval.
 
 The freeze is against merged PR #38, a85267ce3a0c6ec598554e45b9bc4a82a74f9e95.
-Later authorized packages must explicitly replace this issue-specific gate.
+Issue #41 explicitly authorizes the one-line PROJECT_STATE entry pointer in
+AGENT_BRIEF; its replacement digest below pins that sole control-plane edit.
 Never refresh these digests to conceal production/evidence/input mutations.
 """
 from __future__ import annotations
@@ -147,7 +148,7 @@ FROZEN_FILES = {
     "docs/METHOD_PROFILES.md": "4b14d1ee6f263ac328652afa271e53594433066e523ffc65d2ed1bcb27654fd6",
     "docs/METHOD_GATE_REVIEW.md": "403f4c75b6b3262fa879616b505c8526204bf5239978b5f6c32b7af7540eb040",
     "docs/FRESHNESS_PROTOCOL.md": "f83077c3fee1e34e586cb53305232994c064eb5e84581a443ec23946f9aba37e",
-    "docs/AGENT_BRIEF.md": "121a43bc9aae44ed9725d0ef96e51ce2c055f24c9cdf4ab5e33b5738b8d6fcc5",
+    "docs/AGENT_BRIEF.md": "f47a6b624c3b171585f9c188c3e89a3c5f4fcec08c438d2a1aa3d5376807e8da",
 }
 
 

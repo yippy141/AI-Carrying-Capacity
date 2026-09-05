@@ -73,6 +73,12 @@ jobs:
       - name: Validate fusion domain review package
         run: python3 scripts/validate_fusion_domain_review.py
 
+      - name: Test targeted S5 adjudication guardrails
+        run: python3 -m unittest scripts/validate_targeted_s5_adjudication_test.py
+
+      - name: Validate targeted S5 adjudication package
+        run: python3 scripts/validate_targeted_s5_adjudication.py
+
       - name: Validate fusion evidence package
         run: python3 scripts/validate_fusion_evidence.py
 
