@@ -51,9 +51,14 @@ not authentication. This repository, staged research, author brief and
 draft-PR screenshots are public. See the validation report for the preview URL.
 
 New exact claims and personal copy remain pending Jinhua’s review.
-`npm run build` makes an optimized, labeled review preview;
-`npm run build:publication` fails until the finite uses and author publication
-record are approved. Archive TODOs and unfinished forecasts remain visible in
+`npm run build` is the single build entry point. Locally and in a Vercel preview
+it builds an optimized labelled draft. A Vercel production target automatically
+runs publication preflight, publication-mode compilation and rendered checks;
+`npm run build -- --production` (alias `build:publication`) enforces the same
+checks outside Vercel. Conflicting preview requests fail. This pending edition
+therefore refuses production, including on merge when the host uses the supported
+command/target. Actual hosted build-command/root/env overrides have not been
+verified; no hosting settings were changed. See `docs/READER_EDITION_BOUNDARY.md`. Archive TODOs and unfinished forecasts remain visible in
 history without blocking this finite reading edition. They are not deleted.
 
 ## Develop locally
@@ -74,6 +79,7 @@ npm run typecheck
 npm run lint
 npm run build
 npm run test:evidence
+npm run test:publication
 npx playwright install chromium
 npm run test:browser
 .venv/bin/python3 -m unittest scripts/test_historical_reader_snapshot.py scripts/test_reader_profiles.py

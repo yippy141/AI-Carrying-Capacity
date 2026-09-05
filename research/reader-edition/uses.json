@@ -21,7 +21,7 @@
     "uncertainty": "Table II, column 3: +0.301 resolutions/hour; agent-clustered standard error 0.0329; 12,295 agent-month observations. The text reports 15.2%, rounded to 15% in the abstract.",
     "quality": "Effects vary by skill. The highest-skilled agents show small quality declines; resolution data cover a subset because subcontractor quality records are incomplete.",
     "caveat": "One firm and an older assistant. Comparable counterfactual trends are an identification assumption. No measured national productivity, wage or welfare effect.",
-    "locator": "QJE 140(2), pp. 889–942; §§III.B–C, IV.A–C; Table II column 3; §V.B.",
+    "locator": "QJE 140(2), 889–942; Introduction; §III.B Data-Firm Background; §III.C; §IV.B/Table I; §V.A/Table II column 3; §V.B; §VI.A–B; §VII.",
     "reviewer": "Codex source/content check; Jinhua final reading pending",
     "humanReview": "not_recorded",
     "translation": "not_applicable",
@@ -29,7 +29,69 @@
     "reuse": "reported_facts_only",
     "licenseId": "lic-reader-qje",
     "verificationDate": "2026-09-06",
-    "revisit": "New correction, replication, population or tool vintage; do not replace this historical estimate with a current-model claim."
+    "revisit": "New correction, replication, population or tool vintage; do not replace this historical estimate with a current-model claim.",
+    "analysis": {
+      "mechanism": {
+        "text": "The paper finds larger gains among less experienced and lower-skilled agents and evidence consistent with the assistant spreading effective practices. A suggestion available during a customer conversation can make useful know-how easier to apply.",
+        "locator": "QJE §V.B; §VI.A–B (adherence and worker learning).",
+        "kind": "source_supported"
+      },
+      "alternative": {
+        "text": "The rollout could coincide with other changes affecting treated agents. Even if the average access effect is credible, skill patterns do not uniquely identify knowledge transfer as its cause.",
+        "locator": "QJE staggered-rollout identification; analyst interpretation of mechanism limits.",
+        "kind": "analyst_hypothesis"
+      },
+      "significance": {
+        "text": "The useful outcome is more resolved issues in an hour of support work. Who keeps the gain depends on staffing, compensation, service commitments and ownership—quantities this percentage does not allocate.",
+        "locator": "QJE Introduction and §VII; distribution interpretation.",
+        "kind": "analyst_hypothesis"
+      },
+      "frontier": {
+        "text": "An upgrade could matter more if it resolves difficult cases reliably enough to change which work an agent can finish. It could matter less if existing suggestions already meet the need, or if checking additional suggestions consumes the gain. That requires an upgrade comparison.",
+        "locator": "Analyst hypothesis; not identified by the access-versus-no-access estimate.",
+        "kind": "analyst_hypothesis"
+      }
+    },
+    "details": [
+      {
+        "id": "model",
+        "text": "OpenAI developed the underlying GPT-3 model.",
+        "locator": "QJE Introduction, paragraph beginning “We study the effect”.",
+        "kind": "source_supported"
+      },
+      {
+        "id": "supplier",
+        "text": "A separate, unnamed AI software company supplied the assistant integration.",
+        "locator": "QJE §III.B first paragraph; §III.C.",
+        "kind": "source_supported"
+      },
+      {
+        "id": "employer",
+        "text": "An unnamed Fortune 500 business-software firm employed support agents directly and through subcontractors.",
+        "locator": "QJE §III.B.",
+        "kind": "source_supported"
+      },
+      {
+        "id": "workers",
+        "text": "Most agents worked in the Philippines. The paper separately reports 89% outside the US; that is not a Philippine share.",
+        "locator": "QJE §III.B; §IV.B/Table I.",
+        "kind": "source_supported"
+      },
+      {
+        "id": "customers",
+        "text": "Customers were US-based small-business owners seeking technical support.",
+        "locator": "QJE §III.B.",
+        "kind": "source_supported"
+      },
+      {
+        "id": "institutions",
+        "text": "Public institutions shape tax, labor and service rules; their fiscal gains, strategic leverage and welfare effects are not measured here.",
+        "locator": "Analytical attribution map; QJE does not estimate these national effects.",
+        "kind": "analyst_hypothesis"
+      }
+    ],
+    "recommendation": "retain_staged_for_author_reading",
+    "relativeInterval": null
   },
   {
     "id": "reader-clm-metr",
@@ -52,7 +114,7 @@
     "sample": "16 experienced developers; 246 real tasks in mature open-source repositories they knew well.",
     "period": "February–June 2025; methodology update 24 February 2026",
     "tools": "Primarily Cursor Pro with Claude 3.5 / 3.7 Sonnet",
-    "design": "Task-level randomized experiment after issues were specified. Log-linear estimation controls for preregistered difficulty forecasts.",
+    "design": "Task-level randomized experiment after issues were specified. Log-linear estimation controls for forecasts elicited before random assignment.",
     "uncertainty": "Historical estimate: +19% task time; 95% interval +2% to +39%, as restated in the February 2026 update. Self-reported time supported by screen recordings; some post-review time imputed.",
     "quality": "No demonstrated qualitative reduction in submitted PR quality. Post-review time difference was statistically insignificant.",
     "caveat": "Selected developers and familiar repositories, using early-2025 tools. Later participation and task selection changed: people and tasks expected to benefit increasingly avoided AI-disallowed assignment. This is not an estimate of current models.",
@@ -64,7 +126,36 @@
     "reuse": "reported_facts_only",
     "licenseId": "lic-reader-metr",
     "verificationDate": "2026-09-06",
-    "revisit": "Revised experiment design that addresses selection, concurrency, quality and task accounting."
+    "revisit": "Revised experiment design that addresses selection, concurrency, quality and task accounting.",
+    "analysis": {
+      "mechanism": {
+        "text": "Screen recordings and participant reports describe time spent prompting, checking and revising AI output. Such work can offset time saved producing a first attempt. The paper does not identify a causal percentage for each explanation.",
+        "locator": "METR v2 §2.4 and §§3.2–3.3; Figure 6; Appendix C. Qualitative interview questions may introduce bias.",
+        "kind": "source_supported"
+      },
+      "alternative": {
+        "text": "Experienced maintainers working in familiar repositories may have little to gain from these particular tools on these tasks. The selected population and early-2025 tools are an alternative to a general story about software work.",
+        "locator": "METR paper v2 discussion and limitations; analyst interpretation.",
+        "kind": "analyst_hypothesis"
+      },
+      "significance": {
+        "text": "Measure the time to finish the accepted task, including the work around generated output. A faster first draft and a slower completed task can coexist.",
+        "locator": "METR task-time outcome; analyst interpretation.",
+        "kind": "analyst_hypothesis"
+      },
+      "frontier": {
+        "text": "More reliable edits, better repository context or a different workflow could change that balance. Neither this historical access experiment nor its comparison with customer support estimates the benefit of a stronger replacement model.",
+        "locator": "Analyst hypothesis; METR 24 February 2026 update limits current inference.",
+        "kind": "analyst_hypothesis"
+      }
+    },
+    "details": [],
+    "recommendation": "retain_staged_for_author_reading",
+    "relativeInterval": {
+      "level": 95,
+      "low": 2,
+      "high": 39
+    }
   },
   {
     "id": "reader-clm-tcv",
@@ -76,7 +167,7 @@
     "status": "staged",
     "exactUse": "fusion_control_summary",
     "title": "AI already acts on physical work",
-    "claim": "A learned controller operated a real research tokamak. That establishes a plasma-control result; it does not establish power-plant reliability, nuclear commissioning time or commercial electricity.",
+    "claim": "A simulation-trained reinforcement-learning policy controlled plasma configurations on the physical TCV research tokamak. Its training, deployment and evaluation required an engineered control workflow.",
     "panel": "TCV plasma control",
     "value": null,
     "unit": "No plant-level effect estimated",
@@ -88,7 +179,7 @@
     "uncertainty": "No plant-level effect size or interval. Transfer beyond the demonstrated configurations remains a separate question.",
     "quality": "Controlling plasma configurations is a demonstrated task. Qualification, safety and plant availability are different outcomes.",
     "caveat": "A facility milestone is not evidence that AI caused that milestone. An absent result in this evidence bank is not proof of universal absence. Planned irradiation is a planned exposure requirement, not completed accepted qualification data.",
-    "locator": "Nature 602, pp. 414–419; Figure 1; Learning control and training architecture; Methods: Deployment.",
+    "locator": "Nature 602, 414–419; Figure 1 and Learning control and training architecture; Discussion; Methods: Deployment and Post-experiment analysis; Extended Data Figure 4b (Further observations); Rights and permissions.",
     "reviewer": "Canonical source identity reviewed 2026-09-01; this authored use checked by Codex, release review pending",
     "humanReview": "not_recorded",
     "translation": "not_applicable",
@@ -96,6 +187,56 @@
     "reuse": "reported_facts_only",
     "licenseId": "lic-reader-tcv",
     "verificationDate": "2026-09-06",
-    "revisit": "Transfer across relevant operating conditions, integrated component/fuel-cycle performance, maintainability and attributable schedule or output effects."
+    "revisit": "Transfer across relevant operating conditions, integrated component/fuel-cycle performance, maintainability and attributable schedule or output effects.",
+    "analysis": {
+      "mechanism": {
+        "text": "The authors combined a learned policy with a physics simulator, hardware-specific sensing and actuation models, varied training conditions and real-time deployment engineering. The policy could control several plasma configurations on TCV.",
+        "locator": "Nature Figure 1; Discussion, first paragraph.",
+        "kind": "source_supported"
+      },
+      "alternative": {
+        "text": "Success may depend on how well TCV and the tested conditions fit the simulator and engineering choices. This is an alternative to crediting general-purpose AI capability alone; the study does not isolate each contribution.",
+        "locator": "Nature Discussion and deployment limitations; analyst interpretation.",
+        "kind": "analyst_hypothesis"
+      },
+      "significance": {
+        "text": "Choosing what the controller should achieve is substantive work. A system can meet a specified objective while leaving an important physical consideration outside that objective. Evaluation and revised specifications help define useful performance.",
+        "locator": "Interpretation of Extended Data Figure 4b; not an accident or existential-risk claim.",
+        "kind": "analyst_hypothesis"
+      },
+      "frontier": {
+        "text": "The authors discuss richer policies and simulators as possible routes to broader performance. More capable learning could expand the feasible control task, while transfer and deployment requirements still need evidence. This specialist RL intervention does not measure chat-model upgrades.",
+        "locator": "Nature Discussion; Methods Further findings; analyst boundary on generalization.",
+        "kind": "analyst_hypothesis"
+      }
+    },
+    "details": [
+      {
+        "id": "training",
+        "text": "Engineers specify objectives and control targets. Simulation experience trains a control policy; only the trained policy is deployed to the live control loop.",
+        "locator": "Nature Figure 1a–c; Learning control and training architecture.",
+        "kind": "source_supported"
+      },
+      {
+        "id": "deployment",
+        "text": "After initial plasma formation under existing control, the deployed policy reads magnetic/current measurements and targets, and sends commands to the coil power supplies.",
+        "locator": "Nature Figure 1d–f; Methods: Deployment.",
+        "kind": "source_supported"
+      },
+      {
+        "id": "evaluation",
+        "text": "Reconstructed plasma states support post-experiment assessment against targets; reconstruction is not the deployed policy’s real-time shape observer. Compiled policies are timing-tested before deployment.",
+        "locator": "Nature Methods: Deployment and Post-experiment analysis.",
+        "kind": "source_supported"
+      },
+      {
+        "id": "objective",
+        "text": "Extended Data Figure 4b describes an initially unspecified balancing objective: the controller used an alternative coil combination that produced forces on machine structures. Later experiments added an objective to address that behavior. The caption does not establish an accident.",
+        "locator": "Nature Extended Data Figure 4b caption; Further findings.",
+        "kind": "source_supported"
+      }
+    ],
+    "recommendation": "retain_staged_for_author_reading",
+    "relativeInterval": null
   }
 ]

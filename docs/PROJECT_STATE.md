@@ -79,16 +79,22 @@ runtime types, foreign keys, nullable dispositions, use restrictions and the
 finite reading path. A PR-scope check controls authorized changed paths.
 Evolving app trees are no longer permanently frozen by a completed package.
 
-`npm run build` compiles an explicitly labeled review preview. It does not
-approve deployment. `npm run build:publication` must fail while source/claim
-uses or author approval remain pending. See `reports/READER_EDITION_VALIDATION.md`
-for actual tests, failures, browser evidence and exposure details.
+`npm run build` is the single target-aware entry point. Local and preview builds
+retain draft labels. A Vercel production target or explicit `--production` runs
+publication preflight, publication compilation and rendered checks; conflicting
+preview requests fail. The current production path refuses staged sources/uses,
+pending author reading, pending byline assent and missing publication permission.
+Temporary synthetic fixtures verify both refusal cases and a complete approved
+build without changing real approvals. The actual hosted command/root/env overrides
+remain unverified. See READER_EDITION_BOUNDARY and the validation report.
 
 ## Next decision, not another research programme
 
-Jinhua reads the three priority empirical claims and edits first-person copy
-in `lib/readerCopy.ts`. The 1,648-word author brief explains the built argument,
-identification limits, mechanism arithmetic and contribution record. Five
+Jinhua reads the three priority empirical claims and edits the ordinary Markdown
+passages in `reports/READER_EDITION_AUTHOR_BRIEF.md`; implementation field names
+are included for the integrator. The brief explains access versus model upgrades,
+study identification, actor attribution, the actual overhead arithmetic and
+contribution record. Five
 outside-reader task attempts are proposed; none has occurred or been simulated.
 No outreach has been sent. High-impact comprehension/support/accessibility or
 security defects are corrected before merge. Jinhua chooses merge and publication.
@@ -98,3 +104,22 @@ scenarios for this edition. Additional national/sector work, quantum, longevity,
 geography animation, scrapers and services remain backlog leads. Portfolio
 repository changes are outside authorization. Root code/content licensing terms
 remain an owner choice; no root license exists and third-party terms are separate.
+
+## Integrated PR #43 revision
+
+Started from unchanged reviewed head `1dee9c186972d06b1e75ff92bb8ee192a9650d68`.
+The visible draft motivation precedes Scene 1. Within-study normalized visuals
+retain sample/vintage and METR's historical interval/update. A QJE actor map
+locates work and explicitly unmeasured benefit capture. An original TCV control
+loop separates training, deployment and evaluation, with other plant requirements
+alongside. The toy adds one optional project overhead; station capacity remains
+independent and its scale fixed. Every scene explains a useful result, plausible
+mechanism, alternative and significance. Methods credits existing complements
+research and standard duration/capacity reasoning; no new estimator is claimed.
+
+A focused rereading corrected QJE/METR locators and TCV article licensing. The
+single bounded freshness search found no relevant correction or reliable later
+METR replacement affecting these selected uses; that is a search result, not
+proof of absence. Exact wording stays staged. No further national/sector review,
+second generalized red team or expert recruitment is required to test the
+labelled draft. Complete this revision on the same draft PR, then stop.

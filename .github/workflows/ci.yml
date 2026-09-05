@@ -46,6 +46,9 @@ jobs:
       - name: Test evidence logic
         run: npm run test:evidence
 
+      - name: Test fail-closed production and synthetic approved publication
+        run: npm run test:publication
+
       - name: Build
         run: npm run build
 

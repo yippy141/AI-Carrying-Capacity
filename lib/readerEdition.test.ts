@@ -74,3 +74,20 @@ test('review status contradictions fail in preview and approved figures remain e
  const sources=edition.sources.map(s=>s.source_id===u.sourceIds[0]?{...s,language:'zh',translation_reviewer:'missing'}:s);
  assert.throws(()=>projectUse({...u,translation:'reviewed'},sources,edition.licenses,'review-preview'),/translation blocked/);
 });
+
+test('incremental added work can erase or reverse the project saving without changing capacities',()=>{
+ const equal=calculateMechanism({...DEFAULT_INPUTS,addedTime:6});
+ assert.equal(equal.before,40);assert.equal(equal.after,40);assert.equal(equal.change,'unchanged');
+ const slower=calculateMechanism({...DEFAULT_INPUTS,addedTime:8});
+ assert.equal(slower.after,42);assert.equal(slower.reductionPercent,-5);assert.equal(slower.change,'longer');
+ assert.equal(slower.outputAfter,4);assert.deepEqual(slower.bindingStations,[1]);
+ assert.equal(calculateMechanism({...DEFAULT_INPUTS,topology:'parallel',addedTime:8}).after,40);
+ assert.equal(calculateMechanism({...DEFAULT_INPUTS,capacityMultipliers:[4,4,1]}).bindingStations[0],2);
+ for(const addedTime of [-1,NaN,Infinity])assert.throws(()=>calculateMechanism({...DEFAULT_INPUTS,addedTime}));
+});
+test('only METR carries a sourced relative interval; no QJE percentage interval is invented',()=>{
+ assert.equal(edition.uses[0].relativeInterval,null);
+ assert.deepEqual(edition.uses[1].relativeInterval,{level:95,low:2,high:39});
+ assert.ok(edition.uses.every(u=>u.recommendation==='retain_staged_for_author_reading'));
+ assert.ok(edition.uses[0].details.some(d=>d.id==='workers'&&d.text.includes('Philippines')));
+});

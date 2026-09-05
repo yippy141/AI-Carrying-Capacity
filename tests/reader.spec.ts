@@ -21,10 +21,19 @@ test('home → empirical figure → source and denominator caveat',async({page},
  expect(errors).toEqual([]);
  mkdirSync(shots,{recursive:true});await page.screenshot({path:`${shots}/${info.project.name}-evidence.png`,fullPage:false});
 });
-test('assumptions change arithmetic, bottleneck and topology; keyboard and reset work',async({page})=>{
+test('assumptions change arithmetic, bottleneck and topology; keyboard and reset work',async({page},info)=>{
  await page.goto('/#mechanism');
  await expect(page.getByTestId('project-result')).toContainText('40 → 34 days');
  await expect(page.getByTestId('output-result')).toContainText('4 → 4 accepted units/week');
+ const added=page.getByRole('slider',{name:/Additional integration/});
+ await added.fill('6');await expect(page.getByTestId('project-result')).toContainText('40 → 40 days');
+ await expect(page.getByTestId('project-result')).toContainText('No change in elapsed time');
+ await added.fill('8');await expect(page.getByTestId('project-result')).toContainText('40 → 42 days');
+ await expect(page.getByTestId('project-result')).toContainText('5% more elapsed time');
+ await expect(page.getByTestId('project-result')).not.toContainText('days saved');
+ await expect(page.getByTestId('output-result')).toContainText('4 → 4 accepted units/week');
+ mkdirSync(shots,{recursive:true});await page.locator('#figure-3').screenshot({path:`${shots}/${info.project.name}-added-work.png`});
+ await page.getByRole('button',{name:'Reset assumptions'}).click();await expect(added).toHaveValue('0');
  const design=page.getByRole('slider',{name:/^Design speed/});await design.focus();await design.press('ArrowRight');
  await expect(page.getByTestId('project-result')).toContainText('40 → 33.6 days');
  await page.getByRole('button',{name:'Reset assumptions'}).click();
@@ -32,8 +41,11 @@ test('assumptions change arithmetic, bottleneck and topology; keyboard and reset
  await expect(page.getByTestId('project-result')).toContainText('32 → 32 days');
  await page.getByRole('button',{name:'Also make testing 4× as fast'}).click();
  await expect(page.getByTestId('project-result')).toContainText('32 → 8 days');
+ const firstBar=await page.locator('.capacity-track > div').first().getAttribute('style');
  const second=page.getByRole('slider',{name:/Second station capacity multiplier/});await second.fill('4');
  await expect(page.getByTestId('output-result')).toContainText('4 → 6 accepted units/week');
+ await expect(page.getByTestId('binding-station')).toContainText('Binding station: 3');
+ expect(await page.locator('.capacity-track > div').first().getAttribute('style')).toBe(firstBar);
  await page.getByRole('button',{name:'Reset assumptions'}).click();
  await expect(page.getByTestId('project-result')).toContainText('40 → 34 days');
  await expect(design).toHaveValue('4');
@@ -43,7 +55,8 @@ test('assumptions change arithmetic, bottleneck and topology; keyboard and reset
 test('paper, print, source links, static text and mobile overflow',async({page},info)=>{
  await page.goto('/paper');
  await expect(page.locator('figure')).toHaveCount(4);
- await expect(page.locator('#author-draft')).toHaveAttribute('open','');
+ await expect(page.locator('#author-draft')).toBeVisible();
+ expect(await page.locator('#author-draft').evaluate(el=>el.tagName)).toBe('SECTION');
  const before=await page.locator('[data-claim-id]').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('data-claim-id')));
  await page.goto('/');
  expect(await page.locator('[data-claim-id]').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('data-claim-id')))).toEqual(before);
@@ -54,7 +67,7 @@ test('paper, print, source links, static text and mobile overflow',async({page},
  }
  await page.goto('/paper');await page.emulateMedia({media:'print'});
  await expect(page.locator('header')).toBeHidden();
- await expect(page.getByTestId('project-result')).toContainText('8/4 + 32/1 = 34 days');
+ await expect(page.getByTestId('project-result')).toContainText('8/4 + 32/1 + 0 = 34 days');
  await expect(page.locator('.print-only').first()).toBeVisible();
  if(info.project.name==='desktop')await page.pdf({path:'reports/reader-edition/reader-print.pdf',format:'A4',printBackground:true,tagged:true});
  await page.emulateMedia({media:'screen'});
@@ -73,7 +86,9 @@ test('figure exports and actual rendered screenshots',async({page},info)=>{
  await page.screenshot({path:`${shots}/${info.project.name}.png`});
  await page.screenshot({path:`${shots}/${info.project.name}-study.png`,fullPage:true});
  await page.locator('#figure-3').screenshot({path:`${shots}/${info.project.name}-mechanism.png`});
- await page.locator('#figure-2').screenshot({path:`${shots}/${info.project.name}-outcomes.png`});
+ await page.locator('#figure-2 .outcome-panels').screenshot({path:`${shots}/${info.project.name}-outcomes.png`});
+ await page.locator('.actor-map').screenshot({path:`${shots}/${info.project.name}-actors.png`});
+ await page.locator('#figure-4').screenshot({path:`${shots}/${info.project.name}-fusion.png`});
  expect(requests).toEqual([]);
 });
 test('reading links resolve, archive routes remain usable, no secret-profile dump',async({page,request})=>{
@@ -98,6 +113,26 @@ test('all new figure exports retain caveats and noninteractive page retains defa
  await staticPage.goto('http://127.0.0.1:3000/');
  await expect(staticPage.getByTestId('project-result')).toContainText('40 → 34 days');
  await expect(staticPage.locator('#figure-2')).toContainText('February 2026 update');
- await expect(staticPage.locator('#figure-4')).toContainText('real research tokamak');
+ await expect(staticPage.locator('#figure-4')).toContainText('physical TCV research tokamak');
  await context.close();
+});
+
+
+test('interpretation stays beside the measured figures, with actors and a distinct physical loop',async({page})=>{
+ await page.goto('/');
+ await expect(page.locator('#author-draft')).toBeVisible();
+ const before=await page.locator('#author-draft').evaluate(el=>el.getBoundingClientRect().top);
+ expect(before).toBeLessThan(await page.locator('#adoption').evaluate(el=>el.getBoundingClientRect().top));
+ await expect(page.locator('.comparison-boundary')).toContainText('do not isolate an upgrade');
+ await expect(page.locator('.outcome-panels')).toContainText('5,172 agents');
+ await expect(page.locator('.outcome-panels')).toContainText('16 experienced developers');
+ await expect(page.locator('.outcome-panels')).toContainText('not raw observed group means');
+ await expect(page.locator('.interval-line')).toContainText('102–139');
+ await expect(page.locator('.actor-map')).toContainText('Philippines');
+ await expect(page.locator('.actor-map')).toContainText('US-based small-business owners');
+ await expect(page.locator('.actor-map')).toContainText('Not measured by this result');
+ await expect(page.locator('.control-diagram')).toContainText('Train in simulation');
+ await expect(page.locator('.control-diagram')).toContainText('Evaluate after the experiment');
+ await page.getByText('Who defines useful control?',{exact:true}).click();
+ await expect(page.locator('#figure-4')).toContainText('does not establish an accident');
 });

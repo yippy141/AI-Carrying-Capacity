@@ -3,12 +3,13 @@ import path from 'node:path';
 import {loadReaderEdition,loadStagedProfiles,READER_ROUTES,type EditionMode} from '../lib/readerEdition.ts';
 import {buildAdoptionDepthFigureModel} from '../lib/adoptionDepth.ts';
 import {readRegister} from '../lib/registers.ts';
+import {loadPublicationReview,requirePublicationReview} from '../lib/publicationReview.ts';
 
 const mode:EditionMode=process.argv.includes('--publication')?'publication':'review-preview';
 const edition=loadReaderEdition(mode);
 loadStagedProfiles();
-const approval=JSON.parse(readFileSync('research/reader-edition/release-review.json','utf8'));
-if (mode==='publication' && (approval.authorCopyStatus!=='approved' || !approval.authorReviewer || approval.publicationAuthorized!==true)) throw new Error('Author copy and publication decision pending');
+const approval=loadPublicationReview();
+if (mode==='publication') requirePublicationReview(approval);
 
 const roots=['app/layout.tsx',...READER_ROUTES.map(r=>`app${r==='/'?'':r}/page.tsx`)];
 const seen=new Set<string>();
@@ -48,6 +49,7 @@ if(process.argv.includes('--rendered')) {
   const found=[...html.matchAll(/data-claim-id="([^"]+)"/g)].map(m=>m[1]);
   if(found.some(id=>!edition.uses.some(u=>u.id===id)))throw new Error(`Unknown rendered use ${route}`);
   if(mode==='publication' && html.includes('data-use-status="staged"'))throw new Error(`Staged public claim ${route}`);
+  if(mode==='publication' && /data-author-status="pending"|review preview|Draft use · author review pending/.test(html))throw new Error(`Unapproved rendered state in ${route}`);
   if(['/', '/paper','/evidence'].includes(route) && edition.uses.some(u=>!found.includes(u.id)))throw new Error(`Missing required figure use ${route}`);
  }
 }

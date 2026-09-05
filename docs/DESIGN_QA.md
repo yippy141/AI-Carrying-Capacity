@@ -66,3 +66,21 @@ overflow.
 The finish pass also narrowed all numbered study figures to the 960px
 publication measure, enlarged footer action hit targets, and replaced remaining
 public rounded-card surfaces with ruled editorial rows or chart cells.
+
+## First-reader PR #43 revision — 6 September 2026
+
+This is a separate authorized revision of the existing reader design, not a
+change to the historical v2 checks above. Keep Newsreader/Inter/IBM Plex Mono,
+paper/ink/hairline tokens, four scenes and useful defaults. New marks encode
+within-study estimates, actor relationships, control feedback and hypothetical
+added work. They do not add public country scores or decorative animation.
+
+One integrated screenshot pass examined desktop/mobile opening, outcomes,
+actors, added-work state and TCV; a paper contact sheet covered all pages.
+The single correction batch prevented mobile slider values wrapping, hid
+baseline edit controls in print, kept the TCV diagram together and kept source
+reference entries intact. The confirming pass produced 16 readable A4 pages.
+Browser assertions cover 390px overflow, keyboard changes/reset, reduced motion,
+no-JavaScript defaults, paper parity, actual export files and six-route axe checks.
+This is model-assisted inspection and automated accessibility coverage, not an
+outside-human comprehension test or PDF/UA certification.

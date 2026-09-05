@@ -53,3 +53,25 @@ Historical whole-app mutation bans end with their completed packages; immutable
 inputs and accepted records remain pinned. Current invariants and PR-scoped
 changed-file checks replace permanent app-tree hashes. See the decision log and
 `READER_EDITION_BOUNDARY.md` for the exact migration.
+
+## PR #43 revision contract
+
+One integrated revision on the existing branch and draft PR. Keep all four
+scenes and the same routes. Answer the narrower access-intervention question
+explicitly while retaining the original model-upgrade motivation. Within the
+operational scene, add normalized within-study visuals and an analytical actor
+map from verified QJE geography. Replace the fusion text boxes with an original
+control-loop diagram from the existing paper. Add only one hypothetical overhead
+input to project duration; capacity remains an independent model.
+
+Revised exact wording, mechanisms and actor/loop details inherit their existing
+parent use's staged/human-review state. No new coding/promotion workstream.
+Author paragraphs are editable Markdown in the same brief; byline and publication
+permission remain pending. The ordinary build detects Vercel production and runs
+the full publication pipeline or refuses. Test positive approval only in temporary
+synthetic fixtures. Current host overrides remain unverified.
+
+Stop after current checks, browser/print/export evidence, the finite source check,
+and updated draft PR. Human comprehension tasks may be attempted on the labelled
+draft now; another generalized review or new expert recruitment is not a condition.
+No merge, publication, administration or portfolio changes.

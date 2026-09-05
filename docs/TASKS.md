@@ -180,10 +180,22 @@
 - [x] Write author explanation and proposed comprehension tasks; do not invent human feedback.
 - [x] Complete local browser/security/build verification, with 12 browser checks and zero known lockfile vulnerabilities; record results and real limitations.
 - [x] Open draft PR #43; verify hosted CI passes, and check the existing automatic Vercel preview redirects unauthenticated requests to sign-in.
-- [ ] Jinhua reads QJE Table II/design, METR original plus February update, and TCV task-to-plant boundary; edits `lib/readerCopy.ts` and makes the publication decision.
+- [ ] Jinhua reads QJE Table II/design, METR original plus February update, and TCV task-to-plant boundary; edits the plain Markdown author brief passages and makes the byline/publication decision.
 - [ ] Obtain five actual outside-reader attempts once recipients/channels are supplied; record hesitation rather than simulated reactions.
 - [ ] Choose root code and original-content/data terms; do not call an unlicensed repository open source.
 
 Earlier broad profile-UI/country/expert tasks remain backlog work, not hidden
 release dependencies. Human review of restricted translated wording and any
 publisher-figure/raw-dataset reuse still blocks those specific uses.
+
+## Draft PR #43 integrated revision — 2026-09-06
+
+- [x] Resolve head at start: unchanged from reviewed `1dee9c186972d06b1e75ff92bb8ee192a9650d68`; preserve existing branch/PR.
+- [x] Add one production-aware build pipeline and negative/positive synthetic publication tests; keep real approvals pending.
+- [x] Explain the access-versus-upgrade boundary, mechanisms/alternatives and contribution in the visible reading path.
+- [x] Verify support-case geography; add actor map, separate normalized operational comparisons and original TCV loop.
+- [x] Add optional incremental project overhead with correct shorter/unchanged/longer wording; keep capacity independent, binding station marked and scale fixed.
+- [x] Reread the finite QJE/METR/TCV passages; correct locators and TCV article-level permissions; retain staged exact uses.
+- [x] Provide editable Markdown author paragraphs and three understanding-focused reader tasks; no new generalized review requirement.
+- [ ] Owner reads/edits headline uses and author copy, confirms byline and decides publication; separate from model verification.
+- [ ] Optional future evidence lead: a within-workflow comparison of model versions would address the upgrade question more directly. Do not start it in this revision.

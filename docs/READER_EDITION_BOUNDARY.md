@@ -58,3 +58,36 @@ Review-preview and publication are explicit modes; preview permission does not
 approve production uses. Hosting access is separate: the existing automatic
 Vercel branch preview redirects unauthenticated requests to Vercel SSO; this
 application adds no authentication system. See the validation report.
+
+## Production entry point — PR #43 revision
+
+| Invocation / environment | Required behavior |
+| --- | --- |
+| `npm run dev` | Normal local development, loopback binding, draft labels |
+| `npm run build` locally or Vercel preview | Preview eligibility preflight, optimized review compilation, rendered review check |
+| `npm run build` with VERCEL_ENV or VERCEL_TARGET_ENV = production | Publication preflight, publication compilation, rendered publication check; current pending release refuses |
+| `npm run build -- --production` (also `build:publication`) | The same full publication pipeline outside Vercel |
+| Production target plus review-preview mode or `--preview` | Refuse conflicting request |
+| VERCEL=1 without target metadata | Refuse ambiguous deployment target |
+| Direct production `next build` without pipeline context | Refuse; use the entry point |
+
+`NODE_ENV=production` alone is not a publication signal: an optimized preview
+also uses it. The explicit production command is required on other hosts.
+The next.config guard catches ordinary direct production compilation; it is not
+an authentication mechanism or a defense against an administrator rewriting
+commands/environment/code. The supported pipeline overwrites its internal mode
+with the resolved target and exposes no fixture or bypass switch.
+
+Publication checks source and exact-use eligibility, author reading/edit with
+an actual recorded reviewer, byline assent, exact-use release review and explicit
+publication authorization. Strict runtime schemas reject missing fields. The
+same existing release objects retain all real pending states. The synthetic test
+copies records to a temporary directory, labels approvals and prose SYNTHETIC,
+builds and checks actual HTML, corrupts one rendered claim to test refusal, and
+deletes the copy. It never represents a model as the real author/reviewer.
+
+On merge, a correctly configured Vercel production build using this repository's
+entry point will fail while these requirements are pending. No production deploy
+was attempted. Actual Vercel build-command/root-directory overrides and system-env
+settings were not available for verification. No repository or host administration
+was changed; the existing preview's credential-free response is reported separately.

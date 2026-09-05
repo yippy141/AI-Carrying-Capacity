@@ -872,3 +872,56 @@ Correct the earlier local-only hosting assumption. Keep local binding, staged
 labels and publication gates. Do not add authentication, alter host/admin
 settings or treat a preview as a production release. All committed materials
 remain public through GitHub regardless of the preview host’s access control.
+
+## 2026-09-06: Revise draft PR #43 within the first-reader scope
+
+Continue the existing release branch from verified PR head
+`1dee9c186972d06b1e75ff92bb8ee192a9650d68`; no intervening commits were present.
+Keep the four scenes, shared paper/evidence views, raw histories and S definitions.
+The edition's empirical answer concerns access to specific AI tools versus no
+access, not the marginal effect of a model upgrade. Cross-study differences
+cannot isolate workflow effects. The new support-case actor map is an analytical
+attribution map, not a national outcome dataset. Its geography comes from the
+final QJE paper. Each scene pairs a useful result with mechanism, alternative
+and significance; source-supported mechanisms remain separate from hypotheses.
+
+The two study visuals normalize reported relative estimates to a reference of
+100 within each panel. They are not observed group means or a shared outcome.
+Retain METR's historical interval and February 2026 selection caveat. The new
+TCV schematic separates simulation training, fixed-policy physical control and
+post-experiment evaluation; other plant requirements are independent dependencies.
+Record its verified article-level CC BY 4.0 terms and asset exceptions without
+blanket-clearing software/data. Revised explanatory details remain under the
+same three staged exact-use records; no new promotion/gate package is created.
+
+Add one optional hypothetical project overhead, default zero, after the required
+tasks complete. Do not change the independent capacity example. Fixed station
+scale and a binding-station marker make changing assumptions legible. Keep the
+personal opening visible and provide editable Markdown in the existing author
+brief; real author reading, byline assent and permission remain pending.
+
+## 2026-09-06: Make the ordinary build fail closed in production
+
+All supported builds enter `scripts/build_reader.ts` through `npm run build`.
+Local/preview builds remain labelled review previews. `VERCEL_ENV=production`,
+`VERCEL_TARGET_ENV=production`, `--production`, or explicit publication mode
+requires publication preflight, publication-mode Next compilation and rendered
+output checks in that order. A conflicting preview request fails. Ambiguous
+Vercel target metadata fails. NODE_ENV alone describes optimization, not a
+hosting target. `build:publication` is an alias to the same entry point.
+
+Direct production `next build` is refused without the build pipeline context.
+The ordinary production entry fails on this release's real pending records.
+Synthetic temporary fixtures exercise source/use, author, byline and permission
+failures and the entire successful publication pipeline, including a deliberately
+corrupted output failure. They never approve the real records. Separately record
+byline assent in the existing release review object; this is not another gate
+package or an implied human approval.
+
+Merging this branch does not authorize publication. If Vercel runs the supported
+build with production target metadata on merge, it will refuse this pending
+edition; an explicit local production invocation behaves the same way. Existing
+hosted build-command/root/environment overrides have not been inspected, and
+hosting protection/admin settings are unchanged. Noindex remains indexing advice,
+not access control. Keep the existing historical snapshot, runtime/provenance and
+PR-scope checks; introduce no new whole-app hash freeze.

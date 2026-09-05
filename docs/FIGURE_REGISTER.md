@@ -50,3 +50,28 @@ argument; the scatter remains under `/lab#historical-scatter`. Old F3 comparativ
 chain component is retained in source history, outside the reader edition.
 Forecasts remain archived and unactivated. FigureShell exports, source links,
 text alternatives and actual 1440/390px captures accompany this package.
+
+## PR #43 revision — same four figures
+
+- Figure 1: numerical observations and separate-source structure unchanged;
+  visible interpretation explains why use is not an optimization target.
+- Figure 2: two original within-study reference-100 visuals. QJE resolutions/hour
+  100→115; METR task-time 100→119 with historical interval 102–139 and February
+  2026 selection warning. These transform estimates, not group means or a common
+  metric. Samples/vintages stay visible. The support actor map is an analytical
+  attribution diagram inside this scene; geography follows the final QJE paper,
+  and arrows encode no flows or effect sizes.
+- Figure 3: one new optional project overhead (zero default) after serial/parallel
+  required work; correct 40→34, 40→40 and 40→42 examples. Independent capacity
+  model keeps fixed 0–160 scale and marks the binding station. No empirical
+  calibration or new S mark. Baseline controls stay secondary and are hidden
+  in print, while default assumptions and arithmetic remain visible.
+- Figure 4: original TCV simulation-training / physical-feedback / post-experiment
+  evaluation schematic. Other plant dependencies are alongside it. Objective
+  example follows Extended Data Figure 4b; it implies no accident or plant effect.
+  Article CC BY 4.0 subject to asset exceptions; no publisher image reproduced.
+
+All new empirical wording and explanatory detail inherit the existing staged
+parent-use records in `research/reader-edition/uses.json`. Source/hypothesis
+labels are explicit in the optional interpretation. Updated actual desktop and
+390px captures, PNG exports and print sample are in reports/reader-edition.

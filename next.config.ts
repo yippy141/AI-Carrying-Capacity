@@ -1,4 +1,6 @@
 import type { NextConfig } from "next";
+import {PHASE_PRODUCTION_BUILD} from 'next/constants';
+import {productionEnvironment} from './lib/buildPolicy';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -20,4 +22,11 @@ const nextConfig: NextConfig = {
   ]
 };
 
-export default nextConfig;
+export default function configuration(phase: string): NextConfig {
+  if (phase === PHASE_PRODUCTION_BUILD && (productionEnvironment(process.env) || process.env.READER_EDITION_MODE === 'publication')) {
+    if (process.env.READER_BUILD_PIPELINE !== 'publication' || process.env.READER_EDITION_MODE !== 'publication') {
+      throw new Error('Production must use npm run build (or npm run build -- --production), including preflight and rendered checks');
+    }
+  }
+  return nextConfig;
+}

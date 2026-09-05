@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { z } from 'zod';
+import {productionEnvironment} from './buildPolicy.ts';
 import { loadAdoptionDepth, loadClaimLedger, loadSourceRegister, readRegister, sourceSchema, safeUrl, type SourceRow } from './registers.ts';
 
 export const EDITION_DATE = '2026-09-06';
@@ -7,24 +8,30 @@ export const READER_ROUTES = ['/', '/paper', '/evidence', '/methods', '/about', 
 export type EditionMode = 'review-preview' | 'publication';
 export function editionMode(): EditionMode {
   const value = process.env.READER_EDITION_MODE;
+  if (productionEnvironment(process.env) && value === 'review-preview') throw new Error('Production cannot render review-preview');
   if (value && value !== 'review-preview' && value !== 'publication') throw new Error('Invalid edition mode');
   return value === 'review-preview' ? value : 'publication';
 }
 const text = z.string().min(1);
 const date = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
+const analysisItem=z.object({text,locator:text,kind:z.enum(['source_supported','analyst_hypothesis'])}).strict();
 export const useSchema = z.object({
   id: text, sourceIds: z.array(text).min(1), legacyClaimIds: z.array(text),
   kind: z.enum(['observation', 'interpretation', 'scenario']),
   status: z.enum(['staged', 'approved', 'rejected']),
   exactUse: z.enum(['operational_summary', 'fusion_control_summary']),
   title: text, claim: text, panel: text, value: z.number().finite().nullable(), unit: text,
+  relativeInterval:z.object({level:z.literal(95),low:z.number().finite(),high:z.number().finite()}).refine(interval=>interval.low<=interval.high,'Inverted interval').nullable(),
   comparison: text, sample: text, period: text, tools: text, design: text,
   uncertainty: text, quality: text, caveat: text, locator: text, reviewer: text,
   humanReview: z.enum(['not_recorded', 'author_reviewed']),
   translation: z.enum(['not_applicable', 'pending', 'reviewed']),
   companyOrTarget: z.enum(['research_result', 'company_report', 'official_target', 'company_target']),
   reuse: z.enum(['reported_facts_only', 'dataset', 'publisher_figure']), licenseId: text,
-  verificationDate: date, revisit: text
+  verificationDate: date, revisit: text,
+  recommendation: z.literal('retain_staged_for_author_reading'),
+  analysis: z.object({mechanism:analysisItem,alternative:analysisItem,significance:analysisItem,frontier:analysisItem}).strict(),
+  details: z.array(z.object({id:text,text,locator:text,kind:z.enum(['source_supported','analyst_hypothesis'])}).strict())
 }).strict();
 export type ReaderUse = z.infer<typeof useSchema>;
 const licenseSchema = z.object({ license_id: text, verification_status: z.enum(['cleared','citation_only','needs_review','prohibited']), intended_use: text, license_name: text, license_url: text, redistribution_allowed: text }).passthrough();

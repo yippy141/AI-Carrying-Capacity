@@ -60,3 +60,85 @@ This is a small acceptance exercise, not representative usability research.
 Jinhua makes the merge/publication decision after the three readings and author
 statement. Complete expert outreach and the entire legacy research backlog are
 not prerequisites for this finite, clearly qualified edition.
+
+## Integrated revision: focused source check, 6 September 2026
+
+The earlier access/reuse note above is history, not the current TCV license
+conclusion. This revision obtained the Nature article's full text, Figure 1
+caption, Discussion, Deployment/Post-experiment analysis and the Extended Data
+Figure 4b caption. A direct figure-8 endpoint returned a cache miss; the original
+caption was available in the full publisher article. The new schematic is
+original and does not reproduce a publisher asset. Figure 4b supports an
+objective-specification example, not an accident, dangerous loss of control or
+existential-risk claim. No operational controller settings are supplied.
+
+Nature Rights and permissions explicitly states CC BY 4.0 for the article and
+covered images, with third-party credit-line exceptions. Figure 1's caption had
+no separate exclusion. `lic-reader-tcv` now records that license, attribution,
+license link and identification-of-changes conditions. Its package-level
+redistribution flag remains false because this package clears only original
+schematic/paraphrase use; the article license itself permits covered reuse.
+Linked datasets and unrelated assets are not blanket-cleared. FGE/LIUQE software
+requires an EPFL agreement under the separate Code availability statement. The
+root project's code/original-content licensing choice remains unchanged.
+
+The final QJE article (§III.B Data-Firm Background; Table I) verifies the
+majority-Philippines workforce and US-based small-business customers. The 89%
+non-US share is a different category, not a Philippine share. OpenAI is the
+underlying GPT-3 developer; the assistant supplier and employer remain unnamed.
+The actor map contains no invented financial flows or national shares. Wages,
+profits, fiscal gains, strategic leverage and welfare are not established by
+the throughput estimate. Main effects: §V.A/Table II; skill heterogeneity: §V.B.
+
+METR's estimator wording now says forecasts elicited before random assignment;
+preregistration of those forecasts was not established. The February update's
+actual title is “We are Changing our Developer Productivity Experiment Design.”
+The normalized bars are transformations of reported relative estimates:
+100→115 resolutions/hour index; 100→119 task-time index. METR's reported
+historical interval maps to 102–139 on its index. QJE gets no invented percentage
+interval. The two indices do not form a common metric or observed group means.
+
+New mechanism/alternative/actor/control-loop wording is stored inside the same
+three `uses.json` objects, covered by their staged exact-use status. Source-
+supported explanations and analyst hypotheses are tagged separately. The
+recommendation is `retain_staged_for_author_reading`. Source verification,
+recommendation, actual human review, byline assent and publication authorization
+remain distinct. No source promotion or S recoding occurred.
+
+One bounded freshness search used the selected DOI/arXiv identities plus
+correction/supersession terms and checked the publisher/original METR records.
+It found no correction overturning the selected historical QJE/TCV use or
+reliable replacement for the selected METR estimate. The arXiv record still
+showed v2 (25 July 2025); the 24 February 2026 selection warning remains part
+of the exact use. **No relevant update found in this bounded search** is a
+search result, not proof of universal absence or a promise of current coverage.
+No broad productivity, national or fusion literature scan was performed.
+
+The Methods lineage paragraph uses existing related-work records rw-007 and
+rw-012 (verified 27 August); the BIS 1325 publisher summary was reopened and
+supports attribution to complementary investment research. It introduces no
+new quantitative headline or estimator. Original source locators:
+
+- [QJE final article](https://academic.oup.com/qje/article/140/2/889/7990658)
+- [METR paper v2](https://arxiv.org/html/2507.09089v2), §§2.3–2.4, 3.2–3.3, Appendix C/D
+- [METR methodology update](https://metr.org/blog/2026-02-24-uplift-update/)
+- [Nature article](https://www.nature.com/articles/s41586-021-04301-9), Figure 1; Discussion; Methods; Extended Data Figure 4b; Rights and permissions
+- [BIS Working Paper 1325 summary](https://www.bis.org/publ/work1325.htm)
+
+### Three comprehension tasks for five readers
+
+1. In your own words, state the motivating question and the narrower answer
+   this edition supports. Choose one measured result and explain why it does
+   not estimate a weaker-to-stronger model upgrade.
+2. Change the extra-work assumption. Explain why the project can get longer
+   while repeated output stays unchanged, and identify which claims in that
+   explanation are hypothetical rather than observed.
+3. Choose a source. Explain one limitation that changes your interpretation,
+   then identify one actor's measured outcome and one benefit the study does
+   not allocate. In the fusion case, distinguish the live loop from training,
+   evaluation and other plant dependencies.
+
+Record actual confusion and the reader's reasoning, not just successful clicks.
+No outside-reader attempts or attributed feedback have occurred. These are
+acceptance tasks, not a representative usability study, and they can be tried
+on the labeled draft without more expert recruitment or another worksheet.
