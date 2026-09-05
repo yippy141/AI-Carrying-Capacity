@@ -55,4 +55,6 @@ The old launch TODO scan remains an archive/backlog diagnostic. The actual
 release gate follows the finite routes and their transitive imports, checks
 the rendered claim manifest, and rejects draft objects in publication mode.
 Review-preview and publication are explicit modes; preview permission does not
-approve production uses. No deployed access control is claimed.
+approve production uses. Hosting access is separate: the existing automatic
+Vercel branch preview redirects unauthenticated requests to Vercel SSO; this
+application adds no authentication system. See the validation report.

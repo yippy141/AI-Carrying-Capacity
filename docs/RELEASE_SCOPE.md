@@ -29,9 +29,11 @@ It preserves all original submissions and dimension histories. A missing
 selected value is null/empty, linked to its unresolved disposition. Only
 explicit historical selections are carried forward; no new judgment is made.
 
-“Private review” here means a local server bound to 127.0.0.1. Noindex is not
-authentication. There is no hosted preview or access-control service in this
-package. Everything committed to this public repository, including draft
+The local review server binds to 127.0.0.1. The existing Vercel integration
+also creates a branch preview on push; its credential-free response redirects
+to Vercel SSO (checked 6 September 2026). No new hosting or access-control service
+is added by this package. Noindex is not authentication. Everything committed
+to this public repository, including draft
 data, screenshots and the author brief, is publicly accessible. Confidential
 feedback and employer/client material stay outside Git. Nothing confidential
 is needed by this edition.

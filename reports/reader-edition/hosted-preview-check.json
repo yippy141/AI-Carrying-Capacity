@@ -1,0 +1,14 @@
+{
+  "checked_on": "2026-09-06",
+  "preview_url": "https://ai-carrying-capacity-git-release-firs-c3cec8-yippy141s-projects.vercel.app",
+  "origin": "Existing Vercel GitHub integration, automatically triggered by release branch push",
+  "request": "No cookies or credentials; redirects not followed",
+  "home_status": 302,
+  "home_redirect_origin_and_path": "https://vercel.com/sso-api",
+  "paper_status": 302,
+  "evidence_status": 302,
+  "home_served_study_content": false,
+  "authenticated_session_tested": false,
+  "noindex_is_authentication": false,
+  "repository_and_committed_artifacts_public": true
+}

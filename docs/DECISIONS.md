@@ -862,3 +862,13 @@ reading. Use Next's supported webpack mode for build and local development becau
 worker port is blocked in this execution environment even on the escalated
 attempt. This is a build-engine choice, not an application-framework rewrite.
 Patch audited dependencies; record the actual audit against the final lockfile.
+
+## 2026-09-06: Record existing automatic preview exposure
+
+The authorized branch push triggered the repository’s existing Vercel
+integration. Its branch-preview URL returned HTTP 302 to Vercel SSO without
+credentials on 6 September; no application content was served by that request.
+Correct the earlier local-only hosting assumption. Keep local binding, staged
+labels and publication gates. Do not add authentication, alter host/admin
+settings or treat a preview as a production release. All committed materials
+remain public through GitHub regardless of the preview host’s access control.

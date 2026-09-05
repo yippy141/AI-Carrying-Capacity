@@ -15,6 +15,8 @@ The source checks and engineering tests are model-assisted. Five human reader
 tasks are proposed, not performed. See reports/READER_EDITION_AUTHOR_BRIEF.md and
 reports/READER_EDITION_VALIDATION.md for explanation, limitations and results.
 
-No push to main, self-merge, release publication, hosted preview, repository
-administration or portfolio-repository modification is authorized. Finish the
-single draft PR and retain the local-only preview for review.
+Draft PR #43 is open. No push to main, self-merge, release publication, repository
+administration or portfolio-repository modification occurred. The existing
+Vercel integration automatically created a preview on branch push; a
+credential-free check redirected to Vercel SSO. No new hosting/authentication
+service was configured. Local preview remains bound to 127.0.0.1.

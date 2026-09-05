@@ -42,7 +42,9 @@ Forecasts, scenario/country/sector shells and older content keep their history
 and working archive routes outside primary navigation. No country score wall,
 new sector programme, globe, chatbot, tracking or backend has been added.
 
-Preview scripts bind to 127.0.0.1. No hosted preview or authentication is claimed.
+Preview scripts bind to 127.0.0.1. The branch push also triggered the existing
+Vercel integration; its preview redirected a credential-free request to Vercel
+SSO on 6 September. No new hosting or authentication system was added.
 Noindex is not authentication. The repository, draft PR, committed screenshots,
 staged files and author brief are public; none may contain confidential material.
 

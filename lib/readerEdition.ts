@@ -38,6 +38,7 @@ export function projectUse(input: unknown, sources: SourceRow[], licenses: UseLi
     const source = sources.find((s) => s.source_id === id);
     if (!source) throw new Error(`Unknown source ${id}`);
     safeUrl.parse(source.url_or_doi);
+    if (source.url_or_doi === 'missing') throw new Error(`Source URL missing for exact use: ${id}`);
     if (source.placeholder !== 'false' || ['superseded','rejected'].includes(source.review_status)) throw new Error(`Ineligible source ${id}`);
     if (!['reviewed','canonical','staged'].includes(source.review_status)) throw new Error(`Unknown source review ${id}`);
     if (mode === 'publication' && !['reviewed','canonical'].includes(source.review_status)) throw new Error(`Staged source ${id}`);

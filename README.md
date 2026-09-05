@@ -43,9 +43,12 @@ finite contract in `docs/RELEASE_SCOPE.md` and the explanation in
 two operational studies, a hypothetical workflow experiment and a TCV fusion
 trace, with `/paper`, `/evidence`, `/methods`, `/about` and retained `/findings`.
 
-**Exposure:** preview commands bind only to 127.0.0.1. No hosted preview or
-access control has been created; noindex is not authentication. This repository,
-its staged research, author brief and draft-PR screenshots are public.
+**Exposure:** local preview commands bind only to 127.0.0.1. Pushing the draft
+PR also triggered the repository’s existing Vercel preview integration. Its
+branch URL redirects unauthenticated requests to Vercel sign-in (checked
+6 September 2026). No new hosting/authentication service was added; noindex is
+not authentication. This repository, staged research, author brief and
+draft-PR screenshots are public. See the validation report for the preview URL.
 
 New exact claims and personal copy remain pending Jinhua’s review.
 `npm run build` makes an optimized, labeled review preview;

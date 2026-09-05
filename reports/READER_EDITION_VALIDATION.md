@@ -23,8 +23,16 @@ specialist validation or authorization to publish.
 
 Reader routes are `/`, `/paper`, `/evidence`, `/methods`, `/about`, `/findings`.
 `npm start` serves the compiled candidate at `http://127.0.0.1:3000`. The default
-build explicitly sets review-preview mode. This is a localhost preview, not an
-authenticated hosted service. Noindex does not protect access. GitHub, this
+build explicitly sets review-preview mode. The branch push also triggered the
+repository’s **existing Vercel integration**, which created a
+[hosted preview](https://ai-carrying-capacity-git-release-firs-c3cec8-yippy141s-projects.vercel.app).
+A fresh request without credentials/cookies returned HTTP 302 to
+`https://vercel.com/sso-api` on 6 September 2026, without serving the study.
+`/paper` and `/evidence` also returned HTTP 302 without credentials. See
+[exposure check](reader-edition/hosted-preview-check.json).
+This verifies a sign-in boundary at that URL; it does not establish who has
+access or test an authenticated hosted session. No new hosting/authentication
+service was configured. Noindex does not protect access. GitHub, this
 report, staged research, screenshots and the author brief are public. The
 profile layer has no downloadable app route but is publicly readable in Git.
 
@@ -179,11 +187,15 @@ case. It distinguishes measured results from conditional mechanisms and shows
 where claims stop. Authorship and release claims are pending Jinhua's final edit.
 
 Verified project link: [AI-Carrying-Capacity](https://github.com/yippy141/AI-Carrying-Capacity).
-Use the draft PR and its screenshots as the review link until a publication is
-authorized. A localhost URL is not a public portfolio demo. No portfolio
+Use [draft PR #43](https://github.com/yippy141/AI-Carrying-Capacity/pull/43) and
+its screenshots as the public review link until a publication is authorized. A localhost URL is not a public portfolio demo. No portfolio
 repository was opened for modification or changed.
 
 ## Hosted PR result
 
-Pending draft-PR creation; local results above are complete. This line will be
-updated from the actual GitHub check result, not inferred from local success.
+Draft [PR #43](https://github.com/yippy141/AI-Carrying-Capacity/pull/43) is open
+against main. The first hosted run on `6b0afce` passed every step, including the
+browser suite: [CI run 33982796753](https://github.com/yippy141/AI-Carrying-Capacity/actions/runs/33982796753).
+The final source-URL guard and verified exposure documentation are included
+in the follow-up commit; the PR check displays the result for its latest head.
+No merge, production release or repository-admin change has been made.

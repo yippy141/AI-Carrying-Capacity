@@ -22,7 +22,7 @@ test('negative use cases: reviewed source alone, missing caveat, target, company
  assert.throws(()=>projectUse({...u,caveat:''},edition.sources,edition.licenses,'review-preview'));
  assert.throws(()=>projectUse({...u,sourceIds:['missing']},edition.sources,edition.licenses,'review-preview'));
  for(const patch of [{companyOrTarget:'official_target'},{translation:'pending'},{status:'rejected'},{reuse:'dataset'},{reuse:'publisher_figure'},{licenseId:'missing'}]) assert.throws(()=>projectUse({...u,...patch},edition.sources,edition.licenses,'review-preview'));
- for(const patch of [{url_or_doi:'javascript:alert(1)'},{reliability_tier:'C'},{source_type:'company_report'},{language:'zh',translation_reviewer:'missing'},{official_claim_status:'company_target'},{review_status:'rejected'}]) {
+ for(const patch of [{url_or_doi:'javascript:alert(1)'},{url_or_doi:'missing'},{reliability_tier:'C'},{source_type:'company_report'},{language:'zh',translation_reviewer:'missing'},{official_claim_status:'company_target'},{review_status:'rejected'}]) {
   const sources=edition.sources.map(s=>s.source_id===u.sourceIds[0]?{...s,...patch}:s);
   assert.throws(()=>projectUse(u,sources,edition.licenses,'review-preview'));
  }
