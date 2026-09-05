@@ -181,7 +181,7 @@
 - [x] Complete local browser/security/build verification, with 12 browser checks and zero known lockfile vulnerabilities; record results and real limitations.
 - [x] Open draft PR #43; verify hosted CI passes, and check the existing automatic Vercel preview redirects unauthenticated requests to sign-in.
 - [ ] Jinhua reads QJE Table II/design, METR original plus February update, and TCV task-to-plant boundary; edits `lib/readerCopy.ts` and makes the publication decision.
-- [ ] Obtain five actual outside-reader attempts if Jinhua chooses; record hesitation rather than simulated reactions.
+- [ ] Obtain five actual outside-reader attempts once recipients/channels are supplied; record hesitation rather than simulated reactions.
 - [ ] Choose root code and original-content/data terms; do not call an unlicensed repository open source.
 
 Earlier broad profile-UI/country/expert tasks remain backlog work, not hidden

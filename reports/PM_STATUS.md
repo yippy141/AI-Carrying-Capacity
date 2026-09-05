@@ -11,8 +11,9 @@ selections carry into scalar fields. No profile is approved/canonical, no expert
 review is fabricated, and no C/forecast population occurred.
 
 Operational/fusion exact uses and personal copy await the finite owner review.
-The source checks and engineering tests are model-assisted. Five human reader
-tasks are proposed, not performed. See reports/READER_EDITION_AUTHOR_BRIEF.md and
+The source checks and engineering tests are model-assisted. Three tasks for
+five human readers are prepared; recipients/channels are requested and no
+attempts have occurred. See reports/READER_EDITION_AUTHOR_BRIEF.md and
 reports/READER_EDITION_VALIDATION.md for explanation, limitations and results.
 
 Draft PR #43 is open. No push to main, self-merge, release publication, repository

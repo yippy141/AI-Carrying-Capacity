@@ -43,8 +43,9 @@ historical integrity, publication-scope, production compilation and browser
 checks; report real failures. P0/P1 claim, security, comprehension and
 accessibility defects require correction. Optional polish and research breadth
 wait. Jinhua's headline reading, author statement and merge/publication decision
-remain pending. Five outside readers are proposed for comprehension tasks;
-no invitations or simulated human responses are authorized by this contract.
+remain pending. Comprehension tasks are prepared for five outside readers;
+recipients and channels have not been supplied. No invitations have been sent,
+and model responses will not substitute for human feedback.
 
 This release does not depend on all country rows, expert outreach, sixteen
 sectors, forecasts or scenarios. It does not establish the research hypotheses.

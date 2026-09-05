@@ -166,8 +166,9 @@ remains explicitly pending Jinhua's final edit. AI assistance must be reviewed
 as an attribution statement, not accepted automatically.
 
 Five outside readers' three comprehension tasks remain proposed, with **zero
-performed attempts** and no model substitutes. No messages were sent. Jinhua
-can arrange the attempts and record actual hesitation. Full expert outreach,
+performed attempts** and no model substitutes. No messages were sent. Reader
+recipients/channels have been requested so invitations can go to actual people
+and the record can capture their hesitation. Full expert outreach,
 all country rows and the larger sector/forecast backlog do not gate this edition.
 
 Only two substantive owner choices remain: adopt/edit the finite claims and
