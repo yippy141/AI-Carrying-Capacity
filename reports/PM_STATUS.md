@@ -1,96 +1,95 @@
-# PM Status
+# PM status — restored strategic-futures prototype
 
-Last updated: 2026-09-03.
-Read first: `docs/PROJECT_STATE.md`.
+Updated 6 September 2026. The owner rejected the narrow reader-edition strategy.
+The current product asks when advanced AI becomes durable national power, who
+can challenge that advantage, and whether people benefit. It examines a strong
+frontier-compounding trajectory and explicit alternatives through roughly 2040.
+The four sketches are proposals, not owner forecasts or probability judgments.
 
-## Current posture
+Draft PR #43 continues on release/first-reader-edition from verified head
+`e0eb839fe11c088e7cfab2f8ebfbf226dc73de32`; there was no intervening branch work.
+Home/paper share a persistent strategic canvas and authored trajectory. Four
+controls change feedback, diffusion, physical process redesign and the investment/
+political bargain. A pinned comparison exposes consequences without scores,
+numeric rates or a resource-allocation fantasy. The previous four-scene work
+study is retained at `/work` and `/work/paper`. Nine staged original-source/account
+uses explain the hinges; the Chinese policy summary remains AI-assisted and
+human-review pending. The accepted eight couplings and historical scenario
+crosswalk are unchanged records, with an explicit separate construction amendment.
 
-**Private preview; final bounded pre-WP2 gate.** Current `main` is PR #40 merge
-`e6edd06ee0e9c78214989d31c5647525b7c91cdd`, containing correction head
-`ee609a8dc2c587304b237d9ede9f7514b18ad55d`. The active issue #41 branch is
-`research/targeted-s5-adjudication`.
+The plain-language author notes explain each implemented rule and contain the
+three draft paragraphs as editable Markdown. One bounded read-only evidence pass
+and one independent read-only product/code/screenshot critique assisted the sole
+integrator. Two diagram/legibility findings were corrected in one batch, along
+with checkpoint direction, immediate comparison access and interrupted labels.
+These were AI passes, not outside-human tests. Twenty browser tests, 25 evidence
+unit tests, 80 Python tests, current invariant checks, the build and production
+negative/positive fixtures passed. The dependency audit reports zero findings.
+See STRATEGIC_FUTURES_VALIDATION and reports/strategic-futures for actual artifacts.
 
-Issue #41 adjudicates the existing 19-row S5 backlog and repairs the project
-control plane. It does not create a production profile, populate C1-C8 or
-governance, build UI, change figures/forecasts/scenarios, approve a profile, or
-start WP2.
+Publication remains blocked by staged exact uses/translation/scenario text and
+pending author reading, byline assent and authorization. Existing hosting
+protection and repository administration were not changed. This is a reviewable
+prototype, not a launch. No new recruitment or worksheet gate is required to
+try it. Stop after this integrated PR update.
 
-## Current program state
+PM consideration: the political-bargain control intentionally bundles ownership,
+procurement and investment priorities. That is the most consequential remaining
+simplification for Jinhua to examine. If he rejects that bundle, revise the
+argument before expanding parameters or adding sectors. The initial US-coalition
+lead is also a stipulated starting case, not a measured ranking or an exhaustive
+set of possible starting worlds. The missing standalone Master Strategy v3 is
+recorded honestly; it was not reconstructed from an obsolete framework.
 
-| Object | State |
-| --- | --- |
-| Frozen pilot profiles | 31 |
-| Coding comparisons | 155 |
-| Reconciliation owner exceptions/decisions | 23 |
-| Fusion-domain-review owner exceptions | 28; a distinct 90-cell gate |
-| Promoted fusion source identities | 44 reviewed |
-| Fusion model-domain review | 90/90 cells; recommendation-only |
-| Fusion named-specialist queue | 19 exact questions in 6 packages |
-| Fusion empirical gaps | 9 open |
-| Targeted S5 adjudication | 19/19 rows completed in this draft package |
+---
 
-## Issue #41 adjudication result
+## Historical reader-edition checkpoint (superseded as product direction)
 
-| Dimension | Count |
-| --- | ---: |
-| Software rows | 5 |
-| Manufacturing rows | 4 |
-| Fusion rows | 10 |
-| Point selections | 12 |
-| Range/disagreement forms | 7 |
-| `selected_provisional` | 1 |
-| `selected_provisional_pending_named_expert` | 11 |
-| `preserved_range` | 6 |
-| `preserved_disagreement` | 1 |
-| `needs_better_evidence` | 0 |
-| Medium confidence | 7 |
-| Low confidence | 12 |
+# PM status — first reader edition
 
-Seven rows remain without a point: sp-0011, sp-0012, sp-0013, sp-0014,
-sp-0020, sp-0023, and sp-0030. The reasons are variable or unverified
-independent boundaries, direct-consequence uncertainty, open fusion evidence
-gaps, and—in licensing—the owner's explicit 0-2 disagreement. No midpoint was
-manufactured.
+Updated 2026-09-06. Current state: `docs/PROJECT_STATE.md`; finite contract:
+`docs/RELEASE_SCOPE.md`. PR #42 is merged at 5dcf523e250b1989a92c034d8f4e40706df94051.
+Its original checkpoint and prior PM status remain in docs/archive/reader-baseline/checkpoint.
 
-## Expert and evidence gate
+The reader release is built on release/first-reader-edition. It includes four
+figures, paper/print and evidence access; 31 profiles are staged with 155 linked
+dispositions and 62 original reviews. Only the 12 explicit S5 provisional
+selections carry into scalar fields. No profile is approved/canonical, no expert
+review is fabricated, and no C/forecast population occurred.
 
-- Retain EXP-FUS-01 through EXP-FUS-06 and all 19 exact fusion questions.
-- Add EXP-SW-01 for the five mature production-software S5 boundaries.
-- Add EXP-MFG-01 for the four discrete-manufacturing S5 boundaries.
-- All eight packages block canonical approval, not private use, staged WP2, or
-  public-pilot display visibly labelled `EXPERT-CODED · DRAFT` with
-  point/range, confidence, gaps, and review state visible.
-- gap-01 through gap-09 remain open. Eleven S5 rows retain blank source IDs and
-  explicit source gaps; reviewed fusion source identities keep their original
-  maturity and use restrictions.
+Operational/fusion exact uses and personal copy await the finite owner review.
+The source checks and engineering tests are model-assisted. Three tasks for
+five human readers are prepared; recipients/channels are requested and no
+attempts have occurred. See reports/READER_EDITION_AUTHOR_BRIEF.md and
+reports/READER_EDITION_VALIDATION.md for explanation, limitations and results.
 
-## Deliverables and validation
+Draft PR #43 is open. No push to main, self-merge, release publication, repository
+administration or portfolio-repository modification occurred. The existing
+Vercel integration automatically created a preview on branch push; a
+credential-free check redirected to Vercel SSO. No new hosting/authentication
+service was configured. Local preview remains bound to 127.0.0.1.
 
-The package contains the 19-row adjudication CSV and workbook, the eight-row
-human review plan, `S5_ADJUDICATION_NOTE.md`, focused validator and adversarial
-tests, CI integration, and synchronized project-state, roadmap, status, task,
-decision, brief, and README pointers.
+## One integrated revision of draft PR #43
 
-The full local CI sequence passed on 2026-09-03: typecheck, lint, evidence and
-design tests, production build, 72 Python validator tests, all package and
-repository validators, and private-preview readiness. Readiness continues to
-report 59 non-failing public-launch blockers in private-preview mode; this
-package does not change or waive them. Draft-PR checks remain required.
+Started from the exact reviewed head 1dee9c186972d06b1e75ff92bb8ee192a9650d68.
+The new ordinary build detects production targets and requires preflight,
+publication compilation and rendered checks. Real pending records cause refusal;
+only synthetic temporary fixtures have exercised approval. Merge itself grants
+no permission. Actual Vercel build-command/root/environment overrides remain
+unverified; no admin setting changed.
 
-## Protected state
+The revised essay distinguishes access interventions from model upgrades and
+makes a positive argument after each scene. It adds within-study result bars,
+verified customer-support actors, an original TCV feedback loop and one optional
+project overhead. Existing provenance, four scenes and tests remain. Source
+checks resolved TCV's article-level CC BY 4.0 terms without clearing unrelated
+assets/software. Revised source/use wording stays staged. Author passages are
+ordinary editable Markdown in the 1,796-word brief; byline and permission remain
+pending. The labelled draft is ready for the three comprehension tasks now;
+zero human attempts have occurred and no new recruitment/review framework is needed.
 
-The package must leave S1-S4 records, raw submissions, the 155-row audit, owner
-decisions, fusion evidence and source-promotion records, the canonical source
-register, merged domain review, production `data/profiles`, C/governance,
-couplings, scenarios, forecasts, figures, public content, and UI unchanged.
-Focused validation pins those protected objects. Zero profile rows are approved
-or canonical. WP2 has not begun.
-
-## Next order
-
-1. Open the issue #41 draft PR against `main` and stop implementation.
-2. Conduct one substantive PM review.
-3. Make one bounded correction pass; recheck only P0/P1 blockers.
-4. Merge when no P0/P1 blocker remains.
-5. Begin WP2 proposed/staged profile construction in one batch. Do not insert
-   another general pre-gate.
+PM suggestion for the existing backlog: the next evidence most directly relevant
+to the motivating question would compare weaker/stronger models within a matched
+workflow. The current access comparisons cannot identify that marginal effect.
+Do not expand this release to obtain it; first see whether readers understand
+the narrower claim and the actor/assumption distinctions.

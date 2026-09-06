@@ -1,0 +1,62 @@
+import {loadStrategic} from '../lib/strategicFutures.ts';
+import {existsSync,readFileSync,writeFileSync,mkdirSync} from 'node:fs';
+import path from 'node:path';
+import {loadReaderEdition,loadStagedProfiles,READER_ROUTES,type EditionMode} from '../lib/readerEdition.ts';
+import {buildAdoptionDepthFigureModel} from '../lib/adoptionDepth.ts';
+import {readRegister} from '../lib/registers.ts';
+import {loadPublicationReview,requirePublicationReview} from '../lib/publicationReview.ts';
+
+const mode:EditionMode=process.argv.includes('--publication')?'publication':'review-preview';
+const edition=loadReaderEdition(mode);
+loadStagedProfiles();
+const strategic=loadStrategic(mode);
+const approval=loadPublicationReview();
+if (mode==='publication') requirePublicationReview(approval);
+
+const roots=['app/layout.tsx',...READER_ROUTES.map(r=>`app${r==='/'?'':r}/page.tsx`)];
+const seen=new Set<string>();
+const forbidden=/FrontierSensitivityScatter|ConversionChainCompare|loadForecastRegister|v0_visual_system|TODO_SOURCE|TODO_DATA|TODO_VERIFY/;
+function walk(file:string){
+  if(seen.has(file)) return;seen.add(file);
+  const source=readFileSync(file,'utf8');
+  // register readers and historical tests are shared infrastructure; their
+  // mere definitions do not execute a legacy forecast route.
+  if(!['lib/registers.ts'].includes(file) && forbidden.test(source)) throw new Error(`Ineligible dependency in released reading path: ${file}`);
+  for(const match of source.matchAll(/(?:from\s+|import\s*)['"]([^'"]+)['"]/g)) {
+    const spec=match[1];
+    if(!spec.startsWith('.')&&!spec.startsWith('@/'))continue;
+    const base=spec.startsWith('@/')?spec.slice(2):path.normalize(path.join(path.dirname(file),spec));
+    const resolved=[base,`${base}.tsx`,`${base}.ts`,`${base}/index.tsx`].find(existsSync);
+    if(!resolved)throw new Error(`Missing import ${spec} in ${file}`);
+    if(/\.(tsx?|css)$/.test(resolved))walk(resolved);
+  }
+}
+roots.forEach(walk);
+const ids=buildAdoptionDepthFigureModel(edition.observations).plottedObservationIds;
+if(ids.includes('obs-adoption-depth-013'))throw new Error('Restricted NBS mark leaked');
+if(mode==='review-preview'&&edition.uses.some(u=>u.status==='staged'&&!u.displayReview.includes('Draft')))throw new Error('Draft state absent');
+// The CSV artifact is generated from exactly the plotted set and validated
+// against it. It contains reported facts with denominator and caveat fields.
+const rows=readRegister('data/observations/adoption_depth.csv').filter(r=>ids.includes(r.observation_id));
+const fields=Object.keys(rows[0]);const quote=(s:string)=>`"${s.replaceAll('"','""')}"`;
+const csv=[fields,...rows.map(r=>fields.map(f=>r[f]))].map(r=>r.map(quote).join(',')).join('\n')+'\n';
+if(process.argv.includes('--write-assets')){mkdirSync('public/reader',{recursive:true});writeFileSync('public/reader/adoption.csv',csv);}
+else if(!existsSync('public/reader/adoption.csv')||readFileSync('public/reader/adoption.csv','utf8')!==csv)throw new Error('Adoption download detached from eligible observations');
+if(process.argv.includes('--rendered')) {
+ for(const route of READER_ROUTES){
+  const file=`.next/server/app/${route==='/'?'index':route.slice(1)}.html`;
+  if(!existsSync(file))throw new Error(`Missing rendered release route ${route}`);
+  const html=readFileSync(file,'utf8');
+  if(/TODO_SOURCE|TODO_DATA|TODO_VERIFY|seed-sp-00|dr-sp-00|initial_probability_range/.test(html))throw new Error(`Archive/staged research leak in ${route}`);
+  const found=[...html.matchAll(/data-claim-id="([^"]+)"/g)].map(m=>m[1]);
+  if(found.some(id=>!edition.uses.some(u=>u.id===id)))throw new Error(`Unknown rendered use ${route}`);
+  if(mode==='publication' && /data-strategic-status="staged"|data-strategic-review="staged"/.test(html))throw new Error(`Staged strategic use in ${route}`);
+  if(['/', '/paper','/assumptions'].includes(route)&&!html.includes('data-strategic-id="strategic-prototype-1"'))throw new Error(`Strategic prototype missing in ${route}`);
+  const strategicIds=[...html.matchAll(/data-strategic-source="([^"]+)"/g)].map(m=>m[1]);
+  if(strategicIds.some(id=>!strategic.sources.some(s=>s.id===id)))throw new Error(`Unknown strategic source in ${route}`);
+  if(mode==='publication' && html.includes('data-use-status="staged"'))throw new Error(`Staged public claim ${route}`);
+  if(mode==='publication' && /data-author-status="pending"|review preview|Draft use · author review pending/.test(html))throw new Error(`Unapproved rendered state in ${route}`);
+  if(['/work', '/work/paper','/evidence'].includes(route) && edition.uses.some(u=>!found.includes(u.id)))throw new Error(`Missing required figure use ${route}`);
+ }
+}
+console.log(`Reader ${mode} gate passed: ${READER_ROUTES.length} reading routes, strategic canvas plus 4 supporting figures, ${ids.length} adoption marks, 3 exact candidate uses. Publication approval is ${approval.publicationAuthorized}.`);

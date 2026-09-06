@@ -185,11 +185,12 @@ class TargetedS5AdjudicationTest(unittest.TestCase):
         self.assertEqual(s5.validate_control_plane(), [])
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
+            checkpoint = "docs/archive/reader-baseline/checkpoint"
             for relative in ("docs/PROJECT_STATE.md", "docs/ROADMAP.md", "docs/TASKS.md", "docs/DECISIONS.md", "docs/AGENT_BRIEF.md", "reports/PM_STATUS.md", "README.md"):
-                target = root / relative
+                target = root / checkpoint / relative
                 target.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copy2(ROOT / relative, target)
-            status = root / "reports/PM_STATUS.md"
+                shutil.copy2(ROOT / checkpoint / relative, target)
+            status = root / checkpoint / "reports/PM_STATUS.md"
             status.write_text(status.read_text(encoding="utf-8").replace("WP2 has not begun", "WP2 started"), encoding="utf-8")
             self.assertIn("WP2 has not begun", "\n".join(s5.validate_control_plane(root)))
 

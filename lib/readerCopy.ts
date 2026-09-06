@@ -1,0 +1,18 @@
+/** Draft passages also appear as editable ordinary Markdown in the author brief. */
+export const authorCopy = {
+  state: 'Draft personal copy · for Jinhua’s final edit',
+  opening: 'When a country gets access to better AI, what does it actually get? I kept returning to that question after conversations in Washington and my experience at the World AI Conference in Shanghai.',
+  motivation: 'I wanted to follow the technology into a workplace or a laboratory: who uses it, what changes in the work, and who gets something useful from the change. This edition starts with a smaller question I can investigate—what happened when particular people and machines received particular AI tools?',
+  interpretation: 'I cannot infer a national dividend from the address of a model developer. In the support study, workers mainly in the Philippines serve US customers using an assistant built around an American-developed model. I want to know where the work improved before deciding whose capacity improved.',
+  assistance: 'I supplied the research question, comparative interests and personal motivation for this draft. AI tools assisted with source checks, analysis, prose, diagrams, implementation and testing. I retain the editorial decision, but my reading of the headline claims, acceptance of the byline and permission to publish are still pending.'
+} as const;
+export const studyCopy = {
+  question: 'What does a better AI model actually change?',
+  subquestion: 'Follow it into a workflow. Then ask what else has to happen before the improvement becomes a useful outcome.',
+  argument: 'This edition follows AI access into support work, software tasks and a plasma-control experiment. Its narrower answer concerns changes in those settings. It offers a way to investigate a model upgrade, rather than an estimate of the upgrade’s marginal effect.',
+  geography: 'A stronger model could enable work that was previously unreliable or infeasible. It could also leave the next limiting step untouched, or introduce additional checking. To tell these possibilities apart, compare the actual intervention, the completed work and the people receiving the gain.',
+  adoption: 'The useful result is that a yes/no adoption count hides different reported practices. One plausible explanation is that firms are still finding workable uses; another is that intensive use is unnecessary or too costly for some tasks. The survey does not decide between them. Higher use is not automatically better, and non-adoption is not automatically failure.',
+  adoptionDepth: 'These categories describe reported behavior, not a maturity ladder. Experimental use could precede integration, remain a useful occasional tool, or end after an unsuccessful trial. A stronger model might make a previously unsuitable task worth attempting; prices, organizational needs or an effective existing process could still explain a firm’s choice. Outcome evidence is needed to judge that choice.',
+  mechanism: 'The arithmetic locates a constraint only inside the assumptions you chose. Faster design helps this serial project until additional work absorbs the saving; parallel work changes the result again. In repeated production, raising the binding station’s capacity can matter more than accelerating a station already ahead.',
+  mechanismDepth: 'A plausible real-world mechanism is that integrating or checking generated output adds work. An equally important alternative is that a better tool reduces those burdens or makes a different process viable. The illustration measures neither mechanism. It tells an investigator to record the whole completion path, quality threshold and station capacities before attributing an outcome to AI.'
+} as const;

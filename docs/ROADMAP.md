@@ -84,3 +84,12 @@ baseline, method boundary, counts, and task-start instructions.
 Every phase follows: **batch build → one substantive review → one correction
 pass → P0/P1-only recheck → merge**. Log P2/P3 work without reopening a closed
 package.
+
+## First reader edition priority — 2026-09-06
+
+The finite reader release in docs/RELEASE_SCOPE.md supersedes the sequence above
+for this batch. It combines one authored study, the four specified figures,
+paper/print, evidence and contribution statement. Full country modifiers,
+expert outreach, sector expansion, forecasts and scenarios stay in the broader
+roadmap without blocking this edition. See docs/PROJECT_STATE.md for current
+execution. Original phase plans remain historical scope, not current evidence.

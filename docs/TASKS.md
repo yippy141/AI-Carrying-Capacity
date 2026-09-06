@@ -1,5 +1,21 @@
 # Tasks
 
+## Current batch — restored strategic direction, 6 September 2026
+
+- [x] Verify existing draft PR #43 and local/remote head e0eb839; preserve branch work.
+- [x] Record explicit owner-directed scope and separate scenario-schema/display amendment.
+- [x] Build strategic opening, strong compounding trajectory, four proposed futures,
+  one persistent canvas, four consequential controls and pinned comparison.
+- [x] Keep accepted eight couplings, historical crosswalk and all S/profile records intact.
+- [x] Retain productivity study and paper as supporting routes with original exports/tests.
+- [x] Verify nine selective source/account uses; keep new wording and Chinese translation staged.
+- [x] Explain every rule and first-person draft in ordinary author-facing Markdown.
+- [x] Complete current build, historical checks, scenario browser journeys and artifacts.
+- [x] Prepare the same draft PR update with source notes, test evidence and screenshots; no merge/publication.
+
+No new expert recruitment, generalized red team, sector programme or worksheet
+gate is required for this labelled prototype. Human feedback has not occurred.
+
 ## Done
 
 - [x] Create repo scaffold for research, data, docs, content, scripts, and future app work.
@@ -166,3 +182,36 @@
 - [ ] Evaluate `citrini_2028_gic` as a staged stress test and seek counter-scenarios; do not treat it as a finding or fifth anchor by default.
 - [ ] Add dated premise and coupling reviews plus event-triggered refresh rules to the revised WP3–WP5 prompts.
 - [ ] Defer automated source monitoring and any public freshness dashboard until after the three-anchor pilot identifies load-bearing sources.
+
+## First reader edition — 2026-09-06
+
+- [x] Verify merged PR #42 and its adjudication/checkpoint on current main; create `release/first-reader-edition`.
+- [x] Adopt finite release scope; separate this edition from completion of all country/sector/expert/forecast work.
+- [x] Build 31 staged profiles, 62 original review rows and 155 linked dispositions; carry only 12 historical S5 selections and keep all other selections null.
+- [x] Amend model-assessment display wording and nullable schema without altering historical raw codings or S definitions.
+- [x] Build continuous four-figure study, shared paper/print view, finite evidence access and draft contribution statement.
+- [x] Preserve legacy scatter and unfinished routes in the public archive; correct NBS unplotted presentation without modifying observations.
+- [x] Stage the finite QJE/METR source set and three exact operational/fusion uses with caveats, tool vintage, quality, uncertainty, reuse and actual review state.
+- [x] Separate historical snapshot integrity, current runtime/provenance/publication checks and PR scope; retain original expected hashes.
+- [x] Write author explanation and proposed comprehension tasks; do not invent human feedback.
+- [x] Complete local browser/security/build verification, with 12 browser checks and zero known lockfile vulnerabilities; record results and real limitations.
+- [x] Open draft PR #43; verify hosted CI passes, and check the existing automatic Vercel preview redirects unauthenticated requests to sign-in.
+- [ ] Jinhua reads QJE Table II/design, METR original plus February update, and TCV task-to-plant boundary; edits the plain Markdown author brief passages and makes the byline/publication decision.
+- [ ] Obtain five actual outside-reader attempts once recipients/channels are supplied; record hesitation rather than simulated reactions.
+- [ ] Choose root code and original-content/data terms; do not call an unlicensed repository open source.
+
+Earlier broad profile-UI/country/expert tasks remain backlog work, not hidden
+release dependencies. Human review of restricted translated wording and any
+publisher-figure/raw-dataset reuse still blocks those specific uses.
+
+## Draft PR #43 integrated revision — 2026-09-06
+
+- [x] Resolve head at start: unchanged from reviewed `1dee9c186972d06b1e75ff92bb8ee192a9650d68`; preserve existing branch/PR.
+- [x] Add one production-aware build pipeline and negative/positive synthetic publication tests; keep real approvals pending.
+- [x] Explain the access-versus-upgrade boundary, mechanisms/alternatives and contribution in the visible reading path.
+- [x] Verify support-case geography; add actor map, separate normalized operational comparisons and original TCV loop.
+- [x] Add optional incremental project overhead with correct shorter/unchanged/longer wording; keep capacity independent, binding station marked and scale fixed.
+- [x] Reread the finite QJE/METR/TCV passages; correct locators and TCV article-level permissions; retain staged exact uses.
+- [x] Provide editable Markdown author paragraphs and three understanding-focused reader tasks; no new generalized review requirement.
+- [ ] Owner reads/edits headline uses and author copy, confirms byline and decides publication; separate from model verification.
+- [ ] Optional future evidence lead: a within-workflow comparison of model versions would address the upgrade question more directly. Do not start it in this revision.

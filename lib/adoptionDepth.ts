@@ -112,8 +112,7 @@ export function buildAdoptionDepthFigureModel(
     ...ecbRows,
     allFirms,
     ...adopterOnly,
-    ...sizeGradient,
-    chinaContext
+    ...sizeGradient
   ];
 
   return {
@@ -155,7 +154,6 @@ export function buildAdoptionDepthExportSvg(
   const [notUsing, experimental, moderate, significant] = model.ecb.rows;
   const [narrow, comprehensive] = model.btos.adopterOnly;
   const [small, medium, large] = model.eurostat.sizeGradient;
-  const china = model.china.context;
   const barX = 92;
   const barWidth = 640;
   const ecbColors = ["#F4F1EA", "#E7E2D9", "#9C958B", "#1C1B1A"];
@@ -201,7 +199,7 @@ export function buildAdoptionDepthExportSvg(
   <text x="92" y="480" class="label">Moderate ${percentLabel(moderate.value)}</text>
   <text x="92" y="512" class="label">Significant ${percentLabel(significant.value)}</text>
   <text x="92" y="552" class="note">Reported use categories total ${model.ecb.reportedTotal}%; ${model.ecb.unreportedResidual} points remain unallocated.</text>
-  <text x="92" y="586" class="source">ECB SAFE Q4 2025 · ${xml(notUsing.source_id)}</text>
+  <text x="92" y="586" class="source">ECB SAFE Q4 2025</text>
 
   <text x="848" y="236" class="meta us">PANEL B · CENSUS BTOS · UNITED STATES</text>
   <text x="848" y="279" class="panel">Reach and breadth use different denominators.</text>
@@ -215,7 +213,7 @@ export function buildAdoptionDepthExportSvg(
   <text x="848" y="626" class="label">Comprehensive adopters · model estimate</text>
   <rect x="848" y="640" width="600" height="24" fill="#F4F1EA"/><rect x="848" y="640" width="${comprehensive.value * 6}" height="24" fill="url(#model-hatch)" stroke="#3E63DD"/><text x="1472" y="660" class="value">${percentLabel(comprehensive.value)}</text>
   <text x="848" y="716" class="note">Q23 uses a prior-two-week window. Q24 uses a prior-six-month window.</text>
-  <text x="848" y="750" class="source">Census CES Working Paper 26-25 · ${xml(model.btos.allFirms.source_id)}</text>
+  <text x="848" y="750" class="source">Census CES Working Paper 26-25</text>
 
   <line x1="92" y1="950" x2="1508" y2="950" stroke="#E7E2D9"/>
   <line x1="900" y1="990" x2="900" y2="1480" stroke="#E7E2D9"/>
@@ -225,21 +223,20 @@ export function buildAdoptionDepthExportSvg(
   ${sizeRows}
   <line x1="290" y1="1358" x2="810" y2="1358" stroke="#E7E2D9"/>
   <text x="290" y="1385" class="source">0%</text><text x="550" y="1385" class="source" text-anchor="middle">30%</text><text x="810" y="1385" class="source" text-anchor="end">60%</text>
-  <text x="92" y="1435" class="source">Source: Eurostat 2025 ICT enterprise survey · ${xml(small.source_id)}</text>
+  <text x="92" y="1435" class="source">Source: Eurostat 2025 ICT enterprise survey</text>
   <text x="92" y="1462" class="source">Universe: ${xml(small.survey_universe)}</text>
 
   <text x="948" y="1010" class="meta cn">PANEL D · NBS · CHINA · CONTEXT ONLY</text>
   <text x="948" y="1053" class="panel">A different firm universe gives context only.</text>
-  <text x="948" y="1085" class="note">Axis: 0–20% of above-scale enterprises</text>
-  <rect x="948" y="1132" width="500" height="28" fill="#F4F1EA"/><rect x="948" y="1132" width="${(china.value / 20) * 500}" height="28" fill="#C4442A"/><text x="1472" y="1154" class="value">${percentLabel(china.value)}</text>
-  <text x="948" y="1204" class="label">Applied AI in production and business activities</text>
-  <text x="948" y="1254" class="note">Official-source statistic. Not an all-firm survey and not directly comparable.</text>
-  <text x="948" y="1306" class="source">NBS Fifth National Economic Census · ${xml(china.source_id)}</text>
+  <text x="948" y="1085" class="note">Contextual record retained, unplotted.</text>
+  <text x="948" y="1140" class="note">Different enterprise universe; no all-firm comparison.</text>
+  <text x="948" y="1195" class="note">Load-bearing translation awaits native-language human review.</text>
+  <text x="948" y="1250" class="source">NBS Fifth National Economic Census · see evidence restrictions.</text>
 
   <line x1="92" y1="1528" x2="1508" y2="1528" stroke="#E7E2D9"/>
   <text x="92" y="1570" class="source">Sources: ECB SAFE; U.S. Census CES WP 26-25; Eurostat ICT enterprise survey; NBS Fifth National Economic Census.</text>
   <rect x="92" y="1600" width="92" height="25" fill="#1C1B1A"/><text x="104" y="1617" class="chip" fill="#FBFAF7">OBSERVED</text>
   <text x="204" y="1617" class="chip">DEFINITIONS DIFFER</text>
-  <text x="92" y="1682" class="source">Figure 1 · canonical observations · verified ${xml(model.verificationDate)} · ${metadata}</text>
+  <text x="92" y="1682" class="source">Figure 1 · observation vintage in panels · observation verification ${xml(model.verificationDate)}</text>
 </svg>`;
 }

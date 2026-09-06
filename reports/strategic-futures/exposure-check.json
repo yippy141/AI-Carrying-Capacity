@@ -1,0 +1,29 @@
+{
+  "checked_at_utc": "2026-09-06T13:53:46.048238+00:00",
+  "url": "https://ai-carrying-capacity-git-release-firs-c3cec8-yippy141s-projects.vercel.app",
+  "credential_free": true,
+  "records": [
+    {
+      "route": "/",
+      "http_status": "302",
+      "redirect_host": "vercel.com",
+      "redirect_path": "/sso-api",
+      "exit_code": 0
+    },
+    {
+      "route": "/paper",
+      "http_status": "302",
+      "redirect_host": "vercel.com",
+      "redirect_path": "/sso-api",
+      "exit_code": 0
+    },
+    {
+      "route": "/assumptions",
+      "http_status": "302",
+      "redirect_host": "vercel.com",
+      "redirect_path": "/sso-api",
+      "exit_code": 0
+    }
+  ],
+  "limit": "This observes credential-free redirect behavior, not Vercel administration settings or authorized browser contents."
+}

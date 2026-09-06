@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { FrontierSensitivityScatter } from "@/components/visuals/FrontierSensitivityScatter";
 import { BuildoutVsPayoffFigure } from "@/components/visuals/BuildoutVsPayoffFigure";
 import { StagedEvidenceBanner } from "@/components/visuals/StagedEvidenceBanner";
 
@@ -41,7 +42,7 @@ const labItems = [
 
 export default function LabPage() {
   return (
-    <main className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
+    <main id="main-content" className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
       <div className="max-w-3xl">
         <p className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-primary-strong">
           Research lab
@@ -57,6 +58,9 @@ export default function LabPage() {
         </p>
       </div>
 
+      <p className="mt-6 max-w-3xl text-sm">Archive routes are publicly reachable if hosted. Noindex is not access control; this archive is not confidential.</p>
+      <section className="mt-12" id="historical-scatter"><h2 className="text-3xl">Historical conceptual scatter</h2><p className="my-4 max-w-3xl">Preserved from the earlier study. Its 0–100 placements, flags and halos are illustrative design choices, not measured data or S dimensions. It is outside the reader edition.</p><FrontierSensitivityScatter embedded /></section>
+      <p className="mt-6"><Link className="underline" href="/forecasts">Archived forecast policy and pending questions</Link></p>
       <div className="mt-10 max-w-3xl">
         <StagedEvidenceBanner title="Lab views are not reviewed findings">
           <p>

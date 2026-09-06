@@ -149,10 +149,12 @@ class SourcePromotionTest(unittest.TestCase):
                     path.write_bytes(b"changed" + before)
                     self.assertTrue(promotion.validate_protected_inputs(root))
                     path.write_bytes(before)
-            new_object = root / "data/profiles/stage_profiles.csv"
-            new_object.parent.mkdir()
-            new_object.write_text("profile_id,S1,S2,S3,S4,S5\n", encoding="utf-8")
-            self.assertTrue(promotion.validate_protected_inputs(root))
+            # New staged schema objects are validated by the current reader
+            # boundary; historical source promotion does not prohibit them.
+            new_object = root / "data/profiles/new_staged_object.csv"
+            new_object.parent.mkdir(exist_ok=True)
+            new_object.write_text("profile_id,S1\n", encoding="utf-8")
+            self.assertEqual(promotion.validate_protected_inputs(root), [])
 
     def test_reviewed_source_locator_and_date_validation(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

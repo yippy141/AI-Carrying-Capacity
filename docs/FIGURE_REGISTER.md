@@ -32,3 +32,67 @@ orthogonal public gate. Analytic type no longer doubles as a chip label.
 - Conceptual figures must say so in the caption; their coordinates may never gain axes with units.
 - Modeled figures name the model owner and the estimate vintage in the caption.
 - Forecast figures show status and update history; resolved questions stay visible.
+
+## First reader edition disposition — 2026-09-06
+
+This dated release table supersedes the earlier “Live” placements for the finite
+reader surface; original rows above remain historical.
+
+| Reader figure | Actual implementation | Basis and use state | Required context |
+| --- | --- | --- | --- |
+| 1: Reported use has several meanings | AdoptionDepthFigure, existing canonical CSV | Observed plus hatched Census model estimate; existing exact claims | ECB/Census/Eurostat panels separate; ten marks; NBS retained unplotted; observation verification 2026-08-21, not edition date |
+| 2: Different work, different effects | OperationalOutcomes | Two staged empirical uses for finite review | QJE staggered rollout/GPT-3/one firm; METR randomized selected tasks/early-2025 tools/2026 selection caveat; no pooling |
+| 3: Change the workflow assumptions | MechanismExperiment | Hypothetical scenario arithmetic | Serial sum versus independent parallel max; repeated min-capacity model separate; explicit units and omissions; AI can affect more stages |
+| 4: A real control result | FusionTrace | Staged authored TCV observation plus labeled transfer interpretations | Physical control demonstration; no plant effect; planned exposure is not accepted qualification; bank absence is not universal absence |
+
+Hero ribbon F0 and legacy conceptual scatter F2 no longer carry the primary
+argument; the scatter remains under `/lab#historical-scatter`. Old F3 comparative
+chain component is retained in source history, outside the reader edition.
+Forecasts remain archived and unactivated. FigureShell exports, source links,
+text alternatives and actual 1440/390px captures accompany this package.
+
+## PR #43 revision — same four figures
+
+- Figure 1: numerical observations and separate-source structure unchanged;
+  visible interpretation explains why use is not an optimization target.
+- Figure 2: two original within-study reference-100 visuals. QJE resolutions/hour
+  100→115; METR task-time 100→119 with historical interval 102–139 and February
+  2026 selection warning. These transform estimates, not group means or a common
+  metric. Samples/vintages stay visible. The support actor map is an analytical
+  attribution diagram inside this scene; geography follows the final QJE paper,
+  and arrows encode no flows or effect sizes.
+- Figure 3: one new optional project overhead (zero default) after serial/parallel
+  required work; correct 40→34, 40→40 and 40→42 examples. Independent capacity
+  model keeps fixed 0–160 scale and marks the binding station. No empirical
+  calibration or new S mark. Baseline controls stay secondary and are hidden
+  in print, while default assumptions and arithmetic remain visible.
+- Figure 4: original TCV simulation-training / physical-feedback / post-experiment
+  evaluation schematic. Other plant dependencies are alongside it. Objective
+  example follows Extended Data Figure 4b; it implies no accident or plant effect.
+  Article CC BY 4.0 subject to asset exceptions; no publisher image reproduced.
+
+All new empirical wording and explanatory detail inherit the existing staged
+parent-use records in `research/reader-edition/uses.json`. Source/hypothesis
+labels are explicit in the optional interpretation. Updated actual desktop and
+390px captures, PNG exports and print sample are in reports/reader-edition.
+
+## Restored strategic canvas — 6 September 2026
+
+`StrategicCanvas` is the primary original qualitative figure on `/` and `/paper`.
+It maps stipulated actor access, research feedback, physical deployment and
+political benefit channels. Four controls change its links and node statements;
+fixed positions and equal-width arrows encode no country power or effect size.
+Outlined nodes and a readable pinned before/after table identify changed outputs.
+All edges are scenario construction; dashed feedback routes may activate or
+withdraw. Both US and Chinese actors research and deploy. The third-country and
+cross-border foundations are retained without pretending to allocate national
+shares. Source footholds resolve to nine staged source/use records in
+`research/strategic-futures/prototype.json`. The accepted eight-edge graph remains
+a separate historical/method record. No probabilities or calibrated chronology.
+
+Default/no-JavaScript text, keyboard controls, mobile layout, before/after captures
+and a tagged PDF accompany the prototype in `reports/strategic-futures/`.
+The four existing work figures and their SVG/PNG exports now live at `/work` and
+`/work/paper`; their observations, captions, source restrictions and historical
+screenshots remain intact. This new placement supersedes the primary reader
+placement above without deleting its history.

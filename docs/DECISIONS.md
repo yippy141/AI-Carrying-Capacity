@@ -820,3 +820,143 @@ genuinely independent and the consequence before it is scoped explicitly.
 Keeping unresolved rows non-point and keeping review dependencies distinct
 from draft-use eligibility makes the WP2 handoff auditable without falsely
 closing evidence or approval gates.
+
+## 2026-09-06: Authorize the finite first reader edition
+
+Adopt `RELEASE_SCOPE.md` for an informed AI-governance/policy reader: one study,
+paper/print, evidence and contribution statement. The objective is explainable
+research authorship and comprehension. Completing all C1–C8 rows, expert
+outreach, sixteen sectors, forecasts or scenarios is not a release dependency.
+New exact operational/fusion claims remain staged for the combined release
+review. Jinhua's personal passages and assistance statement await his final edit.
+
+## 2026-09-06: Preserve unresolved dimensions and label model assistance honestly
+
+Adopt schema 1.1: nullable selected S values for non-approved profiles, with one
+linked disposition per dimension and immutable underlying submissions. Carry
+only explicit historical S5 selections; agreements and recommendations alone
+are not new selections. No S definition or historical judgment changes.
+
+Amend the controlling display rule narrowly: model-generated `expert-coded`
+records display as “Analyst assessment · AI-assisted”, with draft status and
+actual human-review state separately visible. Preserve raw labels and model
+roles; no named specialist validation is implied. See METHOD_PROFILES and
+READER_EDITION_BOUNDARY. This edition does not expose a profile score wall.
+
+## 2026-09-06: End completed-package whole-app mutation bans
+
+Preserve original nested manifests and authority versions at the PR #42 base.
+Test historical digests against that snapshot; pin immutable research records
+and accepted register prefixes in current checks. Replace entire app/components/
+lib/public/content freezes with current schema, provenance, eligibility and
+PR changed-file scope checks. Completed source/coding work was authorized to
+freeze its own inputs, not permanently prohibit future authorized app work.
+Do not refresh historical expected hashes. Production publication remains gated
+by exact reachable uses and author review, not all archive TODOs.
+
+## 2026-09-06: Preserve the existing fonts and use a portable build
+
+Keep Newsreader, Inter and IBM Plex Mono, bundled from pinned Fontsource
+packages with OFL notices. This removes Google font fetches during build and
+reading. Use Next's supported webpack mode for build and local development because the installed Turbopack
+worker port is blocked in this execution environment even on the escalated
+attempt. This is a build-engine choice, not an application-framework rewrite.
+Patch audited dependencies; record the actual audit against the final lockfile.
+
+## 2026-09-06: Record existing automatic preview exposure
+
+The authorized branch push triggered the repository’s existing Vercel
+integration. Its branch-preview URL returned HTTP 302 to Vercel SSO without
+credentials on 6 September; no application content was served by that request.
+Correct the earlier local-only hosting assumption. Keep local binding, staged
+labels and publication gates. Do not add authentication, alter host/admin
+settings or treat a preview as a production release. All committed materials
+remain public through GitHub regardless of the preview host’s access control.
+
+## 2026-09-06: Revise draft PR #43 within the first-reader scope
+
+Continue the existing release branch from verified PR head
+`1dee9c186972d06b1e75ff92bb8ee192a9650d68`; no intervening commits were present.
+Keep the four scenes, shared paper/evidence views, raw histories and S definitions.
+The edition's empirical answer concerns access to specific AI tools versus no
+access, not the marginal effect of a model upgrade. Cross-study differences
+cannot isolate workflow effects. The new support-case actor map is an analytical
+attribution map, not a national outcome dataset. Its geography comes from the
+final QJE paper. Each scene pairs a useful result with mechanism, alternative
+and significance; source-supported mechanisms remain separate from hypotheses.
+
+The two study visuals normalize reported relative estimates to a reference of
+100 within each panel. They are not observed group means or a shared outcome.
+Retain METR's historical interval and February 2026 selection caveat. The new
+TCV schematic separates simulation training, fixed-policy physical control and
+post-experiment evaluation; other plant requirements are independent dependencies.
+Record its verified article-level CC BY 4.0 terms and asset exceptions without
+blanket-clearing software/data. Revised explanatory details remain under the
+same three staged exact-use records; no new promotion/gate package is created.
+
+Add one optional hypothetical project overhead, default zero, after the required
+tasks complete. Do not change the independent capacity example. Fixed station
+scale and a binding-station marker make changing assumptions legible. Keep the
+personal opening visible and provide editable Markdown in the existing author
+brief; real author reading, byline assent and permission remain pending.
+
+## 2026-09-06: Make the ordinary build fail closed in production
+
+All supported builds enter `scripts/build_reader.ts` through `npm run build`.
+Local/preview builds remain labelled review previews. `VERCEL_ENV=production`,
+`VERCEL_TARGET_ENV=production`, `--production`, or explicit publication mode
+requires publication preflight, publication-mode Next compilation and rendered
+output checks in that order. A conflicting preview request fails. Ambiguous
+Vercel target metadata fails. NODE_ENV alone describes optimization, not a
+hosting target. `build:publication` is an alias to the same entry point.
+
+Direct production `next build` is refused without the build pipeline context.
+The ordinary production entry fails on this release's real pending records.
+Synthetic temporary fixtures exercise source/use, author, byline and permission
+failures and the entire successful publication pipeline, including a deliberately
+corrupted output failure. They never approve the real records. Separately record
+byline assent in the existing release review object; this is not another gate
+package or an implied human approval.
+
+Merging this branch does not authorize publication. If Vercel runs the supported
+build with production target metadata on merge, it will refuse this pending
+edition; an explicit local production invocation behaves the same way. Existing
+hosted build-command/root/environment overrides have not been inspected, and
+hosting protection/admin settings are unchanged. Noindex remains indexing advice,
+not access control. Keep the existing historical snapshot, runtime/provenance and
+PR-scope checks; introduce no new whole-app hash freeze.
+
+## 2026-09-06: Restore the strategic-futures flagship (owner-directed scope change)
+
+The owner rejected the narrow reader-edition strategy, not merely its technical
+execution. The restored brief supersedes the restriction that national futures
+and scenarios wait until after the first release. Frontier Is Not Fate now asks
+when an advanced-AI lead becomes durable scientific, industrial or strategic
+power, how useful capability diffuses, and who benefits through roughly 2040.
+The four proposed futures are constructions to investigate, not approved
+predictions, probabilities or owner judgments. Preserve the useful PR #43 build,
+provenance and publication safeguards and retain the productivity study as
+supporting evidence at /work and /work/paper. No merge/publication is authorized.
+
+The existing eight coupling-edge dispositions and external-scenario crosswalk
+remain historical/accepted records. Their empirical display keeps equal widths,
+separate evidence/magnitude/confidence, and its second-order limit. A separately
+typed strategic prototype may now display multi-step future chains and feedback
+loops as explicit scenario constructions. Such composition does not upgrade an
+edge, establish compounded observed causality, produce a national score, or
+recode S1–S5. The new scenario JSON is derived presentation/assumption material,
+not a replacement canonical coupling or six-dimension external-premise ledger.
+
+Use four categorical controls: research feedback, useful-capability diffusion,
+process change, and political/investment settlement. Compare results from explicit
+rules and keep a pinned before-state. Their conditional outputs are qualitative;
+no percentages, resource totals or calibrated transition rates are invented.
+Competing priorities draw on a finite discretionary investment/implementation
+agenda; prioritizing one use displaces another. Input bottlenecks are not assumed
+interchangeable. Rupture/control failure can invalidate benign branches.
+
+Extend publication scope to the actual strategic routes and supporting study.
+New strategic text/source uses stay staged with author review not recorded;
+existing release-review permissions remain pending. Synthetic tests may approve
+only temporary copies. No new whole-app freeze, admin/protection change, forecast
+activation, portfolio change or broader module is authorized by this amendment.

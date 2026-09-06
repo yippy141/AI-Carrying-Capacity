@@ -1,0 +1,93 @@
+{
+  "purpose": "Version identification for the exact external scenario accounts characterized in this prototype. Hashes identify retrieved bytes, not research quality or human approval. Full third-party documents are not redistributed.",
+  "retrieval_attempts": [
+    {
+      "id": "sf-ai2027",
+      "retrieved_at_utc": "2026-09-06T13:31:39.878025+00:00",
+      "requested_url": "https://ai-2027.com/scenario.pdf",
+      "retrieval_exit_code": 28,
+      "http_status": "200",
+      "effective_url": "https://ai-2027.com/scenario.pdf",
+      "content_type": "application/pdf",
+      "failure": "curl: (28) Operation timed out after 35004 milliseconds with 834716 out of 8864953 bytes received"
+    },
+    {
+      "id": "sf-ai2040",
+      "retrieved_at_utc": "2026-09-06T13:32:14.915318+00:00",
+      "requested_url": "https://ai-2040.com/print/scenario?book=1&plan=A",
+      "retrieval_exit_code": 28,
+      "http_status": "200",
+      "effective_url": "https://ai-2040.com/print/scenario?book=1&plan=A",
+      "content_type": "text/html; charset=utf-8",
+      "failure": "curl: (28) Operation timed out after 35008 milliseconds with 622321 bytes received"
+    },
+    {
+      "id": "sf-normal",
+      "retrieved_at_utc": "2026-09-06T13:32:17.560815+00:00",
+      "requested_url": "https://www.normaltech.ai/p/ai-as-normal-technology",
+      "retrieval_exit_code": 0,
+      "http_status": "200",
+      "effective_url": "https://www.normaltech.ai/p/ai-as-normal-technology",
+      "content_type": "text/html; charset=utf-8",
+      "sha256": "f6652102241ef06435c86c8621017535ae43fd1f189b2615448a80e2ebefe763",
+      "bytes": 534832
+    },
+    {
+      "id": "sf-ai2027",
+      "retrieved_at_utc": "2026-09-06T13:33:39.133425+00:00",
+      "requested_url": "https://ai-2027.com/",
+      "retrieval_exit_code": 0,
+      "http_status": "200",
+      "effective_url": "https://ai-2027.com/",
+      "content_type": "text/html; charset=utf-8",
+      "sha256": "d12c71f77cff8065569fe35a71dbb8b59da149b0ce2bb747523ae49663262994",
+      "bytes": 1911123
+    },
+    {
+      "id": "sf-ai2040",
+      "retrieved_at_utc": "2026-09-06T13:33:24.691389+00:00",
+      "requested_url": "https://ai-2040.com/",
+      "retrieval_exit_code": 0,
+      "http_status": "200",
+      "effective_url": "https://ai-2040.com/",
+      "content_type": "text/html; charset=utf-8",
+      "sha256": "fe9d2726c26090dfbe0dbcf8844d9f34672d499237933bb5fe1689e6c738df17",
+      "bytes": 1075514
+    }
+  ],
+  "records": [
+    {
+      "id": "sf-normal",
+      "retrieved_at_utc": "2026-09-06T13:32:17.560815+00:00",
+      "requested_url": "https://www.normaltech.ai/p/ai-as-normal-technology",
+      "retrieval_exit_code": 0,
+      "http_status": "200",
+      "effective_url": "https://www.normaltech.ai/p/ai-as-normal-technology",
+      "content_type": "text/html; charset=utf-8",
+      "sha256": "f6652102241ef06435c86c8621017535ae43fd1f189b2615448a80e2ebefe763",
+      "bytes": 534832
+    },
+    {
+      "id": "sf-ai2027",
+      "retrieved_at_utc": "2026-09-06T13:33:39.133425+00:00",
+      "requested_url": "https://ai-2027.com/",
+      "retrieval_exit_code": 0,
+      "http_status": "200",
+      "effective_url": "https://ai-2027.com/",
+      "content_type": "text/html; charset=utf-8",
+      "sha256": "d12c71f77cff8065569fe35a71dbb8b59da149b0ce2bb747523ae49663262994",
+      "bytes": 1911123
+    },
+    {
+      "id": "sf-ai2040",
+      "retrieved_at_utc": "2026-09-06T13:33:24.691389+00:00",
+      "requested_url": "https://ai-2040.com/",
+      "retrieval_exit_code": 0,
+      "http_status": "200",
+      "effective_url": "https://ai-2040.com/",
+      "content_type": "text/html; charset=utf-8",
+      "sha256": "fe9d2726c26090dfbe0dbcf8844d9f34672d499237933bb5fe1689e6c738df17",
+      "bytes": 1075514
+    }
+  ]
+}

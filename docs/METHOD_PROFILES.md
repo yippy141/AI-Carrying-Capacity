@@ -100,12 +100,15 @@ Expert codings also carry a separate `coding_status`: `proposed`, `reviewed`,
 with coder-workflow semantics. A row can be `evidence_basis=expert-coded`,
 `coding_status=proposed`, and `review_status=staged` without contradiction.
 
-Display eligibility is explicit:
+Display eligibility is explicit (first reader edition presentation amendment,
+2026-09-06; see `docs/READER_EDITION_BOUNDARY.md`):
 
 - `review_status=staged` is limited to local or private-lab routes;
 - `review_status=reviewed` with `coding_status=proposed` or `disputed` may
   appear in a public pilot only with the visible label
-  `EXPERT-CODED · DRAFT`; and
+  `Analyst assessment · AI-assisted` for model-generated assessments, with
+  actual human-review state and draft status shown separately; historical raw
+  `EXPERT-CODED · DRAFT` labels and roles remain unchanged; and
 - `review_status=canonical` with `coding_status=approved` may render without
   the draft qualifier, while retaining its evidence vintage and rationale.
 
@@ -134,7 +137,11 @@ an exact match with `stages.csv`.
 profile_id,stage_id,parent_stage_id,sector,workflow,pathway_id,application_context,lifecycle_phase,critical_path_role,S1,S2,S3,S4,S5,rationale,source_ids,coding_confidence,disagreement_summary,selected_review_ids,evidence_basis,coding_as_of,last_reviewed,revisit_triggers,proposed_by,proposed_model,reviewed_by,independent_review_by,approved_by,coding_status,review_status,version,changelog_note
 ```
 
-S-fields are integers. `coding_confidence` is `low`, `medium`, or `high`.
+S-fields are integers 0–4, or empty/null for non-approved rows without an
+explicit selection (schema version 1.1). Each nullable field must resolve to a
+dimension-level disposition with provenance in
+`data/profiles/dimension_dispositions.csv`. Approved rows still require all five
+integers and all existing approval conditions. Empty never means zero. `coding_confidence` is `low`, `medium`, or `high`.
 `disagreement_summary` describes unresolved, dimension-specific differences;
 it does not collapse them into one range. `selected_review_ids` identifies the
 submission or submissions used in the current profile disposition.
@@ -445,6 +452,18 @@ no flywheel score, snowball score, or third-order composed claim.
 `feedback_loop_id` may group separately supported edges into a reinforcing or
 balancing loop. A named loop does not establish that it is closed,
 self-sustaining, or dominant; those remain hypotheses tested edge by edge.
+
+### Strategic-prototype presentation amendment — 6 September 2026
+
+The owner’s restored-direction brief authorizes separately labelled, multi-step
+future constructions in the flagship. The preceding eight empirical/hypothesized
+edge dispositions and their second-order display limit are unchanged. The new
+`strategic-prototype-1` canvas is not that empirical graph: every connection is
+scenario construction, with explicit premises and no numeric causal composition.
+Its four controls and four proposed presets are not new canonical rows or
+replacements for the external scenario ledger below. See RELEASE_SCOPE,
+READER_EDITION_BOUNDARY and DECISIONS for the narrow amendment and publication
+requirements. No S/C definitions, historical labels or source restrictions change.
 
 ## Scenario assumption ledger
 

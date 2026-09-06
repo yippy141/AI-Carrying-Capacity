@@ -1,0 +1,114 @@
+# Representation and release-boundary amendment
+
+Authorized by the first-reader-edition user brief, 2026-09-06. This is a narrow
+display/schema/engineering amendment, not a change to S1–S5 or coding history.
+
+## Nullable selections, version 1.1
+
+`data/profiles/stage_profiles.csv` retains the METHOD_PROFILES column order.
+For non-approved rows, empty S cells mean **no selected value**, parsed as null.
+Approved rows still require integer 0–4 selections and every prior approval
+condition. Version 1.0 consumers must reject/skip non-approved rows rather than
+coerce blanks to zero. `dimension_dispositions.csv` supplies exactly five linked
+records per profile: original review IDs, submitted endpoints, any later
+recommendation endpoints, selection basis and the historical-record locator.
+Endpoints describe qualitative assessments, never empirical confidence intervals.
+The raw submissions remain byte-for-byte intact in research; the derived review
+CSV combines them without changing fields. No C or governance rows are created.
+
+Only PR #42's twelve explicit S5 selections populate scalar fields. Even exact
+coder agreement is not a documented selection. Domain recommendations and owner
+preferences remain linked recommendations/preferences. Thus this conservative
+projection cannot quietly settle a disagreement in order to fit the schema.
+
+## Honest display label
+
+For this edition, the historical `expert-coded` evidence basis maps to
+**Analyst assessment · AI-assisted** when the underlying coder/reviewer is a
+model. Show “Draft; named specialist review pending” separately where applicable.
+No model is described as a human expert. Original labels, role strings, model
+identifiers and historical notes are untouched. A future human assessment must
+name its actual reviewer and scope; this mapping grants no approval.
+
+## Three distinct checks
+
+1. Historical snapshots: original validators/manifests and governing documents
+   are archived under `scripts/archive/reader-baseline` and
+   `docs/archive/reader-baseline`. Their expected hashes are unchanged. A Git
+   snapshot test reconstructs the predecessor commit and runs the original
+   nested protected-input checks. Accepted raw research files are also pinned
+   individually in the current tree; additions elsewhere cannot invalidate them.
+2. Current invariants: strict CSV parsing, types, foreign keys, dimension
+   missingness/provenance, source/use restrictions, publication eligibility and
+   source/claim/license append-only prefixes. Historical record/workbook tests
+   still run. Current app code is not an immutable research input.
+3. Package scope: changed paths are compared with the PR base and release
+   allowlist. New unrelated modules, country data, credentials and alterations
+   of frozen records fail. A later authorized package defines its own scope.
+
+The source-promotion and fusion-domain `validate_protected_inputs` functions now
+call the current immutable-record check. S5 retains its additional domain-review
+digest. Constants remain in place as historical manifests; they are exercised
+against the historical commit, never refreshed to conceal application edits.
+
+The old launch TODO scan remains an archive/backlog diagnostic. The actual
+release gate follows the finite routes and their transitive imports, checks
+the rendered claim manifest, and rejects draft objects in publication mode.
+Review-preview and publication are explicit modes; preview permission does not
+approve production uses. Hosting access is separate: the existing automatic
+Vercel branch preview redirects unauthenticated requests to Vercel SSO; this
+application adds no authentication system. See the validation report.
+
+## Production entry point — PR #43 revision
+
+| Invocation / environment | Required behavior |
+| --- | --- |
+| `npm run dev` | Normal local development, loopback binding, draft labels |
+| `npm run build` locally or Vercel preview | Preview eligibility preflight, optimized review compilation, rendered review check |
+| `npm run build` with VERCEL_ENV or VERCEL_TARGET_ENV = production | Publication preflight, publication compilation, rendered publication check; current pending release refuses |
+| `npm run build -- --production` (also `build:publication`) | The same full publication pipeline outside Vercel |
+| Production target plus review-preview mode or `--preview` | Refuse conflicting request |
+| VERCEL=1 without target metadata | Refuse ambiguous deployment target |
+| Direct production `next build` without pipeline context | Refuse; use the entry point |
+
+`NODE_ENV=production` alone is not a publication signal: an optimized preview
+also uses it. The explicit production command is required on other hosts.
+The next.config guard catches ordinary direct production compilation; it is not
+an authentication mechanism or a defense against an administrator rewriting
+commands/environment/code. The supported pipeline overwrites its internal mode
+with the resolved target and exposes no fixture or bypass switch.
+
+Publication checks source and exact-use eligibility, author reading/edit with
+an actual recorded reviewer, byline assent, exact-use release review and explicit
+publication authorization. Strict runtime schemas reject missing fields. The
+same existing release objects retain all real pending states. The synthetic test
+copies records to a temporary directory, labels approvals and prose SYNTHETIC,
+builds and checks actual HTML, corrupts one rendered claim to test refusal, and
+deletes the copy. It never represents a model as the real author/reviewer.
+
+On merge, a correctly configured Vercel production build using this repository's
+entry point will fail while these requirements are pending. No production deploy
+was attempted. Actual Vercel build-command/root-directory overrides and system-env
+settings were not available for verification. No repository or host administration
+was changed; the existing preview's credential-free response is reported separately.
+
+## Restored strategic-futures prototype — representation amendment
+
+The owner rejected the finite workflow study as the flagship direction. The
+2026-09-06 scope amendment adds `research/strategic-futures/` to this PR’s allowed
+paths and expands the reachable reading set to nine routes. A strict versioned
+JSON schema represents scenario construction, four qualitative controls, four
+proposed presets, nine source-specific exact uses, translation/human review and
+plain author fields. It does not populate or recode the canonical S/C/coupling/
+scenario CSVs. `lib/futureRules.ts` is an executable qualitative rule map, with
+no numeric national outputs, estimated time steps or scenario probabilities.
+
+Every new exact source use stays staged. Publication now also rejects pending
+strategic source uses, Chinese translation, scenario text and author review.
+Existing `release-review.json` still separately requires actual author reading,
+byline assent, exact-use review and publication authorization; none is changed.
+Synthetic fixture copies exercise the new refusal cases and a complete approved
+publication compilation. The historical invariants and original snapshots remain
+intact; no whole-app hash freeze was added. Existing deployment protection and
+administration remain untouched. This amendment permits a draft prototype to be
+tested, not production publication.

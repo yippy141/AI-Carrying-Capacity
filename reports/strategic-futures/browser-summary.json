@@ -1,0 +1,19 @@
+{
+  "captured_at_utc": "2026-09-06T13:52:53.235388+00:00",
+  "base_head": "e0eb839fe11c088e7cfab2f8ebfbf226dc73de32",
+  "branch": "release/first-reader-edition",
+  "stats": {
+    "startTime": "2026-09-06T13:50:38.972Z",
+    "duration": 26803.492000000002,
+    "expected": 20,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "viewports": {
+    "desktop": "1440 \u00d7 1000",
+    "mobile": "390 \u00d7 844; reduced motion"
+  },
+  "browser": "Playwright Chromium; automated checks, not outside human feedback",
+  "scope": "Nine reading routes; 14 retained study tests and six strategic tests; sources, controls, reset, keyboard, no JavaScript, print, exports, accessibility, overflow."
+}
