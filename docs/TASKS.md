@@ -1,5 +1,21 @@
 # Tasks
 
+## Current batch — restored strategic direction, 6 September 2026
+
+- [x] Verify existing draft PR #43 and local/remote head e0eb839; preserve branch work.
+- [x] Record explicit owner-directed scope and separate scenario-schema/display amendment.
+- [x] Build strategic opening, strong compounding trajectory, four proposed futures,
+  one persistent canvas, four consequential controls and pinned comparison.
+- [x] Keep accepted eight couplings, historical crosswalk and all S/profile records intact.
+- [x] Retain productivity study and paper as supporting routes with original exports/tests.
+- [x] Verify nine selective source/account uses; keep new wording and Chinese translation staged.
+- [x] Explain every rule and first-person draft in ordinary author-facing Markdown.
+- [x] Complete current build, historical checks, scenario browser journeys and artifacts.
+- [x] Prepare the same draft PR update with source notes, test evidence and screenshots; no merge/publication.
+
+No new expert recruitment, generalized red team, sector programme or worksheet
+gate is required for this labelled prototype. Human feedback has not occurred.
+
 ## Done
 
 - [x] Create repo scaffold for research, data, docs, content, scripts, and future app work.

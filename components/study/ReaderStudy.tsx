@@ -20,6 +20,7 @@ export function ReaderStudy({paper=false}:{paper?:boolean}) {
   const model=buildAdoptionDepthFigureModel(edition.observations);
   const [qje,metr,tcv]=edition.uses;
   return <main id="main-content" className={paper?'reader-study paper-view':'reader-study'} data-author-status={authorPending?'pending':'approved'}>
+    <p className="reader-prose"><Link href="/">Return to strategic futures</Link> · Supporting evidence: the earlier four-scene study</p>
     <FrontierNotFateHero preview={edition.mode==='review-preview'} experimental={String(model.ecb.rows[1].value)} significant={String(model.ecb.rows[3].value)}/>
     <section id="author-draft" className="reader-prose author-opening"><p className="edition-note">{authorPending?authorCopy.state:'Author introduction'}</p><p>{authorCopy.opening}</p><p>{authorCopy.motivation}</p></section>
     {paper?<div className="reader-prose paper-instruction"><p>Paper view: the same claims, source records and arithmetic as the study. Browser Print / Save as PDF preserves the figures and expands their evidence notes.</p><p><a href="#author-draft">Read the draft author introduction</a></p></div>:null}

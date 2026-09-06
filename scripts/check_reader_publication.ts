@@ -1,3 +1,4 @@
+import {loadStrategic} from '../lib/strategicFutures.ts';
 import {existsSync,readFileSync,writeFileSync,mkdirSync} from 'node:fs';
 import path from 'node:path';
 import {loadReaderEdition,loadStagedProfiles,READER_ROUTES,type EditionMode} from '../lib/readerEdition.ts';
@@ -8,6 +9,7 @@ import {loadPublicationReview,requirePublicationReview} from '../lib/publication
 const mode:EditionMode=process.argv.includes('--publication')?'publication':'review-preview';
 const edition=loadReaderEdition(mode);
 loadStagedProfiles();
+const strategic=loadStrategic(mode);
 const approval=loadPublicationReview();
 if (mode==='publication') requirePublicationReview(approval);
 
@@ -48,9 +50,13 @@ if(process.argv.includes('--rendered')) {
   if(/TODO_SOURCE|TODO_DATA|TODO_VERIFY|seed-sp-00|dr-sp-00|initial_probability_range/.test(html))throw new Error(`Archive/staged research leak in ${route}`);
   const found=[...html.matchAll(/data-claim-id="([^"]+)"/g)].map(m=>m[1]);
   if(found.some(id=>!edition.uses.some(u=>u.id===id)))throw new Error(`Unknown rendered use ${route}`);
+  if(mode==='publication' && /data-strategic-status="staged"|data-strategic-review="staged"/.test(html))throw new Error(`Staged strategic use in ${route}`);
+  if(['/', '/paper','/assumptions'].includes(route)&&!html.includes('data-strategic-id="strategic-prototype-1"'))throw new Error(`Strategic prototype missing in ${route}`);
+  const strategicIds=[...html.matchAll(/data-strategic-source="([^"]+)"/g)].map(m=>m[1]);
+  if(strategicIds.some(id=>!strategic.sources.some(s=>s.id===id)))throw new Error(`Unknown strategic source in ${route}`);
   if(mode==='publication' && html.includes('data-use-status="staged"'))throw new Error(`Staged public claim ${route}`);
   if(mode==='publication' && /data-author-status="pending"|review preview|Draft use · author review pending/.test(html))throw new Error(`Unapproved rendered state in ${route}`);
-  if(['/', '/paper','/evidence'].includes(route) && edition.uses.some(u=>!found.includes(u.id)))throw new Error(`Missing required figure use ${route}`);
+  if(['/work', '/work/paper','/evidence'].includes(route) && edition.uses.some(u=>!found.includes(u.id)))throw new Error(`Missing required figure use ${route}`);
  }
 }
-console.log(`Reader ${mode} gate passed: ${READER_ROUTES.length} reading routes, 4 figures, ${ids.length} adoption marks, 3 exact candidate uses. Publication approval is ${approval.publicationAuthorized}.`);
+console.log(`Reader ${mode} gate passed: ${READER_ROUTES.length} reading routes, strategic canvas plus 4 supporting figures, ${ids.length} adoption marks, 3 exact candidate uses. Publication approval is ${approval.publicationAuthorized}.`);

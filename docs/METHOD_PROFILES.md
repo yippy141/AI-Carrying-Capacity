@@ -453,6 +453,18 @@ no flywheel score, snowball score, or third-order composed claim.
 balancing loop. A named loop does not establish that it is closed,
 self-sustaining, or dominant; those remain hypotheses tested edge by edge.
 
+### Strategic-prototype presentation amendment — 6 September 2026
+
+The owner’s restored-direction brief authorizes separately labelled, multi-step
+future constructions in the flagship. The preceding eight empirical/hypothesized
+edge dispositions and their second-order display limit are unchanged. The new
+`strategic-prototype-1` canvas is not that empirical graph: every connection is
+scenario construction, with explicit premises and no numeric causal composition.
+Its four controls and four proposed presets are not new canonical rows or
+replacements for the external scenario ledger below. See RELEASE_SCOPE,
+READER_EDITION_BOUNDARY and DECISIONS for the narrow amendment and publication
+requirements. No S/C definitions, historical labels or source restrictions change.
+
 ## Scenario assumption ledger
 
 The four v1 anchor scenarios are confirmed:

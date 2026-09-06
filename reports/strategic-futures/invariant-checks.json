@@ -1,0 +1,62 @@
+[
+  {
+    "command": "python3 scripts/validate_structural_profiles_worksheet.py",
+    "exit": 0,
+    "output": "Structural Profiles worksheet validation passed: 31 leaf stages, 31 scoped profiles, 18 fusion profiles."
+  },
+  {
+    "command": "python3 scripts/validate_structural_profiles_reconciliation.py",
+    "exit": 0,
+    "output": "Structural Profiles reconciliation validation passed: 155 comparisons, 23 owner decisions, 19 targeted S5 rows, 18 fusion reviews."
+  },
+  {
+    "command": "python3 scripts/validate_fusion_source_promotion.py",
+    "exit": 0,
+    "output": "Fusion source promotion validation passed: 44 reviewed, 44 promoted, 0 staged deferrals; 2 excluded candidates remain out."
+  },
+  {
+    "command": "python3 scripts/validate_fusion_domain_review.py",
+    "exit": 0,
+    "output": "Fusion domain review validation passed: 18 profiles, 90 separate cells; no protected-input mutation.\n{\"confidence\": {\"high\": 12, \"low\": 50, \"medium\": 28}, \"dispositions\": {\"insufficient_evidence\": 5, \"recommends_range\": 12, \"recommends_value_change\": 4, \"requires_human_expert\": 14, \"requires_jurisdiction_variant\": 2, \"requires_pathway_variant\": 6, \"supports_current_record\": 47}, \"expert_packages\": 6, \"human_experts\": 19, \"owner_exceptions\": 28, \"range_form\": 31}"
+  },
+  {
+    "command": "python3 scripts/validate_targeted_s5_adjudication.py",
+    "exit": 0,
+    "output": "Targeted S5 adjudication validation passed\n{'rows': 19, 'outcomes': {'selected_provisional_pending_named_expert': 11, 'preserved_range': 6, 'selected_provisional': 1, 'preserved_disagreement': 1}, 'confidence': {'medium': 7, 'low': 12}, 'point_form': 12, 'range_or_disagreement_form': 7, 'expert_packages': 8, 'open_fusion_gaps': 9, 'canonical_approvals': 0}"
+  },
+  {
+    "command": "python3 scripts/validate_fusion_evidence.py",
+    "exit": 0,
+    "output": "Fusion evidence package validation passed."
+  },
+  {
+    "command": "python3 scripts/validate_adoption_depth.py",
+    "exit": 0,
+    "output": "Adoption-depth validation passed: 13 observations."
+  },
+  {
+    "command": "python3 scripts/validate_repo.py",
+    "exit": 0,
+    "output": "AI Conversion Atlas scaffold validation passed."
+  },
+  {
+    "command": "python3 scripts/validate_source_register.py",
+    "exit": 0,
+    "output": "Source register validation passed: 99 rows."
+  },
+  {
+    "command": "python3 scripts/validate_indicator_catalog.py",
+    "exit": 0,
+    "output": "Indicator catalog validation passed: 6 rows."
+  },
+  {
+    "command": "python3 scripts/check_reader_scope.py",
+    "exit": 0,
+    "output": "Reader PR scope and immutable current records passed."
+  },
+  {
+    "command": "python3 scripts/check_launch_readiness.py --mode private-preview",
+    "exit": 0,
+    "output": "Reader review-preview gate passed: 9 reading routes, strategic canvas plus 4 supporting figures, 10 adoption marks, 3 exact candidate uses. Publication approval is false.\n(node:93540) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/jinhuayip/Developer/AI%20Carrying%20Capacty/scripts/check_reader_publication.ts is not specified and it doesn't parse as CommonJS.\nReparsing as ES module because module syntax was detected. This incurs a performance overhead.\nTo eliminate this warning, add \"type\": \"module\" to /Users/jinhuayip/Developer/AI Carrying Capacty/package.json.\n(Use `node --trace-warnings ...` to show where the warning was created)"
+  }
+]

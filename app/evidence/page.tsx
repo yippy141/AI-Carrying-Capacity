@@ -1,12 +1,15 @@
 import Link from 'next/link';
+import {loadStrategic} from '@/lib/strategicFutures';
 import {loadReaderEdition} from '@/lib/readerEdition';
 import {buildAdoptionDepthFigureModel} from '@/lib/adoptionDepth';
 export const metadata={title:'Evidence'};
 export default function Evidence(){
   const edition=loadReaderEdition();
+  const strategic=loadStrategic(edition.mode);
   const model=buildAdoptionDepthFigureModel(edition.observations);
   const families=[{id:'adoption-ecb',title:'ECB SAFE: intensity',source:'src-0038',rows:model.ecb.rows,claims:['clm-0018','clm-0032']},{id:'adoption-census',title:'Census: reach and function breadth',source:'src-0048',rows:[model.btos.allFirms,...model.btos.adopterOnly],claims:['clm-0033','clm-0034','clm-0035']},{id:'adoption-eurostat',title:'Eurostat: adoption by firm size',source:'src-0042',rows:model.eurostat.sizeGradient,claims:['clm-0036']}];
   return <main className="reader-document" id="main-content"><h1>Follow a claim to its source.</h1><p className="document-intro">These are the finite claims used in this edition. A source being reviewed does not approve every sentence written from it. Observation periods, source checks and edition updates remain separate dates.</p>
+    <section data-strategic-id="strategic-prototype-1" data-strategic-status={strategic.status}><h2>The strategic hinges</h2><p>The flagship uses evidence about AI-assisted research, released weights, policy intentions and cross-border physical inputs. Its future chains are scenario constructions, not measured compounded causality.</p><p><Link href="/assumptions#source-trace">Exact sources, versions, restrictions and rules</Link> · <Link href="/">Strategic narrative and canvas</Link></p></section>
     <nav className="reading-depths" aria-label="Evidence sections"><a href="#adoption-ecb">Reported use</a><a href="#reader-clm-qje">Measured work</a><a href="#reader-clm-tcv">Fusion</a></nav>
     {families.map(family=>{
       const source=edition.sources.find(s=>s.source_id===family.source)!;

@@ -3,7 +3,8 @@ import Link from "next/link";
 const navItems = [
   { href: "/", label: "Study" },
   { href: "/paper", label: "Paper" },
-  { href: "/evidence", label: "Evidence" },
+  { href: "/assumptions", label: "Assumptions" },
+  { href: "/work", label: "Work evidence" },
   { href: "/methods", label: "Methods" },
   { href: "/about", label: "About" }
 ];
@@ -33,7 +34,7 @@ export function SiteHeader() {
             </ul>
           </nav>
           <span className="font-mono text-[11px] uppercase tracking-[0.06em] text-ink-soft">
-            Reader RC
+            Futures draft
           </span>
         </div>
       </div>

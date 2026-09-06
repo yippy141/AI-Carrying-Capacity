@@ -1,2 +1,2 @@
-import {ReaderStudy} from '@/components/study/ReaderStudy';
-export default function Home(){return <ReaderStudy/>;}
+import {StrategicStudy} from '@/components/futures/StrategicStudy';
+export default function Home(){return <StrategicStudy/>;}

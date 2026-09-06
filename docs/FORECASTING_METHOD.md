@@ -80,3 +80,16 @@ Source types should map to scenario use like this:
 ## Launch Rule
 
 The public V0 can include a scenario assumption browser only after it clearly says it is not a forecast and after its cards show evidence state, caveats, and source status.
+
+## Strategic-futures draft, 6 September 2026
+
+The flagship now explores longer conditional futures under the restored owner
+brief. Its four proposed constructions and illustrative 2026–2040 windows are
+separate from the accepted external scenario crosswalk and forecast register.
+No owner probabilities or historical forecasts are activated. AI 2027 is
+characterized as forecast-bearing; AI 2040 Plan A as a recommendation with
+conditional predictions; AI as Normal Technology as an argued predictive and
+normative account. Retrieved versions are identified in
+`research/strategic-futures/source-versions.json`. The new checkpoints ask what
+would support or undermine a premise; they do not constitute recorded author
+forecasts. See the explicit METHOD_PROFILES presentation amendment.

@@ -1,0 +1,316 @@
+{
+  "schemaVersion": "strategic-prototype-1",
+  "editionDate": "2026-09-06",
+  "baseHead": "e0eb839fe11c088e7cfab2f8ebfbf226dc73de32",
+  "status": "staged",
+  "humanReview": "not_recorded",
+  "probability": null,
+  "horizon": "2026–approximately 2040",
+  "kind": "scenario_construction",
+  "sources": [
+    {
+      "id": "sf-alpha",
+      "title": "AI improving the tools that build AI",
+      "organization": "Google DeepMind",
+      "publicationDate": "2025-05-14",
+      "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/",
+      "version": "Originating announcement, 14 May 2025",
+      "kind": "report",
+      "locator": "Enhancing AI training and inference",
+      "claim": "Google reports using AlphaEvolve to improve a kernel used in Gemini training, reducing total training time by 1%.",
+      "limit": "First-party report, not independently replicated here. This is one bounded improvement, not a recurring growth rate or autonomous self-improvement.",
+      "language": "en",
+      "reuse": "Citation and original paraphrase; no publisher assets redistributed.",
+      "verifiedDate": "2026-09-06",
+      "reviewStatus": "staged",
+      "humanReview": "not_recorded",
+      "translationReview": "not_applicable"
+    },
+    {
+      "id": "sf-deepseek",
+      "title": "A channel for useful capability to spread",
+      "organization": "DeepSeek",
+      "publicationDate": "2025-01-22",
+      "url": "https://arxiv.org/abs/2501.12948v1",
+      "version": "Original report v1; later v2 exists (4 January 2026)",
+      "kind": "report",
+      "locator": "Original report abstract; DeepSeek-R1 repository README §§1–3, 7",
+      "claim": "DeepSeek released R1/R1-Zero weights and six distilled models. Released weights make local use and adaptation possible.",
+      "limit": "Weights do not provide free serving, guaranteed reliability or a reproduced training stack. Upstream Qwen/Llama terms still matter.",
+      "language": "en",
+      "reuse": "Cite original report; no model files redistributed. Repository MIT and upstream conditions are separate.",
+      "verifiedDate": "2026-09-06",
+      "reviewStatus": "staged",
+      "humanReview": "not_recorded",
+      "translationReview": "not_applicable"
+    },
+    {
+      "id": "sf-china",
+      "title": "China’s programme reaches from models into production",
+      "organization": "State Council; official National Data Administration reproduction",
+      "publicationDate": "2025-08-26",
+      "url": "https://www.nda.gov.cn/sjj/swdt/xwfb/0826/20250826173046592282838_pc.html",
+      "version": "国发〔2025〕11号, signed 21 August 2025",
+      "kind": "official_intent",
+      "locator": "II（二）1–2; III（七）; III（十）",
+      "claim": "The AI+ opinion calls for stronger foundational models, integration into production workflows, application testing bases and shared industry platforms.",
+      "limit": "Programme intentions do not establish completed integrations. Draft translation: native-language human review is not recorded. Direct gov.cn access failed; the existing registry URL has a one-digit discrepancy.",
+      "language": "zh",
+      "reuse": "Original Chinese source linked; English paraphrase is AI-assisted and pending native-language review.",
+      "verifiedDate": "2026-09-06",
+      "reviewStatus": "staged",
+      "humanReview": "not_recorded",
+      "translationReview": "pending"
+    },
+    {
+      "id": "sf-us",
+      "title": "The US programme also includes diffusion",
+      "organization": "White House",
+      "publicationDate": "2025-07-23",
+      "url": "https://www.whitehouse.gov/wp-content/uploads/2025/07/Americas-AI-Action-Plan.pdf",
+      "version": "July 2025 PDF; day from existing source register",
+      "kind": "official_intent",
+      "locator": "Printed pp. 4–5, 14–16, 20",
+      "claim": "The AI Action Plan proposes open-weight support, organizational adoption, infrastructure and exports spanning hardware, models, software and services.",
+      "limit": "Recommended policy actions in this document are not evidence of implementation or a statement of current legal requirements.",
+      "language": "en",
+      "reuse": "Citation and original policy paraphrase; embedded assets not cleared for reproduction.",
+      "verifiedDate": "2026-09-06",
+      "reviewStatus": "staged",
+      "humanReview": "not_recorded",
+      "translationReview": "not_applicable"
+    },
+    {
+      "id": "sf-asml",
+      "title": "A laboratory does not own its entire supply network",
+      "organization": "ASML",
+      "publicationDate": "2026-02-25",
+      "url": "https://ourbrand.asml.com/m/8ab959d4926657b/original/asml-2025-annual-report-strategic-report-section.pdf",
+      "version": "2025 Annual Report, published 25 February 2026",
+      "kind": "report",
+      "locator": "Printed p. 69, Operations risk factors",
+      "claim": "ASML reports specialized single-source dependencies, including Carl Zeiss SMT optics, and manufacturing operations across the Netherlands, Germany, US, South Korea and Taiwan.",
+      "limit": "Company risk disclosure; it does not quantify disruption probability or establish a permanent inability to substitute or expand.",
+      "language": "en",
+      "reuse": "ASML reserves rights; factual paraphrase only, no copied graphics.",
+      "verifiedDate": "2026-09-06",
+      "reviewStatus": "staged",
+      "humanReview": "not_recorded",
+      "translationReview": "not_applicable"
+    },
+    {
+      "id": "sf-energy",
+      "title": "Physical deployment can change, too",
+      "organization": "International Energy Agency",
+      "publicationDate": "2025-04-10",
+      "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+      "version": "Energy and AI, 2025 report",
+      "kind": "analysis",
+      "locator": "Executive summary: Smarter is faster; There are large uncertainties",
+      "claim": "IEA identifies grid connections and equipment lead times as possible constraints and discusses efficiency, flexibility and siting as mitigations.",
+      "limit": "Its energy projections are conditional scenarios to 2035. They are not observed failure rates or a sourced 2040 trajectory.",
+      "language": "en",
+      "reuse": "CC BY 4.0 with attribution and identification of changes; third-party exceptions retained.",
+      "verifiedDate": "2026-09-06",
+      "reviewStatus": "staged",
+      "humanReview": "not_recorded",
+      "translationReview": "not_applicable"
+    },
+    {
+      "id": "sf-ai2027",
+      "title": "AI 2027",
+      "organization": "AI 2027 authors",
+      "publicationDate": "2025-04-03",
+      "url": "https://ai-2027.com/",
+      "version": "3 April 2025 scenario; 22 November 2025 timing clarification visible",
+      "kind": "external_forecast",
+      "locator": "Introduction; AI R&D progress multiplier explanation",
+      "claim": "AI 2027 is a forecast-bearing scenario that makes AI-assisted R&D central to a rapid takeoff account.",
+      "limit": "Its story, dates and feedback assumptions are forecasts, not observations. The site points to a separate source for its authors’ latest forecasts.",
+      "language": "en",
+      "reuse": "Original characterization and link; no reproduced narrative, figures or probabilities.",
+      "verifiedDate": "2026-09-06",
+      "reviewStatus": "staged",
+      "humanReview": "not_recorded",
+      "translationReview": "not_applicable"
+    },
+    {
+      "id": "sf-ai2040",
+      "title": "AI 2040 Plan A",
+      "organization": "AI 2040 authors",
+      "publicationDate": null,
+      "url": "https://ai-2040.com/",
+      "version": "Plan A page retrieved 6 September 2026; publication date not displayed",
+      "kind": "normative_proposal",
+      "locator": "Introduction: What is Plan A; recommendation versus prediction distinction",
+      "claim": "Plan A recommends an international agreement and presents conditional predictions about what would happen if it were implemented.",
+      "limit": "It explicitly is not the authors’ unconditional best guess. This prototype does not adopt its exact regime or endorse its policies.",
+      "language": "en",
+      "reuse": "Original characterization and link; no reproduced narrative or graphics.",
+      "verifiedDate": "2026-09-06",
+      "reviewStatus": "staged",
+      "humanReview": "not_recorded",
+      "translationReview": "not_applicable"
+    },
+    {
+      "id": "sf-normal",
+      "title": "AI as Normal Technology",
+      "organization": "Arvind Narayanan and Sayash Kapoor",
+      "publicationDate": "2025-04-15",
+      "url": "https://www.normaltech.ai/p/ai-as-normal-technology",
+      "version": "Original essay dated 15 April 2025",
+      "kind": "interpretive_account",
+      "locator": "Introduction; Part I: The Speed of Progress",
+      "claim": "The authors distinguish invention, application and diffusion, emphasizing institutional change and arguing for a slower social trajectory.",
+      "limit": "An argued predictive account, not an observed law fixing the pace of future AI. It competes with rapid-compounding premises.",
+      "language": "en",
+      "reuse": "Original characterization and citation only.",
+      "verifiedDate": "2026-09-06",
+      "reviewStatus": "staged",
+      "humanReview": "not_recorded",
+      "translationReview": "not_applicable"
+    }
+  ],
+  "controls": [
+    {
+      "key": "research",
+      "label": "Research feedback",
+      "options": [
+        {
+          "value": "compounding",
+          "label": "Repeated AI-assisted advances"
+        },
+        {
+          "value": "bounded",
+          "label": "Bounded task improvements"
+        }
+      ],
+      "rule": "Repeated advances activates the proposed research-to-next-system feedback. Bounded improvements leaves useful AI in research but does not close a self-reinforcing loop. Neither option supplies a rate.",
+      "sourceIds": [
+        "sf-alpha",
+        "sf-ai2027",
+        "sf-normal"
+      ]
+    },
+    {
+      "key": "diffusion",
+      "label": "Useful capability reaches rivals",
+      "options": [
+        {
+          "value": "restricted",
+          "label": "After the lead is consolidated"
+        },
+        {
+          "value": "broad",
+          "label": "Before power consolidates"
+        }
+      ],
+      "rule": "Earlier diffusion gives Chinese developers and third-country adopters access to the relevant usable capability. It weakens the exclusive-access route to leverage, without transferring chips, trained staff, ownership or all frontier research capabilities for free.",
+      "sourceIds": [
+        "sf-deepseek",
+        "sf-us",
+        "sf-china"
+      ]
+    },
+    {
+      "key": "deployment",
+      "label": "AI changes the production path",
+      "options": [
+        {
+          "value": "redesign",
+          "label": "Validated process redesign"
+        },
+        {
+          "value": "existing",
+          "label": "Improve within the existing path"
+        }
+      ],
+      "rule": "Validated redesign adds a proposed route from AI-assisted engineering into repeatable physical deployment and feedback from operations. It stipulates that validation, equipment and people arrive together; existing-path mode retains separate qualification and integration work. No stage is removed silently.",
+      "sourceIds": [
+        "sf-alpha",
+        "sf-energy",
+        "sf-asml"
+      ]
+    },
+    {
+      "key": "settlement",
+      "label": "Investment and political bargain",
+      "options": [
+        {
+          "value": "race",
+          "label": "Research first; concentrated control"
+        },
+        {
+          "value": "broad",
+          "label": "Deployment and broad benefit"
+        },
+        {
+          "value": "compact",
+          "label": "Verified limits; public missions"
+        },
+        {
+          "value": "rupture",
+          "label": "Conflict or loss of effective control"
+        }
+      ],
+      "rule": "This bundled choice shifts a fixed discretionary agenda among frontier experiments, deployment and access/assurance. It changes ownership and procurement assumptions as well as priorities. It is not a measured national trait. A compact requires verification and cooperation; rupture withdraws benign outcome claims.",
+      "sourceIds": [
+        "sf-us",
+        "sf-china",
+        "sf-ai2040",
+        "sf-normal"
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "id": "lead",
+      "title": "The lead compounds",
+      "input": {
+        "research": "compounding",
+        "diffusion": "restricted",
+        "deployment": "redesign",
+        "settlement": "race"
+      },
+      "description": "Give the frontier case its strongest conditions: repeated research advances, protected access and validated changes to the production path."
+    },
+    {
+      "id": "spread",
+      "title": "Capability spreads",
+      "input": {
+        "research": "compounding",
+        "diffusion": "broad",
+        "deployment": "existing",
+        "settlement": "broad"
+      },
+      "description": "Useful capability reaches rivals and adopters before exclusive control turns into durable power. Deployment and ownership become contested advantages."
+    },
+    {
+      "id": "divided",
+      "title": "Powerful systems, divided societies",
+      "input": {
+        "research": "compounding",
+        "diffusion": "broad",
+        "deployment": "redesign",
+        "settlement": "race"
+      },
+      "description": "Production improves across several locations while ownership and access concentrate the gain. Diffusion between firms is not distribution within societies."
+    },
+    {
+      "id": "missions",
+      "title": "Coordinated limits and missions",
+      "input": {
+        "research": "compounding",
+        "diffusion": "broad",
+        "deployment": "redesign",
+        "settlement": "compact"
+      },
+      "description": "A credible agreement restrains the frontier race and prioritizes permitted applications. Verification, defection and opportunity costs remain live questions."
+    }
+  ],
+  "author": {
+    "opening": "Conversations in Washington and my experience at the World AI Conference in Shanghai kept bringing me back to the same question: if a country gets better AI first, what does it get to do that others cannot?",
+    "judgment": "I want to take the compounding case seriously. If AI improves the research that produces its successors—and helps redesign the machinery around it—a lead could become much more than an advantage in chat software. The difficult question is whether control over that process stays exclusive long enough to become durable power.",
+    "closing": "I care about who gets to decide what this power is for. A state could become harder to coerce while many of its citizens gain little. A society could become healthier or more capable without owning the leading laboratory. I want the comparison to keep both possibilities in view."
+  }
+}

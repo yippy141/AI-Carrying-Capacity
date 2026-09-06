@@ -36,9 +36,10 @@ test('temporary synthetic records exercise every refusal and full approved publi
   const fixture=mkdtempSync(path.join(tmpdir(),'reader-SYNTHETIC-publication-'));
   const realReview=readFileSync('research/reader-edition/release-review.json','utf8');
   const realUses=readFileSync('research/reader-edition/uses.json','utf8');
+  const realStrategic=readFileSync('research/strategic-futures/prototype.json','utf8');
   try {
     for(const name of ['app','components','lib','scripts','data','public','content'])cpSync(path.join(root,name),path.join(fixture,name),{recursive:true});
-    cpSync(path.join(root,'research/reader-edition'),path.join(fixture,'research/reader-edition'),{recursive:true});
+    for(const name of ['reader-edition','strategic-futures'])cpSync(path.join(root,'research',name),path.join(fixture,'research',name),{recursive:true});
     for(const name of ['package.json','package-lock.json','next.config.ts','next-env.d.ts','tsconfig.json','postcss.config.mjs'])if(existsSync(name))cpSync(name,path.join(fixture,name));
     symlinkSync(path.join(root,'node_modules'),path.join(fixture,'node_modules'),'dir');
     writeFileSync(path.join(fixture,'SYNTHETIC-NOT-FOR-PUBLICATION.txt'),'Synthetic automated fixture. No real author or source approval. Deleted after the test.\n');
@@ -57,6 +58,22 @@ test('temporary synthetic records exercise every refusal and full approved publi
     const approved={edition:'SYNTHETIC',authorCopyStatus:'approved',authorReviewer:'SYNTHETIC TEST REVIEWER — not a person',bylineAssent:'approved',outsideReaders:[],exactUseReview:'approved',publicationAuthorized:true};
     const write=(file:string,value:unknown)=>writeFileSync(file,JSON.stringify(value,null,2));
     write(useFile,uses);write(reviewFile,approved);
+    const strategicFile=path.join(fixture,'research/strategic-futures/prototype.json');
+    const strategic=JSON.parse(realStrategic);
+    strategic.status='approved';strategic.humanReview='author_reviewed';
+    strategic.author={opening:'SYNTHETIC future opening',judgment:'SYNTHETIC future interpretation',closing:'SYNTHETIC future conclusion'};
+    strategic.sources=strategic.sources.map((s:Record<string,unknown>)=>({...s,claim:'SYNTHETIC strategic source use',url:'https://example.com/synthetic',reviewStatus:'approved',humanReview:'author_reviewed',translationReview:s.language==='zh'?'human_reviewed':'not_applicable'}));
+    write(strategicFile,strategic);
+    for(const candidate of [
+      {...strategic,sources:strategic.sources.map((s:Record<string,unknown>,i:number)=>i===0?{...s,reviewStatus:'staged',humanReview:'not_recorded'}:s)},
+      {...strategic,sources:strategic.sources.map((s:Record<string,unknown>)=>s.language==='zh'?{...s,translationReview:'pending'}:s)},
+      {...strategic,status:'staged',humanReview:'not_recorded'}
+    ]){
+      write(strategicFile,candidate);const result=invoke(fixture,[],{VERCEL_ENV:'production'});
+      assert.notEqual(result.status,0);assert.match(output(result),/Strategic (source\/use or translation pending|scenario and author text pending)/);
+      assert.doesNotMatch(output(result),/Creating an optimized/);
+    }
+    write(strategicFile,strategic);
     for(const [patch,expected] of [
       [{authorCopyStatus:'pending'},/Author copy reading\/edit pending/],
       [{publicationAuthorized:false},/Publication authorization missing/],
@@ -78,15 +95,18 @@ test('temporary synthetic records exercise every refusal and full approved publi
     assert.equal(valid.status,0,output(valid));
     assert.match(output(valid),/Reader publication gate passed/);
     const html=readFileSync(path.join(fixture,'.next/server/app/index.html'),'utf8');
-    assert.match(html,/SYNTHETIC fixture finding/);
+    assert.match(html,/SYNTHETIC future opening/);
+    const workHtml=readFileSync(path.join(fixture,'.next/server/app/work.html'),'utf8');
+    assert.match(workHtml,/SYNTHETIC fixture finding/);
     assert.doesNotMatch(html,/data-author-status="pending"|data-use-status="staged"/);
     // A corrupt rendered artifact fails the actual postflight, too.
-    writeFileSync(path.join(fixture,'.next/server/app/index.html'),html.replace('data-use-status="approved"','data-use-status="staged"'));
+    writeFileSync(path.join(fixture,'.next/server/app/work.html'),workHtml.replace('data-use-status="approved"','data-use-status="staged"'));
     const damaged=spawnSync(process.execPath,['--experimental-strip-types','scripts/check_reader_publication.ts','--publication','--rendered'],{cwd:fixture,env:cleanEnv,encoding:'utf8'});
     assert.notEqual(damaged.status,0);assert.match(damaged.stderr,/Staged public claim/);
   } finally {
     rmSync(fixture,{recursive:true,force:true});
     assert.equal(readFileSync('research/reader-edition/release-review.json','utf8'),realReview);
     assert.equal(readFileSync('research/reader-edition/uses.json','utf8'),realUses);
+    assert.equal(readFileSync('research/strategic-futures/prototype.json','utf8'),realStrategic);
   }
 });

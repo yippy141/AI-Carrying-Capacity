@@ -75,3 +75,24 @@ All new empirical wording and explanatory detail inherit the existing staged
 parent-use records in `research/reader-edition/uses.json`. Source/hypothesis
 labels are explicit in the optional interpretation. Updated actual desktop and
 390px captures, PNG exports and print sample are in reports/reader-edition.
+
+## Restored strategic canvas — 6 September 2026
+
+`StrategicCanvas` is the primary original qualitative figure on `/` and `/paper`.
+It maps stipulated actor access, research feedback, physical deployment and
+political benefit channels. Four controls change its links and node statements;
+fixed positions and equal-width arrows encode no country power or effect size.
+Outlined nodes and a readable pinned before/after table identify changed outputs.
+All edges are scenario construction; dashed feedback routes may activate or
+withdraw. Both US and Chinese actors research and deploy. The third-country and
+cross-border foundations are retained without pretending to allocate national
+shares. Source footholds resolve to nine staged source/use records in
+`research/strategic-futures/prototype.json`. The accepted eight-edge graph remains
+a separate historical/method record. No probabilities or calibrated chronology.
+
+Default/no-JavaScript text, keyboard controls, mobile layout, before/after captures
+and a tagged PDF accompany the prototype in `reports/strategic-futures/`.
+The four existing work figures and their SVG/PNG exports now live at `/work` and
+`/work/paper`; their observations, captions, source restrictions and historical
+screenshots remain intact. This new placement supersedes the primary reader
+placement above without deleting its history.

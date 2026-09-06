@@ -1,10 +1,10 @@
 import {test,expect} from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import {mkdirSync,readFileSync} from 'node:fs';
-const shots='reports/reader-edition/screenshots';
+const shots='test-results/support-screenshots';
 test('home → empirical figure → source and denominator caveat',async({page},info)=>{
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
- const response=await page.goto('/');
+ const response=await page.goto('/work');
  expect(response?.headers()['x-content-type-options']).toBe('nosniff');
  expect(response?.headers()['x-robots-tag']).toContain('noindex');
  expect(response?.headers()['content-security-policy']).toContain("frame-ancestors 'none'");
@@ -22,7 +22,7 @@ test('home → empirical figure → source and denominator caveat',async({page},
  mkdirSync(shots,{recursive:true});await page.screenshot({path:`${shots}/${info.project.name}-evidence.png`,fullPage:false});
 });
 test('assumptions change arithmetic, bottleneck and topology; keyboard and reset work',async({page},info)=>{
- await page.goto('/#mechanism');
+ await page.goto('/work#mechanism');
  await expect(page.getByTestId('project-result')).toContainText('40 → 34 days');
  await expect(page.getByTestId('output-result')).toContainText('4 → 4 accepted units/week');
  const added=page.getByRole('slider',{name:/Additional integration/});
@@ -53,28 +53,28 @@ test('assumptions change arithmetic, bottleneck and topology; keyboard and reset
  await expect(page.locator('.trace-answer')).toContainText('defensible counterfactual');
 });
 test('paper, print, source links, static text and mobile overflow',async({page},info)=>{
- await page.goto('/paper');
+ await page.goto('/work/paper');
  await expect(page.locator('figure')).toHaveCount(4);
  await expect(page.locator('#author-draft')).toBeVisible();
  expect(await page.locator('#author-draft').evaluate(el=>el.tagName)).toBe('SECTION');
  const before=await page.locator('[data-claim-id]').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('data-claim-id')));
- await page.goto('/');
+ await page.goto('/work');
  expect(await page.locator('[data-claim-id]').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('data-claim-id')))).toEqual(before);
- for(const route of ['/','/paper','/evidence','/about','/methods','/findings']){
+ for(const route of ['/work','/work/paper','/evidence','/about','/methods','/findings']){
   await page.goto(route);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   const checks=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
   expect(checks.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)}))).toEqual([]);
  }
- await page.goto('/paper');await page.emulateMedia({media:'print'});
+ await page.goto('/work/paper');await page.emulateMedia({media:'print'});
  await expect(page.locator('header')).toBeHidden();
  await expect(page.getByTestId('project-result')).toContainText('8/4 + 32/1 + 0 = 34 days');
  await expect(page.locator('.print-only').first()).toBeVisible();
- if(info.project.name==='desktop')await page.pdf({path:'reports/reader-edition/reader-print.pdf',format:'A4',printBackground:true,tagged:true});
+ if(info.project.name==='desktop')await page.pdf({path:'test-results/support-print.pdf',format:'A4',printBackground:true,tagged:true});
  await page.emulateMedia({media:'screen'});
  if(info.project.name==='mobile')expect(await page.evaluate(()=>matchMedia('(prefers-reduced-motion: reduce)').matches)).toBe(true);
 });
 test('figure exports and actual rendered screenshots',async({page},info)=>{
- await page.goto('/');await page.evaluate(()=>document.fonts.ready);
+ await page.goto('/work');await page.evaluate(()=>document.fonts.ready);
  const requests:string[]=[];page.on('request',r=>{if(!r.url().startsWith('http://127.0.0.1:3000')&&!/^(data|blob):/.test(r.url()))requests.push(r.url());});
  for(const format of ['SVG','PNG']){
   const download=page.waitForEvent('download');await page.locator('#figure-1').getByRole('button',{name:format,exact:true}).click();
@@ -92,25 +92,25 @@ test('figure exports and actual rendered screenshots',async({page},info)=>{
  expect(requests).toEqual([]);
 });
 test('reading links resolve, archive routes remain usable, no secret-profile dump',async({page,request})=>{
- await page.goto('/');
+ await page.goto('/work');
  const links=await page.locator('main a[href^="/"]').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('href')!));
  for(const link of [...new Set(links)]){
   const response=await request.get(link.split('#')[0]||'/');expect(response.ok(),link).toBe(true);
  }
  for(const route of ['/lab','/forecasts','/scenarios','/sources','/sectors/manufacturing','/sectors/compute-energy'])expect((await request.get(route)).ok(),route).toBe(true);
  expect((await request.get('/data/profiles/stage_profiles.csv')).status()).toBe(404);
- await page.goto('/');await page.keyboard.press('Tab');await expect(page.getByRole('link',{name:'Skip to content'})).toBeFocused();
+ await page.goto('/work');await page.keyboard.press('Tab');await expect(page.getByRole('link',{name:'Skip to content'})).toBeFocused();
 });
 
 test('all new figure exports retain caveats and noninteractive page retains default argument',async({page,browser})=>{
- await page.goto('/');
+ await page.goto('/work');
  for(const number of [2,3,4]){
   const pending=page.waitForEvent('download');await page.locator(`#figure-${number}`).getByRole('button',{name:'PNG',exact:true}).click();
   const download=await pending;const filename=await download.path();expect(readFileSync(filename!).length).toBeGreaterThan(1000);
   await expect(page.locator(`#figure-${number}`)).not.toContainText('export failed');
  }
  const context=await browser.newContext({javaScriptEnabled:false});const staticPage=await context.newPage();
- await staticPage.goto('http://127.0.0.1:3000/');
+ await staticPage.goto('http://127.0.0.1:3000/work');
  await expect(staticPage.getByTestId('project-result')).toContainText('40 → 34 days');
  await expect(staticPage.locator('#figure-2')).toContainText('February 2026 update');
  await expect(staticPage.locator('#figure-4')).toContainText('physical TCV research tokamak');
@@ -119,7 +119,7 @@ test('all new figure exports retain caveats and noninteractive page retains defa
 
 
 test('interpretation stays beside the measured figures, with actors and a distinct physical loop',async({page})=>{
- await page.goto('/');
+ await page.goto('/work');
  await expect(page.locator('#author-draft')).toBeVisible();
  const before=await page.locator('#author-draft').evaluate(el=>el.getBoundingClientRect().top);
  expect(before).toBeLessThan(await page.locator('#adoption').evaluate(el=>el.getBoundingClientRect().top));

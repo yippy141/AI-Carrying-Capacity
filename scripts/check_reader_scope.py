@@ -4,7 +4,7 @@ import argparse,subprocess
 from pathlib import Path
 from reader_integrity import validate_current_integrity
 ROOT=Path(__file__).resolve().parents[1]
-ALLOWED=('app/','components/','lib/','scripts/','docs/','reports/','research/reader-edition/','data/profiles/','public/reader/','tests/','.github/workflows/')
+ALLOWED=('app/','components/','lib/','scripts/','docs/','reports/','research/reader-edition/','research/strategic-futures/','data/profiles/','public/reader/','tests/','.github/workflows/')
 FILES={'README.md','PRODUCT.md','DESIGN.md','package.json','package-lock.json','next.config.ts','next-env.d.ts','playwright.config.ts','.gitignore','data/licenses/data_licenses.csv'}
 def check(base):
  names=set(subprocess.check_output(['git','diff','--name-only',base],cwd=ROOT,text=True).splitlines())

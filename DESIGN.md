@@ -97,3 +97,18 @@ At 390px, multi-panel figures stack; source tables alone scroll horizontally.
 Native range inputs, radio choices, visible focus, live result text, reset,
 reduced-motion rules and printable equations support the mechanism. Fonts are
 bundled locally. Curated browser captures live under `reports/reader-edition/`.
+
+## Strategic prototype amendment — 2026-09-06
+
+Keep Newsreader, Inter, IBM Plex Mono and the existing paper/ink/country tokens.
+The main publication unit is now an authored trajectory beside one persistent
+qualitative actor/dependency canvas. Fixed node positions and equal-width lines
+carry no measured magnitude. Both national actor groups research and deploy;
+country hues label actors, not performance. Changed nodes are outlined and a
+before/after text table remains available without relying on color. Dashed lines
+mark changeable scenario feedback. Every connection in this canvas belongs to
+scenario construction, not the accepted empirical coupling graph. The canvas
+moves above the trajectory on mobile, remains sticky beside it on desktop, and
+prints with its default premises. Controls are native keyboard-accessible selects;
+no forced animation or new decorative asset system. The four work figures keep
+their separate empirical/illustrative encodings at `/work`.

@@ -925,3 +925,38 @@ hosted build-command/root/environment overrides have not been inspected, and
 hosting protection/admin settings are unchanged. Noindex remains indexing advice,
 not access control. Keep the existing historical snapshot, runtime/provenance and
 PR-scope checks; introduce no new whole-app hash freeze.
+
+## 2026-09-06: Restore the strategic-futures flagship (owner-directed scope change)
+
+The owner rejected the narrow reader-edition strategy, not merely its technical
+execution. The restored brief supersedes the restriction that national futures
+and scenarios wait until after the first release. Frontier Is Not Fate now asks
+when an advanced-AI lead becomes durable scientific, industrial or strategic
+power, how useful capability diffuses, and who benefits through roughly 2040.
+The four proposed futures are constructions to investigate, not approved
+predictions, probabilities or owner judgments. Preserve the useful PR #43 build,
+provenance and publication safeguards and retain the productivity study as
+supporting evidence at /work and /work/paper. No merge/publication is authorized.
+
+The existing eight coupling-edge dispositions and external-scenario crosswalk
+remain historical/accepted records. Their empirical display keeps equal widths,
+separate evidence/magnitude/confidence, and its second-order limit. A separately
+typed strategic prototype may now display multi-step future chains and feedback
+loops as explicit scenario constructions. Such composition does not upgrade an
+edge, establish compounded observed causality, produce a national score, or
+recode S1–S5. The new scenario JSON is derived presentation/assumption material,
+not a replacement canonical coupling or six-dimension external-premise ledger.
+
+Use four categorical controls: research feedback, useful-capability diffusion,
+process change, and political/investment settlement. Compare results from explicit
+rules and keep a pinned before-state. Their conditional outputs are qualitative;
+no percentages, resource totals or calibrated transition rates are invented.
+Competing priorities draw on a finite discretionary investment/implementation
+agenda; prioritizing one use displaces another. Input bottlenecks are not assumed
+interchangeable. Rupture/control failure can invalidate benign branches.
+
+Extend publication scope to the actual strategic routes and supporting study.
+New strategic text/source uses stay staged with author review not recorded;
+existing release-review permissions remain pending. Synthetic tests may approve
+only temporary copies. No new whole-app freeze, admin/protection change, forecast
+activation, portfolio change or broader module is authorized by this amendment.

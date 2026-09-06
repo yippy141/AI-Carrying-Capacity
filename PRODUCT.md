@@ -40,3 +40,15 @@ in a workflow and what else enables a useful outcome, with Jinhua able to explai
 and own the claims. The finite edition is a complete reading experience rather
 than a scaffold. See `docs/RELEASE_SCOPE.md`; payment and dwell-time optimization
 are not objectives. Existing broader research remains available as history.
+
+## Restored flagship direction (2026-09-06; supersedes narrow reader scope)
+
+The primary reader wants to understand advanced AI, national capability and
+international power through approximately 2040. Start with a strong frontier-
+compounding trajectory, then change diffusion, deployment and political-economy
+conditions. Existing workplace evidence supports this argument. The product is
+one authored strategic essay and persistent qualitative canvas, with optional
+source/assumption depth. Success is an explainable comparison, not completing a
+framework or maximizing time spent. The four proposed futures are drafts, not
+accepted predictions. The current execution contract is RELEASE_SCOPE’s restored-
+direction amendment; all previous research versions retain their provenance.

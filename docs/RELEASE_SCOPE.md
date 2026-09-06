@@ -75,3 +75,40 @@ Stop after current checks, browser/print/export evidence, the finite source chec
 and updated draft PR. Human comprehension tasks may be attempted on the labelled
 draft now; another generalized review or new expert recruitment is not a condition.
 No merge, publication, administration or portfolio changes.
+
+## Restored strategic-futures scope — supersedes the narrow strategy above
+
+Owner instruction, 6 September 2026, from RESTORED_DIRECTION_AND_BUILD_BRIEF.md.
+The current product concerns advanced AI, US–China and the international system,
+scientific/industrial/state capability, power, governance and social benefits
+through approximately 2040. The old four-scene workplace sequence is supporting
+evidence, not the flagship's organizing question. The original restricted scope
+remains above as history, not a current requirement to defer scenarios.
+
+Deliver one authored strategic trajectory, serious alternatives, and a persistent
+interactive dependency canvas with pinned comparison. Four categorical assumptions
+change explicit qualitative rules; distinguish evidence, inference, stipulation,
+conditional outputs and forecast-bearing external accounts. No probability is
+assigned to the four proposed futures. At most two read-only agents support one
+integration owner. Research only the hinges that affect these paths, using
+existing records first and Chinese primary text for Chinese policy claims.
+
+Reachable reading routes: / (strategic narrative and canvas), /paper (shared
+strategic print narrative), /assumptions (rules, sources and historical lineage),
+/evidence (strategic evidence plus support cases), /work and /work/paper (preserved
+productivity study), /methods, /about and /findings. Existing archive routes work.
+Exact eligibility applies to new strategic uses as well as retained empirical
+uses. The unchanged production build architecture must refuse pending approvals.
+
+The hypothesis canvas's longer chains are separately labelled scenario
+constructions. No accepted coupling-edge evidence is promoted by drawing a loop.
+No national aggregate, ordinal-derived rate, new country coding or assumed human
+validation. Dates inside futures are stipulated windows, not estimated events.
+No finite investment agenda is allocated in full to multiple competing purposes.
+AI-enabled changes in process topology are allowed explicitly.
+
+Stop after one coherent research/prototype batch, browser-tested assumptions,
+screenshots and an explainable author note, on this same draft PR. The owner
+judges product direction next; passing engineering checks is not product assent.
+The repository/artifacts remain public; preview protection is unchanged. No merge,
+production publication, portfolio modification or unrelated module.

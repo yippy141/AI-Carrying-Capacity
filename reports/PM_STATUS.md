@@ -1,3 +1,50 @@
+# PM status — restored strategic-futures prototype
+
+Updated 6 September 2026. The owner rejected the narrow reader-edition strategy.
+The current product asks when advanced AI becomes durable national power, who
+can challenge that advantage, and whether people benefit. It examines a strong
+frontier-compounding trajectory and explicit alternatives through roughly 2040.
+The four sketches are proposals, not owner forecasts or probability judgments.
+
+Draft PR #43 continues on release/first-reader-edition from verified head
+`e0eb839fe11c088e7cfab2f8ebfbf226dc73de32`; there was no intervening branch work.
+Home/paper share a persistent strategic canvas and authored trajectory. Four
+controls change feedback, diffusion, physical process redesign and the investment/
+political bargain. A pinned comparison exposes consequences without scores,
+numeric rates or a resource-allocation fantasy. The previous four-scene work
+study is retained at `/work` and `/work/paper`. Nine staged original-source/account
+uses explain the hinges; the Chinese policy summary remains AI-assisted and
+human-review pending. The accepted eight couplings and historical scenario
+crosswalk are unchanged records, with an explicit separate construction amendment.
+
+The plain-language author notes explain each implemented rule and contain the
+three draft paragraphs as editable Markdown. One bounded read-only evidence pass
+and one independent read-only product/code/screenshot critique assisted the sole
+integrator. Two diagram/legibility findings were corrected in one batch, along
+with checkpoint direction, immediate comparison access and interrupted labels.
+These were AI passes, not outside-human tests. Twenty browser tests, 25 evidence
+unit tests, 80 Python tests, current invariant checks, the build and production
+negative/positive fixtures passed. The dependency audit reports zero findings.
+See STRATEGIC_FUTURES_VALIDATION and reports/strategic-futures for actual artifacts.
+
+Publication remains blocked by staged exact uses/translation/scenario text and
+pending author reading, byline assent and authorization. Existing hosting
+protection and repository administration were not changed. This is a reviewable
+prototype, not a launch. No new recruitment or worksheet gate is required to
+try it. Stop after this integrated PR update.
+
+PM consideration: the political-bargain control intentionally bundles ownership,
+procurement and investment priorities. That is the most consequential remaining
+simplification for Jinhua to examine. If he rejects that bundle, revise the
+argument before expanding parameters or adding sectors. The initial US-coalition
+lead is also a stipulated starting case, not a measured ranking or an exhaustive
+set of possible starting worlds. The missing standalone Master Strategy v3 is
+recorded honestly; it was not reconstructed from an obsolete framework.
+
+---
+
+## Historical reader-edition checkpoint (superseded as product direction)
+
 # PM status — first reader edition
 
 Updated 2026-09-06. Current state: `docs/PROJECT_STATE.md`; finite contract:

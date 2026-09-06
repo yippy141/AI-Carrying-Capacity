@@ -35,13 +35,21 @@ panels preserve their original definitions and denominators rather than
 creating a harmonized use-depth metric. China’s NBS statistic is retained as
 context only and is not plotted or compared across source families.
 
-## Current reader candidate
+## Current strategic-futures prototype
 
-Built from verified merged PR #42 on `release/first-reader-edition`. Read the
-finite contract in `docs/RELEASE_SCOPE.md` and the explanation in
-`reports/READER_EDITION_AUTHOR_BRIEF.md`. The study now connects adoption,
-two operational studies, a hypothetical workflow experiment and a TCV fusion
-trace, with `/paper`, `/evidence`, `/methods`, `/about` and retained `/findings`.
+Continue draft PR #43 on `release/first-reader-edition`, from verified head
+`e0eb839fe11c088e7cfab2f8ebfbf226dc73de32`. The owner restored the national,
+US–China/international-system and divergent-futures question. Home and `/paper`
+now explore when an AI lead becomes durable power through roughly 2040, using
+four consequential assumptions and one persistent before/after canvas.
+`/assumptions` explains every rule, source limit and rival account. The prior
+four-scene productivity study remains at `/work` and `/work/paper`; evidence,
+methods, about and findings remain available.
+
+This is a staged qualitative branch explorer, not a calibrated simulation or a
+country forecast. See `docs/RELEASE_SCOPE.md` and the plain-language explanation
+in `reports/STRATEGIC_FUTURES_AUTHOR_NOTES.md`. Its proposed futures do not record
+Jinhua’s probability judgments or publication permission.
 
 **Exposure:** local preview commands bind only to 127.0.0.1. Pushing the draft
 PR also triggered the repository’s existing Vercel preview integration. Its

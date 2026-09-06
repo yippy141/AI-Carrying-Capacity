@@ -91,3 +91,24 @@ entry point will fail while these requirements are pending. No production deploy
 was attempted. Actual Vercel build-command/root-directory overrides and system-env
 settings were not available for verification. No repository or host administration
 was changed; the existing preview's credential-free response is reported separately.
+
+## Restored strategic-futures prototype — representation amendment
+
+The owner rejected the finite workflow study as the flagship direction. The
+2026-09-06 scope amendment adds `research/strategic-futures/` to this PR’s allowed
+paths and expands the reachable reading set to nine routes. A strict versioned
+JSON schema represents scenario construction, four qualitative controls, four
+proposed presets, nine source-specific exact uses, translation/human review and
+plain author fields. It does not populate or recode the canonical S/C/coupling/
+scenario CSVs. `lib/futureRules.ts` is an executable qualitative rule map, with
+no numeric national outputs, estimated time steps or scenario probabilities.
+
+Every new exact source use stays staged. Publication now also rejects pending
+strategic source uses, Chinese translation, scenario text and author review.
+Existing `release-review.json` still separately requires actual author reading,
+byline assent, exact-use review and publication authorization; none is changed.
+Synthetic fixture copies exercise the new refusal cases and a complete approved
+publication compilation. The historical invariants and original snapshots remain
+intact; no whole-app hash freeze was added. Existing deployment protection and
+administration remain untouched. This amendment permits a draft prototype to be
+tested, not production publication.

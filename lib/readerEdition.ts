@@ -4,7 +4,7 @@ import {productionEnvironment} from './buildPolicy.ts';
 import { loadAdoptionDepth, loadClaimLedger, loadSourceRegister, readRegister, sourceSchema, safeUrl, type SourceRow } from './registers.ts';
 
 export const EDITION_DATE = '2026-09-06';
-export const READER_ROUTES = ['/', '/paper', '/evidence', '/methods', '/about', '/findings'] as const;
+export const READER_ROUTES = ['/', '/paper', '/assumptions', '/work', '/work/paper', '/evidence', '/methods', '/about', '/findings'] as const;
 export type EditionMode = 'review-preview' | 'publication';
 export function editionMode(): EditionMode {
   const value = process.env.READER_EDITION_MODE;

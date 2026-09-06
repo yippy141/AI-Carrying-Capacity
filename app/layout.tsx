@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   robots: { index: false, follow: false },
   description:
-    "What does a better AI model change, through which workflow, and what else must happen before it becomes a useful outcome?"
+    "When does an advanced-AI lead become lasting power? Explore US–China, international dependencies and alternative futures through 2040."
 };
 
 export default function RootLayout({

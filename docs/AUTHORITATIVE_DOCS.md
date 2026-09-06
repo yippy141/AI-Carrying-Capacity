@@ -57,3 +57,12 @@ selections and truthful model-assessment presentation;
 `READER_EDITION_BOUNDARY.md` specifies the migration. All S definitions,
 non-aggregation rules and human approval requirements remain controlling.
 Historical authorities are preserved in `archive/reader-baseline/`.
+
+## Restored flagship scope — 2026-09-06
+
+The latest owner instruction supersedes the narrow first-reader product strategy;
+see the final amendment in RELEASE_SCOPE and DECISIONS. METHOD_PROFILES' eight
+accepted edge dispositions, external-scenario crosswalk and S definitions remain
+intact. A separately labelled scenario construction may explore longer future
+chains without asserting observed compounded causality. This presentation
+amendment grants no source/use approval, forecast activation or publication assent.

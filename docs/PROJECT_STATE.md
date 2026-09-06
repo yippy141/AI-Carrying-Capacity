@@ -1,20 +1,20 @@
 # Project State
 
-Updated 2026-09-06 · first reader edition candidate · no publication authorized
+Updated 2026-09-06 · restored strategic-futures prototype · no publication authorized
 
-Frontier Is Not Fate is the authored reader study; AI Conversion Atlas is the
-underlying research/evidence system. The current question is: **What does a
-better AI model actually change, through which workflow, and what else must
-happen before that becomes a useful outcome?** The target reader works with
-AI governance or technology policy. Research credibility, comprehension and
-Jinhua's explainable authorship are the outcomes; payment is not a requirement.
-The supplied author kit suggests about six focused hours weekly, with 5–10
-available. It does not imply completed reading or approval.
+Frontier Is Not Fate asks **when an advanced-AI lead becomes durable national
+and strategic power, who can challenge it, and whether people benefit**. The
+owner rejected the narrow reader-edition strategy and restored the flagship’s
+US–China/international-system, political-economy, governance and divergent-futures
+scope through approximately 2040. This is an authored draft for informed AI/IR
+readers, with research credibility and Jinhua’s understanding as the objectives.
+The workflow/productivity study is supporting evidence, not the flagship question.
 
-Keep frontier access and accessible capability distinct from conversion capacity
-(the complements that enable work), adaptation capacity (adjustment), distribution
-quality (who benefits), realized outcomes and adjustment costs. Software,
-discrete manufacturing and tokamak research remain the three scoped anchors.
+The restored owner-intent attachment supplies direction, not approval of its four
+proposed futures. The initial US-coalition lead, timescale ordering and longer
+feedback chains are scenario stipulations. No probability, national score,
+ordinal-to-growth conversion, forecast activation or owner assent is recorded.
+Keep access, conversion, adaptation, distribution and realized outcomes distinct.
 
 ## Authority and verified dependency
 
@@ -33,14 +33,18 @@ The original checkpoint is preserved in `archive/reader-baseline/PROJECT_STATE.m
 
 ## Current built product
 
-Six reader entry routes: `/`, `/paper`, `/evidence`, `/methods`, `/about`, and
-retained `/findings`. The continuous study contains source-separated adoption,
-a two-study operational comparison, an assumption-sensitive workflow experiment,
-and a concise TCV fusion evidence trace. Paper uses the same data and components.
-The old scatter is a labeled historical conceptual artifact in `/lab`.
-Forecasts, scenario/country/sector shells and older content keep their history
-and working archive routes outside primary navigation. No country score wall,
-new sector programme, globe, chatbot, tracking or backend has been added.
+Nine finite reading routes: `/`, `/paper`, `/assumptions`, `/work`,
+`/work/paper`, `/evidence`, `/methods`, `/about`, and retained `/findings`.
+Home and paper share the strategic construction. Four controls change research
+feedback, diffusion before consolidation, process redesign and the political
+bargain. One fixed-position canvas and pinned before/after comparison show the
+conditional implications; four proposed presets and an interruption state use
+the same rules. The default gives frontier compounding strong conditions.
+
+`/work` and `/work/paper` preserve the four-scene adoption, operational outcome,
+workflow arithmetic and TCV study. The old scatter and unactivated scenario/
+forecast shells remain historical routes. No new sector, country score wall,
+globe, account, analytics, backend or framework was added.
 
 Preview scripts bind to 127.0.0.1. The branch push also triggered the existing
 Vercel integration; its preview redirected a credential-free request to Vercel
@@ -88,38 +92,35 @@ Temporary synthetic fixtures verify both refusal cases and a complete approved
 build without changing real approvals. The actual hosted command/root/env overrides
 remain unverified. See READER_EDITION_BOUNDARY and the validation report.
 
-## Next decision, not another research programme
+## Restored-direction batch and handoff
 
-Jinhua reads the three priority empirical claims and edits the ordinary Markdown
-passages in `reports/READER_EDITION_AUTHOR_BRIEF.md`; implementation field names
-are included for the integrator. The brief explains access versus model upgrades,
-study identification, actor attribution, the actual overhead arithmetic and
-contribution record. Five
-outside-reader task attempts are proposed; none has occurred or been simulated.
-No outreach has been sent. High-impact comprehension/support/accessibility or
-security defects are corrected before merge. Jinhua chooses merge and publication.
+Started from verified PR #43/local/remote head
+`e0eb839fe11c088e7cfab2f8ebfbf226dc73de32` on the existing
+`release/first-reader-edition` branch, with no intervening changes. The PR stays
+draft. The accepted eight coupling dispositions and external four-anchor/six-
+premise crosswalk remain records; richer paths use the separate
+`strategic-prototype-1` schema. The empirical second-order rule is preserved,
+with an explicit separately-labelled scenario presentation amendment.
 
-Do not require all C1–C8 rows, expert outreach, sixteen sectors, forecasts or
-scenarios for this edition. Additional national/sector work, quantum, longevity,
-geography animation, scrapers and services remain backlog leads. Portfolio
-repository changes are outside authorization. Root code/content licensing terms
-remain an owner choice; no root license exists and third-party terms are separate.
+Nine narrowly selected source uses characterize research feedback, weight
+release, Chinese and US programme intentions, specialized equipment, energy
+flexibility and three existing rival accounts. Existing sources were used first;
+Chinese AI+ text was checked in an official Chinese reproduction. English
+translation remains AI-assisted and human-review pending. New exact uses and
+all scenario/author text remain staged. Source verification is not human assent.
+See `research/strategic-futures/`, `reports/STRATEGIC_FUTURES_AUTHOR_NOTES.md`
+and `reports/STRATEGIC_FUTURES_VALIDATION.md`.
 
-## Integrated PR #43 revision
+The original standalone Master Strategy v3 was not located. Historical intent
+was read from the existing project documents and the restored owner brief; no
+missing document was reconstructed, and neither Spectrum nor the old
+Structural Profiles proposal was used as authority.
 
-Started from unchanged reviewed head `1dee9c186972d06b1e75ff92bb8ee192a9650d68`.
-The visible draft motivation precedes Scene 1. Within-study normalized visuals
-retain sample/vintage and METR's historical interval/update. A QJE actor map
-locates work and explicitly unmeasured benefit capture. An original TCV control
-loop separates training, deployment and evaluation, with other plant requirements
-alongside. The toy adds one optional project overhead; station capacity remains
-independent and its scale fixed. Every scene explains a useful result, plausible
-mechanism, alternative and significance. Methods credits existing complements
-research and standard duration/capacity reasoning; no new estimator is claimed.
-
-A focused rereading corrected QJE/METR locators and TCV article licensing. The
-single bounded freshness search found no relevant correction or reliable later
-METR replacement affecting these selected uses; that is a search result, not
-proof of absence. Exact wording stays staged. No further national/sector review,
-second generalized red team or expert recruitment is required to test the
-labelled draft. Complete this revision on the same draft PR, then stop.
+This is one research-and-prototype batch, not a new worksheet/recruitment
+programme. Jinhua can now review the strategic argument, change its assumptions,
+and edit ordinary Markdown personal passages. Human reading, byline assent and
+publication authorization remain separate and pending. The existing source-use
+review object and fail-closed build still govern release. No additional expert
+outreach is required to test the labelled prototype; none was sent or simulated.
+Root code/content licensing remains an owner choice. Public GitHub materials
+contain no confidential client/employer information. Stop at the draft PR.
